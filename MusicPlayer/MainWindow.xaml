@@ -4,15 +4,183 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:MusicPlayer"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:MusicPlayer" 
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
-        Title="MainWindow" Height="1000" Width="1500">
+        mc:Ignorable="d"
+        Title="Login" 
+        Height="450" 
+        Width="800"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent">
     <Grid>
+        <Border CornerRadius="40" >
+            <Border.Background>
+                <ImageBrush ImageSource="/Image/background.jpg" Stretch="Fill"/>
+            </Border.Background>
+        </Border>
 
-        <uc:UCPlayMusic Width="1150" Height="85" Margin="350,899,0,0">
-            
-        </uc:UCPlayMusic>
+        <Border CornerRadius="40"  Background="{StaticResource SecondaryDark}" Opacity="0.65">
+
+        </Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition ></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <uc:ControlBar/>
+
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="130" ></RowDefinition>
+                        <RowDefinition Height="30" ></RowDefinition>
+                        <RowDefinition Height="70" ></RowDefinition>
+                        <RowDefinition Height="70" ></RowDefinition>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+
+                        <Button
+                            Height="110" 
+                            Width="160"
+                            Margin="120,0,120,20"
+                            BorderBrush="Transparent">
+                            <Button.Background>
+                                <ImageBrush ImageSource="/Resource/Images/Logo.png" TileMode="None" Stretch="UniformToFill"/>
+                            </Button.Background>
+
+                        </Button>
+
+                        <TextBlock
+                            Text="N.A.N"
+                            FontSize="21"
+                            Height="30"
+                            Width="70"
+                            Foreground="{StaticResource PrimaryMid}"
+                            FontWeight="Bold"
+                            Margin="169,95,161,0"
+                            RenderTransformOrigin="0.643,0.667">
+
+                        </TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <TextBlock
+                            Text="Not a Normal music player"
+                            FontSize="15"
+                            Foreground="{StaticResource SecondaryLight}"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center">
+
+                        </TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <TextBlock 
+                        Text="Tên người dùng"
+                        FontWeight="DemiBold" 
+                        Height="25"
+                        Foreground="{StaticResource PrimaryMid}" 
+                        FontSize="18"
+                        Margin="40,3,0,40"/>
+                        <materialDesign:PackIcon 
+                        Kind="Account"
+                        Foreground="{StaticResource SecondaryLight}" 
+                        Height="25"
+                        Width="25"
+                        Margin="3,35,50,0"/>
+                        <TextBox
+                        x:Name="NameTextBox"
+                        materialDesign:HintAssist.Hint="Nhập ở đây"
+                        Height="35"
+                        FontSize="18"
+                            
+                        Foreground="{StaticResource SecondaryLight}"
+                        Margin="40,25,0,0"/>
+
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="11*"/>
+                            <ColumnDefinition Width="29*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock 
+                        Text="Mật khẩu"
+                        Height="25"
+                        Foreground="{StaticResource PrimaryMid}"
+                        FontWeight="DemiBold" 
+                        FontSize="18"
+                        Margin="40,3,0,37" Grid.ColumnSpan="2"/>
+                        <materialDesign:PackIcon 
+                        Kind="Key"
+                        Foreground="{StaticResource SecondaryLight}"
+                        Height="25"
+                        Width="25"
+                        Margin="3,35,0,0"/>
+                        <PasswordBox
+                        x:Name="PasswordBox"
+                        Height="35"
+                        FontSize="18"
+                        materialDesign:HintAssist.Hint="Password"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        Foreground="{StaticResource SecondaryLight}"
+                        Margin="40,25,0,0" Grid.ColumnSpan="2"/>
+                    </Grid>
+                    <Grid Grid.Row="4">
+                        <Button
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Height="35"
+                            Width="130"
+                            BorderBrush="Transparent"
+                            materialDesign:ButtonAssist.CornerRadius="5"
+                            ToolTip="MaterialDesignRaisedButton with Round Corners"
+                            Background="{StaticResource PrimaryLight}"
+                            Margin="135,10,135,0"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
+                            >
+                            <TextBlock
+                              Height="30"
+                              FontSize="16"
+                              FontWeight="Bold" 
+                              Foreground="{StaticResource PrimaryDark}"
+                              Margin="0,3,0,0"
+                              Text="ĐĂNG NHẬP" />
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Row="5">
+                        <Button
+                            Width="130"
+                            Background="Transparent"
+                            BorderBrush="Transparent"
+                            Margin="135,0,135,10">
+                            <TextBlock
+                                Text="ĐĂNG KÝ"
+                                TextDecorations="Underline"
+                                FontSize="16"
+                                Foreground="{StaticResource PrimaryMid}">
+                            </TextBlock>
+
+                        </Button>
+                    </Grid>
+
+                </Grid>
+
+
+            </Grid>
+            <Grid Grid.Row="1"/>
+
+
+
+        </Grid>
 
     </Grid>
 </Window>

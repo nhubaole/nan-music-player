@@ -10,7 +10,8 @@ namespace MusicPlayer.ViewModel
     {
         public MainViewModel()
         {
-           //code xử lý
+           Upload up = new Upload();    
+            up.ShowDialog();    
         }
     }
 }
