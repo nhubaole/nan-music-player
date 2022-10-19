@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:MusicPlayer"
         mc:Ignorable="d"
+        xmlns:uc="clr-namespace:MusicPlayer.UserControls"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         

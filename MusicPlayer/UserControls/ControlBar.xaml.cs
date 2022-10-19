@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MusicPlayer.UserControl
+namespace MusicPlayer.UserControls
 {
     /// <summary>
     /// Interaction logic for ControlBar.xaml
