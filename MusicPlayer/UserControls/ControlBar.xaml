@@ -9,7 +9,7 @@
              d:DesignHeight="40" d:DesignWidth="1440">
     <Grid>
 
-        <Border CornerRadius="20,20,0,0"  Background="{StaticResource PrimaryMid}">
+        <Border CornerRadius="40,40,0,0"  Background="{StaticResource PrimaryMid}">
             <DockPanel>
                 <ToolBarTray DockPanel.Dock="Right" Background="Transparent" Margin="0,0,-20,0">
                     <ToolBar Background="Transparent" Margin="0,-10,0,0">
