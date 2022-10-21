@@ -77,6 +77,9 @@
     <Compile Include="UserControls\ControlBar.xaml.cs">
       <DependentUpon>ControlBar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCSearch.xaml.cs">
+      <DependentUpon>UCSearch.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCSong.xaml.cs">
       <DependentUpon>UCSong.xaml</DependentUpon>
     </Compile>
@@ -115,6 +118,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ControlBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UCSearch.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

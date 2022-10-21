@@ -7,12 +7,8 @@
         xmlns:local="clr-namespace:MusicPlayer"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
-        Title="MainWindow" Height="1000" Width="1500">
+        Title="MainWindow" Height="800" Width="1200">
     <Grid>
-
-        <uc:UCPlayMusic Width="1150" Height="85" Margin="350,899,0,0">
-            
-        </uc:UCPlayMusic>
-
+        <uc:UCSearch Width="1180" Height="740"></uc:UCSearch>
     </Grid>
 </Window>
