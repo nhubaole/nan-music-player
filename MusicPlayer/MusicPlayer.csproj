@@ -68,6 +68,9 @@
     <Compile Include="UserControls\UCHome.xaml.cs">
       <DependentUpon>UCHome.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCLibrary.xaml.cs">
+      <DependentUpon>UCLibrary.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCPlayMusic.xaml.cs">
       <DependentUpon>UCPlayMusic.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\UCHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UCLibrary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

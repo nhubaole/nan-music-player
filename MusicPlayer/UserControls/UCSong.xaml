@@ -8,7 +8,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="160">
     <Grid>
-        <materialDesign:PackIcon Kind="Heart" Foreground="#ff5252" Width="30" Height="30" Margin="110,70,0,0"/>
+        <ToggleButton Foreground="White"
+                      Background="#ff5252"
+                      Width="30" 
+                      Height="30" 
+                      Margin="110,70,0,0"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top"
+                      Content="{materialDesign:PackIcon Kind=Heart, Size=21}"
+                      Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+                      IsChecked="True" />   
         <StackPanel>
             <Border CornerRadius="20,20,20,20"
                 Background="{StaticResource SecondaryLight}"
