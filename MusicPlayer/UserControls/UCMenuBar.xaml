@@ -11,7 +11,7 @@
         <Border CornerRadius="0,0,0,40" Background="{StaticResource SecondaryMid}">
             <Grid>
                 <Grid Height="220" VerticalAlignment="Top">
-                    <Image Source="/Resource/Images/Logo.png" 
+                    <Image Source="../Resource/Images/Logo.png" 
                        Stretch="Fill" 
                        Height="200" 
                        Width="200" 
