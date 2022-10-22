@@ -22,8 +22,8 @@ namespace MusicPlayer
     {
         public MainWindow()
         {
-            PasswordChange passwordChange = new PasswordChange();
-            passwordChange.ShowDialog();                
+        //    PasswordChange passwordChange = new PasswordChange();
+        //    passwordChange.ShowDialog();
         }
     }
 }
