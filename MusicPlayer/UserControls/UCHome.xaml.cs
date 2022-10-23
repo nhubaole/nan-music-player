@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -13,17 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MusicPlayer
+namespace MusicPlayer.UserControls
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UCHome.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UCHome : UserControl
     {
-        public MainWindow()
+        public UCHome()
         {
-            //SignUp SU = new SignUp();
-            //SU.ShowDialog();
+            InitializeComponent();
         }
     }
 }

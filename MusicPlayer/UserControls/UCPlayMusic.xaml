@@ -6,55 +6,92 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:MusicPlayer.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="85" d:DesignWidth="1150"  >
-    <Grid RenderTransformOrigin="0.574,0.706">
+             d:DesignHeight="68" d:DesignWidth="920"  >
+    <Grid>
         <Border CornerRadius ="40,0,40,0" Background= "{ StaticResource PrimaryLight}"/>
 
         <Button
           Style="{StaticResource MaterialDesignIconButton}"
           Background="{StaticResource SecondaryLight}"
-          ToolTip="MaterialDesignIconButton"
-          IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Width="60" Height="60" Margin="303,15,615,0" VerticalAlignment="Top">
-            <materialDesign:PackIcon Kind="Play" Width="50" Height="50" RenderTransformOrigin="0.75,1" />
+          Width="50" Height="50" 
+          VerticalAlignment="Center"
+          HorizontalAlignment="Left"
+            Margin="310,0,0,0">
+            <materialDesign:PackIcon Kind="Play" Width="40" Height="40" RenderTransformOrigin="0.75,1" />
         </Button>
-        <materialDesign:PackIcon Kind="SkipPrevious"  Width ="50" Height="50" Margin="340,20,0,15" VerticalAlignment="Bottom" Foreground="{StaticResource SecondaryDark}" />
-        <materialDesign:PackIcon Kind="SkipNext" Width ="50" Height="50" RenderTransformOrigin="12.7,1.1" Margin="445,20,0,15" Foreground="{StaticResource SecondaryDark}"/>
-        <materialDesign:PackIcon Kind="Repeat"  Width ="50" Height="50" Margin="280,20,0,15" RenderTransformOrigin="0.5,1.2" Foreground="{StaticResource SecondaryDark}" />
-        <materialDesign:PackIcon Kind="ShuffleVariant"  Width ="50" Height="50" Margin="510,20,0,15" Foreground="{StaticResource SecondaryDark}"/>
-        <Border Height="70" Width="70" Margin="0,0,1030,0 " CornerRadius="10,10,10,10" Background="{StaticResource SecondaryDark}"/>
+        <materialDesign:PackIcon Kind="SkipPrevious" Width ="40" 
+                                 Height="40" 
+                                 HorizontalAlignment="Left"
+                                 Margin="260,0,0,0"
+                                 VerticalAlignment="Center"
+                                 Foreground="{StaticResource SecondaryDark}" />
+        <materialDesign:PackIcon Kind="SkipNext" 
+                                 Height="40" 
+                                 Width="40"
+                                 HorizontalAlignment="Left"
+                                 Margin="370,0,0,0"
+                                 VerticalAlignment="Center"
+                                 Foreground="{StaticResource SecondaryDark}"/>
+        <materialDesign:PackIcon Kind="Repeat"  
+                                 Width ="30" 
+                                 Height="30" 
+                                 HorizontalAlignment="Left"
+                                 Margin="220,0,0,0"
+                                 VerticalAlignment="Center"
+                                 RenderTransformOrigin="0.5,1.2" 
+                                 Foreground="{StaticResource SecondaryDark}" />
+        <materialDesign:PackIcon Kind="ShuffleVariant"  
+                                 Width ="30" 
+                                 Height="30"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center"
+                                 Margin="420,0,0,0"
+                                 Foreground="{StaticResource SecondaryDark}"/>
+        <Border Height="50" Width="50" HorizontalAlignment="Left" Margin="25,0,0,0 " CornerRadius="10,10,10,10" Background="{StaticResource SecondaryDark}"/>
         <TextBlock
             Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-            Text="Ten bai hat"
+            Text="Tên bài hát"
             Foreground="{StaticResource SecondaryDark}"
-            Width="180" Height="40"
-            FontSize="30"
-            Margin="40,5,800,40"/>
+            Width="120" Height="30"
+            FontSize="20"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            FontWeight="SemiBold"
+            Margin="85,-20,0,0"/>
         <TextBlock
             Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-            Text="Ca si"
+            Text="Tên ca sĩ"
             Foreground="{StaticResource SecondaryDark}"
-            Width="150" Height="40"
-            FontSize="25"
-            Margin="20,30,800,-5"/>
+            Width="120" Height="20"
+            FontSize="18"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            FontWeight="Regular"
+            Margin="85,25,0,0"/>
+        
         <TextBlock
             Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
             Text="1:00"
             Foreground="{StaticResource SecondaryDark}"
-            Width="50" Height="40"
-            FontSize="25"
-            Margin="60,8,0,0"/>
+            Width="40" Height="30"
+            FontSize="18"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="465,0,0,0"/>
         <TextBlock
             Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
             Text="3:00"
             Foreground="{StaticResource SecondaryDark}"
-            Width="50" Height="40"
-            FontSize="25"
-            Margin="690,8,0,0"/>
+            Width="40" Height="30"
+            FontSize="18"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="735,0,0,0"/>
 
-        <Slider Minimum="0" Maximum="50" Value="35" Margin="370,5,0,0" Width="250" VerticalAlignment="Center" Foreground="{StaticResource SecondaryDark}"/>
-        <materialDesign:PackIcon Kind="VolumeHigh" Width ="50" Height="50"  Margin="960,20,0,15" VerticalAlignment="Center" Foreground="{StaticResource SecondaryDark}" />
-        <Slider Minimum="0" Maximum="50" Value="35" Margin="970,5,0,0" Width="90" VerticalAlignment="Center" Foreground="{StaticResource SecondaryDark}" />
-        <materialDesign:PackIcon Kind="DotsVertical"  Width ="50" Height="50" Margin="1095,20,0,15" Foreground="{StaticResource SecondaryDark}"/>
+        <Slider Minimum="0" Maximum="50" Value="35" HorizontalAlignment="Left" Margin="510,0,0,0" Width="220" VerticalAlignment="Center" Foreground="{StaticResource SecondaryDark}"/>
+        <materialDesign:PackIcon Kind="VolumeHigh" Width ="30" Height="30"  Margin="780,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="{StaticResource SecondaryDark}" />
+        <Slider Minimum="0" Maximum="50" Value="35" HorizontalAlignment="Left" Margin="815,0,0,0" Width="70" VerticalAlignment="Center" Foreground="{StaticResource SecondaryDark}"/>
+        <materialDesign:PackIcon Kind="DotsVertical"  Width ="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="890,0,0,0" Foreground="{StaticResource SecondaryDark}"/>
 
 
     </Grid>
