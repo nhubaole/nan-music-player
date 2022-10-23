@@ -76,7 +76,7 @@
                                 FontSize="18"
                                 Foreground="{StaticResource PrimaryMid}"                                
                                 FontWeight="Bold"
-                                VerticalAlignment="Top"/>
+                                VerticalAlignment="Bottom"/>
                             </Grid>
 
                             <Grid Grid.Row="1">
@@ -104,7 +104,7 @@
                                 FontSize="18"
                                 Foreground="{StaticResource PrimaryMid}"                                
                                 FontWeight="Bold"
-                                VerticalAlignment="Top"/>
+                                VerticalAlignment="Bottom"/>
                             </Grid>
 
                             <Grid Grid.Row="1">
@@ -138,7 +138,7 @@
                                     FontSize="18"
                                     Foreground="{StaticResource PrimaryMid}"                                
                                     FontWeight="Bold"
-                                    VerticalAlignment="Top"/>
+                                    VerticalAlignment="Bottom"/>
                             </Grid>
 
                             <Grid Grid.Row="1">
@@ -166,7 +166,7 @@
                                     FontSize="18"
                                     Foreground="{StaticResource PrimaryMid}"                                
                                     FontWeight="Bold"
-                                    VerticalAlignment="Top"/>
+                                    VerticalAlignment="Bottom"/>
                             </Grid>
 
                             <Grid Grid.Row="1">
@@ -181,8 +181,8 @@
                                     Width="180"/>
                             </Grid>
                         </Grid>
-                        
-                        
+
+
                     </Grid>
 
                     <Grid Grid.Row="2">
@@ -197,7 +197,7 @@
                                 FontSize="18"
                                 Foreground="{StaticResource PrimaryMid}"                                
                                 FontWeight="Bold"
-                                VerticalAlignment="Top"/>
+                                VerticalAlignment="Bottom"/>
                         </Grid>
 
                         <Grid Grid.Row="1">
@@ -224,7 +224,7 @@
                                 FontSize="18"
                                 Foreground="{StaticResource PrimaryMid}"                                
                                 FontWeight="Bold"
-                                VerticalAlignment="Top"/>
+                                VerticalAlignment="Bottom"/>
                         </Grid>
 
                         <Grid Grid.Row="1">
@@ -257,7 +257,7 @@
                                 FontSize="18"
                                 Foreground="{StaticResource PrimaryMid}"                                
                                 FontWeight="Bold"
-                                VerticalAlignment="Top"/>
+                                VerticalAlignment="Bottom"/>
                             </Grid>
 
                             <Grid Grid.Row="1">
@@ -268,7 +268,67 @@
                                     HorizontalAlignment="Left"
                                     Foreground="{StaticResource SecondaryLight}"
                                     FontSize="16"
-                                    BorderBrush="{StaticResource SecondaryLight}"/>
+                                    BorderBrush="{StaticResource SecondaryLight}">
+
+                                    <DatePicker.Resources>
+                                        <Style
+                                            x:Key="CustomCalendarDayButton"
+                                            TargetType="CalendarDayButton"
+                                            BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
+
+                                            <Setter
+                                                Property="materialDesign:CalendarAssist.SelectionColor"
+                                                Value="{StaticResource SecondaryLight}" />
+                                            <Setter
+                                                Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                                Value="{StaticResource SecondaryDark}" />
+                                        </Style>
+
+                                        <Style
+                                            x:Key="CustomCalendarButton"
+                                            TargetType="CalendarButton"
+                                            BasedOn="{StaticResource MaterialDesignCalendarButton}">
+
+                                            <Setter
+                                                Property="materialDesign:CalendarAssist.SelectionColor"
+                                                Value="{StaticResource SecondaryLight}" />
+                                            <Setter
+                                                Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                                Value="White" />
+                                        </Style>
+
+                                        <Style
+                                            x:Key="CustomCalendar"
+                                            TargetType="{x:Type Calendar}"
+                                            BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}">
+
+                                            <Setter
+                                                Property="Background"
+                                                Value="{StaticResource SecondaryMid}" />
+                                            <Setter
+                                                Property="materialDesign:CalendarAssist.HeaderBackground"
+                                                Value="{StaticResource SecondaryLight}" />
+                                            <Setter
+                                                Property="materialDesign:CalendarAssist.HeaderForeground"
+                                                Value="{StaticResource SecondaryDark}" />
+                                            <Setter
+                                                Property="CalendarDayButtonStyle"
+                                                Value="{StaticResource CustomCalendarDayButton}" />
+                                            <Setter
+                                                Property="CalendarButtonStyle"
+                                                Value="{StaticResource CustomCalendarButton}" />
+                                        </Style>
+
+                                        <Style
+                                            TargetType="DatePicker"
+                                            BasedOn="{StaticResource MaterialDesignDatePicker}">
+
+                                            <Setter
+                                                Property="CalendarStyle"
+                                                Value="{StaticResource CustomCalendar}" />
+                                        </Style>
+                                    </DatePicker.Resources>
+                                </DatePicker>
                             </Grid>
 
                         </Grid>
@@ -285,7 +345,7 @@
                                 FontSize="18"
                                 Foreground="{StaticResource PrimaryMid}"                                
                                 FontWeight="Bold"
-                                VerticalAlignment="Top"/>
+                                VerticalAlignment="Bottom"/>
                             </Grid>
 
                             <Grid Grid.Row="1">
@@ -296,23 +356,75 @@
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Left"
                                     Width="180"
-                                    Background="Transparent">                 
-                                    
+                                    Background="{StaticResource SecondaryMid}"
+                                    materialDesign:ColorZoneAssist.Mode="PrimaryDark">
+
                                     <ComboBoxItem
                                         IsSelected="True"
                                         Content="Nữ" />
-                                    
+
                                     <ComboBoxItem
-                                        Content="Nam"/>                                    
-                                </ComboBox>
+                                        Content="Nam"/>
+                                </ComboBox>                             
+                                
                             </Grid>
                         </Grid>
                     </Grid>
                 </Grid>
             </Grid>
 
+            <Grid
+                HorizontalAlignment="Center"
+                Height="120"
+                Width="150" 
+                Margin="0,430,0,0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Border
+                        Background="{StaticResource PrimaryLight}"
+                        CornerRadius="12"
+                        Height="45"
+                        Width="150"/>
+                    
+                    <Button
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Height="45"
+                        Width="150"
+                        Content="ĐĂNG KÝ" 
+                        FontSize="25"
+                        Foreground="{StaticResource PrimaryDark}" 
+                        FontWeight="Bold" />
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Border
+                        CornerRadius="12"
+                        Height="45"
+                        Width="150" 
+                        BorderBrush="{StaticResource PrimaryLight}"
+                        BorderThickness="1"/>
+
+                    <Button
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        Height="45"
+                        Width="150"
+                        Content="THOÁT" 
+                        FontSize="25"
+                        Foreground="{StaticResource PrimaryLight}" 
+                        FontWeight="Bold" />
+
+                </Grid>
+            </Grid>
+
         </Grid>
 
-        
+
     </Grid>
 </Window>
