@@ -81,7 +81,7 @@
 
                             <Grid Grid.Row="1">
                                 <TextBox
-                                    materialDesign:HintAssist.Hint="nhubaole" 
+                                    materialDesign:HintAssist.Hint="Nhập tên người dùng" 
                                     FontSize="16"
                                     BorderBrush="{StaticResource SecondaryLight}"
                                     Foreground="{StaticResource SecondaryLight}"
@@ -109,7 +109,7 @@
 
                             <Grid Grid.Row="1">
                                 <TextBox
-                                    materialDesign:HintAssist.Hint="Lê Bảo Như"
+                                    materialDesign:HintAssist.Hint="Nhập họ tên"
                                     FontSize="16"
                                     Foreground="{StaticResource SecondaryLight}"
                                     VerticalAlignment="Top"
@@ -202,7 +202,7 @@
 
                         <Grid Grid.Row="1">
                             <TextBox
-                                materialDesign:HintAssist.Hint="21520082@gm.uit.edu.vn" 
+                                materialDesign:HintAssist.Hint="Địa chỉ email" 
                                 FontSize="16"
                                 BorderBrush="{StaticResource SecondaryLight}"
                                 Foreground="{StaticResource SecondaryLight}"
@@ -229,7 +229,7 @@
 
                         <Grid Grid.Row="1">
                             <TextBox
-                                materialDesign:HintAssist.Hint="0987654321" 
+                                materialDesign:HintAssist.Hint="Nhập số điện thoại" 
                                 FontSize="16"
                                 BorderBrush="{StaticResource SecondaryLight}"
                                 Foreground="{StaticResource SecondaryLight}"
@@ -263,7 +263,7 @@
                             <Grid Grid.Row="1">
                                 <DatePicker
                                     Width="180"
-                                    materialDesign:HintAssist.Hint="dd/mm/yyyy" 
+                                    materialDesign:HintAssist.Hint="Ngày/Tháng/Năm" 
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Left"
                                     Foreground="{StaticResource SecondaryLight}"
