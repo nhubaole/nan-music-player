@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:MusicPlayer"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
-        Title="MainWindow" Height="780" Width="1440"
+        Title="MainWindow" Height="624" Width="1152"
         ResizeMode="CanMinimize"
         WindowStyle="None"
         HorizontalAlignment="Center"
@@ -16,21 +16,21 @@
         Background="Transparent"
         AllowsTransparency="True">
     <Grid>
-        <uc:ControlBar Width="1440" 
-                       Height="40" 
+        <uc:ControlBar Width="1152" 
+                       Height="32" 
                        VerticalAlignment="Top"/>
-        <uc:UCMenuBar Width="260" 
-                      Height="740"
+        <uc:UCMenuBar Width="208" 
+                      Height="592"
                       VerticalAlignment="Top"
-                      Margin="0,40,0,0"
+                      Margin="0,32,0,0"
                       HorizontalAlignment="Left"/>
-        <uc:UCHome Width="1180" 
-                      Height="740" 
+        <uc:UCLibrary Width="944" 
+                      Height="592" 
                       VerticalAlignment="Top"
-                      Margin="0,40,0,0"
+                      Margin="0,32,0,0"
                       HorizontalAlignment="Right"/>
-        <uc:UCPlayMusic Height="85" 
-                        Width="1150" 
+        <uc:UCPlayMusic Height="68" 
+                        Width="920" 
                         HorizontalAlignment="Right" 
                         VerticalAlignment="Bottom"/>
     </Grid>

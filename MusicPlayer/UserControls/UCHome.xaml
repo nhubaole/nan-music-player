@@ -7,11 +7,11 @@
              xmlns:uc="clr-namespace:MusicPlayer.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="740" d:DesignWidth="1180">
+             d:DesignHeight="592" d:DesignWidth="944">
     <Grid>
         <Border CornerRadius="0,0,40,0" Background="{StaticResource SecondaryDark}">
             <Grid>
-                <Grid Width="1030" Height="650" VerticalAlignment="Top">
+                <Grid Width="824" Height="520" VerticalAlignment="Top">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
@@ -19,11 +19,11 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Border CornerRadius="20,20,20,20" 
-                            Height="160" 
+                            Height="130" 
                             VerticalAlignment="Top" 
-                            Margin="0,30,0,0"
+                            Margin="0,20,0,0"
                             BorderBrush="{StaticResource SecondaryLight}"
-                                BorderThickness="3">
+                                BorderThickness="2">
                             <Border.Background>
                                 <ImageBrush ImageSource="../Resource/Images/banner.png"></ImageBrush>
                             </Border.Background>
@@ -31,11 +31,11 @@
                     </Grid>
                     <Grid Grid.Row="1">
                         <TextBlock Text="Bài hát nổi bật" 
-                           FontSize="25" 
+                           FontSize="20" 
                            Foreground="{StaticResource SecondaryLight}"
                            FontWeight="SemiBold">
                         </TextBlock>
-                        <Grid Margin="0,50,0,0">
+                        <Grid Margin="0,35,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
@@ -62,11 +62,11 @@
                     </Grid>
                     <Grid Grid.Row="2">
                         <TextBlock Text="Mới phát hành" 
-                           FontSize="25" 
+                           FontSize="20" 
                            Foreground="{StaticResource SecondaryLight}"
                            FontWeight="SemiBold">
                         </TextBlock>
-                        <Grid Margin="0,50,0,0">
+                        <Grid Margin="0,35,0,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>

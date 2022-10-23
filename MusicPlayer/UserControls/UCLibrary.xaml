@@ -7,52 +7,54 @@
              mc:Ignorable="d" 
              xmlns:uc="clr-namespace:MusicPlayer.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="740" d:DesignWidth="1180">
+             d:DesignHeight="592" d:DesignWidth="944">
     <Grid>
         <Border CornerRadius="0,0,40,0" Background="{StaticResource SecondaryDark}">
-            <Grid Width="1030" Height="630" VerticalAlignment="Top">
-                <Grid Height="74" VerticalAlignment="Top" Margin="0,50,0,0">
-                    <Grid Width="200" HorizontalAlignment="Left">
+            <Grid Width="830" Height="504" VerticalAlignment="Top">
+                <Grid Height="60" VerticalAlignment="Top" Margin="0,40,0,0">
+                    <Grid Width="180" HorizontalAlignment="Left">
                         <ComboBox
-                                    FontSize="22"
-                                    FontWeight="SemiBold"
-                                    Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                    materialDesign:HintAssist.Hint="Tìm kiếm theo"
-                                    materialDesign:HintAssist.Foreground="{StaticResource PrimaryDark}"
-                                    Foreground="{StaticResource PrimaryDark}"
-                                    Background="{StaticResource PrimaryLight}"
-                                    Width="200"
-                                    Height="74">
+                            BorderBrush="{StaticResource PrimaryDark}"
+                                FontSize="18"
+                                FontWeight="SemiBold"
+                                Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                materialDesign:HintAssist.Hint="Tìm kiếm theo"
+                                materialDesign:HintAssist.Foreground="{StaticResource PrimaryDark}"
+                                Foreground="{StaticResource PrimaryDark}"
+                                Background="{StaticResource PrimaryLight}"
+                                Width="180"
+                                Height="60">
                             <!--hardcode-->
                             <ComboBoxItem>Tên bài hát</ComboBoxItem>
                             <ComboBoxItem>Tên ca sĩ</ComboBoxItem>
                         </ComboBox>
                     </Grid>
-                    <Grid Width="400" HorizontalAlignment="Left" Margin="220,0,0,0">
+                    <Grid Width="320" HorizontalAlignment="Left" Margin="190,0,0,0">
                         <Border CornerRadius="5" 
                                     BorderThickness="2" 
                                     BorderBrush="{StaticResource PrimaryLight}">
-                            <TextBox Margin="20,10,20,10" Width="450"
-                                         FontSize="22"
-                                         FontWeight="SemiBold"
-                                         materialDesign:HintAssist.Hint="Tìm kiếm"
-                                         Foreground="{StaticResource PrimaryLight}"/>
+                            <TextBox Margin="20,10,20,10" Width="280"
+                                    FontSize="18"
+                                    FontWeight="SemiBold"
+                                    materialDesign:HintAssist.Hint="Tìm kiếm"
+                                    BorderBrush="{StaticResource PrimaryLight}"
+                                    Foreground="{StaticResource PrimaryLight}"/>
                         </Border>
                     </Grid>
-                    <Grid  Width="200" HorizontalAlignment="Left" Margin="640,0,0,0">
-                        <ComboBox
-                                FontSize="22"
+                    <Grid  Width="180" HorizontalAlignment="Left" Margin="520,0,0,0">
+                        <ComboBox FontSize="18"
+                                  BorderBrush="{StaticResource PrimaryDark}"
                                 FontWeight="SemiBold"
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                materialDesign:HintAssist.Foreground="{StaticResource PrimaryDark}"
                                 Foreground="{StaticResource PrimaryDark}"
                                 Background="{StaticResource PrimaryLight}"
-                                Width="200"
-                                Height="74"
-                                materialDesign:HintAssist.Foreground="{StaticResource PrimaryDark}">
+                                Width="170"
+                                Height="60">
                             <materialDesign:HintAssist.Hint>
                                 <Grid>
-                                    <materialDesign:PackIcon Kind="ClockTimeFourOutline" Width="30" Height="30"></materialDesign:PackIcon>
-                                    <TextBlock Margin="40,0,0,0">Hẹn giờ</TextBlock>
+                                    <materialDesign:PackIcon Kind="ClockTimeFourOutline" Width="25" Height="25"></materialDesign:PackIcon>
+                                    <TextBlock Margin="32,0,0,0">Hẹn giờ</TextBlock>
                                 </Grid>
                             </materialDesign:HintAssist.Hint>
                             <!--hardcode-->
@@ -62,11 +64,12 @@
                             <ComboBoxItem>2 giờ</ComboBoxItem>
                         </ComboBox>
                     </Grid>
-                    <Grid  Width="200" HorizontalAlignment="Left" Margin="860,0,0,0">
+                    <Grid  Width="110" HorizontalAlignment="Left" Margin="710,0,0,0">
                         <Button
                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
-                                Height="74"
-                                Width="150"
+                                Height="60"
+                                Width="110"
+                                BorderBrush="Transparent"
                                 Background="{StaticResource PrimaryLight}"
                                 HorizontalAlignment="Left"
                                 materialDesign:ButtonAssist.CornerRadius="5">
@@ -74,8 +77,8 @@
                                         Width="150"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center">
-                                <materialDesign:PackIcon Kind="Upload" Margin="20" Foreground="{StaticResource PrimaryDark}" VerticalAlignment="Center" Width="30" Height="30"></materialDesign:PackIcon>
-                                <TextBlock Margin="60,0,0,5" VerticalAlignment="Center" FontSize="22" Foreground="{StaticResource PrimaryDark}">Tải lên</TextBlock>
+                                <materialDesign:PackIcon Kind="Upload" Margin="32,-2,0,0" Foreground="{StaticResource PrimaryDark}" VerticalAlignment="Center" Width="20" Height="20"></materialDesign:PackIcon>
+                                <TextBlock Margin="60,0,0,5" VerticalAlignment="Center" FontSize="18" Foreground="{StaticResource PrimaryDark}">Tải lên</TextBlock>
                             </Grid>
                         </Button>
                     </Grid>
@@ -84,7 +87,7 @@
 
                 <ScrollViewer VerticalScrollBarVisibility="Auto"
                                       HorizontalScrollBarVisibility="Disabled"
-                                  Margin="0,160,0,0">
+                                  Margin="0,130,0,0">
                     <Grid>
                         <Grid>
                             <TextBlock Text="Đã nghe gần đây" 
@@ -93,44 +96,47 @@
                                            FontWeight="SemiBold">
                             </TextBlock>
                             <!--hardcode-->
-                            <WrapPanel Margin="0,50,0,0">
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
+                            <WrapPanel Margin="0,40,0,0">
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
                             </WrapPanel>
                         </Grid>
-                        <Grid Margin="0,230,0,0">
+                        <Grid Margin="0,180,0,0">
                             <TextBlock Text="Đã tải lên" 
                                            FontSize="20" 
                                            Foreground="{StaticResource SecondaryLight}"
                                            FontWeight="SemiBold">
                             </TextBlock>
                             <!--hardcode-->
-                            <WrapPanel Margin="0,50,0,0">
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
+                            <WrapPanel Margin="0,40,0,0">
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
                             </WrapPanel>
                         </Grid>
-                        <Grid Margin="0,460,0,0">
+                        <Grid Margin="0,360,0,0">
                             <TextBlock Text="Bài hát đã thích" 
                                            FontSize="20" 
                                            Foreground="{StaticResource SecondaryLight}"
                                            FontWeight="SemiBold">
                             </TextBlock>
                             <!--hardcode-->
-                            <WrapPanel Margin="0,50,0,0">
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
-                                <uc:UCSong Margin="0,0,40,40"></uc:UCSong>
+                            <WrapPanel Margin="0,40,0,0">
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
+                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
                             </WrapPanel>
                         </Grid>
 

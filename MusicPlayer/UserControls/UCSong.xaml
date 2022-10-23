@@ -6,27 +6,27 @@
              xmlns:local="clr-namespace:MusicPlayer.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="160">
+             d:DesignHeight="120" d:DesignWidth="130">
     <Grid>
         <ToggleButton Foreground="White"
                       Background="#ff5252"
-                      Width="30" 
-                      Height="30" 
-                      Margin="110,70,0,0"
+                      Width="25" 
+                      Height="25" 
+                      Margin="88,55,0,0"
                       HorizontalAlignment="Left"
                       VerticalAlignment="Top"
-                      Content="{materialDesign:PackIcon Kind=Heart, Size=21}"
+                      Content="{materialDesign:PackIcon Kind=Heart, Size=18}"
                       Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
                       IsChecked="True" />   
         <StackPanel>
             <Border CornerRadius="20,20,20,20"
                 Background="{StaticResource SecondaryLight}"
-                Width="100"
-                Height="100"
+                Width="80"
+                Height="80"
                 HorizontalAlignment="Left">
             </Border>
             <TextBlock Text="Đây là tên bài hátttt" 
-                    FontSize="18" 
+                    FontSize="15" 
                     Foreground="{StaticResource PrimaryLight}"
                     FontWeight="Medium"
                     Width="160"
@@ -34,7 +34,7 @@
                     Margin="0,5,0,0">
             </TextBlock>
             <TextBlock Text="Tên ca sĩ" 
-                    FontSize="15" 
+                    FontSize="12" 
                     Foreground="{StaticResource PrimaryMid}"
                     FontWeight="Medium"
                     Margin="0,0,0,0">

@@ -22,8 +22,8 @@ namespace MusicPlayer
     {
         public MainWindow()
         {
-            SignUp SU = new SignUp();
-            SU.ShowDialog();
+            //SignUp SU = new SignUp();
+            //SU.ShowDialog();
         }
     }
 }
