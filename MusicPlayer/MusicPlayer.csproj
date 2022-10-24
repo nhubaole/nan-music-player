@@ -71,6 +71,12 @@
     <Compile Include="SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UCHome.xaml.cs">
+      <DependentUpon>UCHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCLibrary.xaml.cs">
+      <DependentUpon>UCLibrary.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Infor.xaml.cs">
       <DependentUpon>Infor.xaml</DependentUpon>
     </Compile>
@@ -88,6 +94,15 @@
     </Compile>
     <Compile Include="UserControls\ControlBar.xaml.cs">
       <DependentUpon>ControlBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCProfile.xaml.cs">
+      <DependentUpon>UCProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCSearch.xaml.cs">
+      <DependentUpon>UCSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCSong.xaml.cs">
+      <DependentUpon>UCSong.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -127,6 +142,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\UCHome.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UCLibrary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Upload.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,6 +163,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\ControlBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UCProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UCSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UCSong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,6 +211,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Images\Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Images\banner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Images\ImgProfile.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Images\Background.jpg" />
