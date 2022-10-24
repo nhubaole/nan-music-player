@@ -24,7 +24,7 @@
                       VerticalAlignment="Top"
                       Margin="0,32,0,0"
                       HorizontalAlignment="Left"/>
-        <uc:UCLibrary Width="944" 
+        <uc:UCProfile Width="944" 
                       Height="592" 
                       VerticalAlignment="Top"
                       Margin="0,32,0,0"
