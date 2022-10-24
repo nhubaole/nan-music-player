@@ -21,8 +21,8 @@ namespace MusicPlayer
     {
         public MainWindow()
         {
-            Upload u  = new Upload();   
-            u.Show();
+           Infor f = new Infor();
+            f.Show();
         }
     }
 }

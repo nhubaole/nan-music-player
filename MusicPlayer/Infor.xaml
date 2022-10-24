@@ -8,7 +8,7 @@
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
         mc:Ignorable="d"
         Title="Infor" 
-        Height="450" 
+        Height="520" 
         Width="800"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
@@ -42,14 +42,14 @@
                     CornerRadius="30"
                     Background="{StaticResource SecondaryLight}">
                 </Border>
-                <Grid Grid.Column="1" Margin="10,0,-10,0">
+                <Grid Grid.Column="1" Margin="10,30,-10,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"></RowDefinition>
                         <RowDefinition Height="70"></RowDefinition>
                         <RowDefinition Height="70"></RowDefinition>
                         <RowDefinition Height="70"></RowDefinition>
-                        <RowDefinition Height="35" ></RowDefinition>
-                        <RowDefinition Height="60"  />
+                        <RowDefinition Height="45" ></RowDefinition>
+                        <RowDefinition Height="65"  />
                         <RowDefinition Height="55" />
                     </Grid.RowDefinitions>
 
@@ -136,63 +136,63 @@
                     </Grid>
                     <ToggleButton
                         Grid.Row="4"
-                        Height="25"
-                        Width="25"
-                        Background="PaleVioletRed"
-                        Foreground="Red"
-                        Content="{materialDesign:PackIcon Kind=Heart, Size=20}"
+                        Height="35"
+                        Width="35"
+                        Background="#ff5252"
+                        Foreground="White"
+                        Content="{materialDesign:PackIcon Kind=Heart, Size=23}"
                         Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
                         ToolTip="MaterialDesignFlatPrimaryToggleButton"
-                        IsChecked="True" Margin="0,5,475,5" RenderTransformOrigin="0.4,-0.2"
-                        >
-                    </ToggleButton>
+                        IsChecked="True" Margin="0,5,455,5" RenderTransformOrigin="0.4,-0.2"
+                        />
                     <TextBlock
                         Grid.Row="4" 
                         Text="1000" 
                         Height="30"
-                        FontSize="14"
+                        FontSize="18"
                         FontWeight="Bold"
-                        Foreground="Red" 
-                        Margin="35,4,0,-4" />
+                        Foreground="#ff5252" 
+                        Margin="50,4,0,-4" />
                     <Grid
                         Grid.Row="5">
                         <Button
                         Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        Height="35"
-                        Width="130"
+                        Height="40"
                         Background="{StaticResource PrimaryLight}"
                         BorderBrush="Transparent"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="138,15,232,10">
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Margin="138,15,195,10">
                             <TextBlock
                                 Text="TẢI XUỐNG" 
-                                FontSize="14" 
-                                Height="30"
-                                Width="100" 
-                                FontWeight="Bold" 
-                                Margin="20,3,0,0"/>
+                                FontSize="18" 
+                                Height="20"
+                                Width="127" 
+                                FontWeight="Bold"
+                                Foreground="{StaticResource PrimaryDark}"
+                                Margin="25,-3,0,0"/>
                         </Button>
                         <materialDesign:PackIcon 
                             Kind="Download" 
-                            Margin="138,22,0,0" 
-                            Height="20"
-                            Width="35" />
+                            Margin="140,25,0,0" 
+                            Height="22"
+                            Width="35" 
+                            Foreground="{StaticResource PrimaryDark}"/>
                     </Grid>
                     <Button
                         Grid.Row="6"
                         Style="{StaticResource MaterialDesignOutlinedSecondaryDarkButton}"
                         Content="THOÁT"
-                        FontSize="14"
+                        FontSize="18"
                         FontWeight="Bold"
-                        Foreground="{StaticResource PrimaryMid}"
-                        Height="35"
-                        Width="130"
+                        Foreground="{StaticResource PrimaryLight}"
+                        Height="40"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         BorderThickness="2"
-                        BorderBrush="{StaticResource PrimaryMid}"
+                        BorderBrush="{StaticResource PrimaryLight}"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Margin="138,0,232,20" />
+                        Margin="138,0,195,15" />
 
                 </Grid>
             </Grid>
