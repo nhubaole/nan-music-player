@@ -35,18 +35,13 @@
                     <ColumnDefinition Width="300"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0"     
-                        Width="200"
-                        Height="200" 
-                        BorderBrush="Transparent"
-                        materialDesign:ButtonAssist.CornerRadius="20"
-                        Margin="50,70,50,140">
-                    <Button.Background>
-                        <ImageBrush 
-                            ImageSource="/Resource/Images/ImgUp.png" 
-                            Stretch="UniformToFill"/>
-                    </Button.Background>
-                </Button>
+                <Border
+                    Width="200"
+                    Height="200"
+                    Margin="50,70,50,140"
+                    CornerRadius="30"
+                    Background="{StaticResource SecondaryLight}">
+                </Border>
                 <Grid Grid.Column="1" Margin="10,0,-10,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"></RowDefinition>
@@ -62,7 +57,6 @@
                         Text="THÔNG TIN BÀI HÁT"
                         FontSize="23"
                         VerticalAlignment="Top"
-
                         FontWeight="Bold"
                         Foreground="{StaticResource SecondaryLight}" 
                         FontFamily="Bahnschrift" 

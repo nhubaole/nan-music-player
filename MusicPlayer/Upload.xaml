@@ -8,7 +8,7 @@
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
         mc:Ignorable="d"
         Title="Upload" 
-        Height="450" 
+        Height="480" 
         Width="800"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
@@ -39,7 +39,7 @@
                         Margin="50,70,50,140" Click="Button_Click">
                     <Button.Background>
                         <ImageBrush 
-                            ImageSource="/Resource/Images/ImgUp.png" 
+                            ImageSource="Resource/Images/ImgUp.png" 
                             Stretch="UniformToFill"/>
                     </Button.Background>
                 </Button>
@@ -49,8 +49,8 @@
                         <RowDefinition Height="80"></RowDefinition>
                         <RowDefinition Height="80"></RowDefinition>
                         <RowDefinition Height="70"></RowDefinition>
-                        <RowDefinition Height="60" ></RowDefinition>
-                        <RowDefinition Height="60"   ></RowDefinition>
+                        <RowDefinition Height="80" ></RowDefinition>
+                        <RowDefinition Height="40"   ></RowDefinition>
 
                     </Grid.RowDefinitions>
 
@@ -61,43 +61,38 @@
                         VerticalAlignment="Center"
                         FontWeight="Bold"
                         Foreground="{StaticResource SecondaryLight}" 
-                        FontFamily="Bahnschrift" Margin="130,0,0,0"/>
+                        FontFamily="Bahnschrift" Margin="130,0,0,0" Height="28" Width="170"/>
                     <TextBlock 
                         Grid.Row="1"
                         Text="Tên bài hát"
-                        Height="30"
                         Foreground="{StaticResource PrimaryMid}"
                         FontWeight="Bold"
                         FontSize="18"
-                        Margin="0,3,0,40"/>
+                        Margin="0,6,0,44"/>
                     <TextBox 
                         Grid.Row="1"
-                        Text="Nhập tên ở đâyyyyyyyyyyyyyy"
-                        Height="40"
+                        materialDesign:HintAssist.Hint="Nhập tên ở đây"
                         Foreground="{StaticResource SecondaryLight}"
                         FontSize="17"
-                        Margin="0,35,100,5"/>
+                        Margin="0,35,100,5"
+                        BorderBrush="{StaticResource SecondaryLight}"/>
                     <TextBlock 
                         Grid.Row="2"
                         Text="Tên ca sĩ"
-                        Height="30"
                         FontWeight="Bold"
                         Foreground="{StaticResource PrimaryMid}"
                         FontSize="18"
-                        Margin="0,3,0,40"/>
+                        Margin="0,6,0,44"/>
                     <TextBox 
                         Grid.Row="2"
-                        Text="Nhập tên ở đâyyyyyyyyyyyyyy"
-                        Height="40"
+                        materialDesign:HintAssist.Hint="Nhập tên ở đây"
                         Foreground="{StaticResource SecondaryLight}"
                         FontSize="17"
-                        Margin="0,35,100,5"/>
+                        Margin="0,35,100,5"
+                        BorderBrush="{StaticResource SecondaryLight}"/>
                     <Grid Grid.Row="3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock 
+
+                        <!--<TextBlock 
                             Grid.Column="1"
                             Text="Thời lượng"
                             Foreground="{StaticResource PrimaryMid}"
@@ -110,31 +105,89 @@
                             Foreground="{StaticResource SecondaryLight}"
                             FontSize="15"
                             Width="150"
-                            Margin="0,35,100,0"/>
-                        <TextBlock
-                            Grid.Column="0"
+                            Margin="0,0,100,0"
+                            BorderBrush="{StaticResource SecondaryLight}" Height="35" VerticalAlignment="Bottom"/>-->
+                        <TextBlock                        
                             Text="Ngày phát hành"
                             Foreground="{StaticResource PrimaryMid}"
                             FontSize="18"
                             FontWeight="Bold"
                             Margin="0,5,0,34"/>
                         <DatePicker
-                            Grid.Column="0"
-                            Width="150"
-                            Height="48"
-                            FontSize="15"
-                            Foreground="BlueViolet"
-                            materialDesign:HintAssist.Hint="Chọn ngày"
-                            HorizontalAlignment="Left"
-                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" 
-                            VerticalAlignment="Bottom" />
+                                    Height="30"
+                                    Width="400"
+                                    materialDesign:HintAssist.Hint="Ngày/Tháng/Năm" 
+                                    Margin="0,35,100,0"
+                                    Foreground="{StaticResource SecondaryLight}"
+                                    FontSize="16"
+                                    BorderBrush="{StaticResource SecondaryLight}">
+
+                            <DatePicker.Resources>
+                                <Style
+                                            x:Key="CustomCalendarDayButton"
+                                            TargetType="CalendarDayButton"
+                                            BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
+
+                                    <Setter
+                                                Property="materialDesign:CalendarAssist.SelectionColor"
+                                                Value="{StaticResource SecondaryLight}" />
+                                    <Setter
+                                                Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                                Value="{StaticResource SecondaryDark}" />
+                                </Style>
+
+                                <Style
+                                            x:Key="CustomCalendarButton"
+                                            TargetType="CalendarButton"
+                                            BasedOn="{StaticResource MaterialDesignCalendarButton}">
+
+                                    <Setter
+                                                Property="materialDesign:CalendarAssist.SelectionColor"
+                                                Value="{StaticResource SecondaryLight}" />
+                                    <Setter
+                                                Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                                Value="White" />
+                                </Style>
+
+                                <Style
+                                            x:Key="CustomCalendar"
+                                            TargetType="{x:Type Calendar}"
+                                            BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}">
+
+                                    <Setter
+                                                Property="Background"
+                                                Value="{StaticResource SecondaryMid}" />
+                                    <Setter
+                                                Property="materialDesign:CalendarAssist.HeaderBackground"
+                                                Value="{StaticResource SecondaryLight}" />
+                                    <Setter
+                                                Property="materialDesign:CalendarAssist.HeaderForeground"
+                                                Value="{StaticResource SecondaryDark}" />
+                                    <Setter
+                                                Property="CalendarDayButtonStyle"
+                                                Value="{StaticResource CustomCalendarDayButton}" />
+                                    <Setter
+                                                Property="CalendarButtonStyle"
+                                                Value="{StaticResource CustomCalendarButton}" />
+                                </Style>
+
+                                <Style
+                                            TargetType="DatePicker"
+                                            BasedOn="{StaticResource MaterialDesignDatePicker}">
+
+                                    <Setter
+                                                Property="CalendarStyle"
+                                                Value="{StaticResource CustomCalendar}" />
+                                </Style>
+                            </DatePicker.Resources>
+                        </DatePicker>
                     </Grid>
 
                     <Grid
                         Grid.Row="4">
                         <Button
                         Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        Height="34"
+                        Height="40"
                         Width="130"
                         Background="{StaticResource PrimaryLight}"
                         materialDesign:ButtonAssist.CornerRadius="5"
@@ -143,28 +196,28 @@
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="140,26,230,0">
                             <TextBlock
                                 Text="TẢI LÊN" 
-                                FontSize="15" 
-                                Height="30" 
-                                Width="100" 
-                                FontWeight="Bold" 
-                                Margin="20,3,0,0">
+                                FontSize="17" 
+                                Height="20" 
+                                FontWeight="SemiBold" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Foreground="{StaticResource PrimaryDark}">
                             </TextBlock>
                         </Button>
                     </Grid>
                     <Button
                         Grid.Row="5"
                         BorderThickness="2"
-                        Height="35"
-                        BorderBrush="{StaticResource PrimaryMid}"
+                        Height="40"
+                        BorderBrush="{StaticResource PrimaryLight}"
                         Style="{StaticResource MaterialDesignOutlinedSecondaryDarkButton}"
                         Content="THOÁT"
                         Foreground="{StaticResource PrimaryLight}"
-                        FontSize="15"
-                        FontWeight="Bold"
+                        FontSize="17"
+                        FontWeight="SemiBold"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Margin="140,10,232,15" Panel.ZIndex="-1" >
-                    </Button>
+                        Margin="140,5,232,-12" Panel.ZIndex="-1" />
                 </Grid>
             </Grid>
         </Grid>
