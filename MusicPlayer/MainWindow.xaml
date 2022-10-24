@@ -4,18 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:MusicPlayer" 
-        xmlns:uc="clr-namespace:MusicPlayer.UserControls"
+        xmlns:local="clr-namespace:MusicPlayer"
         mc:Ignorable="d"
-        Title="Login" 
-        Height="450" 
-        Width="800"
-        AllowsTransparency="True"
-        WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        Background="Transparent">
+        xmlns:uc="clr-namespace:MusicPlayer.UserControls"
+        Title="MainWindow" Height="1000" Width="1500">
     <Grid>
-     
+
+        <!--<uc:UCPlayMusic Width="1150" Height="85" Margin="350,899,0,0">
+            
+        </uc:UCPlayMusic>-->
+        
+        
 
     </Grid>
 </Window>
