@@ -21,8 +21,8 @@ namespace MusicPlayer
     {
         public MainWindow()
         {
-           Infor f = new Infor();
-            f.Show();
+           Login l = new Login();   
+            l.Show();
         }
     }
 }

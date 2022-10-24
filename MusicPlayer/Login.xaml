@@ -8,7 +8,7 @@
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
         mc:Ignorable="d"
         Title="Login" 
-        Height="450" 
+        Height="520" 
         Width="800"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
@@ -35,15 +35,15 @@
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition Width="240"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition Width="200"></ColumnDefinition>
+                    <ColumnDefinition Width="240"></ColumnDefinition>
 
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="1" Height="400">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="130" ></RowDefinition>
-                        <RowDefinition Height="30" ></RowDefinition>
+                        <RowDefinition Height="120" ></RowDefinition>
+                        <RowDefinition Height="40" ></RowDefinition>
                         <RowDefinition Height="70" ></RowDefinition>
                         <RowDefinition Height="70" ></RowDefinition>
                         <RowDefinition />
@@ -51,16 +51,13 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
 
-                        <Button
-                            Height="110" 
-                            Width="160"
-                            Margin="120,0,120,20"
-                            BorderBrush="Transparent">
-                            <Button.Background>
-                                <ImageBrush ImageSource="/Resource/Images/Logo.png" TileMode="None" Stretch="UniformToFill"/>
-                            </Button.Background>
-
-                        </Button>
+                        <Image
+                            Source="Resource/Images/Logo.png"
+                            Stretch="Fill"
+                            Height="150"
+                            Width="150"
+                            Margin="0,-40,0,0">
+                        </Image>
 
                         <TextBlock
                             Text="N.A.N"
@@ -69,8 +66,10 @@
                             Width="70"
                             Foreground="{StaticResource PrimaryMid}"
                             FontWeight="Bold"
-                            Margin="169,95,161,0"
-                            RenderTransformOrigin="0.643,0.667">
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Center"
+                            Margin="0,-10,0,0"
+                            >
 
                         </TextBlock>
                     </Grid>
@@ -85,33 +84,38 @@
                         </TextBlock>
                     </Grid>
                     <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
                         <TextBlock 
                         Text="Tên người dùng"
                         FontWeight="DemiBold" 
                         Height="25"
                         Foreground="{StaticResource PrimaryMid}" 
                         FontSize="18"
-                        Margin="40,3,0,40"/>
+                        Margin="40,4,0,41" Grid.ColumnSpan="2"/>
                         <materialDesign:PackIcon 
                         Kind="Account"
                         Foreground="{StaticResource SecondaryLight}" 
                         Height="25"
                         Width="25"
-                        Margin="3,35,50,0"/>
+                        Margin="3,35,0,0"/>
                         <TextBox
                         x:Name="NameTextBox"
-                        materialDesign:HintAssist.Hint="Nhập ở đây"
-                        Height="35"
-                        FontSize="18"
-                            
+                        materialDesign:HintAssist.Hint="Nhập tên người dùng"
+                        Height="30"
+                        FontSize="15"
+                        BorderBrush="{StaticResource SecondaryLight}"    
                         Foreground="{StaticResource SecondaryLight}"
-                        Margin="40,25,0,0"/>
+                        Margin="40,30,0,5" Grid.ColumnSpan="2"/>
 
                     </Grid>
                     <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="11*"/>
-                            <ColumnDefinition Width="29*"/>
+                            <ColumnDefinition Width="88*"/>
+                            <ColumnDefinition Width="197*"/>
+                            <ColumnDefinition Width="35*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock 
                         Text="Mật khẩu"
@@ -119,7 +123,7 @@
                         Foreground="{StaticResource PrimaryMid}"
                         FontWeight="DemiBold" 
                         FontSize="18"
-                        Margin="40,3,0,37" Grid.ColumnSpan="2"/>
+                        Margin="40,6,0,40" Grid.ColumnSpan="3"/>
                         <materialDesign:PackIcon 
                         Kind="Key"
                         Foreground="{StaticResource SecondaryLight}"
@@ -128,23 +132,26 @@
                         Margin="3,35,0,0"/>
                         <PasswordBox
                         x:Name="PasswordBox"
-                        Height="35"
-                        FontSize="18"
-                        materialDesign:HintAssist.Hint="Password"
+                        Height="30"
+                        FontSize="15"
+                        materialDesign:HintAssist.Hint="Nhập mật khẩu"
                         materialDesign:TextFieldAssist.HasClearButton="True"
                         Foreground="{StaticResource SecondaryLight}"
-                        Margin="40,25,0,0" Grid.ColumnSpan="2"/>
+                        BorderBrush="{StaticResource SecondaryLight}"
+                        Margin="40,30,0,5" Grid.ColumnSpan="3"/>
                     </Grid>
-                    <Grid Grid.Row="4">
+                    <Grid Grid.Row="4" Margin="0,0,0,-15">
                         <Button
                             Style="{StaticResource MaterialDesignRaisedButton}"
-                            Height="35"
-                            Width="130"
+                            Height="40"
+                            Width="150"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom"
                             BorderBrush="Transparent"
                             materialDesign:ButtonAssist.CornerRadius="5"
                             ToolTip="MaterialDesignRaisedButton with Round Corners"
                             Background="{StaticResource PrimaryLight}"
-                            Margin="135,10,135,0"
+                         
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
                             >
                             <TextBlock
@@ -152,21 +159,22 @@
                               FontSize="16"
                               FontWeight="Bold" 
                               Foreground="{StaticResource PrimaryDark}"
-                              Margin="0,3,0,0"
+                              Margin="0,5,0,0"
                               Text="ĐĂNG NHẬP" />
                         </Button>
                     </Grid>
-                    <Grid Grid.Row="5">
+                    <Grid Grid.Row="5" Margin="0,0,0,-40">
                         <Button
-                            Width="130"
+                            Width="150"
                             Background="Transparent"
                             BorderBrush="Transparent"
-                            Margin="135,0,135,10">
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
                             <TextBlock
                                 Text="ĐĂNG KÝ"
                                 TextDecorations="Underline"
                                 FontSize="16"
-                                Foreground="{StaticResource PrimaryMid}">
+                                Foreground="{StaticResource PrimaryLight}">
                             </TextBlock>
                         </Button>
                     </Grid>
