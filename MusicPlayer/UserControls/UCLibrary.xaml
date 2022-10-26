@@ -4,10 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MusicPlayer.UserControls"
+             xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
              mc:Ignorable="d" 
              xmlns:uc="clr-namespace:MusicPlayer.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="592" d:DesignWidth="944">
+    <UserControl.DataContext>
+        <vm:LibraryVM></vm:LibraryVM>
+    </UserControl.DataContext>
     <Grid>
         <Border CornerRadius="0,0,40,0" Background="{StaticResource SecondaryDark}">
             <Grid Width="830" Height="504" VerticalAlignment="Top">
