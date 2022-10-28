@@ -20,11 +20,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"></RowDefinition>
                 <RowDefinition ></RowDefinition>
-                <!--<RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>-->
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <uc:ControlBar/>
@@ -54,6 +49,7 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock
+                        x:Name="tblInfor"
                         Text="THÔNG TIN BÀI HÁT"
                         FontSize="23"
                         VerticalAlignment="Top"
@@ -64,6 +60,7 @@
                         Height="40" 
                         Margin="117,10,117,0"/>
                     <TextBlock 
+                        x:Name="tblName1"
                         Grid.Row="1"
                         Text="Tên bài hát"
                         Height="30"
@@ -71,6 +68,7 @@
                         FontSize="18"
                         Margin="0,0,0,40"/>
                     <TextBlock
+                        x:Name="tblName2"
                         Grid.Row="1"
                         Text="Tên ở đâyyyyyyyyyyyyyy"
                         FontWeight="Bold"
@@ -80,6 +78,7 @@
                         Margin="0,30,0,0">
                     </TextBlock>
                     <TextBlock 
+                        x:Name="tblName3"
                         Grid.Row="2"
                         Text="Tên ca sĩ"
                         Foreground="{StaticResource SecondaryLight}"
@@ -88,6 +87,7 @@
                         Margin="0,-3,0,40">
                     </TextBlock>
                     <TextBlock
+                        x:Name="tblName4"
                         Grid.Row="2"
                         Text="Tên ở đâyyyyyyyyyyyyyy"
                         FontWeight="Bold"
@@ -102,6 +102,7 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <TextBlock
+                            x:Name="tblTime1"
                             Grid.Column="0"
                             Text="Thời lượng"
                             Foreground="{StaticResource SecondaryLight}"
@@ -110,6 +111,7 @@
                             Margin="0,0,0,40">
                         </TextBlock>
                         <TextBlock
+                            x:Name="tblTime2"
                             Grid.Column="0"
                             Text="3:00"
                             FontWeight="Bold"
@@ -117,6 +119,7 @@
                             FontSize="17"
                             Margin="0,33,0,0"/>
                         <TextBlock
+                            x:Name="tblDay1"
                             Grid.Column="1"
                             Text="Ngày phát hành"
                             Foreground="{StaticResource SecondaryLight}"
@@ -125,6 +128,7 @@
                             Margin="0,0,0,40">
                         </TextBlock>
                         <TextBlock
+                            x:Name="tblDay2"                           
                             Grid.Column="1"
                             Text="dd/mm/yy"
                             FontWeight="Bold"
@@ -156,14 +160,15 @@
                     <Grid
                         Grid.Row="5">
                         <Button
-                        Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        Height="40"
-                        Background="{StaticResource PrimaryLight}"
-                        BorderBrush="Transparent"
-                        materialDesign:ButtonAssist.CornerRadius="5"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Margin="138,15,195,10">
+                            x:Name="btDowload"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                            Height="40"
+                            Background="{StaticResource PrimaryLight}"
+                            BorderBrush="Transparent"
+                            materialDesign:ButtonAssist.CornerRadius="5"
+                            ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Margin="138,15,195,10">
                             <TextBlock
                                 Text="TẢI XUỐNG" 
                                 FontSize="18" 
@@ -181,6 +186,7 @@
                             Foreground="{StaticResource PrimaryDark}"/>
                     </Grid>
                     <Button
+                        x:Name="btExit"
                         Grid.Row="6"
                         Style="{StaticResource MaterialDesignOutlinedSecondaryDarkButton}"
                         Content="THOÁT"
@@ -193,7 +199,6 @@
                         BorderBrush="{StaticResource PrimaryLight}"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Margin="138,0,195,15" />
-
                 </Grid>
             </Grid>
 
