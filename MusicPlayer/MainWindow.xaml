@@ -6,6 +6,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:MusicPlayer"
         mc:Ignorable="d"
+        
+        xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
         Title="MainWindow" Height="624" Width="1152"
         ResizeMode="CanMinimize"
@@ -14,8 +16,15 @@
         VerticalAlignment="Center"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        AllowsTransparency="True">
-    <Grid>
+        AllowsTransparency="True"
+        DataContext="{StaticResource MainVM}"
+        Name="mainWindow">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" CommandParameter="{Binding ElementName=mainWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+            <Grid>
         <uc:ControlBar Width="1152" 
                        Height="32" 
                        VerticalAlignment="Top"/>

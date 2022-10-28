@@ -13,7 +13,8 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Background="Transparent">
+        Background="Transparent"
+        DataContext="{StaticResource LoginVM}">
     <Grid>
         <Border CornerRadius="40" >
             <Border.Background>
@@ -102,7 +103,7 @@
                         Width="25"
                         Margin="3,35,0,0"/>
                         <TextBox
-                        x:Name="NameTextBox"
+                        x:Name="tbNameLogin"
                         materialDesign:HintAssist.Hint="Nhập tên người dùng"
                         Height="30"
                         FontSize="15"
@@ -131,7 +132,7 @@
                         Width="25"
                         Margin="3,35,0,0"/>
                         <PasswordBox
-                        x:Name="PasswordBox"
+                        x:Name="tbPassLogin"
                         Height="30"
                         FontSize="15"
                         materialDesign:HintAssist.Hint="Nhập mật khẩu"
@@ -142,6 +143,7 @@
                     </Grid>
                     <Grid Grid.Row="4" Margin="0,0,0,-15">
                         <Button
+                            x:Name="btLogin"
                             Style="{StaticResource MaterialDesignRaisedButton}"
                             Height="40"
                             Width="150"
@@ -151,7 +153,6 @@
                             materialDesign:ButtonAssist.CornerRadius="5"
                             ToolTip="MaterialDesignRaisedButton with Round Corners"
                             Background="{StaticResource PrimaryLight}"
-                         
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
                             >
                             <TextBlock
@@ -165,6 +166,7 @@
                     </Grid>
                     <Grid Grid.Row="5" Margin="0,0,0,-40">
                         <Button
+                            x:Name="btSignUp"
                             Width="150"
                             Background="Transparent"
                             BorderBrush="Transparent"
