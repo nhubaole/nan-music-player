@@ -109,6 +109,7 @@
     <Compile Include="ViewModel\HomeVM.cs" />
     <Compile Include="ViewModel\LibraryVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\MenuBarVM.cs" />
     <Compile Include="ViewModel\ProfileVM.cs" />
     <Compile Include="ViewModel\SearchVM.cs" />
     <Page Include="Infor.xaml">

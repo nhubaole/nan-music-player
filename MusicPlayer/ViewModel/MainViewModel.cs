@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace MusicPlayer.ViewModel
@@ -16,6 +18,19 @@ namespace MusicPlayer.ViewModel
             ProfileCommand = new RelayCommand<object>((p) => { return true; }, Profile);
             SearchCommand = new RelayCommand<object>((p) => { return true; }, Search);
             CurrentView = new HomeVM();
+
+            handleLogOutCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) => {
+                if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    var w = p as Window;
+                    if (w != null)
+                    {
+                        Login login = new Login();
+                        login.Show();
+                        w.Close();
+                    }
+                }
+            });
         }
 
         public object CurrentView { 
@@ -27,6 +42,8 @@ namespace MusicPlayer.ViewModel
         public ICommand LibraryCommand { get; set; }
         public ICommand ProfileCommand { get; set; }
         public ICommand SearchCommand { get; set; }
+        public ICommand handleLogOutCommand { get; set; }
+
 
         private void Home(object obj) => CurrentView = new HomeVM();
         private void Library(object obj) => CurrentView = new LibraryVM();
