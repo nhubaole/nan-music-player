@@ -54,12 +54,9 @@
                             </TextBlock>
                         </Grid>
                         <StackPanel Margin="0,200,0,0">
-                            <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
-                                     Command="{Binding HomeCommand}"
-                                 Background="Transparent" 
+                            <RadioButton Style="{StaticResource BtnStyle}"
+                                 Command="{Binding HomeCommand}"
                                  Height="55" 
-                                 Foreground="{StaticResource PrimaryMid}"
-                                 BorderBrush="{StaticResource PrimaryMid}"
                                  IsChecked="True">
                                 <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <materialDesign:PackIcon Kind="Home" Width="30" Height="30" Margin="15,0,0,0" VerticalAlignment="Center"/>
@@ -71,12 +68,9 @@
                                     </TextBlock>
                                 </Grid>
                             </RadioButton>
-                            <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
-                                 Background="Transparent" 
-                                     Command="{Binding ProfileCommand}"
-                                 Height="55" 
-                                 Foreground="{StaticResource PrimaryDark}"
-                                 BorderBrush="{StaticResource PrimaryMid}">
+                            <RadioButton Style="{StaticResource BtnStyle}"
+                                 Command="{Binding ProfileCommand}"
+                                 Height="55" >
                                 <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <materialDesign:PackIcon Kind="User" Width="30" Height="30" Margin="15,0,0,0" VerticalAlignment="Center"/>
                                     <TextBlock Text="Trang cá nhân" 
@@ -87,12 +81,9 @@
                                     </TextBlock>
                                 </Grid>
                             </RadioButton>
-                            <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
+                            <RadioButton Style="{StaticResource BtnStyle}"
                                  Command="{Binding SearchCommand}"
-                                 Background="Transparent" 
-                                 Height="55" 
-                                 Foreground="{StaticResource PrimaryDark}"
-                                 BorderBrush="{StaticResource PrimaryMid}">
+                                 Height="55">
                                 <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <materialDesign:PackIcon Kind="Search" Width="30" Height="30" Margin="15,0,0,0" VerticalAlignment="Center"/>
                                     <TextBlock Text="Tìm kiếm" 
@@ -103,12 +94,9 @@
                                     </TextBlock>
                                 </Grid>
                             </RadioButton>
-                            <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
-                                 Background="Transparent" 
+                            <RadioButton Style="{StaticResource BtnStyle}"
                                  Command="{Binding LibraryCommand}"
-                                 Height="55" 
-                                 Foreground="{StaticResource PrimaryDark}"
-                                 BorderBrush="{StaticResource PrimaryMid}">
+                                 Height="55">
                                 <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <materialDesign:PackIcon Kind="PlaylistMusic" Width="30" Height="30" Margin="15,0,0,0" VerticalAlignment="Center"/>
                                     <TextBlock Text="Thư viện" 
@@ -119,11 +107,8 @@
                                     </TextBlock>
                                 </Grid>
                             </RadioButton>
-                            <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonLeft}"
-                                 Background="Transparent" 
-                                 Height="55" 
-                                 Foreground="{StaticResource PrimaryDark}"
-                                 BorderBrush="{StaticResource PrimaryMid}">
+                            <RadioButton Style="{StaticResource BtnStyle}"
+                                 Height="55">
                                 <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <materialDesign:PackIcon Kind="Poll" Width="30" Height="30" Margin="15,0,0,0" VerticalAlignment="Center"/>
                                     <TextBlock Text="Bảng xếp hạng" 
