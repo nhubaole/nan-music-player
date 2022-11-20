@@ -110,6 +110,7 @@
     <Compile Include="ViewModel\LibraryVM.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MenuBarVM.cs" />
+    <Compile Include="ViewModel\PasswordChangeVM.cs" />
     <Compile Include="ViewModel\ProfileVM.cs" />
     <Compile Include="ViewModel\SearchVM.cs" />
     <Compile Include="ViewModel\SignUpVM.cs" />

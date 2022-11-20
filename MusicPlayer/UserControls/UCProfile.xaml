@@ -361,7 +361,8 @@
                         Content="ĐỔI MẬT KHẨU" 
                         FontSize="20"
                         Foreground="{StaticResource PrimaryLight}" 
-                        FontWeight="Bold" />
+                        FontWeight="Bold"
+                        Command="{Binding handleChangePasswordCommand}"/>
 
                     </Grid>
                 </Grid>
