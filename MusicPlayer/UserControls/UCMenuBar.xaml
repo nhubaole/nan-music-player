@@ -6,7 +6,12 @@
              xmlns:local="clr-namespace:MusicPlayer.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="592" d:DesignWidth="208">
+             xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
+             d:DesignHeight="592" d:DesignWidth="208"
+             Name="uCMenuBar">
+    <UserControl.DataContext>
+        <vm:MenuBarVM></vm:MenuBarVM>
+    </UserControl.DataContext>
     <Grid>
         <Border CornerRadius="0,0,0,40" Background="{StaticResource SecondaryMid}">
             <Grid>
@@ -114,7 +119,9 @@
                         Background="{StaticResource SecondaryDark}"
                         Width="170"
                         Height="50"
-                        Foreground="{StaticResource SecondaryLight}">
+                        Foreground="{StaticResource SecondaryLight}"
+                        Command="{Binding handleLogOut}"
+                        CommandParameter="{Binding ElementName=uCMenuBar}">
                         <Grid>
                             <materialDesign:PackIcon Kind="Logout" Width="30" Height="30" Margin="0,0,0,0" VerticalAlignment="Center"/>
                             <TextBlock Text="Đăng xuất" 

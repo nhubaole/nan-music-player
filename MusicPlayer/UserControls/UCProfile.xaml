@@ -3,11 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MusicPlayer.UserControls"           
+             xmlns:local="clr-namespace:MusicPlayer.UserControls"  
+             xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"            
              mc:Ignorable="d" 
              d:DesignHeight="592" 
              d:DesignWidth="944">
+    <UserControl.DataContext>
+        <vm:ProfileVM></vm:ProfileVM>
+    </UserControl.DataContext>
     <Grid>
         <Border 
             CornerRadius="0,0,40,0"                 
@@ -357,7 +361,8 @@
                         Content="ĐỔI MẬT KHẨU" 
                         FontSize="20"
                         Foreground="{StaticResource PrimaryLight}" 
-                        FontWeight="Bold" />
+                        FontWeight="Bold"
+                        Command="{Binding handleChangePasswordCommand}"/>
 
                     </Grid>
                 </Grid>

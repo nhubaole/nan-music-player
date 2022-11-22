@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:MusicPlayer"
+        xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
         Title="MainWindow" Height="624" Width="1152"
@@ -14,21 +15,142 @@
         VerticalAlignment="Center"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        AllowsTransparency="True">
+        AllowsTransparency="True"
+        x:Name="mainWindow">
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
     <Grid>
         <uc:ControlBar Width="1152" 
                        Height="32" 
                        VerticalAlignment="Top"/>
-        <uc:UCMenuBar Width="208" 
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="208"></ColumnDefinition>
+                <ColumnDefinition Width="944"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Width="208" Grid.Column="0" 
                       Height="592"
                       VerticalAlignment="Top"
                       Margin="0,32,0,0"
-                      HorizontalAlignment="Left"/>
-        <uc:UCProfile Width="944" 
-                      Height="592" 
-                      VerticalAlignment="Top"
-                      Margin="0,32,0,0"
-                      HorizontalAlignment="Right"/>
+                      HorizontalAlignment="Left">
+                <Border CornerRadius="0,0,0,40" Background="{StaticResource SecondaryMid}">
+                    <Grid>
+                        <Grid Height="176" VerticalAlignment="Top">
+                            <Image Source="Resource/Images/Logo.png" 
+                       Stretch="Fill" 
+                       Height="160" 
+                       Width="160" 
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Top">
+
+                            </Image>
+                            <TextBlock 
+                    Text="PROJECT NAME" 
+                    FontSize="20" 
+                    FontWeight="Bold" 
+                    Foreground="{StaticResource PrimaryLight}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom">
+                            </TextBlock>
+                        </Grid>
+                        <StackPanel Margin="0,200,0,0">
+                            <RadioButton Style="{StaticResource BtnStyle}"
+                                 Command="{Binding HomeCommand}"
+                                 Height="55" 
+                                 IsChecked="True">
+                                <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="Home" Width="30" Height="30" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Trang chủ" 
+                                       VerticalAlignment="Center"
+                                       FontSize="18"
+                                       FontWeight="Medium"
+                                       Margin="55,0,0,0">
+                                    </TextBlock>
+                                </Grid>
+                            </RadioButton>
+                            <RadioButton Style="{StaticResource BtnStyle}"
+                                 Command="{Binding ProfileCommand}"
+                                 Height="55" >
+                                <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="User" Width="30" Height="30" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Trang cá nhân" 
+                                       VerticalAlignment="Center"
+                                       FontSize="18"
+                                       FontWeight="Medium"
+                                       Margin="55,0,0,0">
+                                    </TextBlock>
+                                </Grid>
+                            </RadioButton>
+                            <RadioButton Style="{StaticResource BtnStyle}"
+                                 Command="{Binding SearchCommand}"
+                                 Height="55">
+                                <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="Search" Width="30" Height="30" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Tìm kiếm" 
+                                       VerticalAlignment="Center"
+                                       FontSize="18"
+                                       FontWeight="Medium"
+                                       Margin="55,0,0,0">
+                                    </TextBlock>
+                                </Grid>
+                            </RadioButton>
+                            <RadioButton Style="{StaticResource BtnStyle}"
+                                 Command="{Binding LibraryCommand}"
+                                 Height="55">
+                                <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="PlaylistMusic" Width="30" Height="30" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Thư viện" 
+                                       VerticalAlignment="Center"
+                                       FontSize="18"
+                                       FontWeight="Medium"
+                                       Margin="55,0,0,0">
+                                    </TextBlock>
+                                </Grid>
+                            </RadioButton>
+                            <RadioButton Style="{StaticResource BtnStyle}"
+                                 Height="55">
+                                <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="Poll" Width="30" Height="30" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Bảng xếp hạng" 
+                                       VerticalAlignment="Center"
+                                       FontSize="18"
+                                       FontWeight="Medium"
+                                       Margin="55,0,0,0">
+                                    </TextBlock>
+                                </Grid>
+                            </RadioButton>
+                        </StackPanel>
+                        <Grid VerticalAlignment="Bottom" Margin="0,0,0,30">
+                            <Button
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        materialDesign:ButtonAssist.CornerRadius="10"
+                        Background="{StaticResource SecondaryDark}"
+                        Width="170"
+                        Height="50"
+                        Foreground="{StaticResource SecondaryLight}"
+                        Command="{Binding handleLogOutCommand}"
+                        CommandParameter="{Binding ElementName=mainWindow}">
+                                <Grid>
+                                    <materialDesign:PackIcon Kind="Logout" Width="30" Height="30" Margin="0,0,0,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Đăng xuất" 
+                                       VerticalAlignment="Center"
+                                       FontSize="18"
+                                       FontWeight="Medium"
+                                       Margin="40,0,0,0">
+                                    </TextBlock>
+                                </Grid>
+                            </Button>
+                        </Grid>
+                    </Grid>
+
+                </Border>
+            </Grid>
+            <Grid Grid.Column="1" Width="944" Height="592" VerticalAlignment="Bottom">
+                <ContentControl x:Name="Pages"
+                                Content="{Binding CurrentView}" />
+            </Grid>
+        </Grid>
         <uc:UCPlayMusic Height="68" 
                         Width="920" 
                         HorizontalAlignment="Right" 
