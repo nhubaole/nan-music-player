@@ -17,15 +17,17 @@
         VerticalAlignment="Center"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
-        AllowsTransparency="True"
-        DataContext="{StaticResource MainVM}"
+        AllowsTransparency="True"        
         Name="mainWindow">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" CommandParameter="{Binding ElementName=mainWindow}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-            <Grid>
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
         <uc:ControlBar Width="1152" 
                        Height="32" 
                        VerticalAlignment="Top"/>

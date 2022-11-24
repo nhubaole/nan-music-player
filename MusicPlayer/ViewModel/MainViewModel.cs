@@ -19,6 +19,27 @@ namespace MusicPlayer.ViewModel
             SearchCommand = new RelayCommand<object>((p) => { return true; }, Search);
             CurrentView = new HomeVM();
 
+            LoadedWindowCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) => {
+                IsLoaded = true;
+                if (p == null) return;
+                p.Hide();
+
+                Login login = new Login();
+                login.ShowDialog();
+
+                if (login.DataContext == null) return;
+                var loginVM = login.DataContext as LoginViewModel;
+                if (loginVM.IsLogin == true)
+                {
+                    p.Show();
+                }
+                else
+                {
+                    p.Close();
+                }
+
+            });
+
             handleLogOutCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) => {
                 if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
@@ -31,23 +52,16 @@ namespace MusicPlayer.ViewModel
                     }
                 }
             });
+   
         }
 
-        public object CurrentView { 
+        public object CurrentView
+        {
             get => _currentView;
             set { _currentView = value; OnPropertyChanged(); }
+        }
         public bool IsLoaded  = false;
         public ICommand LoadedWindowCommand { get; set; }
-        public MainViewModel()
-        {
-            LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { 
-                IsLoaded = true;
-                p.Hide();
-                Login login = new Login();
-                login.ShowDialog();
-                p.Show();
-            });    
-        }
 
         public ICommand HomeCommand { get; set; }
         public ICommand LibraryCommand { get; set; }

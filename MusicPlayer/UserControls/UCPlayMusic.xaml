@@ -6,7 +6,12 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:MusicPlayer.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="68" d:DesignWidth="920"  >
+             d:DesignHeight="68" d:DesignWidth="920"  
+             xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
+             >
+    <UserControl.DataContext>
+        <vm:PlayMusicVM></vm:PlayMusicVM>
+    </UserControl.DataContext>
     <Grid>
         <Border CornerRadius ="40,0,40,0" Background= "{ StaticResource PrimaryLight}"/>
 
@@ -168,20 +173,21 @@
             VerticalAlignment="Center"
             Foreground="{StaticResource SecondaryDark}"/>
         <Button
-          x:Name="btThreePoint"
-          Style="{StaticResource MaterialDesignIconButton}"
-          Background="Transparent"
-          Width="20" Height="30" 
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-          Margin="890,0,0,0" >
+              x:Name="btThreePoint"
+              Style="{StaticResource MaterialDesignIconButton}"
+              Background="Transparent"
+              Width="20" Height="30" 
+              VerticalAlignment="Center"
+              HorizontalAlignment="Left"
+              Margin="890,0,0,0"
+              Command="{Binding ToInforCommand }">
             <materialDesign:PackIcon
-                Kind="DotsVertical" 
-                Width="30" 
-                Height="40" 
-                HorizontalAlignment="Left"   
-                VerticalAlignment="Center"
-                Foreground="{StaticResource SecondaryDark}"/>
+                    Kind="DotsVertical" 
+                    Width="30" 
+                    Height="40" 
+                    HorizontalAlignment="Left"   
+                    VerticalAlignment="Center"
+                    Foreground="{StaticResource SecondaryDark}"/>
         </Button>
 
     </Grid>

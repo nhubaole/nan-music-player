@@ -113,6 +113,7 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ControlBarVM.cs" />
     <Compile Include="ViewModel\HomeVM.cs" />
+    <Compile Include="ViewModel\InforVM.cs" />
     <Compile Include="ViewModel\LibraryVM.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -121,6 +122,8 @@
     <Compile Include="ViewModel\ProfileVM.cs" />
     <Compile Include="ViewModel\SearchVM.cs" />
     <Compile Include="ViewModel\SignUpVM.cs" />
+    <Compile Include="ViewModel\PlayMusicVM.cs" />
+    <Compile Include="ViewModel\UploadVM.cs" />
     <Page Include="Infor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
