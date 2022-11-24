@@ -9,8 +9,12 @@
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
         Height="650" 
         Width="570"
-        Background="Transparent">
-
+        Background="Transparent"
+        xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
+        x:Name="signUpWindow">
+    <Window.DataContext>
+        <vm:SignUpVM></vm:SignUpVM>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="36"></RowDefinition>
@@ -399,7 +403,9 @@
                         Content="ĐĂNG KÝ" 
                         FontSize="25"
                         Foreground="{StaticResource PrimaryDark}" 
-                        FontWeight="Bold" />
+                        FontWeight="Bold"
+                        Command="{Binding handleSignUpCommand}"
+                        CommandParameter="{Binding ElementName=signUpWindow}"/>
                 </Grid>
 
                 <Grid Grid.Row="1">
@@ -418,7 +424,9 @@
                         Content="THOÁT" 
                         FontSize="25"
                         Foreground="{StaticResource PrimaryLight}" 
-                        FontWeight="Bold" />
+                        FontWeight="Bold"
+                        Command="{Binding closeSignUpCommand}"
+                        CommandParameter="{Binding ElementName=signUpWindow}"/>
 
                 </Grid>
             </Grid>
