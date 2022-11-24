@@ -12,9 +12,13 @@
         Width="800"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
+        xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
         WindowStyle="None"
         Background="Transparent"
-        DataContext="{StaticResource LoginVM}">
+        >
+    <Window.DataContext>
+        <vm:LoginViewModel/>
+    </Window.DataContext>
     <Grid>
         <Border CornerRadius="40" >
             <Border.Background>
@@ -153,7 +157,6 @@
                             materialDesign:ButtonAssist.CornerRadius="5"
                             ToolTip="MaterialDesignRaisedButton with Round Corners"
                             Background="{StaticResource PrimaryLight}"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
                             >
                             <TextBlock
                               Height="30"

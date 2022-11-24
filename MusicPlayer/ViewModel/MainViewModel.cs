@@ -31,23 +31,23 @@ namespace MusicPlayer.ViewModel
                     }
                 }
             });
-        }
 
-        public object CurrentView { 
-            get => _currentView;
-            set { _currentView = value; OnPropertyChanged(); }
-        public bool IsLoaded  = false;
-        public ICommand LoadedWindowCommand { get; set; }
-        public MainViewModel()
-        {
-            LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => { 
+            LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
                 IsLoaded = true;
                 p.Hide();
                 Login login = new Login();
                 login.ShowDialog();
                 p.Show();
-            });    
+            });
         }
+
+        public object CurrentView
+        {
+            get => _currentView;
+            set { _currentView = value; OnPropertyChanged(); }
+        }
+        public bool IsLoaded  = false;
+        public ICommand LoadedWindowCommand { get; set; }
 
         public ICommand HomeCommand { get; set; }
         public ICommand LibraryCommand { get; set; }
