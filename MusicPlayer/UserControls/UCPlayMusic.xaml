@@ -11,44 +11,99 @@
         <Border CornerRadius ="40,0,40,0" Background= "{ StaticResource PrimaryLight}"/>
 
         <Button
+          x:Name="btRepeat"
+          Style="{StaticResource MaterialDesignIconButton}"
+          Background="Transparent"
+          Width="40" Height="40" 
+          VerticalAlignment="Center"
+          HorizontalAlignment="Left"
+          Margin="220,0,0,0">
+            <materialDesign:PackIcon
+                Kind="Repeat" 
+                Width="30" 
+                Height="30" 
+                RenderTransformOrigin="0.5,1.2"  
+                HorizontalAlignment="Left"   
+                VerticalAlignment="Center"
+                Foreground="{StaticResource SecondaryDark}"/>
+        </Button>
+        <Button
+            x:Name="btSkipPrevious"
+          Style="{StaticResource MaterialDesignIconButton}"
+          Background="Transparent"
+          Width="40" Height="40" 
+          VerticalAlignment="Center"
+          HorizontalAlignment="Left"
+          Margin="260,0,0,0">
+            <materialDesign:PackIcon
+                Kind="SkipPrevious" 
+                Width="40" 
+                Height="40" 
+                RenderTransformOrigin="0.75,1" 
+                HorizontalAlignment="Left"   
+                VerticalAlignment="Center"
+                Foreground="{StaticResource SecondaryDark}"/>
+        </Button>
+        
+
+        <Button
+            x:Name="btPlay"
           Style="{StaticResource MaterialDesignIconButton}"
           Background="{StaticResource SecondaryLight}"
-          Width="50" Height="50" 
+          Width="50" 
+          Height="50" 
           VerticalAlignment="Center"
           HorizontalAlignment="Left"
             Margin="310,0,0,0">
-            <materialDesign:PackIcon Kind="Play" Width="40" Height="40" RenderTransformOrigin="0.75,1" />
+            <materialDesign:PackIcon 
+                Kind="Play"
+                Width="40"
+                Height="40" 
+                RenderTransformOrigin="0.75,1" />
         </Button>
-        <materialDesign:PackIcon Kind="SkipPrevious" Width ="40" 
-                                 Height="40" 
-                                 HorizontalAlignment="Left"
-                                 Margin="260,0,0,0"
-                                 VerticalAlignment="Center"
-                                 Foreground="{StaticResource SecondaryDark}" />
-        <materialDesign:PackIcon Kind="SkipNext" 
-                                 Height="40" 
-                                 Width="40"
-                                 HorizontalAlignment="Left"
-                                 Margin="370,0,0,0"
-                                 VerticalAlignment="Center"
-                                 Foreground="{StaticResource SecondaryDark}"/>
-        <materialDesign:PackIcon Kind="Repeat"  
-                                 Width ="30" 
-                                 Height="30" 
-                                 HorizontalAlignment="Left"
-                                 Margin="220,0,0,0"
-                                 VerticalAlignment="Center"
-                                 RenderTransformOrigin="0.5,1.2" 
-                                 Foreground="{StaticResource SecondaryDark}" />
-        <materialDesign:PackIcon Kind="ShuffleVariant"  
-                                 Width ="30" 
-                                 Height="30"
-                                 HorizontalAlignment="Left"
-                                 VerticalAlignment="Center"
-                                 Margin="420,0,0,0"
-                                 Foreground="{StaticResource SecondaryDark}"/>
-        <Border Height="50" Width="50" HorizontalAlignment="Left" Margin="25,0,0,0 " CornerRadius="10,10,10,10" Background="{StaticResource SecondaryDark}"/>
+
+        <Button
+            x:Name="btSkipNext"
+          Style="{StaticResource MaterialDesignIconButton}"
+          Background="Transparent"
+          Width="40" Height="40" 
+          VerticalAlignment="Center"
+          HorizontalAlignment="Left"
+          Margin="370,0,0,0">
+            <materialDesign:PackIcon
+                Kind="SkipNext" 
+                Width="40" 
+                Height="40" 
+                HorizontalAlignment="Left"   
+                VerticalAlignment="Center"
+                Foreground="{StaticResource SecondaryDark}"/>
+        </Button>
+
+        <Button
+            x:Name="btShuffleVariant"
+          Style="{StaticResource MaterialDesignIconButton}"
+          Background="Transparent"
+          Width="40" Height="40" 
+          VerticalAlignment="Center"
+          HorizontalAlignment="Left"
+          Margin="420,0,0,0">
+            <materialDesign:PackIcon
+                Kind="ShuffleVariant" 
+                Width="30" 
+                Height="30" 
+                HorizontalAlignment="Left"   
+                VerticalAlignment="Center"
+                Foreground="{StaticResource SecondaryDark}"/>
+        </Button>
+        <Border 
+            Height="50"
+            Width="50" 
+            HorizontalAlignment="Left" 
+            Margin="25,0,0,0 " 
+            CornerRadius="10,10,10,10" 
+            Background="{StaticResource SecondaryDark}"/>
         <TextBlock
+            x:Name="tbSong"
             Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
             Text="Tên bài hát"
             Foreground="{StaticResource SecondaryDark}"
@@ -59,6 +114,7 @@
             FontWeight="SemiBold"
             Margin="85,-20,0,0"/>
         <TextBlock
+            x:Name="tbSinger"
             Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
             Text="Tên ca sĩ"
             Foreground="{StaticResource SecondaryDark}"
@@ -70,6 +126,7 @@
             Margin="85,25,0,0"/>
         
         <TextBlock
+            x:Name="tbPlayTime"
             Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
             Text="1:00"
             Foreground="{StaticResource SecondaryDark}"
@@ -77,8 +134,9 @@
             FontSize="18"
             VerticalAlignment="Center"
             HorizontalAlignment="Left"
-            Margin="465,0,0,0"/>
+            Margin="465,5,0,0"/>
         <TextBlock
+            x:Name="tbTime"
             Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
             Text="3:00"
             Foreground="{StaticResource SecondaryDark}"
@@ -86,13 +144,45 @@
             FontSize="18"
             VerticalAlignment="Center"
             HorizontalAlignment="Left"
-            Margin="735,0,0,0"/>
+            Margin="735,5,0,0"/>
 
-        <Slider Minimum="0" Maximum="50" Value="35" HorizontalAlignment="Left" Margin="510,0,0,0" Width="220" VerticalAlignment="Center" Foreground="{StaticResource SecondaryDark}"/>
+        <Slider 
+            x:Name="slPlay"
+            Minimum="0" 
+            Maximum="50"
+            Value="35" 
+            HorizontalAlignment="Left" 
+            Margin="510,0,0,0" 
+            Width="220" 
+            VerticalAlignment="Center" 
+            Foreground="{StaticResource SecondaryDark}"/>
         <materialDesign:PackIcon Kind="VolumeHigh" Width ="30" Height="30"  Margin="780,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="{StaticResource SecondaryDark}" />
-        <Slider Minimum="0" Maximum="50" Value="35" HorizontalAlignment="Left" Margin="815,0,0,0" Width="70" VerticalAlignment="Center" Foreground="{StaticResource SecondaryDark}"/>
-        <materialDesign:PackIcon Kind="DotsVertical"  Width ="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="890,0,0,0" Foreground="{StaticResource SecondaryDark}"/>
-
+        <Slider 
+            x:Name="slVolume"
+            Minimum="0" 
+            Maximum="50" 
+            Value="35" 
+            HorizontalAlignment="Left"
+            Margin="815,0,0,0" 
+            Width="70" 
+            VerticalAlignment="Center"
+            Foreground="{StaticResource SecondaryDark}"/>
+        <Button
+          x:Name="btThreePoint"
+          Style="{StaticResource MaterialDesignIconButton}"
+          Background="Transparent"
+          Width="20" Height="30" 
+          VerticalAlignment="Center"
+          HorizontalAlignment="Left"
+          Margin="890,0,0,0" >
+            <materialDesign:PackIcon
+                Kind="DotsVertical" 
+                Width="30" 
+                Height="40" 
+                HorizontalAlignment="Left"   
+                VerticalAlignment="Center"
+                Foreground="{StaticResource SecondaryDark}"/>
+        </Button>
 
     </Grid>
 </UserControl>
