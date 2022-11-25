@@ -1,7 +1,10 @@
-﻿using System;
+﻿using MusicPlayer.Model;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using xNet;
+
 
 namespace MusicPlayer.UserControls
 {
@@ -20,9 +25,16 @@ namespace MusicPlayer.UserControls
     /// </summary>
     public partial class UCLibrary : UserControl
     {
+        public static ObservableCollection<Song> listLastestSong = new ObservableCollection<Song>();
         public UCLibrary()
         {
             InitializeComponent();
+            lbLastestSongs.ItemsSource = listLastestSong;
+        }
+
+        private void lbLastestSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UCHome.addListLastestSong(sender);
         }
     }
 }

@@ -93,55 +93,175 @@
                                       HorizontalScrollBarVisibility="Disabled"
                                   Margin="0,130,0,0">
                     <Grid>
-                        <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="180*"></RowDefinition>
+                            <RowDefinition Height="180*"></RowDefinition>
+                            <RowDefinition Height="180*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
                             <TextBlock Text="Đã nghe gần đây" 
                                            FontSize="20" 
                                            Foreground="{StaticResource SecondaryLight}"
                                            FontWeight="SemiBold">
                             </TextBlock>
-                            <!--hardcode-->
-                            <WrapPanel Margin="0,40,0,0">
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                            </WrapPanel>
+                            <ListBox x:Name="lbLastestSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0" SelectionChanged="lbLastestSongs_SelectionChanged">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel IsItemsHost="True" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <ToggleButton Foreground="White"
+                                                      Background="#ff5252"
+                                                      Width="25" 
+                                                      Height="25" 
+                                                      Margin="88,55,0,0"
+                                                      HorizontalAlignment="Left"
+                                                      VerticalAlignment="Top"
+                                                      Content="{materialDesign:PackIcon Kind=Heart, Size=18}"
+                                                      Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+                                                      IsChecked="True" />
+                                            <StackPanel>
+                                                <Border CornerRadius="20,20,20,20"
+                                                    Width="80"
+                                                    Height="80"
+                                                    HorizontalAlignment="Left">
+                                                    <Border.Background>
+                                                        <ImageBrush ImageSource="{Binding ImageURL}"></ImageBrush>
+                                                    </Border.Background>
+                                                </Border>
+                                                <TextBlock Text="{Binding SongName}" 
+                                                        FontSize="15" 
+                                                        Foreground="{StaticResource PrimaryLight}"
+                                                        FontWeight="Medium"
+                                                        Width="145"
+                                                        HorizontalAlignment="Left"
+                                                        Margin="0,5,0,0">
+                                                </TextBlock>
+                                                <TextBlock Text="{Binding SingerName}" 
+                                                        FontSize="12" 
+                                                        Foreground="{StaticResource PrimaryMid}"
+                                                        FontWeight="Medium"
+                                                        Width="145"
+                                                        Margin="0,0,0,0">
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </Grid>
-                        <Grid Margin="0,180,0,0">
+                        <Grid Grid.Row="1">
                             <TextBlock Text="Đã tải lên" 
                                            FontSize="20" 
                                            Foreground="{StaticResource SecondaryLight}"
                                            FontWeight="SemiBold">
                             </TextBlock>
-                            <!--hardcode-->
-                            <WrapPanel Margin="0,40,0,0">
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                            </WrapPanel>
+                            <ListBox x:Name="lbUploadSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel IsItemsHost="True" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <ToggleButton Foreground="White"
+                                                      Background="#ff5252"
+                                                      Width="25" 
+                                                      Height="25" 
+                                                      Margin="88,55,0,0"
+                                                      HorizontalAlignment="Left"
+                                                      VerticalAlignment="Top"
+                                                      Content="{materialDesign:PackIcon Kind=Heart, Size=18}"
+                                                      Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+                                                      IsChecked="True" />
+                                            <StackPanel>
+                                                <Border CornerRadius="20,20,20,20"
+                                                    Width="80"
+                                                    Height="80"
+                                                    HorizontalAlignment="Left">
+                                                    <Border.Background>
+                                                        <ImageBrush ImageSource="{Binding ImageURL}"></ImageBrush>
+                                                    </Border.Background>
+                                                </Border>
+                                                <TextBlock Text="{Binding SongName}" 
+                                                        FontSize="15" 
+                                                        Foreground="{StaticResource PrimaryLight}"
+                                                        FontWeight="Medium"
+                                                        Width="145"
+                                                        HorizontalAlignment="Left"
+                                                        Margin="0,5,0,0">
+                                                </TextBlock>
+                                                <TextBlock Text="{Binding SingerName}" 
+                                                        FontSize="12" 
+                                                        Foreground="{StaticResource PrimaryMid}"
+                                                        FontWeight="Medium"
+                                                        Width="145"
+                                                        Margin="0,0,0,0">
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </Grid>
-                        <Grid Margin="0,360,0,0">
+                        <Grid Grid.Row="2">
                             <TextBlock Text="Bài hát đã thích" 
                                            FontSize="20" 
                                            Foreground="{StaticResource SecondaryLight}"
                                            FontWeight="SemiBold">
                             </TextBlock>
-                            <!--hardcode-->
-                            <WrapPanel Margin="0,40,0,0">
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                            </WrapPanel>
+                            <ListBox x:Name="lbLikedSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel IsItemsHost="True" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <ToggleButton Foreground="White"
+                                                      Background="#ff5252"
+                                                      Width="25" 
+                                                      Height="25" 
+                                                      Margin="88,55,0,0"
+                                                      HorizontalAlignment="Left"
+                                                      VerticalAlignment="Top"
+                                                      Content="{materialDesign:PackIcon Kind=Heart, Size=18}"
+                                                      Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+                                                      IsChecked="True" />
+                                            <StackPanel>
+                                                <Border CornerRadius="20,20,20,20"
+                                                    Width="80"
+                                                    Height="80"
+                                                    HorizontalAlignment="Left">
+                                                    <Border.Background>
+                                                        <ImageBrush ImageSource="{Binding ImageURL}"></ImageBrush>
+                                                    </Border.Background>
+                                                </Border>
+                                                <TextBlock Text="{Binding SongName}" 
+                                                        FontSize="15" 
+                                                        Foreground="{StaticResource PrimaryLight}"
+                                                        FontWeight="Medium"
+                                                        Width="145"
+                                                        HorizontalAlignment="Left"
+                                                        Margin="0,5,0,0">
+                                                </TextBlock>
+                                                <TextBlock Text="{Binding SingerName}" 
+                                                        FontSize="12" 
+                                                        Foreground="{StaticResource PrimaryMid}"
+                                                        FontWeight="Medium"
+                                                        Width="145"
+                                                        Margin="0,0,0,0">
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </Grid>
 
                     </Grid>

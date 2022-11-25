@@ -130,5 +130,26 @@ namespace MusicPlayer.UserControls
             result = result.Substring(indexCDATA, indexEnd - indexCDATA).Replace("<![CDATA[", "");
             return result;
         }
+
+        private void lbFeaturedSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            addListLastestSong(sender);
+        }
+
+        public static void addListLastestSong(object sender)
+        {
+            ListBox ls = sender as ListBox;
+            Song song = ls.SelectedItem as Song;
+            UCLibrary.listLastestSong.Insert(0, song);
+            if (UCLibrary.listLastestSong.Count() > 5)
+            {
+                UCLibrary.listLastestSong.RemoveAt(5);
+            }
+        }
+
+        private void lbNewSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            addListLastestSong(sender);
+        }
     }
 }

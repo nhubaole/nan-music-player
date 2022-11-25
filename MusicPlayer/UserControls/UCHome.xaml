@@ -39,7 +39,7 @@
                            Foreground="{StaticResource SecondaryLight}"
                            FontWeight="SemiBold">
                         </TextBlock>
-                        <ListBox x:Name="lbFeaturedSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0">
+                        <ListBox x:Name="lbFeaturedSongs" HorizontalContentAlignment="Stretch" SelectionChanged="lbFeaturedSongs_SelectionChanged" Margin="0,35,0,0">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel IsItemsHost="True" />
@@ -64,7 +64,7 @@
                                                     Height="80"
                                                     HorizontalAlignment="Left">
                                                 <Border.Background>
-                                                    <ImageBrush ImageSource="{Binding ImageURL}"></ImageBrush>
+                                                    <ImageBrush x:Name="imgURl" ImageSource="{Binding ImageURL}"></ImageBrush>
                                                 </Border.Background>
                                             </Border>
                                             <TextBlock Text="{Binding SongName}" 
@@ -95,7 +95,7 @@
                            Foreground="{StaticResource SecondaryLight}"
                            FontWeight="SemiBold">
                         </TextBlock>
-                        <ListBox x:Name="lbNewSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0">
+                        <ListBox x:Name="lbNewSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0" SelectionChanged="lbNewSongs_SelectionChanged">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel IsItemsHost="True" />
