@@ -9,9 +9,9 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="592" d:DesignWidth="944">
-    <UserControl.DataContext>
+    <!--<UserControl.DataContext>
         <vm:SearchVM></vm:SearchVM>
-    </UserControl.DataContext>
+    </UserControl.DataContext>-->
     <Grid>
         <Border CornerRadius="0,0,40,0" Background="{StaticResource SecondaryDark}">
             <Grid Width="830" Height="504" VerticalAlignment="Top">
@@ -81,26 +81,54 @@
                     <ScrollViewer VerticalScrollBarVisibility="Auto"
                                       HorizontalScrollBarVisibility="Disabled">
                         <Grid>
-                            <!--hardcode-->
-                            <WrapPanel>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-                                <uc:UCSong Width="135" Margin="0,0,25,35"></uc:UCSong>
-
-                            </WrapPanel>
+                            <ListBox x:Name="lbSongs" HorizontalContentAlignment="Stretch" Margin="0,35,0,0" SelectionChanged="lbSongs_SelectionChanged">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel IsItemsHost="True" />
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <ToggleButton Foreground="White"
+                                                      Background="#ff5252"
+                                                      Width="25" 
+                                                      Height="25" 
+                                                      Margin="88,55,0,0"
+                                                      HorizontalAlignment="Left"
+                                                      VerticalAlignment="Top"
+                                                      Content="{materialDesign:PackIcon Kind=Heart, Size=18}"
+                                                      Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+                                                      IsChecked="True" />
+                                            <StackPanel>
+                                                <Border CornerRadius="20,20,20,20"
+                                                    Width="80"
+                                                    Height="80"
+                                                    HorizontalAlignment="Left">
+                                                    <Border.Background>
+                                                        <ImageBrush x:Name="imgURl" ImageSource="{Binding ImageURL}"></ImageBrush>
+                                                    </Border.Background>
+                                                </Border>
+                                                <TextBlock Text="{Binding SongName}" 
+                                                        FontSize="15" 
+                                                        Foreground="{StaticResource PrimaryLight}"
+                                                        FontWeight="Medium"
+                                                        Width="145"
+                                                        HorizontalAlignment="Left"
+                                                        Margin="0,5,0,0">
+                                                </TextBlock>
+                                                <TextBlock Text="{Binding SingerName}" 
+                                                        FontSize="12" 
+                                                        Foreground="{StaticResource PrimaryMid}"
+                                                        FontWeight="Medium"
+                                                        Width="145"
+                                                        Margin="0,0,0,0">
+                                                </TextBlock>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </Grid>
                     </ScrollViewer>
                 </Grid>
