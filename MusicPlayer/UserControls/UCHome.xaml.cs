@@ -24,24 +24,70 @@ namespace MusicPlayer.UserControls
     /// </summary>
     public partial class UCHome : UserControl
     {
-        public ObservableCollection<Song> listFeaturedSong;
-        public ObservableCollection<Song> listNewdSong;
+        public static ObservableCollection<Song> listFeaturedSong = new ObservableCollection<Song>();
+        public static ObservableCollection<Song> listNewSong = new ObservableCollection<Song>();
+        public static int init = 0;
+
         public UCHome()
         {
             InitializeComponent();
-            loadFeaturedSong();
+            if(init == 0)
+            {
+                loadFeaturedSong();
+                loadNewSong();
+                init++;
+            }
+            lbNewSongs.ItemsSource = listNewSong;
+            lbFeaturedSongs.ItemsSource = listFeaturedSong;
+        }
+        
+        public void loadNewSong()
+        {
+            this.DataContext = this;
+            HttpRequest httpRequest = new HttpRequest();
+            string htmlNewSong = httpRequest.Get(@"https://www.nhaccuatui.com/homepage").ToString();
+            string newPattern = @"MỚI PHÁT HÀNH</a>(.*?)</ul>";
 
+            var newSongs = Regex.Matches(htmlNewSong, newPattern, RegexOptions.Singleline);
+            string newSong = newSongs[0].ToString();
+
+            var listSongHTML = Regex.Matches(newSong, @"<li>(.*?)</li>", RegexOptions.Singleline);
+            int count = 5;
+            for (int i = 0; i < count; i++)
+            {
+                var theA = Regex.Matches(listSongHTML[i].ToString(), @"<a href=""(.*?)</a>", RegexOptions.Singleline);
+                string songString = theA[0].ToString();
+                int indexSong = songString.IndexOf("class=\"");
+                int indexURL = songString.IndexOf("href=\"");
+                string URL = songString.Substring(indexURL, indexSong - indexURL - 2).Replace("href=\"", "");
+
+                string htmlSong = httpRequest.Get(URL).ToString();
+                string xmlURL = Regex.Match(htmlSong, @"xmlURL = ""(.*?)""").ToString();
+                xmlURL = xmlURL.Replace(@"xmlURL = """, "").Replace(@"""", "");
+                if (xmlURL == "")
+                {
+                    count++;
+                    continue;
+                }
+                string htmlXML = httpRequest.Get(xmlURL).ToString();
+                string songName = getData("title", htmlXML);
+                string singerName = getData("creator", htmlXML);
+                string songURL = getData("info", htmlXML);
+                string downloadURL = getData("location", htmlXML);
+                string imageURL = getData("coverimage", htmlXML);
+
+                listNewSong.Add(new Song() { SongName = songName, SingerName = singerName, DownloadURL = downloadURL, SongURL = songURL, ImageURL = imageURL });
+            }
         }
 
         public void loadFeaturedSong()
         {
             listFeaturedSong = new ObservableCollection<Song>();
             this.DataContext = this;
-            lsbTopSongs.ItemsSource = listFeaturedSong;
             HttpRequest httpRequest = new HttpRequest();
             string htmlFeaturedSong = httpRequest.Get(@"https://www.nhaccuatui.com/bai-hat/top-20.nhac-viet.html").ToString();
-            string feateredPattern = @"<ul class=""list_show_chart"">(.*?)</ul>";
-            var featuredSongs = Regex.Matches(htmlFeaturedSong, feateredPattern, RegexOptions.Singleline);
+            string featuredPattern = @"<ul class=""list_show_chart"">(.*?)</ul>";
+            var featuredSongs = Regex.Matches(htmlFeaturedSong, featuredPattern, RegexOptions.Singleline);
             string featuredSong = featuredSongs[0].ToString();
 
             var listSongHTML = Regex.Matches(featuredSong, @"<li>(.*?)</li>", RegexOptions.Singleline);
@@ -65,35 +111,24 @@ namespace MusicPlayer.UserControls
                 }
 
                 HttpRequest httpXML = new HttpRequest();
-                string htmlXML = httpXML.Get(xmlURL).ToString();
-
-                string songName = Regex.Match(htmlXML, @"<title>(.*?)</title>", RegexOptions.Singleline).ToString();
-                int indexCDATA = songName.IndexOf("<![CDATA[");
-                int indexEnd = songName.IndexOf("]]>");
-                songName = songName.Substring(indexCDATA, indexEnd - indexCDATA).Replace("<![CDATA[", "");
-
-                string singerName = Regex.Match(htmlXML, @"<creator>(.*?)</creator>", RegexOptions.Singleline).ToString();
-                indexCDATA = singerName.IndexOf("<![CDATA[");
-                indexEnd = singerName.IndexOf("]]>");
-                singerName = singerName.Substring(indexCDATA, indexEnd - indexCDATA).Replace("<![CDATA[", "");
-
-                string songURL = Regex.Match(htmlXML, @"<info>(.*?)</info>", RegexOptions.Singleline).ToString();
-                indexCDATA = songURL.IndexOf("<![CDATA[");
-                indexEnd = songURL.IndexOf("]]>");
-                songURL = songURL.Substring(indexCDATA, indexEnd - indexCDATA).Replace("<![CDATA[", "");
-
-                string downloadURL = Regex.Match(htmlXML, @"<location>(.*?)</location>", RegexOptions.Singleline).ToString();
-                indexCDATA = downloadURL.IndexOf("<![CDATA[");
-                indexEnd = downloadURL.IndexOf("]]>");
-                downloadURL = downloadURL.Substring(indexCDATA, indexEnd - indexCDATA).Replace("<![CDATA[", "");
-
-                string imageURL = Regex.Match(htmlXML, @"<coverimage>(.*?)</coverimage>", RegexOptions.Singleline).ToString();
-                indexCDATA = imageURL.IndexOf("<![CDATA[");
-                indexEnd = imageURL.IndexOf("]]>");
-                imageURL = imageURL.Substring(indexCDATA, indexEnd - indexCDATA).Replace("<![CDATA[", "");
+                string htmlXML = httpRequest.Get(xmlURL).ToString();
+                string songName = getData("title", htmlXML);
+                string singerName = getData("creator", htmlXML);
+                string songURL = getData("info", htmlXML);
+                string downloadURL = getData("location", htmlXML);
+                string imageURL = getData("coverimage", htmlXML);
 
                 listFeaturedSong.Add(new Song() { SongName = songName, SingerName = singerName, DownloadURL = downloadURL, SongURL = songURL, ImageURL = imageURL });
             }
+        }
+
+        public string getData(string tag, string htmlXML)
+        {
+            string result = Regex.Match(htmlXML, @"<" + tag +">(.*?)</" + tag +"", RegexOptions.Singleline).ToString();
+            int indexCDATA = result.IndexOf("<![CDATA[");
+            int indexEnd = result.IndexOf("]]>");
+            result = result.Substring(indexCDATA, indexEnd - indexCDATA).Replace("<![CDATA[", "");
+            return result;
         }
     }
 }
