@@ -9,16 +9,17 @@ namespace MusicPlayer.ViewModel
 {
     public class LoginViewModel:BaseViewModel
     {
-        public bool IsLogin { get; set; } //thong bao dang nhap hay chua
+        public bool IsLogin { get; set; } //dang nhap hay chua
         public ICommand LoginCommand { get; set; } //coi nhu ca dang nhap tha nh cong
         public ICommand ToSignUpCommand { get; set; }//dang ki thi vao form dang ki 
         public LoginViewModel()
         {
-            IsLogin = false;
+            IsLogin = false;//coi nhu chua dang nhap
             LoginCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) =>
             {
                 Login(p);
             });
+
             ToSignUpCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) =>
             {
                 var w = p as Window;
@@ -31,7 +32,7 @@ namespace MusicPlayer.ViewModel
             });
             void Login( Window p)
             {
-                if (p == null) return;
+                if (p == null) return;//chekc null
                 else
                 {
                     IsLogin = true;
