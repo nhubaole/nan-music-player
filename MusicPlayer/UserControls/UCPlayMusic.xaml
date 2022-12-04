@@ -47,46 +47,14 @@
                                  VerticalAlignment="Center"
                                  Margin="420,0,0,0"
                                  Foreground="{StaticResource SecondaryDark}"/>
-        <Border Height="50" Width="50" HorizontalAlignment="Left" Margin="25,0,0,0 " CornerRadius="10,10,10,10" Background="{StaticResource SecondaryDark}"/>
-        <TextBlock
-            Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-            Text="Tên bài hát"
-            Foreground="{StaticResource SecondaryDark}"
-            Width="120" Height="30"
-            FontSize="20"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Left"
-            FontWeight="SemiBold"
-            Margin="85,-20,0,0"/>
-        <TextBlock
-            Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-            Text="Tên ca sĩ"
-            Foreground="{StaticResource SecondaryDark}"
-            Width="120" Height="20"
-            FontSize="18"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Left"
-            FontWeight="Regular"
-            Margin="85,25,0,0"/>
-        
-        <TextBlock
-            Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-            Text="1:00"
-            Foreground="{StaticResource SecondaryDark}"
-            Width="40" Height="30"
-            FontSize="18"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Left"
-            Margin="465,0,0,0"/>
-        <TextBlock
-            Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
-            Text="3:00"
-            Foreground="{StaticResource SecondaryDark}"
-            Width="40" Height="30"
-            FontSize="18"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Left"
-            Margin="735,0,0,0"/>
+        <Border Height="50" Width="50" HorizontalAlignment="Left" Margin="25,0,0,0 " CornerRadius="10,10,10,10">
+            <ContentPresenter Content="{StaticResource imgURL}" ></ContentPresenter>
+        </Border>
+        <ContentControl Content="{StaticResource songName}"/>
+        <ContentControl Content="{StaticResource singerName}"/>
+        <ContentControl Content="{StaticResource position}"/>
+        <ContentControl Content="{StaticResource  audio}"></ContentControl>
+        <ContentControl Content="{StaticResource duration}"/>
 
         <Slider Minimum="0" Maximum="50" Value="35" HorizontalAlignment="Left" Margin="510,0,0,0" Width="220" VerticalAlignment="Center" Foreground="{StaticResource SecondaryDark}"/>
         <materialDesign:PackIcon Kind="VolumeHigh" Width ="30" Height="30"  Margin="780,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="{StaticResource SecondaryDark}" />

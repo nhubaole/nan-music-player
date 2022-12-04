@@ -35,6 +35,7 @@ namespace MusicPlayer.UserControls
             {
                 loadFeaturedSong();
                 loadNewSong();
+                UCPlayMusic.SelectedSong = listFeaturedSong.First();
                 init++;
             }
             lbNewSongs.ItemsSource = listNewSong;
@@ -75,8 +76,9 @@ namespace MusicPlayer.UserControls
                 string songURL = getData("info", htmlXML);
                 string downloadURL = getData("location", htmlXML);
                 string imageURL = getData("coverimage", htmlXML);
+                string savePath = AppDomain.CurrentDomain.BaseDirectory + "Song\\" + songName + ".mp3";
 
-                listNewSong.Add(new Song() { SongName = songName, SingerName = singerName, DownloadURL = downloadURL, SongURL = songURL, ImageURL = imageURL });
+                listNewSong.Add(new Song() { SongName = songName, SingerName = singerName, DownloadURL = downloadURL, SongURL = songURL, ImageURL = imageURL,  SavePath = savePath});
             }
         }
 
@@ -85,7 +87,7 @@ namespace MusicPlayer.UserControls
             listFeaturedSong = new ObservableCollection<Song>();
             this.DataContext = this;
             HttpRequest httpRequest = new HttpRequest();
-            string htmlFeaturedSong = httpRequest.Get(@"https://www.nhaccuatui.com/bai-hat/top-20.nhac-viet.html").ToString();
+            string htmlFeaturedSong = httpRequest.Get(@"https://www.nhaccuatui.com/bai-hat/top-20.nhac-viet.tuan--2.0.html").ToString();
             string featuredPattern = @"<ul class=""list_show_chart"">(.*?)</ul>";
             var featuredSongs = Regex.Matches(htmlFeaturedSong, featuredPattern, RegexOptions.Singleline);
             string featuredSong = featuredSongs[0].ToString();
@@ -117,8 +119,9 @@ namespace MusicPlayer.UserControls
                 string songURL = getData("info", htmlXML);
                 string downloadURL = getData("location", htmlXML);
                 string imageURL = getData("coverimage", htmlXML);
+                string savePath = AppDomain.CurrentDomain.BaseDirectory + "Song\\" + songName + ".mp3";
 
-                listFeaturedSong.Add(new Song() { SongName = songName, SingerName = singerName, DownloadURL = downloadURL, SongURL = songURL, ImageURL = imageURL });
+                listFeaturedSong.Add(new Song() { SongName = songName, SingerName = singerName, DownloadURL = downloadURL, SongURL = songURL, ImageURL = imageURL, SavePath = savePath });
             }
         }
 
@@ -145,6 +148,7 @@ namespace MusicPlayer.UserControls
             {
                 UCLibrary.listLastestSong.RemoveAt(5);
             }
+            UCPlayMusic.SelectedSong = song;
         }
 
         private void lbNewSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -68,8 +68,9 @@ namespace MusicPlayer.UserControls
                 string songURL = getData("info", htmlXML, i);
                 string downloadURL = getData("location", htmlXML, i);
                 string imageURL = getData("avatar", htmlXML, i);
+                string savePath = AppDomain.CurrentDomain.BaseDirectory + "Song\\" + songName + ".mp3";
 
-                listSong.Add(new Song() { SongName = songName, SingerName = singerName, DownloadURL = downloadURL, SongURL = songURL, ImageURL = imageURL });
+                listSong.Add(new Song() { SongName = songName, SingerName = singerName, DownloadURL = downloadURL, SongURL = songURL, ImageURL = imageURL, SavePath = savePath });
             }
         }
 
