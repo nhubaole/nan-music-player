@@ -70,6 +70,7 @@
                         FontSize="18"
                         Margin="0,6,0,44"/>
                     <TextBox 
+                        x:Name="tbNameOfSong"
                         Grid.Row="1"
                         materialDesign:HintAssist.Hint="Nhập tên ở đây"
                         Foreground="{StaticResource SecondaryLight}"
@@ -84,6 +85,7 @@
                         FontSize="18"
                         Margin="0,6,0,44"/>
                     <TextBox 
+                        x:Name="tbSingerOfSong"
                         Grid.Row="2"
                         materialDesign:HintAssist.Hint="Nhập tên ở đây"
                         Foreground="{StaticResource SecondaryLight}"
@@ -92,21 +94,7 @@
                         BorderBrush="{StaticResource SecondaryLight}"/>
                     <Grid Grid.Row="3">
 
-                        <!--<TextBlock 
-                            Grid.Column="1"
-                            Text="Thời lượng"
-                            Foreground="{StaticResource PrimaryMid}"
-                            FontWeight="Bold"
-                            FontSize="18"
-                            Margin="0,5,0,37"/>
-                        <TextBox
-                            Grid.Column="1"
-                            Text="Nhập thời lượng"
-                            Foreground="{StaticResource SecondaryLight}"
-                            FontSize="15"
-                            Width="150"
-                            Margin="0,0,100,0"
-                            BorderBrush="{StaticResource SecondaryLight}" Height="35" VerticalAlignment="Bottom"/>-->
+                       
                         <TextBlock                        
                             Text="Ngày phát hành"
                             Foreground="{StaticResource PrimaryMid}"
@@ -114,13 +102,14 @@
                             FontWeight="Bold"
                             Margin="0,5,0,34"/>
                         <DatePicker
-                                    Height="30"
-                                    Width="400"
-                                    materialDesign:HintAssist.Hint="Ngày/Tháng/Năm" 
-                                    Margin="0,35,100,0"
-                                    Foreground="{StaticResource SecondaryLight}"
-                                    FontSize="16"
-                                    BorderBrush="{StaticResource SecondaryLight}">
+                            x:Name="dpDate"
+                            Height="30"
+                            Width="400"
+                            materialDesign:HintAssist.Hint="Ngày/Tháng/Năm" 
+                            Margin="0,35,100,0"
+                            Foreground="{StaticResource SecondaryLight}"
+                            FontSize="16"
+                            BorderBrush="{StaticResource SecondaryLight}">
 
                             <DatePicker.Resources>
                                 <Style
@@ -186,14 +175,15 @@
                     <Grid
                         Grid.Row="4">
                         <Button
-                        Style="{StaticResource MaterialDesignRaisedLightButton}"
-                        Height="40"
-                        Width="130"
-                        Background="{StaticResource PrimaryLight}"
-                        materialDesign:ButtonAssist.CornerRadius="5"
-                        BorderBrush="Transparent"
-                        ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="140,26,230,0">
+                            x:Name="btUpLoad"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                            Height="40"
+                            Width="130"
+                            Background="{StaticResource PrimaryLight}"
+                            materialDesign:ButtonAssist.CornerRadius="5"
+                            BorderBrush="Transparent"
+                            ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="140,26,230,0">
                             <TextBlock
                                 Text="TẢI LÊN" 
                                 FontSize="17" 
@@ -206,6 +196,7 @@
                         </Button>
                     </Grid>
                     <Button
+                        x:Name="btExit"
                         Grid.Row="5"
                         BorderThickness="2"
                         Height="40"
