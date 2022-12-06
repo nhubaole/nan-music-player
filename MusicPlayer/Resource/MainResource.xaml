@@ -8,4 +8,46 @@
     <viewmodel:SearchVM x:Key="SearchVM"></viewmodel:SearchVM>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
 
+    <TextBlock
+            x:Key="singerName"
+            Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+            Foreground="#190b47"
+            Width="120" Height="20"
+            FontSize="15"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            FontWeight="Regular"
+            Margin="85,25,0,0"/>
+    <TextBlock
+            x:Key="songName"
+            Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+            Foreground="#190b47"
+            Width="120" Height="30"
+            FontSize="20"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            FontWeight="SemiBold"
+            Margin="85,-20,0,0"/>
+    <Image x:Key="imgURL"/>
+    <TextBlock
+            x:Key="position"
+            Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+            Foreground="#190b47"
+            Width="40" Height="30"
+            FontSize="15"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="465,5,0,0"/>
+    <MediaElement x:Key="audio" Width="0" Height="0" LoadedBehavior="Manual"/>
+    <TextBlock
+            x:Key="duration"
+            Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+            Text="3:00"
+            Foreground="#190b47"
+            Width="40" Height="30"
+            FontSize="15"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="735,5,0,0"/>
+
 </ResourceDictionary>
