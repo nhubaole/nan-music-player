@@ -76,7 +76,9 @@ namespace MusicPlayer.UserControls
 
         public static void DownloadFileToPlay(SONG selectedSong)
         {
-            string path = selectedSong.SAVEPATH;
+            
+            string path = AppDomain.CurrentDomain.BaseDirectory + "Song\\" + selectedSong.SONGNAME + ".mp3";
+            selectedSong.SAVEPATH = path;
             if (!File.Exists(path))
             {
                 WebClient wb = new WebClient();
