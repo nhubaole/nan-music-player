@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1fd0f2e116634eb28282f8172246a322" Name="Diagram1">
+        <EntityTypeShape EntityType="NANDBModel.FEATUREDSONG" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NANDBModel.NEWSONG" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NANDBModel.SONG" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="NANDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NANDBModel.USER" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="NANDBModel.FK_FEATURED_SONG" ManuallyRouted="false" />
+        <AssociationConnector Association="NANDBModel.FK_NEW_SONG" ManuallyRouted="false" />
+        <AssociationConnector Association="NANDBModel.LASTEST" ManuallyRouted="false" />
+        <AssociationConnector Association="NANDBModel.LIKES" ManuallyRouted="false" />
+        <AssociationConnector Association="NANDBModel.UPLOAD" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
