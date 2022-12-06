@@ -11,11 +11,18 @@ namespace MusicPlayer.ViewModel
     internal class ProfileVM : BaseViewModel
     {
         public ICommand handleChangePasswordCommand { get; set; }
+        public ICommand handleProfileCommand { get; set; }
         public ProfileVM()
         {
-            handleChangePasswordCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
+            handleChangePasswordCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
                 PasswordChange passwordChange = new PasswordChange();
                 passwordChange.ShowDialog();
+            });
+            handleProfileCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+
+
             });
         }
     }

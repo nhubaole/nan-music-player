@@ -19,24 +19,67 @@ namespace MusicPlayer.ViewModel
             SearchCommand = new RelayCommand<object>((p) => { return true; }, Search);
             CurrentView = new HomeVM();
 
-            handleLogOutCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) => {
-                if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            LoadedWindowCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) => {
+                try
                 {
-                    var w = p as Window;
-                    if (w != null)
+                    IsLoaded = true;
+                    if (p == null) return;
+                    p.Hide();
+
+                    Login login = new Login();
+                    login.ShowDialog();
+
+                    if (login.DataContext == null) return;
+                    var loginVM = login.DataContext as LoginViewModel;
+                    if (loginVM.IsLogin == true)
                     {
-                        Login login = new Login();
-                        login.Show();
-                        w.Close();
+                        p.Show();
                     }
+                    else
+                    {
+                        p.Close();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             });
+
+             handleLogOutCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) => {
+                if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                     var w = p as Window;
+                     if (w != null)
+                     {
+                         Login login = new Login();
+                         p.Hide();
+                         login.ShowDialog();
+                         if (login.DataContext == null) return;
+                         var loginVM = login.DataContext as LoginViewModel;
+                         if (loginVM.IsLogin == true)
+                         {
+                             p.Show();
+                         }
+                         else
+                         {
+                             p.Close();
+                         }
+                        
+                     }
+                 }
+            });
+   
         }
 
-        public object CurrentView { 
+        public object CurrentView
+        {
             get => _currentView;
             set { _currentView = value; OnPropertyChanged(); }
         }
+        public bool IsLoaded  = false;
+        public ICommand LoadedWindowCommand { get; set; }
 
         public ICommand HomeCommand { get; set; }
         public ICommand LibraryCommand { get; set; }

@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:MusicPlayer" 
+        xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
+        
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
         mc:Ignorable="d"
         Title="Upload" 
@@ -13,7 +15,11 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
+        Name="uploadWindow"
         Background="Transparent">
+    <Window.DataContext>
+        <vm:UploadVM/>
+    </Window.DataContext>
     <Grid>
         <Border CornerRadius="40" Background="{StaticResource SecondaryDark}"/>
         <Grid>
@@ -182,6 +188,8 @@
                             Background="{StaticResource PrimaryLight}"
                             materialDesign:ButtonAssist.CornerRadius="5"
                             BorderBrush="Transparent"
+                            Command="{Binding UploadSongCommand}"
+                            CommandParameter="{Binding ElementName=uploadWindow}"
                             ToolTip="MaterialDesignRaisedLightButton with Round Corners"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="140,26,230,0">
                             <TextBlock
@@ -208,6 +216,8 @@
                         FontWeight="SemiBold"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Command="{Binding CloseUploadSongCommand}"
+                        CommandParameter="{Binding ElementName=uploadWindow}"
                         Margin="140,5,232,-12" Panel.ZIndex="-1" />
                 </Grid>
             </Grid>

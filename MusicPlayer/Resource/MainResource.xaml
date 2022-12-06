@@ -6,6 +6,8 @@
     <viewmodel:LibraryVM x:Key="LibraryVM"></viewmodel:LibraryVM>
     <viewmodel:ProfileVM x:Key="ProfileVM"></viewmodel:ProfileVM>
     <viewmodel:SearchVM x:Key="SearchVM"></viewmodel:SearchVM>
+    <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
+
     <TextBlock
             x:Key="singerName"
             Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
