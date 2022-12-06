@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:MusicPlayer" 
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
+        xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
         mc:Ignorable="d"
         Title="Infor" 
         Height="520" 
@@ -13,7 +14,11 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        Background="Transparent">
+        Background="Transparent"
+        Name="inforWindow">
+    <Window.DataContext>
+        <vm:InforVM/>
+    </Window.DataContext>
     <Grid>
         <Border CornerRadius="40" Background="{StaticResource SecondaryDark}"/>
         <Grid>
@@ -192,6 +197,8 @@
                         Content="THOÁT"
                         FontSize="18"
                         FontWeight="Bold"
+                        Command="{Binding ToMainCommand}"
+                        CommandParameter="{Binding ElementName=inforWindow}"
                         Foreground="{StaticResource PrimaryLight}"
                         Height="40"
                         materialDesign:ButtonAssist.CornerRadius="5"
@@ -206,3 +213,6 @@
 
     </Grid>
 </Window>
+    
+
+   

@@ -8,9 +8,10 @@
              mc:Ignorable="d" 
              xmlns:uc="clr-namespace:MusicPlayer.UserControls"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="592" d:DesignWidth="944">
+             d:DesignHeight="592" d:DesignWidth="944"
+             Name="ucLibrary">
     <UserControl.DataContext>
-        <vm:LibraryVM></vm:LibraryVM>
+        <vm:LibraryVM/>
     </UserControl.DataContext>
     <Grid>
         <Border CornerRadius="0,0,40,0" Background="{StaticResource SecondaryDark}">
@@ -76,13 +77,15 @@
                                 BorderBrush="Transparent"
                                 Background="{StaticResource PrimaryLight}"
                                 HorizontalAlignment="Left"
-                                materialDesign:ButtonAssist.CornerRadius="5">
+                                materialDesign:ButtonAssist.CornerRadius="5"
+                                Command="{Binding ToUploadCommand}"
+                                CommandParameter="{Binding ElementName=ucLibrary}">
                             <Grid  Height="74"
                                         Width="150"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center">
                                 <materialDesign:PackIcon Kind="Upload" Margin="32,-2,0,0" Foreground="{StaticResource PrimaryDark}" VerticalAlignment="Center" Width="20" Height="20"></materialDesign:PackIcon>
-                                <TextBlock Margin="60,0,0,5" VerticalAlignment="Center" FontSize="18" Foreground="{StaticResource PrimaryDark}">Tải lên</TextBlock>
+                                <TextBlock Margin="60,0,0,28" VerticalAlignment="Bottom" FontSize="18" Foreground="{StaticResource PrimaryDark}">Tải lên</TextBlock>
                             </Grid>
                         </Button>
                     </Grid>

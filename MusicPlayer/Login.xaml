@@ -12,8 +12,13 @@
         Width="800"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
+        xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
         WindowStyle="None"
-        Background="Transparent">
+        Background="Transparent"
+        Name="loginWindow">
+    <Window.DataContext>
+        <vm:LoginViewModel/>
+    </Window.DataContext>
     <Grid>
         <Border CornerRadius="40" >
             <Border.Background>
@@ -146,13 +151,14 @@
                             Style="{StaticResource MaterialDesignRaisedButton}"
                             Height="40"
                             Width="150"
+                            Command="{Binding LoginCommand}"
+                            CommandParameter="{Binding ElementName= loginWindow}"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             BorderBrush="Transparent"
                             materialDesign:ButtonAssist.CornerRadius="5"
                             ToolTip="MaterialDesignRaisedButton with Round Corners"
                             Background="{StaticResource PrimaryLight}"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" 
                             >
                             <TextBlock
                               Height="30"
@@ -167,6 +173,8 @@
                         <Button
                             x:Name="btSignUp"
                             Width="150"
+                            Command="{Binding ToSignUpCommand}"
+                            CommandParameter="{Binding ElementName=loginWindow}"
                             Background="Transparent"
                             BorderBrush="Transparent"
                             VerticalAlignment="Center"
