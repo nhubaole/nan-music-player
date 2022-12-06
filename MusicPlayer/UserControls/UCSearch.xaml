@@ -106,10 +106,10 @@
                                                     Height="80"
                                                     HorizontalAlignment="Left">
                                                     <Border.Background>
-                                                        <ImageBrush x:Name="imgURl" ImageSource="{Binding ImageURL}"></ImageBrush>
+                                                        <ImageBrush ImageSource="{Binding IMAGEURL}"></ImageBrush>
                                                     </Border.Background>
                                                 </Border>
-                                                <TextBlock Text="{Binding SongName}" 
+                                                <TextBlock Text="{Binding SONGNAME}" 
                                                         FontSize="15" 
                                                         Foreground="{StaticResource PrimaryLight}"
                                                         FontWeight="Medium"
@@ -117,7 +117,7 @@
                                                         HorizontalAlignment="Left"
                                                         Margin="0,5,0,0">
                                                 </TextBlock>
-                                                <TextBlock Text="{Binding SingerName}" 
+                                                <TextBlock Text="{Binding SINGERNAME}" 
                                                         FontSize="12" 
                                                         Foreground="{StaticResource PrimaryMid}"
                                                         FontWeight="Medium"

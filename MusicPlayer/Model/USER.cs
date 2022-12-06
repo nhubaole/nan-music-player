@@ -12,33 +12,30 @@ namespace MusicPlayer.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class SONG
+    public partial class USER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SONG()
+        public USER()
         {
-            this.USERS = new HashSet<USER>();
-            this.USERS1 = new HashSet<USER>();
-            this.USERS2 = new HashSet<USER>();
+            this.SONGs = new HashSet<SONG>();
+            this.SONGs1 = new HashSet<SONG>();
+            this.SONGs2 = new HashSet<SONG>();
         }
     
-        public int SONGID { get; set; }
-        public string SONGNAME { get; set; }
-        public string SINGERNAME { get; set; }
-        public string SONGURL { get; set; }
-        public string DOWNLOADURL { get; set; }
-        public string IMAGEURL { get; set; }
-        public string SAVEPATH { get; set; }
-        public Nullable<double> DURATION { get; set; }
-        public Nullable<double> POSITION { get; set; }
+        public int USERID { get; set; }
+        public string FULLNAME { get; set; }
+        public string USERNAME { get; set; }
+        public string PASS { get; set; }
+        public string EMAIL { get; set; }
+        public string PHONE { get; set; }
+        public Nullable<System.DateTime> DOB { get; set; }
+        public string SEX { get; set; }
     
-        public virtual FEATUREDSONG FEATUREDSONG { get; set; }
-        public virtual NEWSONG NEWSONG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USER> USERS { get; set; }
+        public virtual ICollection<SONG> SONGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USER> USERS1 { get; set; }
+        public virtual ICollection<SONG> SONGs1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USER> USERS2 { get; set; }
+        public virtual ICollection<SONG> SONGs2 { get; set; }
     }
 }

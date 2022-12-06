@@ -32,55 +32,55 @@ namespace MusicPlayer.UserControls
             
         }
 
-        static Song selectedSong;
+        static SONG selectedSong;
 
-        public static Song SelectedSong
+        public static SONG SelectedSong
         {
             get => selectedSong;
             set
             {
                 selectedSong = value;
                 var singerName = Application.Current.TryFindResource("singerName") as TextBlock;
-                singerName.Text = selectedSong.SingerName;
+                singerName.Text = selectedSong.SINGERNAME;
 
                 var songName = Application.Current.TryFindResource("songName") as TextBlock;
-                songName.Text = selectedSong.SongName;
+                songName.Text = selectedSong.SONGNAME;
 
                 var imgURL = Application.Current.TryFindResource("imgURL") as Image;
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
-                bitmapImage.UriSource = new Uri(selectedSong.ImageURL); 
+                bitmapImage.UriSource = new Uri(selectedSong.IMAGEURL); 
                 bitmapImage.EndInit();
                 imgURL.Source = bitmapImage;
 
                 DownloadFileToPlay(selectedSong);
 
                 audio = Application.Current.TryFindResource("audio") as MediaElement;
-                audio.Source = new Uri(selectedSong.SavePath);
+                audio.Source = new Uri(selectedSong.SAVEPATH);
                 
                 audio.MediaOpened += Audio_MediaOpened;
                 audio.Play();
 
-                selectedSong.Position = 0;
+                selectedSong.POSITION = 0;
                 var position = Application.Current.TryFindResource("position") as TextBlock;
-                position.Text = new TimeSpan(0, (int)(selectedSong.Position / 60), (int)(selectedSong.Position % 60)).ToString(@"mm\:ss"); 
+                position.Text = new TimeSpan(0, (int)(selectedSong.POSITION / 60), (int)(selectedSong.POSITION % 60)).ToString(@"mm\:ss"); 
             }
         }
 
         private static void Audio_MediaOpened(object sender, RoutedEventArgs e)
         {
-            selectedSong.Duration = audio.NaturalDuration.TimeSpan.TotalSeconds;
+            selectedSong.DURATION = audio.NaturalDuration.TimeSpan.TotalSeconds;
             var duration = Application.Current.TryFindResource("duration") as TextBlock;
-            duration.Text = new TimeSpan(0, (int)(selectedSong.Duration / 60), (int)(selectedSong.Duration % 60)).ToString(@"mm\:ss");
+            duration.Text = new TimeSpan(0, (int)(selectedSong.DURATION / 60), (int)(selectedSong.DURATION % 60)).ToString(@"mm\:ss");
         }
 
-        public static void DownloadFileToPlay(Song selectedSong)
+        public static void DownloadFileToPlay(SONG selectedSong)
         {
-            string path = selectedSong.SavePath;
+            string path = selectedSong.SAVEPATH;
             if (!File.Exists(path))
             {
                 WebClient wb = new WebClient();
-                wb.DownloadFile(selectedSong.DownloadURL, path);
+                wb.DownloadFile(selectedSong.DOWNLOADURL, path);
             }
         }
     }

@@ -15,7 +15,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using xNet;
 
 
 namespace MusicPlayer.UserControls
@@ -25,7 +24,7 @@ namespace MusicPlayer.UserControls
     /// </summary>
     public partial class UCLibrary : UserControl
     {
-        public static ObservableCollection<Song> listLastestSong = new ObservableCollection<Song>();
+        public static ObservableCollection<SONG> listLastestSong = new ObservableCollection<SONG>();
         public UCLibrary()
         {
             InitializeComponent();
