@@ -109,17 +109,8 @@
         <ContentControl Content="{StaticResource position}"/>
         <ContentControl Content="{StaticResource  audio}"></ContentControl>
         <ContentControl Content="{StaticResource duration}"/>
-
-        <Slider 
-            x:Name="slPlay"
-            Minimum="0" 
-            Maximum="50"
-            Value="35" 
-            HorizontalAlignment="Left" 
-            Margin="510,0,0,0" 
-            Width="220" 
-            VerticalAlignment="Center" 
-            Foreground="{StaticResource SecondaryDark}"/>
+        <ContentControl Content="{StaticResource slPlay}"></ContentControl>
+        
         <materialDesign:PackIcon Kind="VolumeHigh" Width ="30" Height="30"  Margin="780,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="{StaticResource SecondaryDark}" />
         <Slider 
             x:Name="slVolume"

@@ -49,5 +49,15 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Left"
             Margin="735,5,0,0"/>
+    <Slider 
+            x:Key="slPlay"
+            Minimum="0" 
+            Maximum="50"
+            Value="35" 
+            HorizontalAlignment="Left" 
+            Margin="510,0,0,0" 
+            Width="220" 
+            VerticalAlignment="Center" 
+            Foreground="#190b47"/>
 
 </ResourceDictionary>
