@@ -168,14 +168,13 @@
                     <Grid
                         Grid.Row="5">
                         <Button
-                            x:Name="btDowload"
+                            x:Name="btnDownload"
                             Style="{StaticResource MaterialDesignRaisedLightButton}"
                             Height="40"
                             Background="{StaticResource PrimaryLight}"
                             BorderBrush="Transparent"
+                            Click="btnDownload_Click"
                             materialDesign:ButtonAssist.CornerRadius="5"
-                            ToolTip="MaterialDesignRaisedLightButton with Round Corners"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                             Margin="138,15,195,10">
                             <TextBlock
                                 Text="TẢI XUỐNG" 
