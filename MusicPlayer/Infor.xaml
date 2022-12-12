@@ -38,11 +38,13 @@
                 <Border
                     Width="200"
                     Height="200"
-                    Margin="50,70,50,140"
-                    CornerRadius="30"
-                    Background="{StaticResource SecondaryLight}">
+                    Margin="50,82,50,198"
+                    CornerRadius="30">
+                    <Border.Background>
+                        <ImageBrush x:Name="img"></ImageBrush>
+                    </Border.Background>
                 </Border>
-                <Grid Grid.Column="1" Margin="10,30,-10,0">
+                <Grid Margin="290,30,10,0" Grid.ColumnSpan="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"></RowDefinition>
                         <RowDefinition Height="70"></RowDefinition>
@@ -76,6 +78,7 @@
                         x:Name="tblName2"
                         Grid.Row="1"
                         Text="Tên ở đâyyyyyyyyyyyyyy"
+                        TextWrapping="Wrap"
                         FontWeight="Bold"
                         Foreground="{StaticResource PrimaryMid}"
                         FontSize="20"
@@ -123,7 +126,7 @@
                             Foreground="{StaticResource PrimaryMid}"
                             FontSize="17"
                             Margin="0,33,0,0"/>
-                        <TextBlock
+                        <!--<TextBlock
                             x:Name="tblDay1"
                             Grid.Column="1"
                             Text="Ngày phát hành"
@@ -141,9 +144,9 @@
                             FontSize="17"
                             Height="40"
                             Margin="0,33,0,0">
-                        </TextBlock>
+                        </TextBlock>-->
                     </Grid>
-                    <ToggleButton
+                    <!--<ToggleButton
                         Grid.Row="4"
                         Height="35"
                         Width="35"
@@ -161,7 +164,7 @@
                         FontSize="18"
                         FontWeight="Bold"
                         Foreground="#ff5252" 
-                        Margin="50,4,0,-4" />
+                        Margin="50,4,0,-4" />-->
                     <Grid
                         Grid.Row="5">
                         <Button
