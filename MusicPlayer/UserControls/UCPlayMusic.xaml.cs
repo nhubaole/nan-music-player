@@ -32,9 +32,12 @@ namespace MusicPlayer.UserControls
         public static BackgroundWorker bw;
         public static Slider sliderPlay = Application.Current.TryFindResource("slPlay") as Slider;
         public static TextBlock position = Application.Current.TryFindResource("position") as TextBlock;
+        public static TextBlock duration = Application.Current.TryFindResource("duration") as TextBlock;
         public static ToggleButton btnPlay = Application.Current.TryFindResource("btnPlay") as ToggleButton;
         public static Button btnPrev = Application.Current.TryFindResource("btnPrev") as Button;
         public static Button btnNext = Application.Current.TryFindResource("btnNext") as Button;
+        public static ToggleButton btnRepeat = Application.Current.TryFindResource("btnRepeat") as ToggleButton;
+        public static ToggleButton btnRandom = Application.Current.TryFindResource("btnRandom") as ToggleButton;
         public UCPlayMusic()
         {
             InitializeComponent();
@@ -94,6 +97,26 @@ namespace MusicPlayer.UserControls
             selectedSong.POSITION = audio.Position.TotalSeconds;
             sliderPlay.Value = (double)selectedSong.POSITION;
             position.Text = new TimeSpan(0, (int)(selectedSong.POSITION / 60), (int)(selectedSong.POSITION % 60)).ToString(@"mm\:ss");
+            if(position.Text == duration.Text)
+            {
+                if(btnRepeat.IsChecked == true)
+                {
+                    SelectedSong = selectedSong;
+                    return;
+                }
+                if(btnRandom.IsChecked == true)
+                {
+                    currentList.SelectedItem = currentList.Items[RandomSong(currentList.Items.Count)];
+                    return;
+                }
+                currentList.SelectedItem = nextSong;
+            }
+        }
+
+        public static int RandomSong(int length)
+        {
+            Random random = new Random();
+            return random.Next(0, length - 1);
         }
 
         static SONG selectedSong;
@@ -154,7 +177,6 @@ namespace MusicPlayer.UserControls
             bw.ProgressChanged += Bw_ProgressChanged;
             bw.DoWork += Bw_DoWork;
             selectedSong.DURATION = audio.NaturalDuration.TimeSpan.TotalSeconds;
-            var duration = Application.Current.TryFindResource("duration") as TextBlock;
             duration.Text = new TimeSpan(0, (int)(selectedSong.DURATION / 60), (int)(selectedSong.DURATION % 60)).ToString(@"mm\:ss");
             sliderPlay.Maximum = (double)selectedSong.DURATION;
 

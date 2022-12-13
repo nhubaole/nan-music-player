@@ -14,46 +14,11 @@
     </UserControl.DataContext>
     <Grid>
         <Border CornerRadius ="40,0,40,0" Background= "{ StaticResource PrimaryLight}"/>
-
-        <Button
-          x:Name="btRepeat"
-          Style="{StaticResource MaterialDesignIconButton}"
-          Background="Transparent"
-          Width="40" Height="40" 
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-          Margin="220,0,0,0">
-            <materialDesign:PackIcon
-                Kind="Repeat" 
-                Width="30" 
-                Height="30" 
-                RenderTransformOrigin="0.5,1.2"  
-                HorizontalAlignment="Left"   
-                VerticalAlignment="Center"
-                Foreground="{StaticResource SecondaryDark}"/>
-        </Button>
+        <ContentControl Content="{StaticResource btnRepeat}"></ContentControl>
         <ContentControl Content="{StaticResource btnPrev}"></ContentControl>
-
         <ContentControl Content="{StaticResource btnPlay}"></ContentControl>
         <ContentControl Content="{StaticResource btnNext}"></ContentControl>
-
-
-        <Button
-            x:Name="btShuffleVariant"
-          Style="{StaticResource MaterialDesignIconButton}"
-          Background="Transparent"
-          Width="40" Height="40" 
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-          Margin="420,0,0,0">
-            <materialDesign:PackIcon
-                Kind="ShuffleVariant" 
-                Width="30" 
-                Height="30" 
-                HorizontalAlignment="Left"   
-                VerticalAlignment="Center"
-                Foreground="{StaticResource SecondaryDark}"/>
-        </Button>
+        <ContentControl Content="{StaticResource btnRandom}"></ContentControl>
         
         <Border Height="50" Width="50" HorizontalAlignment="Left" Margin="25,0,0,0 " CornerRadius="10,10,10,10">
             <ContentPresenter Content="{StaticResource imgURL}" ></ContentPresenter>

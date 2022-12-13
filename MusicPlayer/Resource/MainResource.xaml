@@ -105,6 +105,28 @@
                 VerticalAlignment="Center"
                 Foreground="{StaticResource SecondaryDark}"/>
     </Button>
+    <ToggleButton
+          x:Key="btnRepeat"
+          Content="{materialDesign:PackIcon Kind=Repeat, Size=30}"
+          Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+          ToolTip="MaterialDesignFlatPrimaryToggleButton"
+          Foreground="{StaticResource SecondaryDark}"
+          Background="{StaticResource SecondaryLight}"
+          Width="40" Height="40"
+          VerticalAlignment="Center"
+          HorizontalAlignment="Left"
+          Margin="220,0,0,0"/>
+    <ToggleButton
+          x:Key="btnRandom"
+          Content="{materialDesign:PackIcon Kind=ShuffleVariant, Size=30}"
+          Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+          ToolTip="MaterialDesignFlatPrimaryToggleButton"
+          Foreground="{StaticResource SecondaryDark}"
+          Background="{StaticResource SecondaryLight}"
+          Width="40" Height="40" 
+          VerticalAlignment="Center"
+          HorizontalAlignment="Left"
+          Margin="420,0,0,0"/>
 
 
 </ResourceDictionary>
