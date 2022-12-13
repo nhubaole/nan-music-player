@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NANDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NANDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="FEATUREDSONG">
           <Key>
             <PropertyRef Name="SONGID" />
@@ -64,6 +64,18 @@
           </Key>
           <Property Name="SONGID" Type="int" Nullable="false" />
           <Property Name="USERID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UPLOADSONG">
+          <Key>
+            <PropertyRef Name="SONGID" />
+          </Key>
+          <Property Name="SONGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SONGNAME" Type="nvarchar(max)" />
+          <Property Name="SINGERNAME" Type="nvarchar(max)" />
+          <Property Name="IMAGEPATH" Type="varchar(max)" />
+          <Property Name="SAVEPATH" Type="nvarchar(max)" />
+          <Property Name="DURATION" Type="float" />
+          <Property Name="POSITION" Type="float" />
         </EntityType>
         <EntityType Name="USERS">
           <Key>
@@ -151,10 +163,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UPLOAD_SONG">
-          <End Role="SONG" Type="Self.SONG" Multiplicity="1" />
+          <End Role="UPLOADSONG" Type="Self.UPLOADSONG" Multiplicity="1" />
           <End Role="UPLOAD" Type="Self.UPLOAD" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SONG">
+            <Principal Role="UPLOADSONG">
               <PropertyRef Name="SONGID" />
             </Principal>
             <Dependent Role="UPLOAD">
@@ -182,6 +194,7 @@
           <EntitySet Name="SONG" EntityType="Self.SONG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UPLOAD" EntityType="Self.UPLOAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UPLOADSONG" EntityType="Self.UPLOADSONG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_FEATURED_SONG" Association="Self.FK_FEATURED_SONG">
             <End Role="SONG" EntitySet="SONG" />
@@ -208,7 +221,7 @@
             <End Role="NEWSONG" EntitySet="NEWSONG" />
           </AssociationSet>
           <AssociationSet Name="FK_UPLOAD_SONG" Association="Self.FK_UPLOAD_SONG">
-            <End Role="SONG" EntitySet="SONG" />
+            <End Role="UPLOADSONG" EntitySet="UPLOADSONG" />
             <End Role="UPLOAD" EntitySet="UPLOAD" />
           </AssociationSet>
           <AssociationSet Name="FK_UPLOAD_USER" Association="Self.FK_UPLOAD_USER">
@@ -216,24 +229,51 @@
             <End Role="UPLOAD" EntitySet="UPLOAD" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NANDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="NANDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FEATUREDSONGs" EntityType="NANDBModel.FEATUREDSONG" />
+          <EntitySet Name="NEWSONGs" EntityType="NANDBModel.NEWSONG" />
+          <EntitySet Name="SONGs" EntityType="NANDBModel.SONG" />
+          <EntitySet Name="sysdiagrams" EntityType="NANDBModel.sysdiagram" />
+          <EntitySet Name="UPLOADSONGs" EntityType="NANDBModel.UPLOADSONG" />
+          <EntitySet Name="USERS" EntityType="NANDBModel.USER" />
+          <AssociationSet Name="FK_FEATURED_SONG" Association="NANDBModel.FK_FEATURED_SONG">
+            <End Role="SONG" EntitySet="SONGs" />
+            <End Role="FEATUREDSONG" EntitySet="FEATUREDSONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NEW_SONG" Association="NANDBModel.FK_NEW_SONG">
+            <End Role="SONG" EntitySet="SONGs" />
+            <End Role="NEWSONG" EntitySet="NEWSONGs" />
+          </AssociationSet>
+          <AssociationSet Name="LASTEST" Association="NANDBModel.LASTEST">
+            <End Role="SONG" EntitySet="SONGs" />
+            <End Role="USER" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="LIKES" Association="NANDBModel.LIKES">
+            <End Role="SONG" EntitySet="SONGs" />
+            <End Role="USER" EntitySet="USERS" />
+          </AssociationSet>
+          <AssociationSet Name="UPLOAD" Association="NANDBModel.UPLOAD">
+            <End Role="UPLOADSONG" EntitySet="UPLOADSONGs" />
+            <End Role="USER" EntitySet="USERS" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="FEATUREDSONG">
           <Key>
             <PropertyRef Name="SONGID" />
           </Key>
           <Property Name="SONGID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="SONG" Relationship="Self.FK_FEATURED_SONG" FromRole="FEATUREDSONG" ToRole="SONG" />
+          <NavigationProperty Name="SONG" Relationship="NANDBModel.FK_FEATURED_SONG" FromRole="FEATUREDSONG" ToRole="SONG" />
         </EntityType>
         <EntityType Name="NEWSONG">
           <Key>
             <PropertyRef Name="SONGID" />
           </Key>
           <Property Name="SONGID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="SONG" Relationship="Self.FK_NEW_SONG" FromRole="NEWSONG" ToRole="SONG" />
+          <NavigationProperty Name="SONG" Relationship="NANDBModel.FK_NEW_SONG" FromRole="NEWSONG" ToRole="SONG" />
         </EntityType>
         <EntityType Name="SONG">
           <Key>
@@ -248,21 +288,33 @@
           <Property Name="SAVEPATH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DURATION" Type="Double" />
           <Property Name="POSITION" Type="Double" />
-          <NavigationProperty Name="FEATUREDSONG" Relationship="Self.FK_FEATURED_SONG" FromRole="SONG" ToRole="FEATUREDSONG" />
-          <NavigationProperty Name="NEWSONG" Relationship="Self.FK_NEW_SONG" FromRole="SONG" ToRole="NEWSONG" />
-          <NavigationProperty Name="USERS" Relationship="Self.LASTEST" FromRole="SONG" ToRole="USERS" />
-          <NavigationProperty Name="USERS1" Relationship="Self.LIKES" FromRole="SONG" ToRole="USERS" />
-          <NavigationProperty Name="USERS2" Relationship="Self.UPLOAD" FromRole="SONG" ToRole="USERS" />
+          <NavigationProperty Name="FEATUREDSONG" Relationship="NANDBModel.FK_FEATURED_SONG" FromRole="SONG" ToRole="FEATUREDSONG" />
+          <NavigationProperty Name="NEWSONG" Relationship="NANDBModel.FK_NEW_SONG" FromRole="SONG" ToRole="NEWSONG" />
+          <NavigationProperty Name="USERS" Relationship="NANDBModel.LASTEST" FromRole="SONG" ToRole="USER" />
+          <NavigationProperty Name="USERS1" Relationship="NANDBModel.LIKES" FromRole="SONG" ToRole="USER" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UPLOADSONG">
+          <Key>
+            <PropertyRef Name="SONGID" />
+          </Key>
+          <Property Name="SONGID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SONGNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SINGERNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGEPATH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SAVEPATH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DURATION" Type="Double" />
+          <Property Name="POSITION" Type="Double" />
+          <NavigationProperty Name="USERS" Relationship="NANDBModel.UPLOAD" FromRole="UPLOADSONG" ToRole="USER" />
         </EntityType>
         <EntityType Name="USER">
           <Key>
@@ -276,13 +328,13 @@
           <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DOB" Type="DateTime" Precision="3" />
           <Property Name="SEX" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SONGs" Relationship="Self.LASTEST" FromRole="USERS" ToRole="SONG" />
-          <NavigationProperty Name="SONGs1" Relationship="Self.LIKES" FromRole="USERS" ToRole="SONG" />
-          <NavigationProperty Name="SONGs2" Relationship="Self.UPLOAD" FromRole="USERS" ToRole="SONG" />
+          <NavigationProperty Name="SONGs" Relationship="NANDBModel.LASTEST" FromRole="USER" ToRole="SONG" />
+          <NavigationProperty Name="SONGs1" Relationship="NANDBModel.LIKES" FromRole="USER" ToRole="SONG" />
+          <NavigationProperty Name="UPLOADSONGs" Relationship="NANDBModel.UPLOAD" FromRole="USER" ToRole="UPLOADSONG" />
         </EntityType>
         <Association Name="FK_FEATURED_SONG">
-          <End Role="SONG" Type="Self.SONG" Multiplicity="1" />
-          <End Role="FEATUREDSONG" Type="Self.FEATUREDSONG" Multiplicity="0..1" />
+          <End Type="NANDBModel.SONG" Role="SONG" Multiplicity="1" />
+          <End Type="NANDBModel.FEATUREDSONG" Role="FEATUREDSONG" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="SONG">
               <PropertyRef Name="SONGID" />
@@ -293,8 +345,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_NEW_SONG">
-          <End Role="SONG" Type="Self.SONG" Multiplicity="1" />
-          <End Role="NEWSONG" Type="Self.NEWSONG" Multiplicity="0..1" />
+          <End Type="NANDBModel.SONG" Role="SONG" Multiplicity="1" />
+          <End Type="NANDBModel.NEWSONG" Role="NEWSONG" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="SONG">
               <PropertyRef Name="SONGID" />
@@ -305,44 +357,17 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="LASTEST">
-          <End Role="SONG" Type="Self.SONG" Multiplicity="*" />
-          <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+          <End Type="NANDBModel.SONG" Role="SONG" Multiplicity="*" />
+          <End Type="NANDBModel.USER" Role="USER" Multiplicity="*" />
         </Association>
         <Association Name="LIKES">
-          <End Role="SONG" Type="Self.SONG" Multiplicity="*" />
-          <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+          <End Type="NANDBModel.SONG" Role="SONG" Multiplicity="*" />
+          <End Type="NANDBModel.USER" Role="USER" Multiplicity="*" />
         </Association>
         <Association Name="UPLOAD">
-          <End Role="SONG" Type="Self.SONG" Multiplicity="*" />
-          <End Role="USERS" Type="Self.USER" Multiplicity="*" />
+          <End Type="NANDBModel.UPLOADSONG" Role="UPLOADSONG" Multiplicity="*" />
+          <End Type="NANDBModel.USER" Role="USER" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="NANDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="FEATUREDSONGs" EntityType="Self.FEATUREDSONG" />
-          <EntitySet Name="NEWSONGs" EntityType="Self.NEWSONG" />
-          <EntitySet Name="SONGs" EntityType="Self.SONG" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="USERS" EntityType="Self.USER" />
-          <AssociationSet Name="FK_FEATURED_SONG" Association="Self.FK_FEATURED_SONG">
-            <End Role="SONG" EntitySet="SONGs" />
-            <End Role="FEATUREDSONG" EntitySet="FEATUREDSONGs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NEW_SONG" Association="Self.FK_NEW_SONG">
-            <End Role="SONG" EntitySet="SONGs" />
-            <End Role="NEWSONG" EntitySet="NEWSONGs" />
-          </AssociationSet>
-          <AssociationSet Name="LASTEST" Association="Self.LASTEST">
-            <End Role="SONG" EntitySet="SONGs" />
-            <End Role="USERS" EntitySet="USERS" />
-          </AssociationSet>
-          <AssociationSet Name="LIKES" Association="Self.LIKES">
-            <End Role="SONG" EntitySet="SONGs" />
-            <End Role="USERS" EntitySet="USERS" />
-          </AssociationSet>
-          <AssociationSet Name="UPLOAD" Association="Self.UPLOAD">
-            <End Role="SONG" EntitySet="SONGs" />
-            <End Role="USERS" EntitySet="USERS" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -366,65 +391,78 @@
           <EntitySetMapping Name="SONGs">
             <EntityTypeMapping TypeName="NANDBModel.SONG">
               <MappingFragment StoreEntitySet="SONG">
-                <ScalarProperty Name="SONGID" ColumnName="SONGID" />
-                <ScalarProperty Name="SONGNAME" ColumnName="SONGNAME" />
-                <ScalarProperty Name="SINGERNAME" ColumnName="SINGERNAME" />
-                <ScalarProperty Name="SONGURL" ColumnName="SONGURL" />
-                <ScalarProperty Name="DOWNLOADURL" ColumnName="DOWNLOADURL" />
-                <ScalarProperty Name="IMAGEURL" ColumnName="IMAGEURL" />
-                <ScalarProperty Name="SAVEPATH" ColumnName="SAVEPATH" />
-                <ScalarProperty Name="DURATION" ColumnName="DURATION" />
                 <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+                <ScalarProperty Name="SAVEPATH" ColumnName="SAVEPATH" />
+                <ScalarProperty Name="IMAGEURL" ColumnName="IMAGEURL" />
+                <ScalarProperty Name="DOWNLOADURL" ColumnName="DOWNLOADURL" />
+                <ScalarProperty Name="SONGURL" ColumnName="SONGURL" />
+                <ScalarProperty Name="SINGERNAME" ColumnName="SINGERNAME" />
+                <ScalarProperty Name="SONGNAME" ColumnName="SONGNAME" />
+                <ScalarProperty Name="SONGID" ColumnName="SONGID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="NANDBModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UPLOADSONGs">
+            <EntityTypeMapping TypeName="NANDBModel.UPLOADSONG">
+              <MappingFragment StoreEntitySet="UPLOADSONG">
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+                <ScalarProperty Name="SAVEPATH" ColumnName="SAVEPATH" />
+                <ScalarProperty Name="IMAGEPATH" ColumnName="IMAGEPATH" />
+                <ScalarProperty Name="SINGERNAME" ColumnName="SINGERNAME" />
+                <ScalarProperty Name="SONGNAME" ColumnName="SONGNAME" />
+                <ScalarProperty Name="SONGID" ColumnName="SONGID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="USERS">
             <EntityTypeMapping TypeName="NANDBModel.USER">
               <MappingFragment StoreEntitySet="USERS">
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
-                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
-                <ScalarProperty Name="PASS" ColumnName="PASS" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
                 <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PASS" ColumnName="PASS" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="FULLNAME" ColumnName="FULLNAME" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="LASTEST" TypeName="NANDBModel.LASTEST" StoreEntitySet="LASTEST">
+            <EndProperty Name="USER">
+              <ScalarProperty Name="USERID" ColumnName="USERID" />
+            </EndProperty>
             <EndProperty Name="SONG">
               <ScalarProperty Name="SONGID" ColumnName="SONGID" />
-            </EndProperty>
-            <EndProperty Name="USERS">
-              <ScalarProperty Name="USERID" ColumnName="USERID" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="LIKES" TypeName="NANDBModel.LIKES" StoreEntitySet="LIKES">
+            <EndProperty Name="USER">
+              <ScalarProperty Name="USERID" ColumnName="USERID" />
+            </EndProperty>
             <EndProperty Name="SONG">
               <ScalarProperty Name="SONGID" ColumnName="SONGID" />
-            </EndProperty>
-            <EndProperty Name="USERS">
-              <ScalarProperty Name="USERID" ColumnName="USERID" />
             </EndProperty>
           </AssociationSetMapping>
           <AssociationSetMapping Name="UPLOAD" TypeName="NANDBModel.UPLOAD" StoreEntitySet="UPLOAD">
-            <EndProperty Name="SONG">
-              <ScalarProperty Name="SONGID" ColumnName="SONGID" />
-            </EndProperty>
-            <EndProperty Name="USERS">
+            <EndProperty Name="USER">
               <ScalarProperty Name="USERID" ColumnName="USERID" />
+            </EndProperty>
+            <EndProperty Name="UPLOADSONG">
+              <ScalarProperty Name="SONGID" ColumnName="SONGID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

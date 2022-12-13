@@ -12,30 +12,23 @@ namespace MusicPlayer.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class SONG
+    public partial class UPLOADSONG
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SONG()
+        public UPLOADSONG()
         {
             this.USERS = new HashSet<USER>();
-            this.USERS1 = new HashSet<USER>();
         }
     
         public int SONGID { get; set; }
         public string SONGNAME { get; set; }
         public string SINGERNAME { get; set; }
-        public string SONGURL { get; set; }
-        public string DOWNLOADURL { get; set; }
-        public string IMAGEURL { get; set; }
+        public string IMAGEPATH { get; set; }
         public string SAVEPATH { get; set; }
         public Nullable<double> DURATION { get; set; }
         public Nullable<double> POSITION { get; set; }
     
-        public virtual FEATUREDSONG FEATUREDSONG { get; set; }
-        public virtual NEWSONG NEWSONG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USER> USERS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USER> USERS1 { get; set; }
     }
 }
