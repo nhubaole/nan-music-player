@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:MusicPlayer" 
+         xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
         mc:Ignorable="d"
         Title="Login" 
@@ -113,7 +114,8 @@
                         FontSize="15"
                         BorderBrush="{StaticResource SecondaryLight}"    
                         Foreground="{StaticResource SecondaryLight}"
-                        Margin="40,30,0,5" Grid.ColumnSpan="2"/>
+                            Text="{Binding Username}"
+                        Margin="40,30,0,5" Grid.ColumnSpan="2" />
 
                     </Grid>
                     <Grid Grid.Row="3">
@@ -143,7 +145,14 @@
                         materialDesign:TextFieldAssist.HasClearButton="True"
                         Foreground="{StaticResource SecondaryLight}"
                         BorderBrush="{StaticResource SecondaryLight}"
-                        Margin="40,30,0,5" Grid.ColumnSpan="3"/>
+                        Margin="40,30,0,5" Grid.ColumnSpan="3">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PasswordChanged">
+                                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                                                           CommandParameter="{Binding ElementName=tbPassLogin}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </PasswordBox>
                     </Grid>
                     <Grid Grid.Row="4" Margin="0,0,0,-15">
                         <Button
