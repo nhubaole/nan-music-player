@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Threading;
+using System.Windows.Controls.Primitives;
 
 namespace MusicPlayer.UserControls
 {
@@ -26,15 +27,30 @@ namespace MusicPlayer.UserControls
     /// </summary>
     public partial class UCPlayMusic : UserControl
     {
+        public static int init = 0;
         public static MediaElement audio = Application.Current.TryFindResource("audio") as MediaElement;
         public static BackgroundWorker bw;
         public static Slider sliderPlay = Application.Current.TryFindResource("slPlay") as Slider;
         public static TextBlock position = Application.Current.TryFindResource("position") as TextBlock;
+        public static ToggleButton btnPlay = Application.Current.TryFindResource("btnPlay") as ToggleButton;
         public UCPlayMusic()
         {
             InitializeComponent();
             this.DataContext = this;
             sliderPlay.PreviewMouseUp += SliderPlay_PreviewMouseUp;
+            btnPlay.Click += BtnPlay_Click;
+        }
+
+        private void BtnPlay_Click(object sender, RoutedEventArgs e)
+        {
+            if (btnPlay.IsChecked == true)
+            {
+                audio.Play();
+            }
+            else
+            {
+                audio.Pause();
+            }
         }
 
         private void SliderPlay_PreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -89,7 +105,17 @@ namespace MusicPlayer.UserControls
 
                 audio.Source = new Uri(selectedSong.SAVEPATH);
                 audio.MediaOpened += Audio_MediaOpened;
-                audio.Play();
+                if(init == 0)
+                {
+                    audio.Pause();
+                    btnPlay.IsChecked = false;
+                    init++;
+                }
+                else
+                {
+                    audio.Play();
+                    btnPlay.IsChecked = true;
+                }
             }
         }
 

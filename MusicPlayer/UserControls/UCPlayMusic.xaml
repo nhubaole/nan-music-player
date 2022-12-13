@@ -49,23 +49,8 @@
                 VerticalAlignment="Center"
                 Foreground="{StaticResource SecondaryDark}"/>
         </Button>
-        
 
-        <Button
-            x:Name="btPlay"
-          Style="{StaticResource MaterialDesignIconButton}"
-          Background="{StaticResource SecondaryLight}"
-          Width="50" 
-          Height="50" 
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-            Margin="310,0,0,0">
-            <materialDesign:PackIcon 
-                Kind="Play"
-                Width="40"
-                Height="40" 
-                RenderTransformOrigin="0.75,1" />
-        </Button>
+        <ContentControl Content="{StaticResource btnPlay}"></ContentControl>
 
         <Button
             x:Name="btSkipNext"

@@ -43,8 +43,8 @@ namespace MusicPlayer
                         WebClient wb = new WebClient();
                         wb.DownloadFile(UCPlayMusic.SelectedSong.DOWNLOADURL, path);
                     }
+                    MessageBox.Show("Tải xuống thành công");
                 }
-                MessageBox.Show("Tải xuống thành công");
             }
             catch
             {
