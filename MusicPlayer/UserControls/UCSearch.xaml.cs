@@ -33,6 +33,7 @@ namespace MusicPlayer.UserControls
         private void lbSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UCHome.addListLastestSong(sender);
+            UCPlayMusic.CurrentList = sender as ListBox;
         }
     }
 }

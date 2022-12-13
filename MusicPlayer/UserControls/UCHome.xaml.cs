@@ -78,6 +78,7 @@ namespace MusicPlayer.UserControls
         private void lbFeaturedSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             addListLastestSong(sender);
+            UCPlayMusic.CurrentList = sender as ListBox;
         }
 
         public static void addListLastestSong(object sender)
@@ -90,11 +91,22 @@ namespace MusicPlayer.UserControls
                 UCLibrary.listLastestSong.RemoveAt(5);
             }
             UCPlayMusic.SelectedSong = song;
+
+            if (ls.SelectedIndex + 1 < ls.Items.Count)
+                UCPlayMusic.NextSong = ls.Items[ls.SelectedIndex + 1] as SONG;
+            else
+                UCPlayMusic.NextSong = null;
+
+            if (ls.SelectedIndex - 1 >= 0)
+                UCPlayMusic.PrevSong = ls.Items[ls.SelectedIndex - 1] as SONG;
+            else
+                UCPlayMusic.PrevSong = null;
         }
 
         private void lbNewSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             addListLastestSong(sender);
+            UCPlayMusic.CurrentList = sender as ListBox;
         }
     }
 }

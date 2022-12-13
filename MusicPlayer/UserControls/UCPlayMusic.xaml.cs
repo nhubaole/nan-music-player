@@ -33,12 +33,32 @@ namespace MusicPlayer.UserControls
         public static Slider sliderPlay = Application.Current.TryFindResource("slPlay") as Slider;
         public static TextBlock position = Application.Current.TryFindResource("position") as TextBlock;
         public static ToggleButton btnPlay = Application.Current.TryFindResource("btnPlay") as ToggleButton;
+        public static Button btnPrev = Application.Current.TryFindResource("btnPrev") as Button;
+        public static Button btnNext = Application.Current.TryFindResource("btnNext") as Button;
         public UCPlayMusic()
         {
             InitializeComponent();
             this.DataContext = this;
             sliderPlay.PreviewMouseUp += SliderPlay_PreviewMouseUp;
             btnPlay.Click += BtnPlay_Click;
+            btnPrev.Click += BtnPrev_Click;
+            btnNext.Click += BtnNext_Click;
+        }
+
+        private void BtnNext_Click(object sender, RoutedEventArgs e)
+        {
+            if (nextSong != null)
+            {
+                currentList.SelectedItem = nextSong;
+            }
+        }
+
+        private void BtnPrev_Click(object sender, RoutedEventArgs e)
+        {
+            if(prevSong != null)
+            {
+                currentList.SelectedItem = prevSong;
+            }
         }
 
         private void BtnPlay_Click(object sender, RoutedEventArgs e)
@@ -77,6 +97,9 @@ namespace MusicPlayer.UserControls
         }
 
         static SONG selectedSong;
+        static SONG nextSong;
+        static SONG prevSong;
+        static ListBox currentList;
 
         public static SONG SelectedSong
         {
@@ -118,6 +141,10 @@ namespace MusicPlayer.UserControls
                 }
             }
         }
+
+        public static SONG NextSong { get => nextSong; set => nextSong = value; }
+        public static SONG PrevSong { get => prevSong; set => prevSong = value; }
+        public static ListBox CurrentList { get => currentList; set => currentList = value; }
 
         private static void Audio_MediaOpened(object sender, RoutedEventArgs e)
         {

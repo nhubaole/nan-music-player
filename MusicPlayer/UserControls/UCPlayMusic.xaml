@@ -32,42 +32,11 @@
                 VerticalAlignment="Center"
                 Foreground="{StaticResource SecondaryDark}"/>
         </Button>
-        <Button
-            x:Name="btSkipPrevious"
-          Style="{StaticResource MaterialDesignIconButton}"
-          Background="Transparent"
-          Width="40" Height="40" 
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-          Margin="260,0,0,0">
-            <materialDesign:PackIcon
-                Kind="SkipPrevious" 
-                Width="40" 
-                Height="40" 
-                RenderTransformOrigin="0.75,1" 
-                HorizontalAlignment="Left"   
-                VerticalAlignment="Center"
-                Foreground="{StaticResource SecondaryDark}"/>
-        </Button>
+        <ContentControl Content="{StaticResource btnPrev}"></ContentControl>
 
         <ContentControl Content="{StaticResource btnPlay}"></ContentControl>
+        <ContentControl Content="{StaticResource btnNext}"></ContentControl>
 
-        <Button
-            x:Name="btSkipNext"
-          Style="{StaticResource MaterialDesignIconButton}"
-          Background="Transparent"
-          Width="40" Height="40" 
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-          Margin="370,0,0,0">
-            <materialDesign:PackIcon
-                Kind="SkipNext" 
-                Width="40" 
-                Height="40" 
-                HorizontalAlignment="Left"   
-                VerticalAlignment="Center"
-                Foreground="{StaticResource SecondaryDark}"/>
-        </Button>
 
         <Button
             x:Name="btShuffleVariant"
