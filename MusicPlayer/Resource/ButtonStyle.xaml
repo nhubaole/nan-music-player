@@ -71,4 +71,28 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="{x:Type ToggleButton}" x:Key="ToggleBtnStyle2" BasedOn="{StaticResource MaterialDesignIconButton}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter Property="Background" Value="{StaticResource SecondaryLight}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type ToggleButton}" x:Key="ToggleBtnStyle3" BasedOn="{StaticResource MaterialDesignIconButton}">
+        <Setter Property="Content">
+            <Setter.Value>
+                <materialDesign:PackIcon Kind="VolumeHigh" Width ="30" Height="30"/>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="true">
+                <Setter Property="Content">
+                    <Setter.Value>
+                        <materialDesign:PackIcon Kind="VolumeMute" Width ="30" Height="30"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

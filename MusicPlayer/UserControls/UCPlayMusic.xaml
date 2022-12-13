@@ -19,7 +19,6 @@
         <ContentControl Content="{StaticResource btnPlay}"></ContentControl>
         <ContentControl Content="{StaticResource btnNext}"></ContentControl>
         <ContentControl Content="{StaticResource btnRandom}"></ContentControl>
-        
         <Border Height="50" Width="50" HorizontalAlignment="Left" Margin="25,0,0,0 " CornerRadius="10,10,10,10">
             <ContentPresenter Content="{StaticResource imgURL}" ></ContentPresenter>
         </Border>
@@ -29,18 +28,9 @@
         <ContentControl Content="{StaticResource  audio}"></ContentControl>
         <ContentControl Content="{StaticResource duration}"/>
         <ContentControl Content="{StaticResource slPlay}"></ContentControl>
-        
-        <materialDesign:PackIcon Kind="VolumeHigh" Width ="30" Height="30"  Margin="780,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="{StaticResource SecondaryDark}" />
-        <Slider 
-            x:Name="slVolume"
-            Minimum="0" 
-            Maximum="50" 
-            Value="35" 
-            HorizontalAlignment="Left"
-            Margin="815,0,0,0" 
-            Width="70" 
-            VerticalAlignment="Center"
-            Foreground="{StaticResource SecondaryDark}"/>
+        <ContentControl Content="{StaticResource btnMute}"></ContentControl>
+        <ContentControl Content="{StaticResource slVolume}"></ContentControl>
+       
         <Button
               x:Name="btThreePoint"
               Style="{StaticResource MaterialDesignIconButton}"

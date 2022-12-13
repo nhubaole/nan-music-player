@@ -31,6 +31,7 @@ namespace MusicPlayer.UserControls
         public static MediaElement audio = Application.Current.TryFindResource("audio") as MediaElement;
         public static BackgroundWorker bw;
         public static Slider sliderPlay = Application.Current.TryFindResource("slPlay") as Slider;
+        public static Slider sliderVolume = Application.Current.TryFindResource("slVolume") as Slider;
         public static TextBlock position = Application.Current.TryFindResource("position") as TextBlock;
         public static TextBlock duration = Application.Current.TryFindResource("duration") as TextBlock;
         public static ToggleButton btnPlay = Application.Current.TryFindResource("btnPlay") as ToggleButton;
@@ -38,14 +39,40 @@ namespace MusicPlayer.UserControls
         public static Button btnNext = Application.Current.TryFindResource("btnNext") as Button;
         public static ToggleButton btnRepeat = Application.Current.TryFindResource("btnRepeat") as ToggleButton;
         public static ToggleButton btnRandom = Application.Current.TryFindResource("btnRandom") as ToggleButton;
+        public static ToggleButton btnMute = Application.Current.TryFindResource("btnMute") as ToggleButton;
         public UCPlayMusic()
         {
             InitializeComponent();
             this.DataContext = this;
+            sliderVolume.Maximum = 1;
+            sliderVolume.Value = 0.5;
+            sliderVolume.PreviewMouseUp += SliderVolume_PreviewMouseUp;
             sliderPlay.PreviewMouseUp += SliderPlay_PreviewMouseUp;
             btnPlay.Click += BtnPlay_Click;
             btnPrev.Click += BtnPrev_Click;
             btnNext.Click += BtnNext_Click;
+            btnMute.Click += BtnMute_Click;
+        }
+
+        private void SliderVolume_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (sliderVolume.Value == 0)
+                btnMute.IsChecked = true;
+            else
+                btnMute.IsChecked = false;
+            audio.Volume = sliderVolume.Value;
+        }
+
+        private void BtnMute_Click(object sender, RoutedEventArgs e)
+        {
+            if (btnMute.IsChecked == true)
+            {
+                audio.Volume = 0;
+            }
+            else
+            {
+                audio.Volume = sliderVolume.Value;
+            }
         }
 
         private void BtnNext_Click(object sender, RoutedEventArgs e)

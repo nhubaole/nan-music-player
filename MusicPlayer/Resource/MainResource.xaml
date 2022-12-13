@@ -108,10 +108,8 @@
     <ToggleButton
           x:Key="btnRepeat"
           Content="{materialDesign:PackIcon Kind=Repeat, Size=30}"
-          Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
-          ToolTip="MaterialDesignFlatPrimaryToggleButton"
+          Style="{StaticResource ToggleBtnStyle2}"
           Foreground="{StaticResource SecondaryDark}"
-          Background="{StaticResource SecondaryLight}"
           Width="40" Height="40"
           VerticalAlignment="Center"
           HorizontalAlignment="Left"
@@ -119,14 +117,33 @@
     <ToggleButton
           x:Key="btnRandom"
           Content="{materialDesign:PackIcon Kind=ShuffleVariant, Size=30}"
-          Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
-          ToolTip="MaterialDesignFlatPrimaryToggleButton"
+          Style="{StaticResource ToggleBtnStyle2}"
           Foreground="{StaticResource SecondaryDark}"
-          Background="{StaticResource SecondaryLight}"
           Width="40" Height="40" 
           VerticalAlignment="Center"
           HorizontalAlignment="Left"
           Margin="420,0,0,0"/>
+    <ToggleButton  x:Key="btnMute"
+                    Width ="40" 
+                    Height="40"  
+                    Margin="775,0,0,0" 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left" 
+                    Foreground="{StaticResource SecondaryDark}" 
+                    Style="{StaticResource ToggleBtnStyle3}"
+                    Background="Transparent"
+                    BorderThickness="0">
+    </ToggleButton>
+    <Slider 
+            x:Key="slVolume"
+            Minimum="0" 
+            Maximum="50" 
+            Value="35" 
+            HorizontalAlignment="Left"
+            Margin="815,0,0,0" 
+            Width="70" 
+            VerticalAlignment="Center"
+            Foreground="{StaticResource SecondaryDark}"/>
 
 
 </ResourceDictionary>
