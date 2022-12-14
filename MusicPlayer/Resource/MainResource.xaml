@@ -144,6 +144,30 @@
             Width="70" 
             VerticalAlignment="Center"
             Foreground="{StaticResource SecondaryDark}"/>
-
-
+    <ComboBox FontSize="18"
+              x:Key="cbTimer"
+              BorderBrush="{StaticResource PrimaryDark}"
+              FontWeight="SemiBold"
+              Style="{StaticResource MaterialDesignOutlinedComboBox}"
+              materialDesign:HintAssist.Foreground="{StaticResource PrimaryDark}"
+              Foreground="{StaticResource PrimaryDark}"
+              Background="{StaticResource PrimaryLight}"
+              Width="170"
+              Height="60"
+              IsEditable="True"
+              IsReadOnly="True">
+        <materialDesign:HintAssist.Hint>
+            <Grid>
+                <materialDesign:PackIcon Kind="ClockTimeFourOutline" Width="25" Height="25"></materialDesign:PackIcon>
+                <TextBlock Margin="32,0,0,0">Hẹn giờ</TextBlock>
+            </Grid>
+        </materialDesign:HintAssist.Hint>
+    </ComboBox>
+    <TextBlock x:Key="txtTimer"
+                Text="Tắt hẹn giờ" 
+                VerticalAlignment="Center"
+                FontSize="18"
+                FontWeight="Medium"
+                Margin="55,0,0,0"
+                Foreground="{StaticResource PrimaryMid}"/>
 </ResourceDictionary>

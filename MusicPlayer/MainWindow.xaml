@@ -115,7 +115,7 @@
                                     </TextBlock>
                                 </Grid>
                             </RadioButton>
-                            <RadioButton Style="{StaticResource BtnStyle}"
+                            <!--<RadioButton Style="{StaticResource BtnStyle}"
                                  Height="55">
                                 <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <materialDesign:PackIcon Kind="Poll" Width="30" Height="30" Margin="15,0,0,0" VerticalAlignment="Center"/>
@@ -126,7 +126,15 @@
                                        Margin="55,0,0,0">
                                     </TextBlock>
                                 </Grid>
-                            </RadioButton>
+                            </RadioButton>-->
+                            <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,15,0,0" >
+                                <materialDesign:PackIcon Kind="ClockTimeFourOutline" 
+                                                         Width="30" Height="30" 
+                                                         Margin="15,0,0,0" 
+                                                         Foreground="{StaticResource PrimaryMid}"
+                                                         VerticalAlignment="Center"/>
+                                <ContentControl Content="{StaticResource txtTimer}"></ContentControl>
+                            </Grid>
                         </StackPanel>
                         <Grid VerticalAlignment="Bottom" Margin="0,0,0,30">
                             <Button
