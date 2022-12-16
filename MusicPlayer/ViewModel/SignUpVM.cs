@@ -39,6 +39,7 @@ namespace MusicPlayer.ViewModel
         public string Sex { get => _sex; set { _sex = value; OnPropertyChanged();} }
 
         public string ErroMessage = null;
+        public string tempPass = null;
 
 
 
@@ -56,19 +57,13 @@ namespace MusicPlayer.ViewModel
         {
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
             {
-               
+
                 try
                 {
-                    if (p.Password.Length >= 6)
-                    {
-                        string pass = MD5Hash(Base64Encode(p.Password));
+                    tempPass = p.Password;
+                    string pass = MD5Hash(Base64Encode(p.Password));
+                    uPasswordSU = pass;
 
-                        uPasswordSU = pass;
-                    }
-                    else
-                    {
-                        ErroMessage += "Hãy kiểm tra lại mật khẩu.";
-                     }
                 }
                 catch (Exception ex)
                 {
@@ -91,13 +86,16 @@ namespace MusicPlayer.ViewModel
                     MessageBox.Show(ex.Message);
                 }
             });
+            bool flag = true;
             SelectedDateChangedCommand = new RelayCommand<DatePicker>((p) => { return true; }, (p) =>
             {
+                
                try
                 {
                     DateTime? selectedDate = p.SelectedDate;
-                    if (selectedDate.HasValue)
+                    if (selectedDate.HasValue && flag )
                     {
+                        flag = false;
                         uDoBSU = selectedDate.Value.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     }
                 }
@@ -143,9 +141,11 @@ namespace MusicPlayer.ViewModel
                         DataProvider.Ins.DB.USERS.Add(user);
                         DataProvider.Ins.DB.SaveChanges();
                         MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButton.OK);
-                        Login login = new Login();
-                        login.Show();
+                        MainWindow main = new MainWindow();
                         w.Close();
+                        main.Show();
+                        //Login login = new Login();
+                        //login.Show();
                     }
                     else
                     {
@@ -166,9 +166,12 @@ namespace MusicPlayer.ViewModel
                         var w = p as Window;
                         if (w != null)
                         {
-                            Login login = new Login();
-                            login.Show();
+                            MainWindow main = new MainWindow();
                             w.Close();
+                            main.Show();
+                            //Login login = new Login();
+                            //login.Show();
+                            //w.Close();
                         }
                     }
 
@@ -181,7 +184,7 @@ namespace MusicPlayer.ViewModel
         }
         public bool CheckAllInfor ()
         {
-            if (CheckNewUser(uNameSU) && AllIsChar(uFullNameSU) && CheckPass(uPasswordSU, uRePasswordSU) && CheckDateOfBirth(DateTime.Parse(uDoBSU)) && Sex != null)
+            if (CheckNewUser(uNameSU) && AllIsChar(uFullNameSU) && CheckLengthOPass(tempPass) && CheckPass(uPasswordSU, uRePasswordSU) && CheckDateOfBirth(DateTime.Parse(uDoBSU)) && Sex != null)
             {
                  int erro = 0;
                 if (uEmailSU != null && uEmailSU !="")
@@ -222,11 +225,18 @@ namespace MusicPlayer.ViewModel
                     ErroMessage += "Hãy kiểm tra lại họ tên của bạn.\n";
 
                 }
-                if (!CheckPass(uPasswordSU, uRePasswordSU))
+                if (!CheckLengthOPass(tempPass))
                 {
-                    ErroMessage += "Hãy xác nhận lại mật khẩu\n";
-
+                    ErroMessage += "Hãy nhập lại mật khẩu.\n";
                 }
+                else
+                {
+                    if (!CheckPass(uPasswordSU, uRePasswordSU))
+                    {
+                        ErroMessage += "Hãy xác nhận lại mật khẩu\n";
+
+                    }
+                } 
                 if ( uDoBSU == null ||  (!CheckDateOfBirth(DateTime.Parse(uDoBSU))))
                 {
                     ErroMessage += "Hãy kiểm tra lại ngày sinh của bạn.\n";
@@ -250,7 +260,7 @@ namespace MusicPlayer.ViewModel
                 {
                     char c = s[i];
                     //La so, la control, la cham cau
-                    if (char.IsDigit(c) || char.IsControl(c))
+                    if (char.IsDigit(c) || char.IsControl(c)|| IsSpecialChar (c) )
                     {
                         return false;
                     }
@@ -264,6 +274,24 @@ namespace MusicPlayer.ViewModel
             }    
           
         }
+        public bool IsSpecialChar (char s)
+        {
+            string specialchar = "|!#$%^&*()+_-?<>@~{}:',;.=+[]\"" + @"\";
+            if (specialchar.Contains(s))
+            {
+                return true;
+            }
+            else return false;
+        }
+        public bool CheckLengthOPass(string tempPass)
+        {
+            if (tempPass.Length <6)
+            {
+                return false;
+            }
+            return true;
+        }
+
         public bool CheckPass(string Pass, string Repass)
         {
             if (string.IsNullOrEmpty(Pass) || string.IsNullOrEmpty(Repass))
@@ -331,7 +359,7 @@ namespace MusicPlayer.ViewModel
         }
         public bool CheckPhoneNum(string number)
         {
-            if ((number == null) || (number.Length != 10))
+            if ((number == null) || (number.Length != 10) || number[0]!= '0')
             {
 
                 return false;

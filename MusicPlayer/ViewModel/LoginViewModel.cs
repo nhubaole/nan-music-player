@@ -35,20 +35,23 @@ namespace MusicPlayer.ViewModel
                 if (w != null)
                 {
                     SignUp signUp = new SignUp();
-                    signUp.Show();
                     w.Close();
+                    signUp.Show();
+//note
                 }
             });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return  true; }, (p) =>
             {
                 Password  = p.Password;
+                
+
             });
             void Login( Window p)
             {
                 if (p == null) return;//chekc null
                 else
                 {
-                    if (Password != null || Username != null)
+                    if (Password != null && Username != null)
                     {
                         string pass = MD5Hash(Base64Encode(Password));
                         var count = DataProvider.Ins.DB.USERS.Where(u => u.USERNAME == Username && u.PASS == pass).Count();
@@ -56,7 +59,7 @@ namespace MusicPlayer.ViewModel
                         if (count > 0)
                         {
                             IsLogin = true;
-                            p.Close();
+                            p.Close();//
                         }
                         else
                         {

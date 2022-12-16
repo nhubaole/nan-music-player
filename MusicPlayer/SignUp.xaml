@@ -90,7 +90,8 @@
                                     <ColumnDefinition Width="22*"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBox
-                                    materialDesign:HintAssist.Hint="Nhập tên người dùng (chỉ chứa chữ cái và số)" 
+                                    materialDesign:HintAssist.Hint="Nhập tên người dùng "
+                                    materialDesign:HintAssist.HelperText="Chỉ chứa số và chữ cái."
                                     FontSize="16"
                                     BorderBrush="{StaticResource SecondaryLight}"
                                     Foreground="{StaticResource SecondaryLight}"
@@ -98,7 +99,6 @@
                                     HorizontalAlignment="Left" 
                                     Width="180"
                                     Text="{Binding uNameSU}" Grid.ColumnSpan="2"
-                                    
                                     />
                             </Grid>
 
@@ -161,7 +161,8 @@
                                 </Grid.ColumnDefinitions>
                                 <PasswordBox
                                     x:Name="tbPassSignUp"
-                                    materialDesign:HintAssist.Hint="Nhập mật khẩu ít nhất 6 kí tự"
+                                    materialDesign:HintAssist.Hint="Nhập mật khẩu "
+                                    materialDesign:HintAssist.HelperText="Ít nhất 6 kí tự."
                                     materialDesign:TextFieldAssist.HasClearButton="True"
                                     FontSize="16"
                                     Foreground="{StaticResource SecondaryLight}"
@@ -263,14 +264,15 @@
 
                         <Grid Grid.Row="1">
                             <TextBox
-                                materialDesign:HintAssist.Hint="Nhập số điện thoại (10 số)" 
+                                materialDesign:HintAssist.Hint="Nhập số điện thoại" 
+                                materialDesign:HintAssist.HelperText="Nhập đủ 10 số." 
                                 FontSize="16"
                                 BorderBrush="{StaticResource SecondaryLight}"
                                 Foreground="{StaticResource SecondaryLight}"
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Left"
                                 Text="{Binding uPhoneSU}"
-                                
+
                                 Width="425"/>
                         </Grid>
                     </Grid>
