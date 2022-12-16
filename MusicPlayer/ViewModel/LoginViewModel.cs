@@ -35,8 +35,9 @@ namespace MusicPlayer.ViewModel
                 if (w != null)
                 {
                     SignUp signUp = new SignUp();
-                    signUp.Show();
                     w.Close();
+                    signUp.Show();
+//note
                 }
             });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return  true; }, (p) =>
@@ -56,7 +57,7 @@ namespace MusicPlayer.ViewModel
                         if (count > 0)
                         {
                             IsLogin = true;
-                            p.Close();
+                            p.Close();//
                         }
                         else
                         {
