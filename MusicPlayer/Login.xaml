@@ -148,7 +148,8 @@
                         Margin="40,30,0,5" Grid.ColumnSpan="3">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="PasswordChanged">
-                                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" CommandParameter="{Binding ElementName=tbPassLogin}"/>
+                                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                                                           CommandParameter="{Binding ElementName=tbPassLogin}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </PasswordBox>

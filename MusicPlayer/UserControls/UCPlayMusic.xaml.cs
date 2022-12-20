@@ -59,7 +59,6 @@ namespace MusicPlayer.UserControls
                 audio.Source = new Uri(selectedSong.SAVEPATH);
                 
                 audio.MediaOpened += Audio_MediaOpened;
-                audio.Play();
 
                 selectedSong.POSITION = 0;
                 var position = Application.Current.TryFindResource("position") as TextBlock;
