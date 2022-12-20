@@ -14,93 +14,11 @@
     </UserControl.DataContext>
     <Grid>
         <Border CornerRadius ="40,0,40,0" Background= "{ StaticResource PrimaryLight}"/>
-
-        <Button
-          x:Name="btRepeat"
-          Style="{StaticResource MaterialDesignIconButton}"
-          Background="Transparent"
-          Width="40" Height="40" 
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-          Margin="220,0,0,0">
-            <materialDesign:PackIcon
-                Kind="Repeat" 
-                Width="30" 
-                Height="30" 
-                RenderTransformOrigin="0.5,1.2"  
-                HorizontalAlignment="Left"   
-                VerticalAlignment="Center"
-                Foreground="{StaticResource SecondaryDark}"/>
-        </Button>
-        <Button
-            x:Name="btSkipPrevious"
-          Style="{StaticResource MaterialDesignIconButton}"
-          Background="Transparent"
-          Width="40" Height="40" 
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-          Margin="260,0,0,0">
-            <materialDesign:PackIcon
-                Kind="SkipPrevious" 
-                Width="40" 
-                Height="40" 
-                RenderTransformOrigin="0.75,1" 
-                HorizontalAlignment="Left"   
-                VerticalAlignment="Center"
-                Foreground="{StaticResource SecondaryDark}"/>
-        </Button>
-        
-
-        <Button
-            x:Name="btPlay"
-          Style="{StaticResource MaterialDesignIconButton}"
-          Background="{StaticResource SecondaryLight}"
-          Width="50" 
-          Height="50" 
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-            Margin="310,0,0,0">
-            <materialDesign:PackIcon 
-                Kind="Play"
-                Width="40"
-                Height="40" 
-                RenderTransformOrigin="0.75,1" />
-        </Button>
-
-        <Button
-            x:Name="btSkipNext"
-          Style="{StaticResource MaterialDesignIconButton}"
-          Background="Transparent"
-          Width="40" Height="40" 
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-          Margin="370,0,0,0">
-            <materialDesign:PackIcon
-                Kind="SkipNext" 
-                Width="40" 
-                Height="40" 
-                HorizontalAlignment="Left"   
-                VerticalAlignment="Center"
-                Foreground="{StaticResource SecondaryDark}"/>
-        </Button>
-
-        <Button
-            x:Name="btShuffleVariant"
-          Style="{StaticResource MaterialDesignIconButton}"
-          Background="Transparent"
-          Width="40" Height="40" 
-          VerticalAlignment="Center"
-          HorizontalAlignment="Left"
-          Margin="420,0,0,0">
-            <materialDesign:PackIcon
-                Kind="ShuffleVariant" 
-                Width="30" 
-                Height="30" 
-                HorizontalAlignment="Left"   
-                VerticalAlignment="Center"
-                Foreground="{StaticResource SecondaryDark}"/>
-        </Button>
-        
+        <ContentControl Content="{StaticResource btnRepeat}"></ContentControl>
+        <ContentControl Content="{StaticResource btnPrev}"></ContentControl>
+        <ContentControl Content="{StaticResource btnPlay}"></ContentControl>
+        <ContentControl Content="{StaticResource btnNext}"></ContentControl>
+        <ContentControl Content="{StaticResource btnRandom}"></ContentControl>
         <Border Height="50" Width="50" HorizontalAlignment="Left" Margin="25,0,0,0 " CornerRadius="10,10,10,10">
             <ContentPresenter Content="{StaticResource imgURL}" ></ContentPresenter>
         </Border>
@@ -109,28 +27,10 @@
         <ContentControl Content="{StaticResource position}"/>
         <ContentControl Content="{StaticResource  audio}"></ContentControl>
         <ContentControl Content="{StaticResource duration}"/>
-
-        <Slider 
-            x:Name="slPlay"
-            Minimum="0" 
-            Maximum="50"
-            Value="35" 
-            HorizontalAlignment="Left" 
-            Margin="510,0,0,0" 
-            Width="220" 
-            VerticalAlignment="Center" 
-            Foreground="{StaticResource SecondaryDark}"/>
-        <materialDesign:PackIcon Kind="VolumeHigh" Width ="30" Height="30"  Margin="780,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="{StaticResource SecondaryDark}" />
-        <Slider 
-            x:Name="slVolume"
-            Minimum="0" 
-            Maximum="50" 
-            Value="35" 
-            HorizontalAlignment="Left"
-            Margin="815,0,0,0" 
-            Width="70" 
-            VerticalAlignment="Center"
-            Foreground="{StaticResource SecondaryDark}"/>
+        <ContentControl Content="{StaticResource slPlay}"></ContentControl>
+        <ContentControl Content="{StaticResource btnMute}"></ContentControl>
+        <ContentControl Content="{StaticResource slVolume}"></ContentControl>
+       
         <Button
               x:Name="btThreePoint"
               Style="{StaticResource MaterialDesignIconButton}"

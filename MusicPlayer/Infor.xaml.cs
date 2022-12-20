@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using MusicPlayer.UserControls;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,6 +26,30 @@ namespace MusicPlayer
         public Infor()
         {
             InitializeComponent();
+
+        }
+
+        private void btnDownload_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Media Files(*.avi; *.mpeg; *.wav; *.midi; *.mp4; *.mp3)|*.avi; *.mpeg; *.wav; *.midi; *.mp4; *.mp3";
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    string path = saveFileDialog.FileName;
+                    if (!File.Exists(path))
+                    {
+                        WebClient wb = new WebClient();
+                        wb.DownloadFile(UCPlayMusic.SelectedSong.DOWNLOADURL, path);
+                    }
+                    MessageBox.Show("Tải xuống thành công");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Đã xảy ra lỗi");
+            }
         }
     }
 }
