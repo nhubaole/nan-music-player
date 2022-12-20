@@ -53,20 +53,10 @@ namespace MusicPlayer.ViewModel
                      var w = p as Window;
                      if (w != null)
                      {
-                         Login login = new Login();
-                         p.Hide();
-                         login.ShowDialog();
-                         if (login.DataContext == null) return;
-                         var loginVM = login.DataContext as LoginViewModel;
-                         if (loginVM.IsLogin == true)
-                         {
-                             p.Show();
-                         }
-                         else
-                         {
-                             p.Close();
-                         }
-                        
+                         MainWindow main = new MainWindow();
+                         w.Close();
+                         main.Show();
+
                      }
                  }
             });
