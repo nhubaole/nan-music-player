@@ -17,8 +17,8 @@
             <Grid Width="830" Height="504" VerticalAlignment="Top">
                 <Grid Height="60" VerticalAlignment="Top" Margin="0,40,0,0">
                     <Grid Width="180" HorizontalAlignment="Left">
-                        <ComboBox
-                            BorderBrush="{StaticResource PrimaryDark}"
+                        <ComboBox x:Name="cbSearchType"
+                                BorderBrush="{StaticResource PrimaryDark}"
                                 FontSize="18"
                                 FontWeight="SemiBold"
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}"
@@ -27,22 +27,22 @@
                                 Foreground="{StaticResource PrimaryDark}"
                                 Background="{StaticResource PrimaryLight}"
                                 Width="180"
-                                Height="60">
-                            <!--hardcode-->
-                            <ComboBoxItem>Tên bài hát</ComboBoxItem>
-                            <ComboBoxItem>Tên ca sĩ</ComboBoxItem>
+                                Height="60"
+                                SelectionChanged="cbSearchType_SelectionChanged">
                         </ComboBox>
                     </Grid>
                     <Grid Width="320" HorizontalAlignment="Left" Margin="190,0,0,0">
                         <Border CornerRadius="5" 
                                     BorderThickness="2" 
                                     BorderBrush="{StaticResource PrimaryLight}">
-                            <TextBox Margin="20,10,20,10" Width="280"
+                            <TextBox x:Name="txtSearch"
+                                    Margin="20,10,20,10" Width="280"
                                     FontSize="18"
                                     FontWeight="SemiBold"
                                     materialDesign:HintAssist.Hint="Tìm kiếm"
                                     BorderBrush="{StaticResource PrimaryLight}"
-                                    Foreground="{StaticResource PrimaryLight}"/>
+                                    Foreground="{StaticResource PrimaryLight}"
+                                    TextChanged="txtSearch_TextChanged"/>
                         </Border>
                     </Grid>
                     <!--<Grid  Width="180" HorizontalAlignment="Left" Margin="520,0,0,0">
