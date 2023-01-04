@@ -10,7 +10,13 @@
          xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
         Height="650" 
         Width="570"
+        ResizeMode="CanMinimize"
+        WindowStyle="None"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        WindowStartupLocation="CenterScreen"
         Background="Transparent"
+        AllowsTransparency="True"   
         xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
         x:Name="signUpWindow">
     <Window.DataContext>

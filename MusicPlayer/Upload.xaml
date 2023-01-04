@@ -99,83 +99,24 @@
                         Margin="0,35,100,5"
                         BorderBrush="{StaticResource SecondaryLight}"/>
                     <Grid Grid.Row="3">
-
-                       
                         <TextBlock                        
-                            Text="Ngày phát hành"
+                            Text="File bài hát"
                             Foreground="{StaticResource PrimaryMid}"
                             FontSize="18"
                             FontWeight="Bold"
                             Margin="0,5,0,34"/>
-                        <DatePicker
-                            x:Name="dpDate"
-                            Height="30"
-                            Width="400"
-                            materialDesign:HintAssist.Hint="Ngày/Tháng/Năm" 
-                            Margin="0,35,100,0"
-                            Foreground="{StaticResource SecondaryLight}"
-                            FontSize="16"
-                            BorderBrush="{StaticResource SecondaryLight}">
-
-                            <DatePicker.Resources>
-                                <Style
-                                            x:Key="CustomCalendarDayButton"
-                                            TargetType="CalendarDayButton"
-                                            BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
-
-                                    <Setter
-                                                Property="materialDesign:CalendarAssist.SelectionColor"
-                                                Value="{StaticResource SecondaryLight}" />
-                                    <Setter
-                                                Property="materialDesign:CalendarAssist.SelectionForegroundColor"
-                                                Value="{StaticResource SecondaryDark}" />
-                                </Style>
-
-                                <Style
-                                            x:Key="CustomCalendarButton"
-                                            TargetType="CalendarButton"
-                                            BasedOn="{StaticResource MaterialDesignCalendarButton}">
-
-                                    <Setter
-                                                Property="materialDesign:CalendarAssist.SelectionColor"
-                                                Value="{StaticResource SecondaryLight}" />
-                                    <Setter
-                                                Property="materialDesign:CalendarAssist.SelectionForegroundColor"
-                                                Value="White" />
-                                </Style>
-
-                                <Style
-                                            x:Key="CustomCalendar"
-                                            TargetType="{x:Type Calendar}"
-                                            BasedOn="{StaticResource MaterialDesignDatePickerCalendarPortrait}">
-
-                                    <Setter
-                                                Property="Background"
-                                                Value="{StaticResource SecondaryMid}" />
-                                    <Setter
-                                                Property="materialDesign:CalendarAssist.HeaderBackground"
-                                                Value="{StaticResource SecondaryLight}" />
-                                    <Setter
-                                                Property="materialDesign:CalendarAssist.HeaderForeground"
-                                                Value="{StaticResource SecondaryDark}" />
-                                    <Setter
-                                                Property="CalendarDayButtonStyle"
-                                                Value="{StaticResource CustomCalendarDayButton}" />
-                                    <Setter
-                                                Property="CalendarButtonStyle"
-                                                Value="{StaticResource CustomCalendarButton}" />
-                                </Style>
-
-                                <Style
-                                            TargetType="DatePicker"
-                                            BasedOn="{StaticResource MaterialDesignDatePicker}">
-
-                                    <Setter
-                                                Property="CalendarStyle"
-                                                Value="{StaticResource CustomCalendar}" />
-                                </Style>
-                            </DatePicker.Resources>
-                        </DatePicker>
+                        <Button Margin="0,35,100,0" 
+                                Background="{StaticResource SecondaryLight}" 
+                                BorderThickness="0"
+                                Width="110"
+                                HorizontalAlignment="Left"
+                                FontSize="17"
+                                FontWeight="DemiBold"
+                                Foreground="{StaticResource SecondaryMid}"
+                                materialDesign:ButtonAssist.CornerRadius="5">
+                            Chọn File
+                        </Button>
+                        <ContentControl Content="{StaticResource txtPath}"></ContentControl>
                     </Grid>
 
                     <Grid

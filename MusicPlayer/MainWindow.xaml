@@ -46,17 +46,26 @@
                         <Grid Height="176" VerticalAlignment="Top">
                             <Image Source="Resource/Images/Logo.png" 
                        Stretch="Fill" 
-                       Height="160" 
-                       Width="160" 
+                       Height="150" 
+                       Width="150" 
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Top">
 
                             </Image>
                             <TextBlock 
-                    Text="PROJECT NAME" 
-                    FontSize="20" 
+                    Text="N.A.N" 
+                    FontSize="18" 
                     FontWeight="Bold" 
                     Foreground="{StaticResource PrimaryLight}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                                Margin="0,0,0,25">
+                            </TextBlock>
+                            <TextBlock 
+                    Text="MUSIC PLAYER" 
+                    FontSize="18" 
+                    FontWeight="Bold" 
+                    Foreground="{StaticResource PrimaryMid}"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom">
                             </TextBlock>

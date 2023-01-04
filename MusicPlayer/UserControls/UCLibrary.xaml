@@ -18,42 +18,13 @@
             <Grid Width="830" Height="504" VerticalAlignment="Top">
                 <Grid Height="60" VerticalAlignment="Top" Margin="0,40,0,0">
                     <Grid Width="180" HorizontalAlignment="Left">
-                        <ComboBox
-                            BorderBrush="{StaticResource PrimaryDark}"
-                                FontSize="18"
-                                FontWeight="SemiBold"
-                                Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                materialDesign:HintAssist.Hint="Tìm kiếm theo"
-                                materialDesign:HintAssist.Foreground="{StaticResource PrimaryDark}"
-                                Foreground="{StaticResource PrimaryDark}"
-                                Background="{StaticResource PrimaryLight}"
-                                Width="180"
-                                Height="60">
-                            <!--hardcode-->
-                            <ComboBoxItem>Tên bài hát</ComboBoxItem>
-                            <ComboBoxItem>Tên ca sĩ</ComboBoxItem>
-                        </ComboBox>
-                    </Grid>
-                    <Grid Width="320" HorizontalAlignment="Left" Margin="190,0,0,0">
-                        <Border CornerRadius="5" 
-                                    BorderThickness="2" 
-                                    BorderBrush="{StaticResource PrimaryLight}">
-                            <TextBox Margin="20,10,20,10" Width="280"
-                                    FontSize="18"
-                                    FontWeight="SemiBold"
-                                    materialDesign:HintAssist.Hint="Tìm kiếm"
-                                    BorderBrush="{StaticResource PrimaryLight}"
-                                    Foreground="{StaticResource PrimaryLight}"/>
-                        </Border>
-                    </Grid>
-                    <Grid  Width="180" HorizontalAlignment="Left" Margin="520,0,0,0">
                         <ContentControl Content="{StaticResource cbTimer}"></ContentControl>
                     </Grid>
-                    <Grid  Width="110" HorizontalAlignment="Left" Margin="710,0,0,0">
+                    <Grid Width="320" HorizontalAlignment="Left" Margin="200,0,0,0">
                         <Button
                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
                                 Height="60"
-                                Width="110"
+                                Width="150"
                                 BorderBrush="Transparent"
                                 Background="{StaticResource PrimaryLight}"
                                 HorizontalAlignment="Left"
@@ -64,8 +35,8 @@
                                         Width="150"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center">
-                                <materialDesign:PackIcon Kind="Upload" Margin="32,-2,0,0" Foreground="{StaticResource PrimaryDark}" VerticalAlignment="Center" Width="20" Height="20"></materialDesign:PackIcon>
-                                <TextBlock Margin="60,0,0,28" VerticalAlignment="Bottom" FontSize="18" Foreground="{StaticResource PrimaryDark}">Tải lên</TextBlock>
+                                <materialDesign:PackIcon Kind="Upload" Margin="15,19,0,0" Foreground="{StaticResource PrimaryDark}" Width="30" Height="30"/>
+                                <TextBlock Margin="58,0,16,25" VerticalAlignment="Bottom" FontSize="20" Foreground="{StaticResource PrimaryDark}">Tải lên</TextBlock>
                             </Grid>
                         </Button>
                     </Grid>
