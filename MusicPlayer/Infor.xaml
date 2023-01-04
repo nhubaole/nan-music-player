@@ -1,0 +1,220 @@
+﻿<Window x:Class="MusicPlayer.Infor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:MusicPlayer" 
+        xmlns:uc="clr-namespace:MusicPlayer.UserControls"
+        xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
+        mc:Ignorable="d"
+        Title="Infor" 
+        Height="520" 
+        Width="800"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        Name="inforWindow">
+    <Window.DataContext>
+        <vm:InforVM/>
+    </Window.DataContext>
+    <Grid>
+        <Border CornerRadius="40" Background="{StaticResource SecondaryDark}"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition ></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <uc:ControlBar/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border
+                    Width="200"
+                    Height="200"
+                    Margin="50,82,50,198"
+                    CornerRadius="30">
+                    <Border.Background>
+                        <ImageBrush x:Name="img"></ImageBrush>
+                    </Border.Background>
+                </Border>
+                <Grid Margin="290,30,10,0" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition Height="45" ></RowDefinition>
+                        <RowDefinition Height="65"  />
+                        <RowDefinition Height="55" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        x:Name="tblInfor"
+                        Text="THÔNG TIN BÀI HÁT"
+                        FontSize="23"
+                        VerticalAlignment="Top"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource SecondaryLight}" 
+                        FontFamily="Bahnschrift" 
+                        Width="266" 
+                        Height="40" 
+                        Margin="117,10,117,0"/>
+                    <TextBlock 
+                        x:Name="tblName1"
+                        Grid.Row="1"
+                        Text="Tên bài hát"
+                        Height="30"
+                        Foreground="{StaticResource SecondaryLight}"
+                        FontSize="18"
+                        Margin="0,0,0,40"/>
+                    <TextBlock
+                        x:Name="tblName2"
+                        Grid.Row="1"
+                        Text="Tên ở đâyyyyyyyyyyyyyy"
+                        TextWrapping="Wrap"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource PrimaryMid}"
+                        FontSize="20"
+                        Height="40"
+                        Margin="0,30,0,0">
+                    </TextBlock>
+                    <TextBlock 
+                        x:Name="tblName3"
+                        Grid.Row="2"
+                        Text="Tên ca sĩ"
+                        Foreground="{StaticResource SecondaryLight}"
+                        FontSize="18"
+                        Height="30"
+                        Margin="0,-3,0,40">
+                    </TextBlock>
+                    <TextBlock
+                        x:Name="tblName4"
+                        Grid.Row="2"
+                        Text="Tên ở đâyyyyyyyyyyyyyy"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource PrimaryMid}"
+                        FontSize="20"
+                        Height="40"
+                        Margin="0,30,0,0">
+                    </TextBlock>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                            x:Name="tblTime1"
+                            Grid.Column="0"
+                            Text="Thời lượng"
+                            Foreground="{StaticResource SecondaryLight}"
+                            FontSize="18"
+                            Height="33"
+                            Margin="0,0,0,40">
+                        </TextBlock>
+                        <TextBlock
+                            x:Name="tblTime2"
+                            Grid.Column="0"
+                            Text="3:00"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource PrimaryMid}"
+                            FontSize="17"
+                            Margin="0,33,0,0"/>
+                        <!--<TextBlock
+                            x:Name="tblDay1"
+                            Grid.Column="1"
+                            Text="Ngày phát hành"
+                            Foreground="{StaticResource SecondaryLight}"
+                            FontSize="18"
+                            Height="33"
+                            Margin="0,0,0,40">
+                        </TextBlock>
+                        <TextBlock
+                            x:Name="tblDay2"                           
+                            Grid.Column="1"
+                            Text="dd/mm/yy"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource PrimaryMid}"
+                            FontSize="17"
+                            Height="40"
+                            Margin="0,33,0,0">
+                        </TextBlock>-->
+                    </Grid>
+                    <!--<ToggleButton
+                        Grid.Row="4"
+                        Height="35"
+                        Width="35"
+                        Background="#ff5252"
+                        Foreground="White"
+                        Content="{materialDesign:PackIcon Kind=Heart, Size=23}"
+                        Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+                        ToolTip="MaterialDesignFlatPrimaryToggleButton"
+                        IsChecked="True" Margin="0,5,455,5" RenderTransformOrigin="0.4,-0.2"
+                        />
+                    <TextBlock
+                        Grid.Row="4" 
+                        Text="1000" 
+                        Height="30"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Foreground="#ff5252" 
+                        Margin="50,4,0,-4" />-->
+                    <Grid
+                        Grid.Row="5">
+                        <Button
+                            x:Name="btnDownload"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                            Height="40"
+                            Background="{StaticResource PrimaryLight}"
+                            BorderBrush="Transparent"
+                            Click="btnDownload_Click"
+                            materialDesign:ButtonAssist.CornerRadius="5"
+                            Margin="138,15,195,10">
+                            <TextBlock
+                                Text="TẢI XUỐNG" 
+                                FontSize="18" 
+                                Height="20"
+                                Width="127" 
+                                FontWeight="Bold"
+                                Foreground="{StaticResource PrimaryDark}"
+                                Margin="25,-3,0,0"/>
+                        </Button>
+                        <materialDesign:PackIcon 
+                            Kind="Download" 
+                            Margin="140,25,0,0" 
+                            Height="22"
+                            Width="35" 
+                            Foreground="{StaticResource PrimaryDark}"/>
+                    </Grid>
+                    <Button
+                        x:Name="btExit"
+                        Grid.Row="6"
+                        Style="{StaticResource MaterialDesignOutlinedSecondaryDarkButton}"
+                        Content="THOÁT"
+                        FontSize="18"
+                        FontWeight="Bold"
+                        Command="{Binding ToMainCommand}"
+                        CommandParameter="{Binding ElementName=inforWindow}"
+                        Foreground="{StaticResource PrimaryLight}"
+                        Height="40"
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        BorderThickness="2"
+                        BorderBrush="{StaticResource PrimaryLight}"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Margin="138,0,195,15" />
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Window>
+    
+
+   

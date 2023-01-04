@@ -1,0 +1,167 @@
+﻿<Window x:Class="MusicPlayer.Upload"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:MusicPlayer" 
+        xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
+        
+        xmlns:uc="clr-namespace:MusicPlayer.UserControls"
+        mc:Ignorable="d"
+        Title="Upload" 
+        Height="480" 
+        Width="800"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Name="uploadWindow"
+        Background="Transparent">
+    <Window.DataContext>
+        <vm:UploadVM/>
+    </Window.DataContext>
+    <Grid>
+        <Border CornerRadius="40" Background="{StaticResource SecondaryDark}"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition ></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <uc:ControlBar/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"     
+                        Width="200"
+                        Height="200" 
+                        BorderBrush="Transparent"
+                        materialDesign:ButtonAssist.CornerRadius="20"
+                        Margin="50,70,50,140" Click="Button_Click">
+                    <Button.Background>
+                        <ImageBrush 
+                            ImageSource="Resource/Images/ImgUp.png" 
+                            Stretch="UniformToFill"/>
+                    </Button.Background>
+                </Button>
+                <Grid Grid.Column="1" Margin="10,0,-10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                        <RowDefinition Height="80" ></RowDefinition>
+                        <RowDefinition Height="40"   ></RowDefinition>
+
+                    </Grid.RowDefinitions>
+
+                    <TextBlock 
+                        Text="TẢI BÀI HÁT LÊN"
+                        FontSize="23"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource SecondaryLight}" 
+                        FontFamily="Bahnschrift" Margin="130,0,0,0" Height="28" Width="170"/>
+                    <TextBlock 
+                        Grid.Row="1"
+                        Text="Tên bài hát"
+                        Foreground="{StaticResource PrimaryMid}"
+                        FontWeight="Bold"
+                        FontSize="18"
+                        Margin="0,6,0,44"/>
+                    <TextBox 
+                        x:Name="tbNameOfSong"
+                        Grid.Row="1"
+                        materialDesign:HintAssist.Hint="Nhập tên ở đây"
+                        Foreground="{StaticResource SecondaryLight}"
+                        FontSize="17"
+                        Margin="0,35,100,5"
+                        BorderBrush="{StaticResource SecondaryLight}"/>
+                    <TextBlock 
+                        Grid.Row="2"
+                        Text="Tên ca sĩ"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource PrimaryMid}"
+                        FontSize="18"
+                        Margin="0,6,0,44"/>
+                    <TextBox 
+                        x:Name="tbSingerOfSong"
+                        Grid.Row="2"
+                        materialDesign:HintAssist.Hint="Nhập tên ở đây"
+                        Foreground="{StaticResource SecondaryLight}"
+                        FontSize="17"
+                        Margin="0,35,100,5"
+                        BorderBrush="{StaticResource SecondaryLight}"/>
+                    <Grid Grid.Row="3">
+                        <TextBlock                        
+                            Text="File bài hát"
+                            Foreground="{StaticResource PrimaryMid}"
+                            FontSize="18"
+                            FontWeight="Bold"
+                            Margin="0,5,0,34"/>
+                        <Button Margin="0,35,100,0" 
+                                Background="{StaticResource SecondaryLight}" 
+                                BorderThickness="0"
+                                Width="110"
+                                HorizontalAlignment="Left"
+                                FontSize="17"
+                                FontWeight="DemiBold"
+                                Foreground="{StaticResource SecondaryMid}"
+                                materialDesign:ButtonAssist.CornerRadius="5">
+                            Chọn File
+                        </Button>
+                        <ContentControl Content="{StaticResource txtPath}"></ContentControl>
+                    </Grid>
+
+                    <Grid
+                        Grid.Row="4">
+                        <Button
+                            x:Name="btUpLoad"
+                            Style="{StaticResource MaterialDesignRaisedLightButton}"
+                            Height="40"
+                            Width="130"
+                            Background="{StaticResource PrimaryLight}"
+                            materialDesign:ButtonAssist.CornerRadius="5"
+                            BorderBrush="Transparent"
+                            Command="{Binding UploadSongCommand}"
+                            CommandParameter="{Binding ElementName=uploadWindow}"
+                            ToolTip="MaterialDesignRaisedLightButton with Round Corners"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="140,26,230,0">
+                            <TextBlock
+                                Text="TẢI LÊN" 
+                                FontSize="17" 
+                                Height="20" 
+                                FontWeight="SemiBold" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Foreground="{StaticResource PrimaryDark}">
+                            </TextBlock>
+                        </Button>
+                    </Grid>
+                    <Button
+                        x:Name="btExit"
+                        Grid.Row="5"
+                        BorderThickness="2"
+                        Height="40"
+                        BorderBrush="{StaticResource PrimaryLight}"
+                        Style="{StaticResource MaterialDesignOutlinedSecondaryDarkButton}"
+                        Content="THOÁT"
+                        Foreground="{StaticResource PrimaryLight}"
+                        FontSize="17"
+                        FontWeight="SemiBold"
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Command="{Binding CloseUploadSongCommand}"
+                        CommandParameter="{Binding ElementName=uploadWindow}"
+                        Margin="140,5,232,-12" Panel.ZIndex="-1" />
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

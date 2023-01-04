@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="MusicPlayer.UserControls.UCPlayMusic"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:MusicPlayer.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="68" d:DesignWidth="920"  
+             xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
+             >
+    <UserControl.DataContext>
+        <vm:PlayMusicVM></vm:PlayMusicVM>
+    </UserControl.DataContext>
+    <Grid>
+        <Border CornerRadius ="40,0,40,0" Background= "{ StaticResource PrimaryLight}"/>
+        <ContentControl Content="{StaticResource btnRepeat}"></ContentControl>
+        <ContentControl Content="{StaticResource btnPrev}"></ContentControl>
+        <ContentControl Content="{StaticResource btnPlay}"></ContentControl>
+        <ContentControl Content="{StaticResource btnNext}"></ContentControl>
+        <ContentControl Content="{StaticResource btnRandom}"></ContentControl>
+        <Border Height="50" Width="50" HorizontalAlignment="Left" Margin="25,0,0,0 " CornerRadius="10,10,10,10">
+            <ContentPresenter Content="{StaticResource imgURL}" ></ContentPresenter>
+        </Border>
+        <ContentControl Content="{StaticResource songName}"/>
+        <ContentControl Content="{StaticResource singerName}"/>
+        <ContentControl Content="{StaticResource position}"/>
+        <ContentControl Content="{StaticResource  audio}"></ContentControl>
+        <ContentControl Content="{StaticResource duration}"/>
+        <ContentControl Content="{StaticResource slPlay}"></ContentControl>
+        <ContentControl Content="{StaticResource btnMute}"></ContentControl>
+        <ContentControl Content="{StaticResource slVolume}"></ContentControl>
+       
+        <Button
+              x:Name="btThreePoint"
+              Style="{StaticResource MaterialDesignIconButton}"
+              Background="Transparent"
+              Width="20" Height="30" 
+              VerticalAlignment="Center"
+              HorizontalAlignment="Left"
+              Margin="890,0,0,0"
+              Command="{Binding ToInforCommand }"
+            Click="btThreePoint_Click">
+            <materialDesign:PackIcon
+                    Kind="DotsVertical" 
+                    Width="30" 
+                    Height="40" 
+                    HorizontalAlignment="Left"   
+                    VerticalAlignment="Center"
+                    Foreground="{StaticResource SecondaryDark}"/>
+        </Button>
+
+    </Grid>
+</UserControl>
