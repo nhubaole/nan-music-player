@@ -75,7 +75,7 @@
                                         Text="Tên người dùng"
                                         FontSize="24"
                                         Foreground="{StaticResource PrimaryMid}"                                
-                                        
+                                        FontWeight="SemiBold"
                                         VerticalAlignment="Bottom"/>
                                 </Grid>
 
@@ -103,6 +103,7 @@
                                     <TextBlock
                                         Text="Họ tên"
                                         FontSize="24"
+                                        FontWeight="SemiBold"
                                         Foreground="{StaticResource PrimaryMid}"                                
                                         VerticalAlignment="Bottom"/>
                                 </Grid>
@@ -131,6 +132,7 @@
                                 <TextBlock
                                     Text="Email"
                                     FontSize="24"
+                                    FontWeight="SemiBold"
                                     Foreground="{StaticResource PrimaryMid}"                                
                                     VerticalAlignment="Bottom"/>
                             </Grid>
@@ -158,6 +160,7 @@
                                 <TextBlock
                                     Text="Số điện thoại"
                                     FontSize="24"
+                                    FontWeight="SemiBold"
                                     Foreground="{StaticResource PrimaryMid}"                                
                                     VerticalAlignment="Bottom"/>
                             </Grid>
@@ -190,6 +193,7 @@
                                     <TextBlock
                                         Text="Ngày sinh"
                                         FontSize="24"
+                                        FontWeight="SemiBold"
                                         Foreground="{StaticResource PrimaryMid}"                                
                                         VerticalAlignment="Bottom"/>
                                 </Grid>
@@ -278,6 +282,7 @@
                                     <TextBlock
                                         Text="Giới tính"
                                         FontSize="24"
+                                        FontWeight="SemiBold"
                                         Foreground="{StaticResource PrimaryMid}"                                
                                         VerticalAlignment="Bottom"/>
                                 </Grid>

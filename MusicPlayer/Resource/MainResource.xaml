@@ -154,7 +154,7 @@
               materialDesign:HintAssist.Foreground="{StaticResource PrimaryDark}"
               Foreground="{StaticResource PrimaryDark}"
               Background="{StaticResource PrimaryLight}"
-              Width="170"
+              Width="180"
               Height="60"
               IsEditable="True"
               IsReadOnly="True">
@@ -172,4 +172,10 @@
                 FontWeight="Medium"
                 Margin="55,0,0,0"
                 Foreground="{StaticResource PrimaryMid}"/>
+    <TextBlock x:Key="txtPath"
+            Foreground="{StaticResource SecondaryLight}"
+            FontSize="17"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Bottom"
+            Margin="120,0,0,0"/>
 </ResourceDictionary>
