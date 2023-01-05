@@ -81,6 +81,7 @@
 
                                 <Grid Grid.Row="1">
                                     <TextBox
+                                        x:Name="txtUserName"
                                         materialDesign:HintAssist.Hint="Nhập tên người dùng" 
                                         FontSize="20"
                                         BorderBrush="{StaticResource SecondaryLight}"
@@ -110,6 +111,7 @@
 
                                 <Grid Grid.Row="1">
                                     <TextBox
+                                        x:Name="txtFullName"
                                         materialDesign:HintAssist.Hint="Nhập họ tên"
                                         FontSize="20"
                                         Foreground="{StaticResource SecondaryLight}"
@@ -139,6 +141,7 @@
 
                             <Grid Grid.Row="1">
                                 <TextBox
+                                    x:Name="txtEmail"
                                     materialDesign:HintAssist.Hint="Địa chỉ email" 
                                     FontSize="20"
                                     BorderBrush="{StaticResource SecondaryLight}"
@@ -167,6 +170,7 @@
 
                             <Grid Grid.Row="1">
                                 <TextBox
+                                    x:Name="txtPhone"
                                     materialDesign:HintAssist.Hint="Nhập số điện thoại" 
                                     FontSize="20"
                                     BorderBrush="{StaticResource SecondaryLight}"
@@ -200,6 +204,7 @@
 
                                 <Grid Grid.Row="1">
                                     <DatePicker
+                                        x:Name="dpDOB"
                                         Width="220"
                                         materialDesign:HintAssist.Hint="Ngày/Tháng/Năm" 
                                         VerticalAlignment="Top"
@@ -289,6 +294,7 @@
 
                                 <Grid Grid.Row="1">
                                     <ComboBox
+                                        x:Name="cbSex"
                                         FontSize="20"
                                         Foreground="{StaticResource SecondaryLight}"
                                         BorderBrush="{StaticResource SecondaryLight}"
