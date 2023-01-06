@@ -9,14 +9,8 @@ namespace MusicPlayer.ViewModel
 {
      public class LibraryVM : BaseViewModel
     {
-        public ICommand ToUploadCommand { get; set; }
         public LibraryVM()
         {
-            ToUploadCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
-            {
-                Upload upload = new Upload();
-                upload.ShowDialog();
-            });
         }
     }
 }

@@ -167,11 +167,14 @@ namespace MusicPlayer.UserControls
                 var imgURL = Application.Current.TryFindResource("imgURL") as Image;
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
-                bitmapImage.UriSource = new Uri(selectedSong.IMAGEURL); 
+                bitmapImage.UriSource = new Uri(selectedSong.IMAGEURL, UriKind.RelativeOrAbsolute);
                 bitmapImage.EndInit();
                 imgURL.Source = bitmapImage;
 
-                DownloadFileToPlay(selectedSong);
+                if(selectedSong.SAVEPATH == null)
+                {
+                    DownloadFileToPlay(selectedSong);
+                }
                 selectedSong.POSITION = audio.Position.TotalSeconds;
                 sliderPlay.Value = (double)selectedSong.POSITION;
                 position.Text = new TimeSpan(0, (int)(selectedSong.POSITION / 60), (int)(selectedSong.POSITION % 60)).ToString(@"mm\:ss");
@@ -206,7 +209,6 @@ namespace MusicPlayer.UserControls
             selectedSong.DURATION = audio.NaturalDuration.TimeSpan.TotalSeconds;
             duration.Text = new TimeSpan(0, (int)(selectedSong.DURATION / 60), (int)(selectedSong.DURATION % 60)).ToString(@"mm\:ss");
             sliderPlay.Maximum = (double)selectedSong.DURATION;
-
             bw.RunWorkerAsync();
         }
 
@@ -229,7 +231,15 @@ namespace MusicPlayer.UserControls
             infor.tblTime2.Text = new TimeSpan(0, (int)(selectedSong.DURATION / 60), (int)(selectedSong.DURATION % 60)).ToString(@"mm\:ss");
             var bitmapImage = new BitmapImage();
             bitmapImage.BeginInit();
-            bitmapImage.UriSource = new Uri(selectedSong.IMAGEURL);
+            try
+            {
+                bitmapImage.UriSource = new Uri(selectedSong.IMAGEURL);
+            }
+            catch
+            {
+                bitmapImage.UriSource = new Uri("../" + selectedSong.IMAGEURL, UriKind.RelativeOrAbsolute);
+            }
+
             bitmapImage.EndInit();
             infor.img.ImageSource = bitmapImage;
             infor.ShowDialog();
