@@ -21,7 +21,7 @@
                         <ContentControl Content="{StaticResource cbTimer}"></ContentControl>
                     </Grid>
                     <Grid Width="320" HorizontalAlignment="Left" Margin="200,0,0,0">
-                        <Button
+                        <Button x:Name="btnUp"
                                 Style="{StaticResource MaterialDesignRaisedLightButton}"
                                 Height="60"
                                 Width="150"
@@ -29,8 +29,7 @@
                                 Background="{StaticResource PrimaryLight}"
                                 HorizontalAlignment="Left"
                                 materialDesign:ButtonAssist.CornerRadius="5"
-                                Command="{Binding ToUploadCommand}"
-                                CommandParameter="{Binding ElementName=ucLibrary}">
+                                Click="btnUp_Click">
                             <Grid  Height="74"
                                         Width="150"
                                        VerticalAlignment="Center"
@@ -58,7 +57,7 @@
                                            Foreground="{StaticResource SecondaryLight}"
                                            FontWeight="SemiBold">
                             </TextBlock>
-                            <ListBox x:Name="lbLastestSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0" SelectionChanged="lbLastestSongs_SelectionChanged">
+                            <ListBox x:Name="lbLastestSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel IsItemsHost="True" />
@@ -83,7 +82,7 @@
                                                     Height="80"
                                                     HorizontalAlignment="Left">
                                                     <Border.Background>
-                                                        <ImageBrush ImageSource="{Binding IMAGEURL}"></ImageBrush>
+                                                        <ImageBrush ImageSource="{Binding IMAGEURL}" Stretch="UniformToFill"></ImageBrush>
                                                     </Border.Background>
                                                 </Border>
                                                 <TextBlock Text="{Binding SONGNAME}" 
@@ -113,7 +112,7 @@
                                            Foreground="{StaticResource SecondaryLight}"
                                            FontWeight="SemiBold">
                             </TextBlock>
-                            <ListBox x:Name="lbUploadSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0">
+                            <ListBox x:Name="lbUploadSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0" SelectionChanged="lbUploadSongs_SelectionChanged">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel IsItemsHost="True" />
@@ -138,7 +137,7 @@
                                                     Height="80"
                                                     HorizontalAlignment="Left">
                                                     <Border.Background>
-                                                        <ImageBrush ImageSource="{Binding IMAGEURL}"></ImageBrush>
+                                                        <ImageBrush ImageSource="{Binding IMAGEPATH}" Stretch="UniformToFill"></ImageBrush>
                                                     </Border.Background>
                                                 </Border>
                                                 <TextBlock Text="{Binding SONGNAME}" 
@@ -193,7 +192,7 @@
                                                     Height="80"
                                                     HorizontalAlignment="Left">
                                                     <Border.Background>
-                                                        <ImageBrush ImageSource="{Binding IMAGEURL}"></ImageBrush>
+                                                        <ImageBrush ImageSource="{Binding IMAGEURL}" Stretch="UniformToFill"></ImageBrush>
                                                     </Border.Background>
                                                 </Border>
                                                 <TextBlock Text="{Binding SONGNAME}" 

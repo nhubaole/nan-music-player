@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MusicPlayer.UserControls"  
              xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"            
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"    
+             xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"      
              mc:Ignorable="d" 
              d:DesignHeight="592" 
              d:DesignWidth="944">
@@ -81,6 +82,7 @@
 
                                 <Grid Grid.Row="1">
                                     <TextBox
+                                        x:Name="txtUserName"
                                         materialDesign:HintAssist.Hint="Nhập tên người dùng" 
                                         FontSize="20"
                                         BorderBrush="{StaticResource SecondaryLight}"
@@ -88,7 +90,10 @@
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Left" 
                                         Width="230"
-                                        Margin="0,6,0,0" />
+                                        Margin="0,6,0,0"
+                                        IsEnabled="False"
+                                        
+                                        />
                                 </Grid>
 
                             </Grid>
@@ -101,22 +106,27 @@
 
                                 <Grid Grid.Row="0" >
                                     <TextBlock
-                                        Text="Họ tên"
+                                        Text="Họ tên (*)"
                                         FontSize="24"
                                         FontWeight="SemiBold"
                                         Foreground="{StaticResource PrimaryMid}"                                
-                                        VerticalAlignment="Bottom"/>
+                                        VerticalAlignment="Bottom"
+                                        />
                                 </Grid>
 
                                 <Grid Grid.Row="1">
                                     <TextBox
+                                        x:Name="txtFullName"
                                         materialDesign:HintAssist.Hint="Nhập họ tên"
                                         FontSize="20"
                                         Foreground="{StaticResource SecondaryLight}"
                                         VerticalAlignment="Top"
                                         HorizontalAlignment="Left"                                    
                                         Width="220" 
-                                        BorderBrush="{StaticResource SecondaryLight}" Margin="0,6,0,0"/>
+                                        BorderBrush="{StaticResource SecondaryLight}" 
+                                        Margin="0,6,0,0"
+                                        Text="{Binding uFullName}"
+                                        />
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -139,6 +149,7 @@
 
                             <Grid Grid.Row="1">
                                 <TextBox
+                                    x:Name="txtEmail"
                                     materialDesign:HintAssist.Hint="Địa chỉ email" 
                                     FontSize="20"
                                     BorderBrush="{StaticResource SecondaryLight}"
@@ -146,7 +157,8 @@
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Center"
                                     Width="500" 
-                                    Margin="0,6,0,0"/>
+                                    Margin="0,6,0,0"
+                                    Text="{Binding uEmail}"/>
                             </Grid>
                         </Grid>
 
@@ -167,13 +179,15 @@
 
                             <Grid Grid.Row="1">
                                 <TextBox
+                                    x:Name="txtPhone"
                                     materialDesign:HintAssist.Hint="Nhập số điện thoại" 
                                     FontSize="20"
                                     BorderBrush="{StaticResource SecondaryLight}"
                                     Foreground="{StaticResource SecondaryLight}"
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Center"                                    
-                                    Width="500" Margin="0,6,0,0"/>
+                                    Width="500" Margin="0,6,0,0"
+                                    Text ="{Binding uPhone}"/>
                             </Grid>
                         </Grid>
 
@@ -191,7 +205,7 @@
 
                                 <Grid Grid.Row="0" >
                                     <TextBlock
-                                        Text="Ngày sinh"
+                                        Text="Ngày sinh (*)"
                                         FontSize="24"
                                         FontWeight="SemiBold"
                                         Foreground="{StaticResource PrimaryMid}"                                
@@ -200,6 +214,7 @@
 
                                 <Grid Grid.Row="1">
                                     <DatePicker
+                                        x:Name="dpDOB"
                                         Width="220"
                                         materialDesign:HintAssist.Hint="Ngày/Tháng/Năm" 
                                         VerticalAlignment="Top"
@@ -208,32 +223,37 @@
                                         FontSize="20"
                                         BorderBrush="{StaticResource SecondaryLight}" 
                                         Margin="0,6,0,0">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectedDateChanged">
+                                                <i:InvokeCommandAction Command="{Binding SelectedDateChangedCommand}" 
+                                                                   CommandParameter="{Binding ElementName=dpDOB}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
                                         <DatePicker.Resources>
                                             <Style
-                                            x:Key="CustomCalendarDayButton"
-                                            TargetType="CalendarDayButton"
-                                            BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
-
+                                                x:Key="CustomCalendarDayButton"
+                                                TargetType="CalendarDayButton"
+                                                BasedOn="{StaticResource MaterialDesignCalendarDayButton}">
                                                 <Setter
-                                                Property="materialDesign:CalendarAssist.SelectionColor"
-                                                Value="{StaticResource SecondaryLight}" />
+                                                    Property="materialDesign:CalendarAssist.SelectionColor"
+                                                    Value="{StaticResource SecondaryLight}" />
                                                 <Setter
-                                                Property="materialDesign:CalendarAssist.SelectionForegroundColor"
-                                                Value="{StaticResource SecondaryDark}" />
+                                                    Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                                    Value="{StaticResource SecondaryDark}" />
                                             </Style>
 
                                             <Style
-                                            x:Key="CustomCalendarButton"
-                                            TargetType="CalendarButton"
-                                            BasedOn="{StaticResource MaterialDesignCalendarButton}">
+                                                x:Key="CustomCalendarButton"
+                                                TargetType="CalendarButton"
+                                                BasedOn="{StaticResource MaterialDesignCalendarButton}">
 
                                                 <Setter
-                                                Property="materialDesign:CalendarAssist.SelectionColor"
-                                                Value="{StaticResource SecondaryLight}" />
+                                                    Property="materialDesign:CalendarAssist.SelectionColor"
+                                                    Value="{StaticResource SecondaryLight}" />
                                                 <Setter
-                                                Property="materialDesign:CalendarAssist.SelectionForegroundColor"
-                                                Value="White" />
+                                                    Property="materialDesign:CalendarAssist.SelectionForegroundColor"
+                                                    Value="White" />
                                             </Style>
 
                                             <Style
@@ -280,7 +300,7 @@
 
                                 <Grid Grid.Row="0" >
                                     <TextBlock
-                                        Text="Giới tính"
+                                        Text="Giới tính (*)"
                                         FontSize="24"
                                         FontWeight="SemiBold"
                                         Foreground="{StaticResource PrimaryMid}"                                
@@ -289,6 +309,7 @@
 
                                 <Grid Grid.Row="1">
                                     <ComboBox
+                                        x:Name="cmbSex"
                                         FontSize="20"
                                         Foreground="{StaticResource SecondaryLight}"
                                         BorderBrush="{StaticResource SecondaryLight}"
@@ -298,12 +319,18 @@
                                         Background="{StaticResource SecondaryMid}"
                                         materialDesign:ColorZoneAssist.Mode="PrimaryDark" 
                                         Margin="0,6,0,0">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding SSelectionChangedCommand}" 
+                                                                   CommandParameter="{Binding ElementName=cmbSex}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
 
-                                        <ComboBoxItem
+                                    <ComboBoxItem
                                         IsSelected="True"
                                         Content="Nữ" />
 
-                                        <ComboBoxItem
+                                    <ComboBoxItem
                                         Content="Nam"/>
                                     </ComboBox>
 
@@ -313,6 +340,7 @@
                     </Grid>
                 </Grid>
             </Grid>
+
 
 
             <Grid Grid.Column="1">
@@ -330,12 +358,12 @@
                     Height="130"
                     Width="250" 
                     Margin="16,346,34,121">
-                    
+
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    
+
                     <Grid Grid.Row="0">
                         <Border
                         Background="{StaticResource PrimaryLight}"
@@ -349,7 +377,8 @@
                         Content="CẬP NHẬT THÔNG TIN" 
                         FontSize="20"
                         Foreground="{StaticResource PrimaryDark}" 
-                        FontWeight="Bold" />
+                        FontWeight="Bold" 
+                        Command="{ Binding handleProfileCommand}"/>
                     </Grid>
 
                     <Grid Grid.Row="1">
@@ -367,13 +396,12 @@
                         FontSize="20"
                         Foreground="{StaticResource PrimaryLight}" 
                         FontWeight="Bold"
-                        Command="{Binding handleChangePasswordCommand}"/>
-
+                        Command="{Binding handleChangePasswordCommand}"
+                           />
                     </Grid>
                 </Grid>
             </Grid>
         </Grid>
-
     </Grid>
 </UserControl>
 
