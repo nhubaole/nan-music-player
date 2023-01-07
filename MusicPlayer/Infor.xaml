@@ -41,7 +41,7 @@
                     Margin="50,82,50,198"
                     CornerRadius="30">
                     <Border.Background>
-                        <ImageBrush x:Name="img"></ImageBrush>
+                        <ImageBrush x:Name="img" Stretch="UniformToFill"></ImageBrush>
                     </Border.Background>
                 </Border>
                 <Grid Margin="290,30,10,0" Grid.ColumnSpan="2">

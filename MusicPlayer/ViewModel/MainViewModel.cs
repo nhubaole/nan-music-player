@@ -54,6 +54,7 @@ namespace MusicPlayer.ViewModel
                      if (w != null)
                      {
                          MainWindow main = new MainWindow();
+                         LoginViewModel.currUser = null;
                          w.Close();
                          main.Show();
 

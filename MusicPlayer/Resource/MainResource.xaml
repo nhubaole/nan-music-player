@@ -13,7 +13,7 @@
     <viewmodel:SearchVM x:Key="SearchVM"></viewmodel:SearchVM>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
     <viewmodel:SignUpVM x:Key="SignUpVM"></viewmodel:SignUpVM>
-
+    
     <TextBlock
             x:Key="singerName"
             Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
@@ -34,7 +34,7 @@
             HorizontalAlignment="Left"
             FontWeight="SemiBold"
             Margin="85,-20,0,0"/>
-    <Image x:Key="imgURL"/>
+    <Image x:Key="imgURL" Stretch="UniformToFill"/>
     <TextBlock
             x:Key="position"
             Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
@@ -172,10 +172,4 @@
                 FontWeight="Medium"
                 Margin="55,0,0,0"
                 Foreground="{StaticResource PrimaryMid}"/>
-    <TextBlock x:Key="txtPath"
-            Foreground="{StaticResource SecondaryLight}"
-            FontSize="17"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            Margin="120,0,0,0"/>
 </ResourceDictionary>

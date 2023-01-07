@@ -40,8 +40,7 @@ namespace MusicPlayer
                     string path = saveFileDialog.FileName;
                     if (!File.Exists(path))
                     {
-                        WebClient wb = new WebClient();
-                        wb.DownloadFile(UCPlayMusic.SelectedSong.DOWNLOADURL, path);
+                        File.Copy(UCPlayMusic.SelectedSong.SAVEPATH, path, true);
                     }
                     MessageBox.Show("Tải xuống thành công");
                 }

@@ -1,6 +1,7 @@
 ﻿using MusicPlayer.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -12,6 +13,8 @@ namespace MusicPlayer.ViewModel
 {
     public class LoginViewModel:BaseViewModel
     {
+        public static ObservableCollection<USER> listUser = new ObservableCollection<USER>(DataProvider.Ins.DB.USERS);
+        public static USER currUser = null;
         public bool IsLogin { get; set; } //dang nhap hay chua
         private string _username;
         public string Username { get { return _username; } set { _username = value; OnPropertyChanged(); } }
@@ -59,11 +62,20 @@ namespace MusicPlayer.ViewModel
                         if (count > 0)
                         {
                             IsLogin = true;
+                            foreach (USER n in listUser)
+                            {
+                                if (n.USERNAME == Username)
+                                {
+                                    currUser = n;
+                                    break;
+                                }
+                            }
                             p.Close();//
                         }
                         else
                         {
                             IsLogin = false;
+                            currUser = null;
                             MessageBox.Show("Tên đăng nhập hoặc mật khẩu bị sai!", "Đã xảy ra lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }    
