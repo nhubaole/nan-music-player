@@ -1,4 +1,5 @@
 ﻿using MusicPlayer.Model;
+using MusicPlayer.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,6 +31,8 @@ namespace MusicPlayer.UserControls
         public static BackgroundWorker bw2;
         public static TimeSpan timer;
         public static ObservableCollection<SONG> listLastestSong = new ObservableCollection<SONG>();
+        public static ObservableCollection<UPLOADSONG> listUploadSong;
+        public static ObservableCollection<UPLOADSONG> listOwnUpload;
         public static ObservableCollection<string> listTimer = new ObservableCollection<string>() { "15 phút" , "30 phút", "1 giờ", "2 giờ", "Tắt hẹn giờ" };
         public static ComboBox cbTimer = Application.Current.TryFindResource("cbTimer") as ComboBox;
         public static TextBlock txtTimer = Application.Current.TryFindResource("txtTimer") as TextBlock;
@@ -47,8 +50,23 @@ namespace MusicPlayer.UserControls
                 init++;
             }
             lbLastestSongs.ItemsSource = listLastestSong;
+            UpdateUploadSong();
             cbTimer.ItemsSource = listTimer;
             cbTimer.SelectionChanged += CbTimer_SelectionChanged;
+        }
+
+        public void UpdateUploadSong()
+        {
+            listUploadSong = new ObservableCollection<UPLOADSONG>(DataProvider.Ins.DB.UPLOADSONGs);
+            listOwnUpload = new ObservableCollection<UPLOADSONG>();
+            foreach (UPLOADSONG u in listUploadSong)
+            {
+                if(u.USERS.ToList().Count() != 0 && u.USERS.ToList()[0].USERNAME == LoginViewModel.currUser.USERNAME)
+                {
+                    listOwnUpload.Add(u);
+                }
+            }
+            lbUploadSongs.ItemsSource = listOwnUpload;
         }
 
         private void CbTimer_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -113,9 +131,36 @@ namespace MusicPlayer.UserControls
             }
         }
 
-        private void lbLastestSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void lbUploadSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UCHome.addListLastestSong(sender);
+            ListBox ls = sender as ListBox;
+            UPLOADSONG select = ls.SelectedItem as UPLOADSONG;
+            SONG temp = new SONG() { SONGNAME = select.SONGNAME, SINGERNAME = select.SINGERNAME, IMAGEURL = select.IMAGEPATH, SAVEPATH = select.SAVEPATH };
+            listLastestSong.Insert(0, temp);
+            if (listLastestSong.Count() > 5)
+            {
+                listLastestSong.RemoveAt(5);
+            }
+            UCPlayMusic.SelectedSong = temp;
+
+            if (ls.SelectedIndex + 1 < ls.Items.Count)
+                UCPlayMusic.NextSong = ls.Items[ls.SelectedIndex + 1] as SONG;
+            else
+                UCPlayMusic.NextSong = null;
+
+            if (ls.SelectedIndex - 1 >= 0)
+                UCPlayMusic.PrevSong = ls.Items[ls.SelectedIndex - 1] as SONG;
+            else
+                UCPlayMusic.PrevSong = null;
+
+            UCPlayMusic.CurrentList = ls;
+        }
+
+        private void btnUp_Click(object sender, RoutedEventArgs e)
+        {
+            Upload upload = new Upload();
+            upload.ShowDialog();
+            UpdateUploadSong();
         }
     }
 }
