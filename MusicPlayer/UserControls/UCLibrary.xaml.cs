@@ -30,7 +30,7 @@ namespace MusicPlayer.UserControls
         public static int init = -1;
         public static BackgroundWorker bw2;
         public static TimeSpan timer;
-        public static ObservableCollection<SONG> listLastestSong = new ObservableCollection<SONG>();
+        public static ObservableCollection<SONG> listLastestSong;
         public static ObservableCollection<UPLOADSONG> listUploadSong;
         public static ObservableCollection<UPLOADSONG> listOwnUpload;
         public static ObservableCollection<string> listTimer = new ObservableCollection<string>() { "15 phút" , "30 phút", "1 giờ", "2 giờ", "Tắt hẹn giờ" };
@@ -48,6 +48,11 @@ namespace MusicPlayer.UserControls
                 bw2.DoWork += Bw2_DoWork;
                 bw2.RunWorkerAsync();
                 init++;
+            }
+            listLastestSong = new ObservableCollection<SONG>();
+            foreach (LASTEST l in LoginViewModel.currUser.LASTESTs.OrderByDescending(l => l.SEQ))
+            {
+                listLastestSong.Add(l.SONG);
             }
             lbLastestSongs.ItemsSource = listLastestSong;
             UpdateUploadSong();
@@ -136,11 +141,6 @@ namespace MusicPlayer.UserControls
             ListBox ls = sender as ListBox;
             UPLOADSONG select = ls.SelectedItem as UPLOADSONG;
             SONG temp = new SONG() { SONGNAME = select.SONGNAME, SINGERNAME = select.SINGERNAME, IMAGEURL = select.IMAGEPATH, SAVEPATH = select.SAVEPATH };
-            listLastestSong.Insert(0, temp);
-            if (listLastestSong.Count() > 5)
-            {
-                listLastestSong.RemoveAt(5);
-            }
             UCPlayMusic.SelectedSong = temp;
 
             if (ls.SelectedIndex + 1 < ls.Items.Count)

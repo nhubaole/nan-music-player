@@ -216,10 +216,21 @@ namespace MusicPlayer.UserControls
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "Song\\" + selectedSong.SONGNAME + ".mp3";
             selectedSong.SAVEPATH = path;
+            if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "Song"))
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "Song");
             if (!File.Exists(path))
             {
                 WebClient wb = new WebClient();
-                wb.DownloadFile(selectedSong.DOWNLOADURL, path);
+                try
+                {
+                    wb.DownloadFile(selectedSong.DOWNLOADURL, path);
+                }
+                catch
+                {
+                    MessageBox.Show("Bài hát không còn tồn tại");
+                    return;
+                }
+                
             }
         }
 

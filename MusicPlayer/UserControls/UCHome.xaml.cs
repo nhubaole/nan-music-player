@@ -1,4 +1,5 @@
 ﻿using MusicPlayer.Model;
+using MusicPlayer.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -29,7 +30,7 @@ namespace MusicPlayer.UserControls
         public static ObservableCollection<SONG> listNewSong = new ObservableCollection<SONG>();
         public static ObservableCollection<SONG> listSong = new ObservableCollection<SONG>(DataProvider.Ins.DB.SONGs);
         public static int init = 0;
-
+        public static int? seq;
 
         public UCHome()
         {
@@ -41,6 +42,7 @@ namespace MusicPlayer.UserControls
                 UCPlayMusic.SelectedSong = listFeaturedSong.First();
                 init++;
             }
+            seq = 0;
             lbNewSongs.ItemsSource = listNewSong;
             lbFeaturedSongs.ItemsSource = listFeaturedSong;
         }
@@ -81,15 +83,38 @@ namespace MusicPlayer.UserControls
             UCPlayMusic.CurrentList = sender as ListBox;
         }
 
+        public static void UpdateLastestSong()
+        {
+            UCLibrary.listLastestSong = new ObservableCollection<SONG>();
+            foreach (LASTEST l in LoginViewModel.currUser.LASTESTs.OrderByDescending(l => l.SEQ))
+            {
+                UCLibrary.listLastestSong.Add(l.SONG);
+            }
+        }
+
         public static void addListLastestSong(object sender)
         {
             ListBox ls = sender as ListBox;
             SONG song = ls.SelectedItem as SONG;
-            UCLibrary.listLastestSong.Insert(0, song);
-            if (UCLibrary.listLastestSong.Count() > 5)
+            USER user = LoginViewModel.currUser;
+            if (user.LASTESTs.Count > 0)
             {
-                UCLibrary.listLastestSong.RemoveAt(5);
+                seq = user.LASTESTs.OrderByDescending(l => l.SEQ).First().SEQ + 1;
             }
+            foreach(LASTEST l in user.LASTESTs.ToList())
+            {
+                if(l.SONG == song && l.USER == user)
+                {
+                    user.LASTESTs.Remove(l);
+                }
+            }
+            user.LASTESTs.Add(new LASTEST() { SONG = song, SEQ = seq });
+            if (user.LASTESTs.Count() > 5)
+            {
+                user.LASTESTs.Remove((LASTEST)user.LASTESTs.OrderBy(l => l.SEQ).First());
+            }
+            DataProvider.Ins.DB.SaveChanges();
+            UpdateLastestSong();
             UCPlayMusic.SelectedSong = song;
 
             if (ls.SelectedIndex + 1 < ls.Items.Count)

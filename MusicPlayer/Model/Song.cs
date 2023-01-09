@@ -17,8 +17,8 @@ namespace MusicPlayer.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SONG()
         {
+            this.LASTESTs = new HashSet<LASTEST>();
             this.USERS = new HashSet<USER>();
-            this.USERS1 = new HashSet<USER>();
         }
     
         public int SONGID { get; set; }
@@ -32,10 +32,10 @@ namespace MusicPlayer.Model
         public Nullable<double> POSITION { get; set; }
     
         public virtual FEATUREDSONG FEATUREDSONG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LASTEST> LASTESTs { get; set; }
         public virtual NEWSONG NEWSONG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USER> USERS { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USER> USERS1 { get; set; }
     }
 }

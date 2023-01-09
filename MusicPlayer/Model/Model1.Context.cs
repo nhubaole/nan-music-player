@@ -26,6 +26,7 @@ namespace MusicPlayer.Model
         }
     
         public virtual DbSet<FEATUREDSONG> FEATUREDSONGs { get; set; }
+        public virtual DbSet<LASTEST> LASTESTs { get; set; }
         public virtual DbSet<NEWSONG> NEWSONGs { get; set; }
         public virtual DbSet<SONG> SONGs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
