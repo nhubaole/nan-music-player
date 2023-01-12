@@ -355,7 +355,8 @@
                         Content="CẬP NHẬT THÔNG TIN" 
                         FontSize="20"
                         Foreground="{StaticResource PrimaryDark}" 
-                        FontWeight="Bold" />
+                        FontWeight="Bold" 
+                        Command="{ Binding handleProfileCommand}"/>
                     </Grid>
 
                     <Grid Grid.Row="1">
@@ -373,8 +374,8 @@
                         FontSize="20"
                         Foreground="{StaticResource PrimaryLight}" 
                         FontWeight="Bold"
-                        Command="{Binding handleChangePasswordCommand}"/>
-
+                        Command="{Binding handleChangePasswordCommand}"
+                           />
                     </Grid>
                 </Grid>
             </Grid>

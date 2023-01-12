@@ -20,7 +20,7 @@ namespace MusicPlayer.ViewModel
         public string Username { get { return _username; } set { _username = value; OnPropertyChanged(); } }
         private string _password;
         public string Password { get { return _password; } set { _password = value; OnPropertyChanged(); } }
-        public ICommand LoginCommand { get; set; } //coi nhu ca dang nhap tha nh cong
+        public ICommand LoginCommand { get; set; } 
         public ICommand ToSignUpCommand { get; set; }//dang ki thi vao form dang ki 
         public ICommand PasswordChangedCommand { get; set; }  
 
@@ -46,8 +46,7 @@ namespace MusicPlayer.ViewModel
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return  true; }, (p) =>
             {
                 Password  = p.Password;
-                
-
+               
             });
             void Login( Window p)
             {

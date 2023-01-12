@@ -144,8 +144,7 @@ namespace MusicPlayer.ViewModel
                         MainWindow main = new MainWindow();
                         w.Close();
                         main.Show();
-                        //Login login = new Login();
-                        //login.Show();
+
                     }
                     else
                     {
@@ -383,7 +382,7 @@ namespace MusicPlayer.ViewModel
                 return false ;
             }    
             DateTime now = DateTime.Now;
-            if (DateTime.Compare(date, now) >= 0)
+            if (DateTime.Compare(now, date) < 0)
             {
         
                 return false;
