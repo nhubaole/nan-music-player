@@ -47,6 +47,7 @@
           <Property Name="SAVEPATH" Type="nvarchar(max)" />
           <Property Name="DURATION" Type="float" />
           <Property Name="POSITION" Type="float" />
+          <Property Name="LIKED" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -309,6 +310,7 @@
           <NavigationProperty Name="LASTESTs" Relationship="NANDBModel.FK_LASTEST_SONG" FromRole="SONG" ToRole="LASTEST" />
           <NavigationProperty Name="NEWSONG" Relationship="NANDBModel.FK_NEW_SONG" FromRole="SONG" ToRole="NEWSONG" />
           <NavigationProperty Name="USERS" Relationship="NANDBModel.LIKES" FromRole="SONG" ToRole="USER" />
+          <Property Name="LIKED" Type="Boolean" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -437,6 +439,7 @@
           <EntitySetMapping Name="SONGs">
             <EntityTypeMapping TypeName="NANDBModel.SONG">
               <MappingFragment StoreEntitySet="SONG">
+                <ScalarProperty Name="LIKED" ColumnName="LIKED" />
                 <ScalarProperty Name="POSITION" ColumnName="POSITION" />
                 <ScalarProperty Name="DURATION" ColumnName="DURATION" />
                 <ScalarProperty Name="SAVEPATH" ColumnName="SAVEPATH" />

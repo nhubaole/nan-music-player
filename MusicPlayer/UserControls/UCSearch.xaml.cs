@@ -1,4 +1,5 @@
 ﻿using MusicPlayer.Model;
+using MusicPlayer.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,6 +9,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -31,6 +33,10 @@ namespace MusicPlayer.UserControls
             InitializeComponent();
             lbSongs.ItemsSource = listSong;
             cbSearchType.ItemsSource = listChoices;
+            if (LoginViewModel.currUser != null)
+            {
+                UCLibrary.UpdateLikedSong();
+            }
         }
 
         private void lbSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -84,6 +90,11 @@ namespace MusicPlayer.UserControls
                 return;
             }
             lbSongs.ItemsSource = searchResult;
+        }
+
+        private void btnLike_Click(object sender, RoutedEventArgs e)
+        {
+            UCLibrary.LikeSong(sender);
         }
     }
 }

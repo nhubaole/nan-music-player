@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -31,6 +32,7 @@ namespace MusicPlayer.UserControls
         public static BackgroundWorker bw2;
         public static TimeSpan timer;
         public static ObservableCollection<SONG> listLastestSong;
+        public static ObservableCollection<SONG> listLikedSong = new ObservableCollection<SONG>();
         public static ObservableCollection<UPLOADSONG> listUploadSong;
         public static ObservableCollection<UPLOADSONG> listOwnUpload;
         public static ObservableCollection<string> listTimer = new ObservableCollection<string>() { "15 phút" , "30 phút", "1 giờ", "2 giờ", "Tắt hẹn giờ" };
@@ -55,6 +57,10 @@ namespace MusicPlayer.UserControls
                 listLastestSong.Add(l.SONG);
             }
             lbLastestSongs.ItemsSource = listLastestSong;
+
+            UpdateLikedSong();
+            lbLikedSongs.ItemsSource = listLikedSong;
+            
             UpdateUploadSong();
             cbTimer.ItemsSource = listTimer;
             cbTimer.SelectionChanged += CbTimer_SelectionChanged;
@@ -161,6 +167,48 @@ namespace MusicPlayer.UserControls
             Upload upload = new Upload();
             upload.ShowDialog();
             UpdateUploadSong();
+        }
+
+        private void btnLike_Click(object sender, RoutedEventArgs e)
+        {
+            LikeSong(sender);
+        }
+
+        private void btnLike2_Click(object sender, RoutedEventArgs e)
+        {
+            LikeSong(sender);
+        }
+
+        public static void UpdateLikedSong()
+        {
+            foreach(SONG s in UCHome.listSong)
+            {
+                s.LIKED = false;
+            }
+            listLikedSong.Clear();
+            foreach(SONG s in LoginViewModel.currUser.SONGs)
+            {
+                s.LIKED = true;
+                listLikedSong.Add(s);
+            }
+        }
+
+        public static void LikeSong(object sender)
+        {
+            ToggleButton btn = (ToggleButton)sender;
+            SONG s = btn.DataContext as SONG;
+            if (btn.IsChecked == true)
+            {
+                LoginViewModel.currUser.SONGs.Add(s);
+                DataProvider.Ins.DB.SaveChanges();
+                UpdateLikedSong();
+            }
+            else
+            {
+                LoginViewModel.currUser.SONGs.Remove(s);
+                DataProvider.Ins.DB.SaveChanges();
+                UpdateLikedSong();
+            }
         }
     }
 }

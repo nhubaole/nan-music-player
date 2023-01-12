@@ -70,7 +70,8 @@
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <ToggleButton Foreground="White"
+                                            <ToggleButton x:Name="btnLike"
+                                                      Foreground="White"
                                                       Background="#ff5252"
                                                       Width="25" 
                                                       Height="25" 
@@ -79,7 +80,8 @@
                                                       VerticalAlignment="Top"
                                                       Content="{materialDesign:PackIcon Kind=Heart, Size=18}"
                                                       Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
-                                                      IsChecked="True" />
+                                                      IsChecked="{Binding LIKED}"
+                                                      Click="btnLike_Click"/>
                                             <StackPanel>
                                                 <Border CornerRadius="20,20,20,20"
                                                     Width="80"

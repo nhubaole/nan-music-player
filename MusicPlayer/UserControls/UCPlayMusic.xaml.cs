@@ -237,6 +237,7 @@ namespace MusicPlayer.UserControls
         private void btThreePoint_Click(object sender, RoutedEventArgs e)
         {
             Infor infor = new Infor();
+            infor.txtLike.Text = selectedSong.USERS.Count().ToString();
             infor.tblName2.Text = selectedSong.SONGNAME;
             infor.tblName4.Text = selectedSong.SINGERNAME;
             infor.tblTime2.Text = new TimeSpan(0, (int)(selectedSong.DURATION / 60), (int)(selectedSong.DURATION % 60)).ToString(@"mm\:ss");

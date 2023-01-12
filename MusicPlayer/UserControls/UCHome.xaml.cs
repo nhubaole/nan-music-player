@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -42,6 +43,18 @@ namespace MusicPlayer.UserControls
                 UCPlayMusic.SelectedSong = listFeaturedSong.First();
                 init++;
             }
+            if(LoginViewModel.currUser != null)
+            {
+                UCLibrary.UpdateLikedSong();
+            }
+            else
+            {
+                foreach (SONG s in listSong)
+                {
+                    s.LIKED = false;
+                }
+            }
+            
             seq = 0;
             lbNewSongs.ItemsSource = listNewSong;
             lbFeaturedSongs.ItemsSource = listFeaturedSong;
@@ -132,6 +145,16 @@ namespace MusicPlayer.UserControls
         {
             addListLastestSong(sender);
             UCPlayMusic.CurrentList = sender as ListBox;
+        }
+
+        private void btnLike_Click(object sender, RoutedEventArgs e)
+        {
+            UCLibrary.LikeSong(sender);
+        }
+
+        private void btnLikeNew_Click(object sender, RoutedEventArgs e)
+        {
+            UCLibrary.LikeSong(sender);
         }
     }
 }
