@@ -123,6 +123,28 @@
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
+                                            <Button x:Name="btnEdit"
+                                                    Background="Transparent"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Width="20" 
+                                                    Height="20" 
+                                                    Margin="88,25,0,0"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Top"
+                                                    Click="btnEdit_Click">
+                                                <materialDesign:PackIcon Kind="Pencil" Width="20" Height="20" Foreground="{StaticResource SecondaryLight}"/>
+                                            </Button>
+                                            <Button x:Name="btnDel"
+                                                    Background="Transparent"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Width="20" 
+                                                    Height="20" 
+                                                    Margin="88,55,0,0"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Top"
+                                                    Click="btnDel_Click">
+                                                <materialDesign:PackIcon Kind="TrashCan" Width="20" Height="20" Foreground="{StaticResource SecondaryLight}"/>
+                                            </Button>
                                             <StackPanel>
                                                 <Border CornerRadius="20,20,20,20"
                                                     Width="80"

@@ -24,9 +24,33 @@ namespace MusicPlayer
     /// </summary>
     public partial class Upload : Window
     {
+        public static int update = 0;
+        public static UPLOADSONG updateSong;
         public Upload()
         {
             InitializeComponent();
+            if(update == 1)
+            {
+                txtTitle.Text = "CHỈNH SỬA BÀI HÁT";
+                txtBtnUp.Text = "CẬP NHẬT";
+                tbSongName.Text = updateSong.SONGNAME;
+                tbSingerName.Text = updateSong.SINGERNAME;
+                txtPath.Text = updateSong.SAVEPATH;
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                try
+                {
+                    bitmapImage.UriSource = new Uri(updateSong.IMAGEPATH);
+                    btnImage.ToolTip = updateSong.IMAGEPATH;
+                }
+                catch
+                {
+                    bitmapImage.UriSource = new Uri("../" + updateSong.IMAGEPATH, UriKind.RelativeOrAbsolute);
+                    btnImage.ToolTip = "";
+                }
+                bitmapImage.EndInit();
+                img.ImageSource = bitmapImage;
+            }
         }
 
         private void btnChooseFile_Click(object sender, RoutedEventArgs e)
@@ -90,11 +114,22 @@ namespace MusicPlayer
                     IMAGEPATH = imagePath,
                     SAVEPATH = savePath
                 };
-                song.USERS.Add(LoginViewModel.currUser);
-                DataProvider.Ins.DB.UPLOADSONGs.Add(song);
-                DataProvider.Ins.DB.SaveChanges();
-                MessageBox.Show("Tải bài hát lên thành công!", "Thông báo", MessageBoxButton.OK);
-                this.Close();
+                if (update == 1)
+                {
+                    LoginViewModel.currUser.UPLOADSONGs.Remove(updateSong);
+                    LoginViewModel.currUser.UPLOADSONGs.Add(song);
+                    DataProvider.Ins.DB.SaveChanges();
+                    MessageBox.Show("Cập nhật bài hát thành công!", "Thông báo", MessageBoxButton.OK);
+                    this.Close();
+                }
+                else
+                {
+                    song.USERS.Add(LoginViewModel.currUser);
+                    DataProvider.Ins.DB.UPLOADSONGs.Add(song);
+                    DataProvider.Ins.DB.SaveChanges();
+                    MessageBox.Show("Tải bài hát lên thành công!", "Thông báo", MessageBoxButton.OK);
+                    this.Close();
+                }
             }
         }
     }
