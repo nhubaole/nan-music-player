@@ -34,7 +34,7 @@ namespace MusicPlayer.UserControls
                 txtPhone.Text = current.PHONE;
                 txtEmail.Text = current.EMAIL;
                 dpDOB.SelectedDate = Convert.ToDateTime(current.DOB.ToString().Substring(0, 10));
-                cbSex.Text = current.SEX == "Nam" ? "Nam" : "Nữ";
+                cmbSex.Text = current.SEX == "Nam" ? "Nam" : "Nữ";
 
             }
         }

@@ -13,7 +13,7 @@ namespace MusicPlayer.ViewModel
 {
     public class LoginViewModel:BaseViewModel
     {
-        public static ObservableCollection<USER> listUser = new ObservableCollection<USER>(DataProvider.Ins.DB.USERS);
+        public static ObservableCollection<USER> listUser;//= new ObservableCollection<USER>(DataProvider.Ins.DB.USERS);
         public static USER currUser = null;
         public bool IsLogin { get; set; } //dang nhap hay chua
         private string _username;
@@ -61,6 +61,7 @@ namespace MusicPlayer.ViewModel
                         if (count > 0)
                         {
                             IsLogin = true;
+                            listUser = new ObservableCollection<USER>(DataProvider.Ins.DB.USERS);
                             foreach (USER n in listUser)
                             {
                                 if (n.USERNAME == Username)

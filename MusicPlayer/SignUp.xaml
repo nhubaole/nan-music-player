@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
-         xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
         Height="650" 
         Width="570"
         ResizeMode="CanMinimize"
@@ -96,7 +96,7 @@
                                     <ColumnDefinition Width="22*"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBox
-                                    materialDesign:HintAssist.Hint="Nhập tên người dùng "
+                                    materialDesign:HintAssist.Hint="Nhập tên người dùng"
                                     materialDesign:HintAssist.HelperText="Chỉ chứa số và chữ cái."
                                     FontSize="16"
                                     BorderBrush="{StaticResource SecondaryLight}"
@@ -104,7 +104,8 @@
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Left" 
                                     Width="180"
-                                    Text="{Binding uNameSU}" Grid.ColumnSpan="2"
+                                    Text="{Binding uName}"
+                                    Grid.ColumnSpan="2"
                                     />
                             </Grid>
 
@@ -133,7 +134,7 @@
                                     VerticalAlignment="Top"
                                     HorizontalAlignment="Left"                                    
                                     Width="180" 
-                                    Text="{Binding uFullNameSU}"
+                                    Text="{Binding uFullName}"
                                     BorderBrush="{StaticResource SecondaryLight}"/>
                             </Grid>
                         </Grid>
@@ -248,7 +249,7 @@
                                 Foreground="{StaticResource SecondaryLight}"
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Left"
-                                Text="{Binding uEmailSU}"
+                                Text="{Binding uEmail}"
                                 Width="425"/>
                         </Grid>
                     </Grid>
@@ -277,7 +278,7 @@
                                 Foreground="{StaticResource SecondaryLight}"
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Left"
-                                Text="{Binding uPhoneSU}"
+                                Text="{Binding uPhone}"
 
                                 Width="425"/>
                         </Grid>
