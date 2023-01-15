@@ -65,13 +65,14 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock 
+                        x:Name="txtTitle"
                         Text="TẢI BÀI HÁT LÊN"
                         FontSize="23"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         FontWeight="Bold"
                         Foreground="{StaticResource SecondaryLight}" 
-                        FontFamily="Bahnschrift" Margin="130,0,0,0" Height="28" Width="170"/>
+                        FontFamily="Bahnschrift" Margin="130,0,0,0" Height="28" Width="220"/>
                     <TextBlock 
                         Grid.Row="1"
                         Text="Tên bài hát"
@@ -143,7 +144,7 @@
                             BorderBrush="Transparent"
                             Margin="140,26,230,0"
                             Click="btnUpload_Click">
-                            <TextBlock
+                            <TextBlock x:Name="txtBtnUp"
                                 Text="TẢI LÊN" 
                                 FontSize="17" 
                                 Height="20" 

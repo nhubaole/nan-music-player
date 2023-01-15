@@ -17,8 +17,8 @@ namespace MusicPlayer.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public USER()
         {
+            this.LASTESTs = new HashSet<LASTEST>();
             this.SONGs = new HashSet<SONG>();
-            this.SONGs1 = new HashSet<SONG>();
             this.UPLOADSONGs = new HashSet<UPLOADSONG>();
         }
     
@@ -32,9 +32,9 @@ namespace MusicPlayer.Model
         public string SEX { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SONG> SONGs { get; set; }
+        public virtual ICollection<LASTEST> LASTESTs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SONG> SONGs1 { get; set; }
+        public virtual ICollection<SONG> SONGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UPLOADSONG> UPLOADSONGs { get; set; }
     }

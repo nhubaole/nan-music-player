@@ -146,25 +146,23 @@
                             Margin="0,33,0,0">
                         </TextBlock>-->
                     </Grid>
-                    <!--<ToggleButton
-                        Grid.Row="4"
+                    <Border Grid.Row="4"
                         Height="35"
                         Width="35"
                         Background="#ff5252"
-                        Foreground="White"
-                        Content="{materialDesign:PackIcon Kind=Heart, Size=23}"
-                        Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
-                        ToolTip="MaterialDesignFlatPrimaryToggleButton"
-                        IsChecked="True" Margin="0,5,455,5" RenderTransformOrigin="0.4,-0.2"
-                        />
+                        Margin="0,5,455,5" 
+                        CornerRadius="35">
+                        <materialDesign:PackIcon Kind="Heart" Width="23" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"></materialDesign:PackIcon>
+                    </Border>
                     <TextBlock
                         Grid.Row="4" 
-                        Text="1000" 
+                        x:Name="txtLike"
+                        Text="0" 
                         Height="30"
                         FontSize="18"
                         FontWeight="Bold"
                         Foreground="#ff5252" 
-                        Margin="50,4,0,-4" />-->
+                        Margin="50,4,0,-4" />
                     <Grid
                         Grid.Row="5">
                         <Button

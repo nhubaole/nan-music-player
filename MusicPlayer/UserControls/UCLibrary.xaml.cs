@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -30,7 +31,8 @@ namespace MusicPlayer.UserControls
         public static int init = -1;
         public static BackgroundWorker bw2;
         public static TimeSpan timer;
-        public static ObservableCollection<SONG> listLastestSong = new ObservableCollection<SONG>();
+        public static ObservableCollection<SONG> listLastestSong;
+        public static ObservableCollection<SONG> listLikedSong = new ObservableCollection<SONG>();
         public static ObservableCollection<UPLOADSONG> listUploadSong;
         public static ObservableCollection<UPLOADSONG> listOwnUpload;
         public static ObservableCollection<string> listTimer = new ObservableCollection<string>() { "15 phút" , "30 phút", "1 giờ", "2 giờ", "Tắt hẹn giờ" };
@@ -49,7 +51,16 @@ namespace MusicPlayer.UserControls
                 bw2.RunWorkerAsync();
                 init++;
             }
+            listLastestSong = new ObservableCollection<SONG>();
+            foreach (LASTEST l in LoginViewModel.currUser.LASTESTs.OrderByDescending(l => l.SEQ))
+            {
+                listLastestSong.Add(l.SONG);
+            }
             lbLastestSongs.ItemsSource = listLastestSong;
+
+            UpdateLikedSong();
+            lbLikedSongs.ItemsSource = listLikedSong;
+            
             UpdateUploadSong();
             cbTimer.ItemsSource = listTimer;
             cbTimer.SelectionChanged += CbTimer_SelectionChanged;
@@ -135,25 +146,26 @@ namespace MusicPlayer.UserControls
         {
             ListBox ls = sender as ListBox;
             UPLOADSONG select = ls.SelectedItem as UPLOADSONG;
-            SONG temp = new SONG() { SONGNAME = select.SONGNAME, SINGERNAME = select.SINGERNAME, IMAGEURL = select.IMAGEPATH, SAVEPATH = select.SAVEPATH };
-            listLastestSong.Insert(0, temp);
-            if (listLastestSong.Count() > 5)
+            if(select == null)
             {
-                listLastestSong.RemoveAt(5);
+                return;
             }
-            UCPlayMusic.SelectedSong = temp;
-
-            if (ls.SelectedIndex + 1 < ls.Items.Count)
-                UCPlayMusic.NextSong = ls.Items[ls.SelectedIndex + 1] as SONG;
             else
-                UCPlayMusic.NextSong = null;
+            {
+                SONG temp = new SONG() { SONGNAME = select.SONGNAME, SINGERNAME = select.SINGERNAME, IMAGEURL = select.IMAGEPATH, SAVEPATH = select.SAVEPATH };
+                UCPlayMusic.SelectedSong = temp;
+                if (ls.SelectedIndex + 1 < ls.Items.Count)
+                    UCPlayMusic.NextSong = ls.Items[ls.SelectedIndex + 1] as SONG;
+                else
+                    UCPlayMusic.NextSong = null;
 
-            if (ls.SelectedIndex - 1 >= 0)
-                UCPlayMusic.PrevSong = ls.Items[ls.SelectedIndex - 1] as SONG;
-            else
-                UCPlayMusic.PrevSong = null;
+                if (ls.SelectedIndex - 1 >= 0)
+                    UCPlayMusic.PrevSong = ls.Items[ls.SelectedIndex - 1] as SONG;
+                else
+                    UCPlayMusic.PrevSong = null;
 
-            UCPlayMusic.CurrentList = ls;
+                UCPlayMusic.CurrentList = ls;
+            }
         }
 
         private void btnUp_Click(object sender, RoutedEventArgs e)
@@ -161,6 +173,78 @@ namespace MusicPlayer.UserControls
             Upload upload = new Upload();
             upload.ShowDialog();
             UpdateUploadSong();
+        }
+
+        private void btnLike_Click(object sender, RoutedEventArgs e)
+        {
+            LikeSong(sender);
+        }
+
+        private void btnLike2_Click(object sender, RoutedEventArgs e)
+        {
+            LikeSong(sender);
+        }
+
+        public static void UpdateLikedSong()
+        {
+            foreach(SONG s in UCHome.listSong)
+            {
+                s.LIKED = false;
+            }
+            listLikedSong.Clear();
+            foreach(SONG s in LoginViewModel.currUser.SONGs)
+            {
+                s.LIKED = true;
+                listLikedSong.Add(s);
+            }
+        }
+
+        public static void LikeSong(object sender)
+        {
+            ToggleButton btn = (ToggleButton)sender;
+            SONG s = btn.DataContext as SONG;
+            if (btn.IsChecked == true)
+            {
+                LoginViewModel.currUser.SONGs.Add(s);
+                DataProvider.Ins.DB.SaveChanges();
+                UpdateLikedSong();
+            }
+            else
+            {
+                LoginViewModel.currUser.SONGs.Remove(s);
+                DataProvider.Ins.DB.SaveChanges();
+                UpdateLikedSong();
+            }
+        }
+
+        private void btnDel_Click(object sender, RoutedEventArgs e)
+        {
+            if(MessageBox.Show("Bạn có chắc chắn muốn xóa bài hát này?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Button btn = (Button)sender;
+                UPLOADSONG s = btn.DataContext as UPLOADSONG;
+                LoginViewModel.currUser.UPLOADSONGs.Remove(s);
+                DataProvider.Ins.DB.SaveChanges();
+                UpdateUploadSong();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Upload.update = 1;
+
+            Button btn = (Button)sender;
+            UPLOADSONG s = btn.DataContext as UPLOADSONG;
+            Upload.updateSong = s;
+            Upload upload = new Upload();
+
+            upload.ShowDialog();
+            UpdateUploadSong();
+            Upload.update = 0;
         }
     }
 }

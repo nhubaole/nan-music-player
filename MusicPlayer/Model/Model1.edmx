@@ -18,6 +18,7 @@
           </Key>
           <Property Name="SONGID" Type="int" Nullable="false" />
           <Property Name="USERID" Type="int" Nullable="false" />
+          <Property Name="SEQ" Type="int" />
         </EntityType>
         <EntityType Name="LIKES">
           <Key>
@@ -46,6 +47,7 @@
           <Property Name="SAVEPATH" Type="nvarchar(max)" />
           <Property Name="DURATION" Type="float" />
           <Property Name="POSITION" Type="float" />
+          <Property Name="LIKED" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -235,6 +237,7 @@
       <Schema Namespace="NANDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="NANDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="FEATUREDSONGs" EntityType="NANDBModel.FEATUREDSONG" />
+          <EntitySet Name="LASTESTs" EntityType="NANDBModel.LASTEST" />
           <EntitySet Name="NEWSONGs" EntityType="NANDBModel.NEWSONG" />
           <EntitySet Name="SONGs" EntityType="NANDBModel.SONG" />
           <EntitySet Name="sysdiagrams" EntityType="NANDBModel.sysdiagram" />
@@ -244,13 +247,17 @@
             <End Role="SONG" EntitySet="SONGs" />
             <End Role="FEATUREDSONG" EntitySet="FEATUREDSONGs" />
           </AssociationSet>
+          <AssociationSet Name="FK_LASTEST_SONG" Association="NANDBModel.FK_LASTEST_SONG">
+            <End Role="SONG" EntitySet="SONGs" />
+            <End Role="LASTEST" EntitySet="LASTESTs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LASTEST_USER" Association="NANDBModel.FK_LASTEST_USER">
+            <End Role="USER" EntitySet="USERS" />
+            <End Role="LASTEST" EntitySet="LASTESTs" />
+          </AssociationSet>
           <AssociationSet Name="FK_NEW_SONG" Association="NANDBModel.FK_NEW_SONG">
             <End Role="SONG" EntitySet="SONGs" />
             <End Role="NEWSONG" EntitySet="NEWSONGs" />
-          </AssociationSet>
-          <AssociationSet Name="LASTEST" Association="NANDBModel.LASTEST">
-            <End Role="SONG" EntitySet="SONGs" />
-            <End Role="USER" EntitySet="USERS" />
           </AssociationSet>
           <AssociationSet Name="LIKES" Association="NANDBModel.LIKES">
             <End Role="SONG" EntitySet="SONGs" />
@@ -267,6 +274,17 @@
           </Key>
           <Property Name="SONGID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="SONG" Relationship="NANDBModel.FK_FEATURED_SONG" FromRole="FEATUREDSONG" ToRole="SONG" />
+        </EntityType>
+        <EntityType Name="LASTEST">
+          <Key>
+            <PropertyRef Name="SONGID" />
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="SONGID" Type="Int32" Nullable="false" />
+          <Property Name="USERID" Type="Int32" Nullable="false" />
+          <Property Name="SEQ" Type="Int32" />
+          <NavigationProperty Name="SONG" Relationship="NANDBModel.FK_LASTEST_SONG" FromRole="LASTEST" ToRole="SONG" />
+          <NavigationProperty Name="USER" Relationship="NANDBModel.FK_LASTEST_USER" FromRole="LASTEST" ToRole="USER" />
         </EntityType>
         <EntityType Name="NEWSONG">
           <Key>
@@ -289,9 +307,10 @@
           <Property Name="DURATION" Type="Double" />
           <Property Name="POSITION" Type="Double" />
           <NavigationProperty Name="FEATUREDSONG" Relationship="NANDBModel.FK_FEATURED_SONG" FromRole="SONG" ToRole="FEATUREDSONG" />
+          <NavigationProperty Name="LASTESTs" Relationship="NANDBModel.FK_LASTEST_SONG" FromRole="SONG" ToRole="LASTEST" />
           <NavigationProperty Name="NEWSONG" Relationship="NANDBModel.FK_NEW_SONG" FromRole="SONG" ToRole="NEWSONG" />
-          <NavigationProperty Name="USERS" Relationship="NANDBModel.LASTEST" FromRole="SONG" ToRole="USER" />
-          <NavigationProperty Name="USERS1" Relationship="NANDBModel.LIKES" FromRole="SONG" ToRole="USER" />
+          <NavigationProperty Name="USERS" Relationship="NANDBModel.LIKES" FromRole="SONG" ToRole="USER" />
+          <Property Name="LIKED" Type="Boolean" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -328,8 +347,8 @@
           <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DOB" Type="DateTime" Precision="3" />
           <Property Name="SEX" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SONGs" Relationship="NANDBModel.LASTEST" FromRole="USER" ToRole="SONG" />
-          <NavigationProperty Name="SONGs1" Relationship="NANDBModel.LIKES" FromRole="USER" ToRole="SONG" />
+          <NavigationProperty Name="LASTESTs" Relationship="NANDBModel.FK_LASTEST_USER" FromRole="USER" ToRole="LASTEST" />
+          <NavigationProperty Name="SONGs" Relationship="NANDBModel.LIKES" FromRole="USER" ToRole="SONG" />
           <NavigationProperty Name="UPLOADSONGs" Relationship="NANDBModel.UPLOAD" FromRole="USER" ToRole="UPLOADSONG" />
         </EntityType>
         <Association Name="FK_FEATURED_SONG">
@@ -341,6 +360,30 @@
             </Principal>
             <Dependent Role="FEATUREDSONG">
               <PropertyRef Name="SONGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LASTEST_SONG">
+          <End Type="NANDBModel.SONG" Role="SONG" Multiplicity="1" />
+          <End Type="NANDBModel.LASTEST" Role="LASTEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SONG">
+              <PropertyRef Name="SONGID" />
+            </Principal>
+            <Dependent Role="LASTEST">
+              <PropertyRef Name="SONGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LASTEST_USER">
+          <End Type="NANDBModel.USER" Role="USER" Multiplicity="1" />
+          <End Type="NANDBModel.LASTEST" Role="LASTEST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="LASTEST">
+              <PropertyRef Name="USERID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -356,10 +399,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="LASTEST">
-          <End Type="NANDBModel.SONG" Role="SONG" Multiplicity="*" />
-          <End Type="NANDBModel.USER" Role="USER" Multiplicity="*" />
-        </Association>
         <Association Name="LIKES">
           <End Type="NANDBModel.SONG" Role="SONG" Multiplicity="*" />
           <End Type="NANDBModel.USER" Role="USER" Multiplicity="*" />
@@ -368,7 +407,7 @@
           <End Type="NANDBModel.UPLOADSONG" Role="UPLOADSONG" Multiplicity="*" />
           <End Type="NANDBModel.USER" Role="USER" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -377,6 +416,15 @@
           <EntitySetMapping Name="FEATUREDSONGs">
             <EntityTypeMapping TypeName="NANDBModel.FEATUREDSONG">
               <MappingFragment StoreEntitySet="FEATUREDSONG">
+                <ScalarProperty Name="SONGID" ColumnName="SONGID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LASTESTs">
+            <EntityTypeMapping TypeName="NANDBModel.LASTEST">
+              <MappingFragment StoreEntitySet="LASTEST">
+                <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
                 <ScalarProperty Name="SONGID" ColumnName="SONGID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -391,6 +439,7 @@
           <EntitySetMapping Name="SONGs">
             <EntityTypeMapping TypeName="NANDBModel.SONG">
               <MappingFragment StoreEntitySet="SONG">
+                <ScalarProperty Name="LIKED" ColumnName="LIKED" />
                 <ScalarProperty Name="POSITION" ColumnName="POSITION" />
                 <ScalarProperty Name="DURATION" ColumnName="DURATION" />
                 <ScalarProperty Name="SAVEPATH" ColumnName="SAVEPATH" />
@@ -441,14 +490,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="LASTEST" TypeName="NANDBModel.LASTEST" StoreEntitySet="LASTEST">
-            <EndProperty Name="USER">
-              <ScalarProperty Name="USERID" ColumnName="USERID" />
-            </EndProperty>
-            <EndProperty Name="SONG">
-              <ScalarProperty Name="SONGID" ColumnName="SONGID" />
-            </EndProperty>
-          </AssociationSetMapping>
           <AssociationSetMapping Name="LIKES" TypeName="NANDBModel.LIKES" StoreEntitySet="LIKES">
             <EndProperty Name="USER">
               <ScalarProperty Name="USERID" ColumnName="USERID" />

@@ -216,16 +216,28 @@ namespace MusicPlayer.UserControls
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "Song\\" + selectedSong.SONGNAME + ".mp3";
             selectedSong.SAVEPATH = path;
+            if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "Song"))
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "Song");
             if (!File.Exists(path))
             {
                 WebClient wb = new WebClient();
-                wb.DownloadFile(selectedSong.DOWNLOADURL, path);
+                try
+                {
+                    wb.DownloadFile(selectedSong.DOWNLOADURL, path);
+                }
+                catch
+                {
+                    MessageBox.Show("Bài hát không còn tồn tại");
+                    return;
+                }
+                
             }
         }
 
         private void btThreePoint_Click(object sender, RoutedEventArgs e)
         {
             Infor infor = new Infor();
+            infor.txtLike.Text = selectedSong.USERS.Count().ToString();
             infor.tblName2.Text = selectedSong.SONGNAME;
             infor.tblName4.Text = selectedSong.SINGERNAME;
             infor.tblTime2.Text = new TimeSpan(0, (int)(selectedSong.DURATION / 60), (int)(selectedSong.DURATION % 60)).ToString(@"mm\:ss");
