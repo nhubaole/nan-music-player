@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -33,11 +34,14 @@ namespace MusicPlayer.UserControls
         public static TimeSpan timer;
         public static ObservableCollection<SONG> listLastestSong;
         public static ObservableCollection<SONG> listLikedSong = new ObservableCollection<SONG>();
+        public static ObservableCollection<PLAYLIST> listPlaylists;
         public static ObservableCollection<UPLOADSONG> listUploadSong;
         public static ObservableCollection<UPLOADSONG> listOwnUpload;
         public static ObservableCollection<string> listTimer = new ObservableCollection<string>() { "15 phút" , "30 phút", "1 giờ", "2 giờ", "Tắt hẹn giờ" };
         public static ComboBox cbTimer = Application.Current.TryFindResource("cbTimer") as ComboBox;
         public static TextBlock txtTimer = Application.Current.TryFindResource("txtTimer") as TextBlock;
+        public static PLAYLIST playlistDeleted;
+        public static Button btnNow;
         public UCLibrary()
         {
             InitializeComponent();
@@ -51,6 +55,8 @@ namespace MusicPlayer.UserControls
                 bw2.RunWorkerAsync();
                 init++;
             }
+            UpdatePlaylist();
+
             listLastestSong = new ObservableCollection<SONG>();
             foreach (LASTEST l in LoginViewModel.currUser.LASTESTs.OrderByDescending(l => l.SEQ))
             {
@@ -78,6 +84,12 @@ namespace MusicPlayer.UserControls
                 }
             }
             lbUploadSongs.ItemsSource = listOwnUpload;
+        }
+
+        public void UpdatePlaylist()
+        {
+            listPlaylists = new ObservableCollection<PLAYLIST>(LoginViewModel.currUser.PLAYLISTs);
+            lbPlaylists.ItemsSource = listPlaylists;
         }
 
         private void CbTimer_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -245,6 +257,73 @@ namespace MusicPlayer.UserControls
             upload.ShowDialog();
             UpdateUploadSong();
             Upload.update = 0;
+        }
+
+        private void btnAddPlaylist_Click(object sender, RoutedEventArgs e)
+        {
+            AddPlaylist add = new AddPlaylist();
+            add.ShowDialog();
+            UpdatePlaylist();
+        }
+
+        private void btnDelPlaylist_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa playlist này?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Button btn = (Button)sender;
+                PLAYLIST pl = btn.DataContext as PLAYLIST;
+                LoginViewModel.currUser.PLAYLISTs.Remove(pl);
+                DataProvider.Ins.DB.PLAYLISTs.Remove(pl);
+                DataProvider.Ins.DB.SaveChanges();
+                UpdatePlaylist();
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            if(MessageBox.Show("Bạn có chắc chắn muốn xóa bài hát khỏi playlist?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Button btn = sender as Button;
+                SONG s = btn.DataContext as SONG;
+
+                playlistDeleted.SONGs.Remove(s);
+                DataProvider.Ins.DB.SaveChanges();
+                UpdatePlaylist();
+                MessageBox.Show("Đã xóa bài hát thành công");
+            }
+        }
+
+
+        private void ListBox_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            ListBox listBox = sender as ListBox;
+            playlistDeleted = listBox.DataContext as PLAYLIST;
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Button btnAdd = (Button)sender;
+            ContextMenu contextMenu = btnAdd.ContextMenu;
+            contextMenu.ItemsSource = UCLibrary.listPlaylists;
+            contextMenu.PlacementTarget = btnAdd;
+            contextMenu.Placement = PlacementMode.MousePoint;
+            contextMenu.IsOpen = true;
+            btnNow = btnAdd;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem menu = sender as MenuItem;
+            PLAYLIST pl = menu.DataContext as PLAYLIST;
+            SONG s = btnNow.DataContext as SONG;
+            pl.SONGs.Add(s);
+            DataProvider.Ins.DB.SaveChanges();
+            MessageBox.Show("Thêm bài hát vào playlist thành công");
+            UpdatePlaylist();
         }
     }
 }

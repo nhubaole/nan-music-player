@@ -39,6 +39,25 @@
                             </Grid>
                         </Button>
                     </Grid>
+                    <Grid Width="320" HorizontalAlignment="Left" Margin="370,0,0,0">
+                        <Button x:Name="btnAddPlaylist"
+                                Style="{StaticResource MaterialDesignRaisedLightButton}"
+                                Height="60"
+                                Width="230"
+                                BorderBrush="Transparent"
+                                Background="{StaticResource PrimaryLight}"
+                                HorizontalAlignment="Left"
+                                materialDesign:ButtonAssist.CornerRadius="5"
+                                Click="btnAddPlaylist_Click">
+                            <Grid  Height="74"
+                                        Width="230"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center">
+                                <materialDesign:PackIcon Kind="PlaylistPlus" Margin="15,19,0,0" Foreground="{StaticResource PrimaryDark}" Width="30" Height="30"/>
+                                <TextBlock Margin="58,0,16,25" VerticalAlignment="Bottom" FontSize="20" Foreground="{StaticResource PrimaryDark}">Tạo Playlist mới</TextBlock>
+                            </Grid>
+                        </Button>
+                    </Grid>
                 </Grid>
 
 
@@ -47,6 +66,7 @@
                                   Margin="0,130,0,0">
                     <Grid>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="180*"></RowDefinition>
                             <RowDefinition Height="180*"></RowDefinition>
                             <RowDefinition Height="180*"></RowDefinition>
                             <RowDefinition Height="180*"></RowDefinition>
@@ -66,6 +86,26 @@
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
+                                            <Button x:Name="btnAdd"
+                                                    Background="Transparent"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Width="25" 
+                                                    Height="25" 
+                                                    Margin="88,25,0,0"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Top"
+                                                    Click="btnAdd_Click">
+                                                <Button.ContextMenu>
+                                                    <ContextMenu Background="{StaticResource SecondaryMid}" Foreground="{StaticResource SecondaryLight}" Width="200" Placement="Mouse">
+                                                        <ContextMenu.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <MenuItem Header="{Binding PLAYLISTNAME}" Click="MenuItem_Click"/>
+                                                            </DataTemplate>
+                                                        </ContextMenu.ItemTemplate>
+                                                    </ContextMenu>
+                                                </Button.ContextMenu>
+                                                <materialDesign:PackIcon Kind="PlaylistPlus" Width="25" Height="25" Foreground="{StaticResource SecondaryLight}"/>
+                                            </Button>
                                             <ToggleButton x:Name="btnLike"
                                                       Foreground="White"
                                                       Background="#ff5252"
@@ -190,6 +230,26 @@
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
+                                            <Button 
+                                                    Background="Transparent"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Width="25" 
+                                                    Height="25" 
+                                                    Margin="88,25,0,0"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Top"
+                                                    Click="btnAdd_Click">
+                                                <Button.ContextMenu>
+                                                    <ContextMenu Background="{StaticResource SecondaryMid}" Foreground="{StaticResource SecondaryLight}" Width="200" Placement="Mouse">
+                                                        <ContextMenu.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <MenuItem Header="{Binding PLAYLISTNAME}" Click="MenuItem_Click"/>
+                                                            </DataTemplate>
+                                                        </ContextMenu.ItemTemplate>
+                                                    </ContextMenu>
+                                                </Button.ContextMenu>
+                                                <materialDesign:PackIcon Kind="PlaylistPlus" Width="25" Height="25" Foreground="{StaticResource SecondaryLight}"/>
+                                            </Button>
                                             <ToggleButton x:Name="btnLike2"
                                                       Foreground="White"
                                                       Background="#ff5252"
@@ -232,7 +292,118 @@
                                 </ListBox.ItemTemplate>
                             </ListBox>
                         </Grid>
-
+                        <Grid Grid.Row="3">
+                            <TextBlock Text="Playlist" 
+                                           FontSize="20" 
+                                           Foreground="{StaticResource SecondaryLight}"
+                                           FontWeight="SemiBold">
+                            </TextBlock>
+                            <ListBox x:Name="lbPlaylists" Margin="0,35,0,0">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <!--<ToggleButton x:Name="btnExpand"
+                                                      Foreground="{StaticResource PrimaryLight}"
+                                                      Width="30" Height="30"
+                                                      VerticalAlignment="Top"
+                                                      HorizontalAlignment="Left"
+                                                      Margin="-35,-2,0,0"
+                                                      Click="btnExpand_Click">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MaterialDesignIconButton}">
+                                                        <Setter Property="Content">
+                                                            <Setter.Value>
+                                                                <materialDesign:PackIcon Kind="ChevronUpCircleOutline" Width ="20" Height="20"/>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="true">
+                                                                <Setter Property="Content">
+                                                                    <Setter.Value>
+                                                                        <materialDesign:PackIcon Kind="ChevronDownCircleOutline" Width ="20" Height="20"/>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                            <TextBlock Text="{Binding PLAYLISTNAME}" FontSize="20" 
+                                                       Foreground="{StaticResource PrimaryLight}"
+                                                       FontWeight="SemiBold"></TextBlock>-->
+                                            <Expander IsExpanded="True" Background="{StaticResource SecondaryMid}" Foreground="{StaticResource PrimaryMid}">
+                                                <Expander.Header>
+                                                    <Grid>
+                                                        <Button x:Name="btnDelPlaylist"
+                                                                Background="Transparent"
+                                                                Style="{StaticResource MaterialDesignIconButton}"
+                                                                Width="30" 
+                                                                Height="30" 
+                                                                HorizontalAlignment="Left"
+                                                                VerticalAlignment="Top"
+                                                                Click="btnDelPlaylist_Click">
+                                                            <materialDesign:PackIcon Kind="TrashCan" Width="30" Height="30" Foreground="{StaticResource PrimaryLight}"/>
+                                                        </Button>
+                                                        <TextBlock Text="{Binding PLAYLISTNAME}" FontSize="20" 
+                                                       Foreground="{StaticResource PrimaryMid}"
+                                                       FontWeight="Bold" Margin="40,0,0,0" VerticalAlignment="Center"></TextBlock>
+                                                    </Grid>
+                                                </Expander.Header>
+                                                <ListBox ItemsSource="{Binding SONGs}" HorizontalContentAlignment="Stretch" PreviewMouseUp="ListBox_PreviewMouseUp">
+                                                    <ListBox.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <WrapPanel IsItemsHost="True" />
+                                                        </ItemsPanelTemplate>
+                                                    </ListBox.ItemsPanel>
+                                                    <ListBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Grid>
+                                                                <Button x:Name="btnRemove"
+                                                                Background="Transparent"
+                                                                Style="{StaticResource MaterialDesignIconButton}"
+                                                                Width="20" 
+                                                                Height="20" 
+                                                                Margin="88,55,0,0"
+                                                                HorizontalAlignment="Left"
+                                                                VerticalAlignment="Top"
+                                                                Click="btnRemove_Click">
+                                                                    <materialDesign:PackIcon Kind="TrashCan" Width="20" Height="20" Foreground="{StaticResource SecondaryLight}"/>
+                                                                </Button>
+                                                                <StackPanel>
+                                                                    <Border CornerRadius="20,20,20,20"
+                                                                    Width="80"
+                                                                    Height="80"
+                                                                    HorizontalAlignment="Left">
+                                                                        <Border.Background>
+                                                                            <ImageBrush ImageSource="{Binding IMAGEURL}" Stretch="UniformToFill"></ImageBrush>
+                                                                        </Border.Background>
+                                                                    </Border>
+                                                                    <TextBlock Text="{Binding SONGNAME}" 
+                                                                        FontSize="15" 
+                                                                        Foreground="{StaticResource PrimaryLight}"
+                                                                        FontWeight="Medium"
+                                                                        Width="135"
+                                                                        HorizontalAlignment="Left"
+                                                                        Margin="0,5,0,0">
+                                                                    </TextBlock>
+                                                                    <TextBlock Text="{Binding SINGERNAME}" 
+                                                                        FontSize="12" 
+                                                                        Foreground="{StaticResource PrimaryMid}"
+                                                                        FontWeight="Medium"
+                                                                        Width="135"
+                                                                        Margin="0,0,0,0">
+                                                                    </TextBlock>
+                                                                </StackPanel>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </ListBox.ItemTemplate>
+                                                </ListBox>
+                                            </Expander>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Grid>
                     </Grid>
                 </ScrollViewer>
             </Grid>

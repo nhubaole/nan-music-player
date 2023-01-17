@@ -28,6 +28,8 @@ namespace MusicPlayer.UserControls
         public static ObservableCollection<SONG> listSong = new ObservableCollection<SONG>(DataProvider.Ins.DB.SONGs);
         public static ObservableCollection<SONG> searchResult = new ObservableCollection<SONG>();
         public static ObservableCollection<string> listChoices = new ObservableCollection<string>() { "Tên Bài Hát", "Tên Ca Sĩ" };
+        public static Button btnNow;
+
         public UCSearch()
         {
             InitializeComponent();
@@ -95,6 +97,27 @@ namespace MusicPlayer.UserControls
         private void btnLike_Click(object sender, RoutedEventArgs e)
         {
             UCLibrary.LikeSong(sender);
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Button btnAdd = (Button)sender;
+            ContextMenu contextMenu = btnAdd.ContextMenu;
+            contextMenu.ItemsSource = UCLibrary.listPlaylists;
+            contextMenu.PlacementTarget = btnAdd;
+            contextMenu.Placement = PlacementMode.MousePoint;
+            contextMenu.IsOpen = true;
+            btnNow = btnAdd;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MenuItem menu = sender as MenuItem;
+            PLAYLIST pl = menu.DataContext as PLAYLIST;
+            SONG s = btnNow.DataContext as SONG;
+            pl.SONGs.Add(s);
+            DataProvider.Ins.DB.SaveChanges();
+            MessageBox.Show("Thêm bài hát vào playlist thành công");
         }
     }
 }

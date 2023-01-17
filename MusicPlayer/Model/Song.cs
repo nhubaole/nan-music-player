@@ -19,6 +19,7 @@ namespace MusicPlayer.Model
         {
             this.LASTESTs = new HashSet<LASTEST>();
             this.USERS = new HashSet<USER>();
+            this.PLAYLISTs = new HashSet<PLAYLIST>();
         }
     
         public int SONGID { get; set; }
@@ -38,5 +39,7 @@ namespace MusicPlayer.Model
         public virtual NEWSONG NEWSONG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USER> USERS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PLAYLIST> PLAYLISTs { get; set; }
     }
 }

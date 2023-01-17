@@ -45,7 +45,7 @@
                                     TextChanged="txtSearch_TextChanged"/>
                         </Border>
                     </Grid>
-                    <!--<Grid  Width="180" HorizontalAlignment="Left" Margin="520,0,0,0">
+                    <!--<Grid Width="180" HorizontalAlignment="Left" Margin="520,0,0,0">
                         <ContentControl Content="{StaticResource cbTimer}"></ContentControl>
                     </Grid>-->
                 </Grid>
@@ -70,6 +70,26 @@
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
+                                            <Button x:Name="btnAdd"
+                                                    Background="Transparent"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Width="25" 
+                                                    Height="25" 
+                                                    Margin="88,25,0,0"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Top"
+                                                    Click="btnAdd_Click">
+                                                <Button.ContextMenu>
+                                                    <ContextMenu Background="{StaticResource SecondaryMid}" Foreground="{StaticResource SecondaryLight}" Width="200" Placement="Mouse">
+                                                        <ContextMenu.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <MenuItem Header="{Binding PLAYLISTNAME}" Click="MenuItem_Click"/>
+                                                            </DataTemplate>
+                                                        </ContextMenu.ItemTemplate>
+                                                    </ContextMenu>
+                                                </Button.ContextMenu>
+                                                <materialDesign:PackIcon Kind="PlaylistPlus" Width="25" Height="25" Foreground="{StaticResource SecondaryLight}"/>
+                                            </Button>
                                             <ToggleButton x:Name="btnLike"
                                                       Foreground="White"
                                                       Background="#ff5252"

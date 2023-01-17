@@ -83,6 +83,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddPlaylist.xaml.cs">
+      <DependentUpon>AddPlaylist.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\FEATUREDSONG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -106,6 +109,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\NEWSONG.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PLAYLIST.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\SONG.cs">
@@ -173,6 +179,10 @@
     <Compile Include="ViewModel\SignUpVM.cs" />
     <Compile Include="ViewModel\PlayMusicVM.cs" />
     <Compile Include="ViewModel\UploadVM.cs" />
+    <Page Include="AddPlaylist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Infor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
