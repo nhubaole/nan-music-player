@@ -325,5 +325,19 @@ namespace MusicPlayer.UserControls
             MessageBox.Show("Thêm bài hát vào playlist thành công");
             UpdatePlaylist();
         }
+
+        private void btnEditPlaylist_Click(object sender, RoutedEventArgs e)
+        {
+            AddPlaylist.edit = 1;
+
+            Button btn = (Button)sender;
+            PLAYLIST pl = btn.DataContext as PLAYLIST;
+            AddPlaylist.playlistEditing = pl;
+            AddPlaylist add = new AddPlaylist();
+
+            add.ShowDialog();
+            UpdatePlaylist();
+            AddPlaylist.edit = 0;
+        }
     }
 }

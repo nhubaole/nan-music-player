@@ -334,19 +334,30 @@
                                             <Expander IsExpanded="True" Background="{StaticResource SecondaryMid}" Foreground="{StaticResource PrimaryMid}">
                                                 <Expander.Header>
                                                     <Grid>
+                                                        <Button x:Name="btnEditPlaylist"
+                                                                Background="Transparent"
+                                                                Style="{StaticResource MaterialDesignIconButton}"
+                                                                Width="25" 
+                                                                Height="25" 
+                                                                HorizontalAlignment="Left"
+                                                                VerticalAlignment="Top"
+                                                                Click="btnEditPlaylist_Click">
+                                                            <materialDesign:PackIcon Kind="Pencil" Width="25" Height="25" Foreground="{StaticResource PrimaryLight}"/>
+                                                        </Button>
                                                         <Button x:Name="btnDelPlaylist"
                                                                 Background="Transparent"
                                                                 Style="{StaticResource MaterialDesignIconButton}"
-                                                                Width="30" 
-                                                                Height="30" 
+                                                                Width="25" 
+                                                                Height="25" 
                                                                 HorizontalAlignment="Left"
                                                                 VerticalAlignment="Top"
+                                                                Margin="30,0,0,0"
                                                                 Click="btnDelPlaylist_Click">
-                                                            <materialDesign:PackIcon Kind="TrashCan" Width="30" Height="30" Foreground="{StaticResource PrimaryLight}"/>
+                                                            <materialDesign:PackIcon Kind="TrashCan" Width="25" Height="25" Foreground="{StaticResource PrimaryLight}"/>
                                                         </Button>
                                                         <TextBlock Text="{Binding PLAYLISTNAME}" FontSize="20" 
                                                        Foreground="{StaticResource PrimaryMid}"
-                                                       FontWeight="Bold" Margin="40,0,0,0" VerticalAlignment="Center"></TextBlock>
+                                                       FontWeight="Bold" Margin="70,0,0,0" VerticalAlignment="Center"></TextBlock>
                                                     </Grid>
                                                 </Expander.Header>
                                                 <ListBox ItemsSource="{Binding SONGs}" HorizontalContentAlignment="Stretch" PreviewMouseUp="ListBox_PreviewMouseUp">

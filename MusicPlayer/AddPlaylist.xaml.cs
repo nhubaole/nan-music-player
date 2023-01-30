@@ -21,9 +21,17 @@ namespace MusicPlayer
     /// </summary>
     public partial class AddPlaylist : Window
     {
+        public static int edit = 0;
+        public static PLAYLIST playlistEditing;
         public AddPlaylist()
         {
             InitializeComponent();
+            if (edit == 1)
+            {
+                txtTitle.Text = "CHỈNH SỬA PLAYLIST";
+                txtBtn.Text = "CHỈNH SỬA";
+                tbPlaylistName.Text = playlistEditing.PLAYLISTNAME;
+            }
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -35,14 +43,25 @@ namespace MusicPlayer
             }
             else
             {
-                var pl = new PLAYLIST()
+                
+                if (edit == 1)
                 {
-                    PLAYLISTNAME = tbPlaylistName.Text
-                };
-                LoginViewModel.currUser.PLAYLISTs.Add(pl);
-                DataProvider.Ins.DB.SaveChanges();
-                MessageBox.Show("Tạo Playlist thành công!", "Thông báo", MessageBoxButton.OK);
-                this.Close();
+                    playlistEditing.PLAYLISTNAME = tbPlaylistName.Text;
+                    DataProvider.Ins.DB.SaveChanges();
+                    MessageBox.Show("Chỉnh sửa Playlist thành công!", "Thông báo", MessageBoxButton.OK);
+                    this.Close();
+                }
+                else
+                {
+                    var pl = new PLAYLIST()
+                    {
+                        PLAYLISTNAME = tbPlaylistName.Text
+                    };
+                    LoginViewModel.currUser.PLAYLISTs.Add(pl);
+                    DataProvider.Ins.DB.SaveChanges();
+                    MessageBox.Show("Tạo Playlist thành công!", "Thông báo", MessageBoxButton.OK);
+                    this.Close();
+                }
             }
         }
     }

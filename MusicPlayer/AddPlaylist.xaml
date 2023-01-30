@@ -46,7 +46,7 @@
                         FontWeight="Bold"
                         Foreground="{StaticResource SecondaryLight}"
                         Margin="0,10,0,0"
-                        Height="28" Width="220"/>
+                        Height="28" Width="250"/>
                     <TextBlock 
                         Grid.Row="1"
                         Text="Tên Playlist"
@@ -65,6 +65,10 @@
 
                     <Grid
                         Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="36*"/>
+                            <ColumnDefinition Width="89*"/>
+                        </Grid.ColumnDefinitions>
                         <Button
                             x:Name="btnAdd"
                             Style="{StaticResource MaterialDesignRaisedLightButton}"
@@ -73,9 +77,10 @@
                             Background="{StaticResource PrimaryLight}"
                             materialDesign:ButtonAssist.CornerRadius="5"
                             BorderBrush="Transparent"
-                            Margin="185,30,185,10"
-                            Click="btnAdd_Click">
+                            Margin="41,30,185,10"
+                            Click="btnAdd_Click" Grid.Column="1">
                             <TextBlock 
+                                x:Name="txtBtn"
                                 Text="TẠO" 
                                 FontSize="17" 
                                 Height="23" 
