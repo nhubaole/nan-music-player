@@ -32,6 +32,7 @@ namespace MusicPlayer.Model
         public Nullable<double> DURATION { get; set; }
         public Nullable<double> POSITION { get; set; }
         public Nullable<bool> LIKED { get; set; }
+        public string GENRE { get; set; }
     
         public virtual FEATUREDSONG FEATUREDSONG { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -64,6 +64,7 @@
           <Property Name="DURATION" Type="float" />
           <Property Name="POSITION" Type="float" />
           <Property Name="LIKED" Type="bit" />
+          <Property Name="GENRE" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -387,6 +388,7 @@
           <NavigationProperty Name="USERS" Relationship="NANDBModel.LIKES" FromRole="SONG" ToRole="USER" />
           <Property Name="LIKED" Type="Boolean" />
           <NavigationProperty Name="PLAYLISTs" Relationship="NANDBModel.PLAYLIST_SONG" FromRole="SONG" ToRole="PLAYLIST" />
+          <Property Name="GENRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -542,6 +544,7 @@
           <EntitySetMapping Name="SONGs">
             <EntityTypeMapping TypeName="NANDBModel.SONG">
               <MappingFragment StoreEntitySet="SONG">
+                <ScalarProperty Name="GENRE" ColumnName="GENRE" />
                 <ScalarProperty Name="LIKED" ColumnName="LIKED" />
                 <ScalarProperty Name="POSITION" ColumnName="POSITION" />
                 <ScalarProperty Name="DURATION" ColumnName="DURATION" />
