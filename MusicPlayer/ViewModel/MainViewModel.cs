@@ -94,11 +94,31 @@ namespace MusicPlayer.ViewModel
         public ICommand handleLogOutCommand { get; set; }
 
 
-        private void Home(object obj) => CurrentView = new HomeVM();
-        private void Library(object obj) => CurrentView = new LibraryVM();
-        private void Profile(object obj) => CurrentView = new ProfileVM();
-        private void Search(object obj) => CurrentView = new SearchVM();
-        private void Video(object obj) => CurrentView = new VideoVM();
+        private void Home(object obj)
+        {
+            CurrentView = new HomeVM();
+            IsVisible = Visibility.Visible;
+        }
+        private void Library(object obj)
+        {
+            CurrentView = new LibraryVM();
+            IsVisible = Visibility.Visible;
+        }
+        private void Profile(object obj)
+        {
+            CurrentView = new ProfileVM();
+            IsVisible = Visibility.Visible;
+        }
+        private void Search(object obj)
+        {
+            CurrentView = new SearchVM();
+            IsVisible = Visibility.Visible;
+        }
+        private void Video(object obj)
+        {
+            CurrentView = new VideoVM();
+            IsVisible = Visibility.Hidden;
+        }
 
     }
 }
