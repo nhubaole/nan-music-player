@@ -12,11 +12,25 @@ namespace MusicPlayer.ViewModel
     public class MainViewModel : BaseViewModel
     {
         private object _currentView;
+        private Visibility _isVisible = Visibility.Visible;
+        public Visibility IsVisible
+        {
+            get
+            {
+                return _isVisible;
+            }
+            set
+            {
+                _isVisible = value;
+                OnPropertyChanged("IsVisible");
+            }
+        }
         public MainViewModel(){
             HomeCommand = new RelayCommand<object>((p) => { return true; }, Home);
             LibraryCommand = new RelayCommand<object>((p) => { return true; }, Library);
             ProfileCommand = new RelayCommand<object>((p) => { return true; }, Profile);
             SearchCommand = new RelayCommand<object>((p) => { return true; }, Search);
+            VideoCommand = new RelayCommand<object>((p) => { return true; }, Video);
             CurrentView = new HomeVM();
 
             LoadedWindowCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) => {
@@ -76,6 +90,7 @@ namespace MusicPlayer.ViewModel
         public ICommand LibraryCommand { get; set; }
         public ICommand ProfileCommand { get; set; }
         public ICommand SearchCommand { get; set; }
+        public ICommand VideoCommand { get; set; }
         public ICommand handleLogOutCommand { get; set; }
 
 
@@ -83,6 +98,7 @@ namespace MusicPlayer.ViewModel
         private void Library(object obj) => CurrentView = new LibraryVM();
         private void Profile(object obj) => CurrentView = new ProfileVM();
         private void Search(object obj) => CurrentView = new SearchVM();
+        private void Video(object obj) => CurrentView = new VideoVM();
 
     }
 }

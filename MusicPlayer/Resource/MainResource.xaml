@@ -13,6 +13,7 @@
     <viewmodel:SearchVM x:Key="SearchVM"></viewmodel:SearchVM>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
     <viewmodel:SignUpVM x:Key="SignUpVM"></viewmodel:SignUpVM>
+    <viewmodel:VideoVM x:Key="VideoVM"></viewmodel:VideoVM>
     
     <TextBlock
             x:Key="singerName"
