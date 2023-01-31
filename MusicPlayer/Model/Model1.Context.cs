@@ -33,5 +33,6 @@ namespace MusicPlayer.Model
         public virtual DbSet<UPLOADSONG> UPLOADSONGs { get; set; }
         public virtual DbSet<USER> USERS { get; set; }
         public virtual DbSet<PLAYLIST> PLAYLISTs { get; set; }
+        public virtual DbSet<VIDEO> VIDEOs { get; set; }
     }
 }
