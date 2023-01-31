@@ -154,7 +154,7 @@
                             Height="320">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="40"></RowDefinition>
+                                <RowDefinition Height="70"></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0">
@@ -162,18 +162,44 @@
                                                Margin="20,0,0,0" 
                                                Foreground="{StaticResource PrimaryLight}" 
                                                FontSize="18" 
-                                               FontWeight="Bold">DANH SÁCH PHÁT</TextBlock>
+                                               FontWeight="Bold">DANH SÁCH</TextBlock>
+                                <ComboBox x:Name="cbGenre"
+                                      FontSize="12"
+                                      BorderBrush="{StaticResource PrimaryDark}"
+                                      FontWeight="SemiBold"
+                                      Style="{StaticResource MaterialDesignFilledComboBox}"
+                                      materialDesign:HintAssist.Foreground="{StaticResource PrimaryMid}"
+                                      Foreground="{StaticResource PrimaryLight}"
+                                      materialDesign:ColorZoneAssist.Mode="PrimaryDark"
+                                      Width="120"
+                                      Height="45"
+                                          HorizontalAlignment="Right"
+                                         Margin="0,0,20,0"
+                                          SelectionChanged="cbGenre_SelectionChanged">    
+                                    <materialDesign:HintAssist.Hint>
+                                        <Grid>
+                                            <materialDesign:PackIcon Kind="FilterOutline" Width="15" Height="15" VerticalAlignment="Center" ></materialDesign:PackIcon>
+                                            <TextBlock Margin="17,0,0,0">Bộ lọc</TextBlock>
+                                        </Grid>
+                                    </materialDesign:HintAssist.Hint>
+                                </ComboBox>
                             </Grid>
                             <Grid Grid.Row="1">
-                                <Grid VerticalAlignment="Top" Height="60">
-                                    <Border CornerRadius="10" 
+                                <ListBox x:Name="lbVideos" VerticalContentAlignment="Stretch">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid VerticalAlignment="Top" Height="60">
+                                                <Border CornerRadius="5" 
                                             Width="65" 
-                                            Height="45" 
-                                            Margin="20,0,0,0" 
-                                            Background="Black" 
+                                            Height="50" 
+                                            Margin="10,0,0,0" 
                                             VerticalAlignment="Center" 
-                                            HorizontalAlignment="Left"></Border>
-                                    <TextBlock Text="Tên MV" 
+                                            HorizontalAlignment="Left">
+                                                    <Border.Background>
+                                                        <ImageBrush ImageSource="{Binding IMAGEURL}" Stretch="UniformToFill"></ImageBrush>
+                                                    </Border.Background>
+                                                </Border>
+                                                <TextBlock Text="{Binding VIDEONAME}" 
                                                FontSize="15" 
                                                Height="20" 
                                                Width="180" 
@@ -181,8 +207,8 @@
                                                FontWeight="Bold" 
                                                VerticalAlignment="Top" 
                                                HorizontalAlignment="Left" 
-                                               Margin="95,10,0,0"/>
-                                    <TextBlock Text="Tên Ca Sĩ" 
+                                               Margin="85,10,0,0"/>
+                                                <TextBlock Text="{Binding SINGERNAME}" 
                                                FontSize="13" 
                                                Height="20"
                                                Width="180" 
@@ -190,62 +216,11 @@
                                                FontWeight="SemiBold" 
                                                VerticalAlignment="Top" 
                                                HorizontalAlignment="Left" 
-                                               Margin="95,32,0,0"/>
-                                </Grid>
-                                <Grid VerticalAlignment="Top" Height="60" Margin="0,70,0,0">
-                                    <Border CornerRadius="10" 
-                                            Width="65" 
-                                            Height="45" 
-                                            Margin="20,0,0,0" 
-                                            Background="Black" 
-                                            VerticalAlignment="Center" 
-                                            HorizontalAlignment="Left"></Border>
-                                    <TextBlock Text="Tên MV" 
-                                               FontSize="15" 
-                                               Height="20" 
-                                               Width="180" 
-                                               Foreground="{StaticResource PrimaryLight}" 
-                                               FontWeight="Bold" 
-                                               VerticalAlignment="Top" 
-                                               HorizontalAlignment="Left" 
-                                               Margin="95,10,0,0"/>
-                                    <TextBlock Text="Tên Ca Sĩ" 
-                                               FontSize="13" 
-                                               Height="20"
-                                               Width="180" 
-                                               Foreground="{StaticResource PrimaryMid}" 
-                                               FontWeight="SemiBold" 
-                                               VerticalAlignment="Top" 
-                                               HorizontalAlignment="Left" 
-                                               Margin="95,32,0,0"/> 
-                                </Grid>
-                                <Grid VerticalAlignment="Top" Height="60" Margin="0,140,0,0">
-                                    <Border CornerRadius="10" 
-                                            Width="65" 
-                                            Height="45" 
-                                            Margin="20,0,0,0" 
-                                            Background="Black" 
-                                            VerticalAlignment="Center" 
-                                            HorizontalAlignment="Left"></Border>
-                                    <TextBlock Text="Tên MV" 
-                                               FontSize="15" 
-                                               Height="20" 
-                                               Width="180" 
-                                               Foreground="{StaticResource PrimaryLight}" 
-                                               FontWeight="Bold" 
-                                               VerticalAlignment="Top" 
-                                               HorizontalAlignment="Left" 
-                                               Margin="95,10,0,0"/>
-                                    <TextBlock Text="Tên Ca Sĩ" 
-                                               FontSize="13" 
-                                               Height="20"
-                                               Width="180" 
-                                               Foreground="{StaticResource PrimaryMid}" 
-                                               FontWeight="SemiBold" 
-                                               VerticalAlignment="Top" 
-                                               HorizontalAlignment="Left" 
-                                               Margin="95,32,0,0"/>
-                                </Grid>
+                                               Margin="85,32,0,0"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </Grid>
                         </Grid>
                     </Border>
