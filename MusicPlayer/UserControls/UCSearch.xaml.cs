@@ -25,7 +25,7 @@ namespace MusicPlayer.UserControls
     /// </summary>
     public partial class UCSearch : UserControl
     {
-        public static ObservableCollection<SONG> listSong = new ObservableCollection<SONG>(DataProvider.Ins.DB.SONGs);
+        public static ObservableCollection<SONG> listSong;
         public static ObservableCollection<SONG> searchResult = new ObservableCollection<SONG>();
         public static ObservableCollection<string> listChoices = new ObservableCollection<string>() { "Tên Bài Hát", "Tên Ca Sĩ" };
         public static Button btnNow;
@@ -33,7 +33,6 @@ namespace MusicPlayer.UserControls
         public UCSearch()
         {
             InitializeComponent();
-            lbSongs.ItemsSource = listSong;
             cbSearchType.ItemsSource = listChoices;
             if (LoginViewModel.currUser != null)
             {
@@ -118,6 +117,18 @@ namespace MusicPlayer.UserControls
             pl.SONGs.Add(s);
             DataProvider.Ins.DB.SaveChanges();
             MessageBox.Show("Thêm bài hát vào playlist thành công");
+        }
+
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TabControl tab = sender as TabControl;
+            if(tab.SelectedIndex == 0)
+                listSong = new ObservableCollection<SONG>(DataProvider.Ins.DB.SONGs.Where(s => s.GENRE == "Việt Nam"));
+            else if (tab.SelectedIndex == 1)
+                listSong = new ObservableCollection<SONG>(DataProvider.Ins.DB.SONGs.Where(s => s.GENRE == "Âu Mỹ"));
+            else if (tab.SelectedIndex == 2)
+                listSong = new ObservableCollection<SONG>(DataProvider.Ins.DB.SONGs.Where(s => s.GENRE == "Hàn Quốc"));
+            lbSongs.ItemsSource = listSong;
         }
     }
 }
