@@ -36,7 +36,8 @@
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Bottom"
                                 Margin="40,0,0,10"
-                                materialDesign:ButtonAssist.CornerRadius="5">
+                                materialDesign:ButtonAssist.CornerRadius="5"
+                                Click="btnUp_Click">
                             <Grid  Height="74"
                                         Width="150"
                                        VerticalAlignment="Center"
@@ -253,15 +254,21 @@
                                                FontWeight="Bold">VIDEO CỦA BẠN</TextBlock>
                             </Grid>
                             <Grid Grid.Row="1">
-                                <Grid VerticalAlignment="Top" Height="60">
-                                    <Border CornerRadius="10" 
+                                <ListBox x:Name="lbUploadVideos" VerticalContentAlignment="Stretch" SelectionChanged="lbUploadVideos_SelectionChanged">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid VerticalAlignment="Top" Height="60">
+                                                <Border CornerRadius="5" 
                                             Width="65" 
-                                            Height="45" 
-                                            Margin="20,0,0,0" 
-                                            Background="Black" 
+                                            Height="50" 
+                                            Margin="10,0,0,0" 
                                             VerticalAlignment="Center" 
-                                            HorizontalAlignment="Left"></Border>
-                                    <TextBlock Text="Tên MV" 
+                                            HorizontalAlignment="Left">
+                                                    <Border.Background>
+                                                        <ImageBrush ImageSource="{Binding IMAGEPATH}" Stretch="UniformToFill"></ImageBrush>
+                                                    </Border.Background>
+                                                </Border>
+                                                <TextBlock Text="{Binding VIDEONAME}" 
                                                FontSize="15" 
                                                Height="20" 
                                                Width="180" 
@@ -269,8 +276,8 @@
                                                FontWeight="Bold" 
                                                VerticalAlignment="Top" 
                                                HorizontalAlignment="Left" 
-                                               Margin="95,10,0,0"/>
-                                    <TextBlock Text="Tên Ca Sĩ" 
+                                               Margin="85,10,0,0"/>
+                                                <TextBlock Text="{Binding SINGERNAME}" 
                                                FontSize="13" 
                                                Height="20"
                                                Width="180" 
@@ -278,62 +285,11 @@
                                                FontWeight="SemiBold" 
                                                VerticalAlignment="Top" 
                                                HorizontalAlignment="Left" 
-                                               Margin="95,32,0,0"/>
-                                </Grid>
-                                <Grid VerticalAlignment="Top" Height="60" Margin="0,70,0,0">
-                                    <Border CornerRadius="10" 
-                                            Width="65" 
-                                            Height="45" 
-                                            Margin="20,0,0,0" 
-                                            Background="Black" 
-                                            VerticalAlignment="Center" 
-                                            HorizontalAlignment="Left"></Border>
-                                    <TextBlock Text="Tên MV" 
-                                               FontSize="15" 
-                                               Height="20" 
-                                               Width="180" 
-                                               Foreground="{StaticResource PrimaryLight}" 
-                                               FontWeight="Bold" 
-                                               VerticalAlignment="Top" 
-                                               HorizontalAlignment="Left" 
-                                               Margin="95,10,0,0"/>
-                                    <TextBlock Text="Tên Ca Sĩ" 
-                                               FontSize="13" 
-                                               Height="20"
-                                               Width="180" 
-                                               Foreground="{StaticResource PrimaryMid}" 
-                                               FontWeight="SemiBold" 
-                                               VerticalAlignment="Top" 
-                                               HorizontalAlignment="Left" 
-                                               Margin="95,32,0,0"/>
-                                </Grid>
-                                <Grid VerticalAlignment="Top" Height="60" Margin="0,140,0,0">
-                                    <Border CornerRadius="10" 
-                                            Width="65" 
-                                            Height="45" 
-                                            Margin="20,0,0,0" 
-                                            Background="Black" 
-                                            VerticalAlignment="Center" 
-                                            HorizontalAlignment="Left"></Border>
-                                    <TextBlock Text="Tên MV" 
-                                               FontSize="15" 
-                                               Height="20" 
-                                               Width="180" 
-                                               Foreground="{StaticResource PrimaryLight}" 
-                                               FontWeight="Bold" 
-                                               VerticalAlignment="Top" 
-                                               HorizontalAlignment="Left" 
-                                               Margin="95,10,0,0"/>
-                                    <TextBlock Text="Tên Ca Sĩ" 
-                                               FontSize="13" 
-                                               Height="20"
-                                               Width="180" 
-                                               Foreground="{StaticResource PrimaryMid}" 
-                                               FontWeight="SemiBold" 
-                                               VerticalAlignment="Top" 
-                                               HorizontalAlignment="Left" 
-                                               Margin="95,32,0,0"/>
-                                </Grid>
+                                               Margin="85,32,0,0"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
                             </Grid>
                         </Grid>
                     </Border>

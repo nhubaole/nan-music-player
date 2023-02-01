@@ -1,4 +1,5 @@
 ﻿using MusicPlayer.Model;
+using MusicPlayer.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -27,6 +28,7 @@ namespace MusicPlayer.UserControls
     public partial class UCVideo : UserControl
     {
         public static ObservableCollection<VIDEO> listVid;
+        public static ObservableCollection<UPLOADVIDEO> listVidUp = new ObservableCollection<UPLOADVIDEO>(LoginViewModel.currUser.UPLOADVIDEOs);
         public static List<string> listGenre = new List<string>() { "Việt Nam", "Âu Mỹ", "Nhạc Hàn", "Nhạc Hoa", "Thiếu Nhi", "Nhạc Nhật", "Nhạc Thái" };
 
         public static int init = 0;
@@ -38,6 +40,7 @@ namespace MusicPlayer.UserControls
         public UCVideo()
         {
             InitializeComponent();
+            lbUploadVideos.ItemsSource = listVidUp;
             cbGenre.ItemsSource = listGenre;
             cbGenre.SelectedItem = cbGenre.Items[0];
             slVolume.Maximum = 1;
@@ -53,11 +56,21 @@ namespace MusicPlayer.UserControls
                 txtName.Text = selectedVideo.VIDEONAME;
                 txtSingerName.Text = selectedVideo.SINGERNAME;
 
+
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
-                bitmapImage.UriSource = new Uri(selectedVideo.IMAGEURL, UriKind.RelativeOrAbsolute);
+                try
+                {
+                    bitmapImage.UriSource = new Uri(selectedVideo.IMAGEURL);
+                }
+                catch
+                {
+                    bitmapImage.UriSource = new Uri("../" + selectedVideo.IMAGEURL, UriKind.RelativeOrAbsolute);
+                }
+
                 bitmapImage.EndInit();
                 imgURL.ImageSource = bitmapImage;
+
 
                 if (selectedVideo.SAVEPATH == null)
                 {
@@ -221,6 +234,51 @@ namespace MusicPlayer.UserControls
             {
                 video.Volume = slVolume.Value;
             }
+        }
+
+        private void btnUp_Click(object sender, RoutedEventArgs e)
+        {
+            Upload.uploadVideo = 1;
+            Upload upload = new Upload();
+            upload.ShowDialog();
+            UpdateUploadVideo();
+            Upload.uploadVideo = 0;
+        }
+
+        private void lbUploadVideos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox listBox = sender as ListBox;
+            UPLOADVIDEO select = listBox.SelectedItem as UPLOADVIDEO;
+            if (select == null)
+            {
+                return;
+            }
+            else
+            {
+                VIDEO temp = new VIDEO() { VIDEONAME = select.VIDEONAME, SINGERNAME = select.SINGERNAME, IMAGEURL = select.IMAGEPATH, SAVEPATH = select.SAVEPATH };
+                SelectedVideo = temp;
+                if (listBox.SelectedIndex + 1 < listBox.Items.Count)
+                {
+                    UPLOADVIDEO next = listBox.Items[listBox.SelectedIndex + 1] as UPLOADVIDEO;
+                    NextVideo = new VIDEO() { VIDEONAME = next.VIDEONAME, SINGERNAME = next.SINGERNAME, IMAGEURL = next.IMAGEPATH, SAVEPATH = next.SAVEPATH };
+                }
+                else
+                    NextVideo = null;
+
+                if (listBox.SelectedIndex - 1 >= 0)
+                {
+                    UPLOADVIDEO prev = listBox.Items[listBox.SelectedIndex - 1] as UPLOADVIDEO;
+                    PrevVideo = new VIDEO() { VIDEONAME = prev.VIDEONAME, SINGERNAME = prev.SINGERNAME, IMAGEURL = prev.IMAGEPATH, SAVEPATH = prev.SAVEPATH };
+                }
+                else
+                    PrevVideo = null;
+                currentList = listBox;
+            }
+        }
+        public void UpdateUploadVideo()
+        {
+            listVidUp = new ObservableCollection<UPLOADVIDEO>(LoginViewModel.currUser.UPLOADVIDEOs);
+            lbUploadVideos.ItemsSource = listVidUp;
         }
     }
 }

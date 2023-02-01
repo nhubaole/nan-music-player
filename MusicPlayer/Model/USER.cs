@@ -21,6 +21,7 @@ namespace MusicPlayer.Model
             this.SONGs = new HashSet<SONG>();
             this.UPLOADSONGs = new HashSet<UPLOADSONG>();
             this.PLAYLISTs = new HashSet<PLAYLIST>();
+            this.UPLOADVIDEOs = new HashSet<UPLOADVIDEO>();
         }
     
         public int USERID { get; set; }
@@ -40,5 +41,7 @@ namespace MusicPlayer.Model
         public virtual ICollection<UPLOADSONG> UPLOADSONGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PLAYLIST> PLAYLISTs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UPLOADVIDEO> UPLOADVIDEOs { get; set; }
     }
 }
