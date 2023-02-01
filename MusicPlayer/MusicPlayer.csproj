@@ -88,6 +88,8 @@
     <Compile Include="AddPlaylist.xaml.cs">
       <DependentUpon>AddPlaylist.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Crawler\SongCrawler.cs" />
+    <Compile Include="Model\Crawler\VideoCrawler.cs" />
     <Compile Include="Model\DataProvider.cs" />
     <Compile Include="Model\FEATUREDSONG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
