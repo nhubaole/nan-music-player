@@ -47,8 +47,7 @@
                         </Button>
                     </Grid>
                     <Grid Grid.Row="1">
-                        <!--<MediaElement Width="500" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,40,0,0"/>-->
-                        <Rectangle Fill="AliceBlue" Width="500" Height="280" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,5,0,0"></Rectangle>
+                        <MediaElement LoadedBehavior="Manual" x:Name="video" Width="500" Height="280" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,5,0,0"/>
                         <Slider 
                             x:Name="slPlay"
                             Minimum="0" 
@@ -58,7 +57,8 @@
                             VerticalAlignment="Top" 
                             Margin="40,300,0,0"
                             Width="500"  
-                            Foreground="{StaticResource SecondaryLight}"/>
+                            Foreground="{StaticResource SecondaryLight}"
+                            PreviewMouseUp="slPlay_PreviewMouseUp"/>
                     </Grid>
                     <Grid Grid.Row="2">
                         <TextBlock x:Name="txtPosition"
@@ -79,14 +79,16 @@
                           Background="{StaticResource SecondaryLight}"
                           Style="{StaticResource ToggleBtnStyle}"
                           Width="50" 
-                          Height="50" Margin="99,5,451,5" >
+                          Height="50" Margin="99,5,451,5"
+                          Click="btnPlay_Click">
                         </ToggleButton>
 
                         <Button
                           x:Name="btnPrev"
                           Style="{StaticResource MaterialDesignIconButton}"
                           Background="Transparent"
-                          Width="40" Height="40" Margin="40,10,520,10" >
+                          Width="40" Height="40" Margin="40,10,520,10"
+                          Click="btnPrev_Click">
                             <materialDesign:PackIcon
                                 Kind="SkipPrevious" 
                                 Width="40" 
@@ -98,7 +100,8 @@
                           x:Name="btnNext"
                           Style="{StaticResource MaterialDesignIconButton}"
                           Background="Transparent"
-                          Width="40" Height="40" Margin="172,10,388,10">
+                          Width="40" Height="40" Margin="172,10,388,10"
+                          Click="btnNext_Click">
                             <materialDesign:PackIcon
                                 Kind="SkipNext" 
                                 Width="40" 
@@ -111,7 +114,8 @@
                             Foreground="{StaticResource SecondaryLight}"
                             Style="{StaticResource ToggleBtnStyle3}"
                             Background="Transparent"
-                            BorderThickness="0" Margin="423,10,137,10">
+                            BorderThickness="0" Margin="423,10,137,10"
+                            Click="btnMute_Click">
                         </ToggleButton>
                         <Slider 
                             x:Name="slVolume"
@@ -120,22 +124,27 @@
                             Value="35" 
                             Width="70" 
                             VerticalAlignment="Center"
-                            Foreground="{StaticResource SecondaryLight}" Margin="468,0,62,0" />
+                            Foreground="{StaticResource SecondaryLight}" Margin="468,0,62,0" 
+                            PreviewMouseUp="slVolume_PreviewMouseUp"/>
                     </Grid>
                     <Grid Grid.Row="3">
                         <Border CornerRadius="10" 
                                 Width="100" Height="70" 
-                                Margin="42,10,458,32" 
-                                Background="AliceBlue">
+                                Margin="42,10,458,32" >
+                            <Border.Background>
+                                <ImageBrush x:Name="imgURL" Stretch="UniformToFill"/>
+                            </Border.Background>
                         </Border>
-                        <TextBlock Text="Tên MV" 
+                        <TextBlock x:Name="txtName"
+                                   Text="Tên MV" 
                                    FontSize="20" 
                                    Height="35" 
                                    Width="380" 
                                    Foreground="{StaticResource PrimaryLight}"
                                    FontWeight="Bold" 
                                    Margin="162,15,58,62"/>
-                        <TextBlock Text="Tên Ca Sĩ" 
+                        <TextBlock x:Name="txtSingerName"
+                                   Text="Tên Ca Sĩ" 
                                    FontSize="18" 
                                    Height="30" 
                                    Width="380" 
@@ -185,7 +194,7 @@
                                 </ComboBox>
                             </Grid>
                             <Grid Grid.Row="1">
-                                <ListBox x:Name="lbVideos" VerticalContentAlignment="Stretch">
+                                <ListBox x:Name="lbVideos" VerticalContentAlignment="Stretch" SelectionChanged="lbVideos_SelectionChanged">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <Grid VerticalAlignment="Top" Height="60">

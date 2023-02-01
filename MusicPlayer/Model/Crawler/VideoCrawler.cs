@@ -12,8 +12,7 @@ namespace MusicPlayer.Model.Crawler
 {
     internal class VideoCrawler
     {
-        [STAThread]
-        static void Main(string[] args)
+        static void test()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Text files (*.txt)|*.txt";
