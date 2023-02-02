@@ -63,7 +63,7 @@
 
                 <ScrollViewer VerticalScrollBarVisibility="Auto"
                                       HorizontalScrollBarVisibility="Disabled"
-                                  Margin="0,130,0,0">
+                                  Margin="0,130,0,0" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="180*"></RowDefinition>

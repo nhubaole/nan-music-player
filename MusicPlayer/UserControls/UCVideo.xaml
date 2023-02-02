@@ -257,18 +257,23 @@
                                 <ListBox x:Name="lbUploadVideos" VerticalContentAlignment="Stretch" SelectionChanged="lbUploadVideos_SelectionChanged">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid VerticalAlignment="Top" Height="60">
-                                                <Border CornerRadius="5" 
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="200"></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid VerticalAlignment="Top" Height="60" Grid.Column="0">
+                                                    <Border CornerRadius="5" 
                                             Width="65" 
                                             Height="50" 
                                             Margin="10,0,0,0" 
                                             VerticalAlignment="Center" 
                                             HorizontalAlignment="Left">
-                                                    <Border.Background>
-                                                        <ImageBrush ImageSource="{Binding IMAGEPATH}" Stretch="UniformToFill"></ImageBrush>
-                                                    </Border.Background>
-                                                </Border>
-                                                <TextBlock Text="{Binding VIDEONAME}" 
+                                                        <Border.Background>
+                                                            <ImageBrush ImageSource="{Binding IMAGEPATH}" Stretch="UniformToFill"></ImageBrush>
+                                                        </Border.Background>
+                                                    </Border>
+                                                    <TextBlock Text="{Binding VIDEONAME}" 
                                                FontSize="15" 
                                                Height="20" 
                                                Width="180" 
@@ -277,7 +282,7 @@
                                                VerticalAlignment="Top" 
                                                HorizontalAlignment="Left" 
                                                Margin="85,10,0,0"/>
-                                                <TextBlock Text="{Binding SINGERNAME}" 
+                                                    <TextBlock Text="{Binding SINGERNAME}" 
                                                FontSize="13" 
                                                Height="20"
                                                Width="180" 
@@ -286,6 +291,30 @@
                                                VerticalAlignment="Top" 
                                                HorizontalAlignment="Left" 
                                                Margin="85,32,0,0"/>
+                                                </Grid>
+                                                <Grid Grid.Column="1">
+                                                    <Button x:Name="btnEdit"
+                                                                Background="Transparent"
+                                                                Style="{StaticResource MaterialDesignIconButton}"
+                                                                Width="20" 
+                                                                Height="20" 
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Click="btnEdit_Click">
+                                                        <materialDesign:PackIcon Kind="Pencil" Width="20" Height="20" Foreground="{StaticResource PrimaryLight}"/>
+                                                    </Button>
+                                                    <Button x:Name="btnDel"
+                                                                Background="Transparent"
+                                                                Style="{StaticResource MaterialDesignIconButton}"
+                                                                Width="20" 
+                                                                Height="20" 
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Margin="50,0,0,0"
+                                                            Click="btnDel_Click">
+                                                        <materialDesign:PackIcon Kind="TrashCan" Width="20" Height="20" Foreground="{StaticResource PrimaryLight}"/>
+                                                    </Button>
+                                                </Grid>
                                             </Grid>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>

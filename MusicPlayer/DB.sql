@@ -43,16 +43,6 @@ CREATE TABLE UPLOADVIDEO
 	POSITION FLOAT
 )
 
-CREATE TABLE UPLOAD2
-(
-	VIDEOID INT NOT NULL,
-	USERID INT NOT NULL,
-	CONSTRAINT FK_UPLOAD_VIDEO FOREIGN KEY (VIDEOID) REFERENCES UPLOADVIDEO(VIDEOID),
-	CONSTRAINT FK_UPLOAD2_USER FOREIGN KEY (USERID) REFERENCES USERS(USERID),
-	CONSTRAINT PK_UPLOAD2 PRIMARY KEY (VIDEOID, USERID)
-)
-
-
 CREATE TABLE UPLOADSONG
 ( 
 	SONGID INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
@@ -111,6 +101,15 @@ ALTER TABLE UPLOAD ADD CONSTRAINT FK_UPLOAD_SONG FOREIGN KEY (SONGID) REFERENCES
 
 ALTER TABLE UPLOAD ADD CONSTRAINT PK_UPLOAD PRIMARY KEY (SONGID, USERID)
 
+CREATE TABLE UPLOAD2
+(
+	VIDEOID INT NOT NULL,
+	USERID INT NOT NULL,
+	CONSTRAINT FK_UPLOAD_VIDEO FOREIGN KEY (VIDEOID) REFERENCES UPLOADVIDEO(VIDEOID),
+	CONSTRAINT FK_UPLOAD2_USER FOREIGN KEY (USERID) REFERENCES USERS(USERID),
+	CONSTRAINT PK_UPLOAD2 PRIMARY KEY (VIDEOID, USERID)
+)
+
 CREATE TABLE LASTEST
 (
 	SONGID INT NOT NULL,
@@ -138,19 +137,6 @@ CREATE TABLE PLAYLIST_SONG
 	CONSTRAINT FK_PLAYLIST FOREIGN KEY (PLAYLISTID) REFERENCES PLAYLIST(PLAYLISTID)
 )
 ALTER TABLE PLAYLIST_SONG ADD CONSTRAINT PK_PLAYLIST_SONG PRIMARY KEY (SONGID, PLAYLISTID)
-
-
-insert into FEATUREDSONG values (5)
-insert into FEATUREDSONG values (4)
-insert into FEATUREDSONG values (6)
-insert into FEATUREDSONG values (12)
-insert into FEATUREDSONG values (7)
-
-insert into NEWSONG values (10)
-insert into NEWSONG values (16)
-insert into NEWSONG values (21)
-insert into NEWSONG values (27)
-insert into NEWSONG values (75)
 
 INSERT INTO SONG (SONGNAME, SINGERNAME, SONGURL, DOWNLOADURL, IMAGEURL, SAVEPATH) VALUES (N'Yêu Người Có Ước Mơ', N'buitruonglinh', 'https://www.nhaccuatui.com/bai-hat/yeu-nguoi-co-uoc-mo-buitruonglinh.cauITHa5X8xr.html', 'https://stream.nixcdn.com/Warner_Audio105/YeuNguoiCoUocMo-Buitruonglinh-8209099.mp3?st=ZeB9k8QnQ3e_PnpHybpq5w&e=1670306295', 'https://avatar-ex-swe.nixcdn.com/song/2022/11/07/e/d/4/3/1667805512437.jpg', N'C:\Users\ADMIN\Desktop\test2\MusicPlayer\bin\Debug\Song\Yêu Người Có Ước Mơ.mp3')
 INSERT INTO SONG (SONGNAME, SINGERNAME, SONGURL, DOWNLOADURL, IMAGEURL, SAVEPATH) VALUES (N'Waiting For You', N'MONO, Onionn', 'https://www.nhaccuatui.com/bai-hat/waiting-for-you-mono-ft-onionn.Mgbb1byycZvy.html', 'https://stream.nixcdn.com/NhacCuaTui2026/WaitingForYou-MONOOnionn-7733882.mp3?st=JdtBcvAe4HF6I3iKOZUjxg&e=1670306291', 'https://avatar-ex-swe.nixcdn.com/song/2022/08/10/4/8/b/1/1660104031203.jpg', N'C:\Users\ADMIN\Desktop\test2\MusicPlayer\bin\Debug\Song\Waiting For You.mp3')
@@ -259,6 +245,18 @@ SET SAVEPATH = NULL
 UPDATE SONG
 SET GENRE = N'Việt Nam'
 
+INSERT INTO FEATUREDSONG VALUES (1)
+INSERT INTO FEATUREDSONG VALUES (2)
+INSERT INTO FEATUREDSONG VALUES (3)
+INSERT INTO FEATUREDSONG VALUES (4)
+INSERT INTO FEATUREDSONG VALUES (9)
+
+INSERT INTO NEWSONG VALUES (7)
+INSERT INTO NEWSONG VALUES (13)
+INSERT INTO NEWSONG VALUES (18)
+INSERT INTO NEWSONG VALUES (24)
+INSERT INTO NEWSONG VALUES (72)
+
 INSERT INTO SONG (SONGNAME, SINGERNAME, SONGURL, DOWNLOADURL, IMAGEURL, GENRE) VALUES (N'Dreamers (Music From The FIFA World Cup Qatar 2022 Official Soundtrack)', N'Jung Kook (BTS), FIFA Sound', 'https://www.nhaccuatui.com/bai-hat/dreamers-music-from-the-fifa-world-cup-qatar-2022-official-soundtrack-jung-kook-bts-ft-fifa-sound.VsxJBIAvbC44.html', 'https://stream.nixcdn.com/NhacCuaTui2031/ReamersMusicFromTheFifaWorldCupQatar2022OfficialSoundtrackFeatFifaSound-JungKookBTS-8292004.mp3?st=3GibvpNgcXmRyFcXS87RgQ&e=1675138670', 'https://avatar-ex-swe.nixcdn.com/song/2022/11/20/d/8/8/7/1668950510671.jpg', N'Âu Mỹ')
 INSERT INTO SONG (SONGNAME, SINGERNAME, SONGURL, DOWNLOADURL, IMAGEURL, GENRE) VALUES (N'Pano', N'Zack Tabudlo', 'https://www.nhaccuatui.com/bai-hat/pano-zack-tabudlo.VgnX5P1yzOFG.html', 'https://stream.nixcdn.com/NhacCuaTui2031/Pano-ZackTabudlo-8264901.mp3?st=rEq9a3Sb0QSpn_Hgi0gZng&e=1675138670', 'https://avatar-ex-swe.nixcdn.com/song/2022/12/29/e/e/f/b/1672296333770.jpg', N'Âu Mỹ')
 INSERT INTO SONG (SONGNAME, SINGERNAME, SONGURL, DOWNLOADURL, IMAGEURL, GENRE) VALUES (N'golden hour', N'JVKE', 'https://www.nhaccuatui.com/bai-hat/golden-hour-jvke.vkLJTOSirbrx.html', 'https://stream.nixcdn.com/NhacCuaTui2032/GoldenHour-JVKE-8398162.mp3?st=Wpr5QYqp7CkQx0YKIRsPRA&e=1675138670', 'https://avatar-ex-swe.nixcdn.com/song/2022/12/13/a/f/7/3/1670903992722.jpg', N'Âu Mỹ')
@@ -359,8 +357,6 @@ INSERT INTO SONG (SONGNAME, SINGERNAME, SONGURL, DOWNLOADURL, IMAGEURL, GENRE) V
 INSERT INTO SONG (SONGNAME, SINGERNAME, SONGURL, DOWNLOADURL, IMAGEURL, GENRE) VALUES (N'Living Hell', N'Bella Poarch', 'https://www.nhaccuatui.com/bai-hat/living-hell-bella-poarch.KCbIFryJxzfc.html', 'https://stream.nixcdn.com/NhacCuaTui2027/LivingHell-BellaPoarch-7770629.mp3?st=P5tqN_qFn3GVSNsyV31x0w&e=1675138756', 'https://avatar-ex-swe.nixcdn.com/song/2022/08/12/4/2/3/2/1660273623300.jpg', N'Âu Mỹ')
 INSERT INTO SONG (SONGNAME, SINGERNAME, SONGURL, DOWNLOADURL, IMAGEURL, GENRE) VALUES (N'My Universe', N'Coldplay, BTS (Bangtan Boys)', 'https://www.nhaccuatui.com/bai-hat/my-universe-coldplay-ft-bts-bangtan-boys.0g23kywqglBY.html', 'https://stream.nixcdn.com/Warner_Audio72/MyUniverse-ColdplayXBTS-7096238.mp3?st=dkHBZq14ahoh-gpGKMtaVQ&e=1675138792', 'https://avatar-ex-swe.nixcdn.com/song/2021/09/24/0/a/0/e/1632459787557.jpg', N'Âu Mỹ')
 INSERT INTO SONG (SONGNAME, SINGERNAME, SONGURL, DOWNLOADURL, IMAGEURL, GENRE) VALUES (N'戒不掉的烟', N'Đang Cập Nhật', 'https://www.nhaccuatui.com/bai-hat/-dang-cap-nhat.As8L2N9CPrRX.html', 'https://stream.nixcdn.com/Believe_Audio85/NhacCuaTui-NhacCuaTui-7680258.mp3?st=JT80b8h1Mnys97tpEvffoQ&e=1675138792', 'https://avatar-ex-swe.nixcdn.com/song/2022/08/06/e/9/a/0/1659801751585.jpg', N'Âu Mỹ')
-
-
 
 
 INSERT INTO SONG (SONGNAME, SINGERNAME, SONGURL, DOWNLOADURL, IMAGEURL, GENRE) VALUES (N'Ditto', N'NewJeans', 'https://www.nhaccuatui.com/bai-hat/ditto-newjeans.J2RfR6oSu8P9.html', 'https://stream.nixcdn.com/NhacCuaTui2033/Ditto-NewJeans-8444477.mp3?st=46LYRH8b0rE4PPi1DlMrTg&e=1675140055', 'https://avatar-ex-swe.nixcdn.com/song/2022/12/20/9/d/c/4/1671497656255.jpg', N'Hàn Quốc')
