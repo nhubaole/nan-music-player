@@ -280,5 +280,35 @@ namespace MusicPlayer.UserControls
             listVidUp = new ObservableCollection<UPLOADVIDEO>(LoginViewModel.currUser.UPLOADVIDEOs);
             lbUploadVideos.ItemsSource = listVidUp;
         }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Upload.updateVid = 1;
+
+            Button btn = (Button)sender;
+            UPLOADVIDEO s = btn.DataContext as UPLOADVIDEO;
+            Upload.updateVideo = s;
+            Upload upload = new Upload();
+
+            upload.ShowDialog();
+            UpdateUploadVideo();
+            Upload.updateVid = 0;
+        }
+
+        private void btnDel_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa video này?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Button btn = (Button)sender;
+                UPLOADVIDEO s = btn.DataContext as UPLOADVIDEO;
+                LoginViewModel.currUser.UPLOADVIDEOs.Remove(s);
+                DataProvider.Ins.DB.SaveChanges();
+                UpdateUploadVideo();
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }
