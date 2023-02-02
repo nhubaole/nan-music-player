@@ -45,7 +45,10 @@ namespace MusicPlayer.UserControls
         public UCLibrary()
         {
             InitializeComponent();
-            if(init == -1)
+
+            cbTimer.ItemsSource = listTimer;
+            
+            if (init == -1)
             {
                 bw2 = new BackgroundWorker();
                 bw2.WorkerSupportsCancellation = true;
@@ -53,6 +56,7 @@ namespace MusicPlayer.UserControls
                 bw2.ProgressChanged += Bw2_ProgressChanged;
                 bw2.DoWork += Bw2_DoWork;
                 bw2.RunWorkerAsync();
+                cbTimer.SelectedItem = cbTimer.Items[4];
                 init++;
             }
             UpdatePlaylist();
@@ -68,7 +72,6 @@ namespace MusicPlayer.UserControls
             lbLikedSongs.ItemsSource = listLikedSong;
             
             UpdateUploadSong();
-            cbTimer.ItemsSource = listTimer;
             cbTimer.SelectionChanged += CbTimer_SelectionChanged;
         }
 
