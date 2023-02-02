@@ -14,8 +14,8 @@
     </UserControl.DataContext>-->
     <Grid>
         <Border CornerRadius="0,0,40,0" Background="{StaticResource SecondaryDark}">
-            <Grid Width="830" Height="504" VerticalAlignment="Top">
-                <Grid Height="60" VerticalAlignment="Top" Margin="0,40,0,0">
+            <Grid Width="870" Height="504" VerticalAlignment="Top">
+                <Grid Height="70" VerticalAlignment="Top" Margin="0,40,0,0">
                     <Grid Width="180" HorizontalAlignment="Left">
                         <ComboBox x:Name="cbSearchType"
                                 BorderBrush="{StaticResource PrimaryDark}"
@@ -27,7 +27,7 @@
                                 Foreground="{StaticResource PrimaryDark}"
                                 Background="{StaticResource PrimaryLight}"
                                 Width="180"
-                                Height="60"
+                                Height="70"
                                 SelectionChanged="cbSearchType_SelectionChanged">
                         </ComboBox>
                     </Grid>
@@ -37,7 +37,7 @@
                                     BorderBrush="{StaticResource PrimaryLight}">
                             <TextBox x:Name="txtSearch"
                                     Margin="20,10,20,10" Width="280"
-                                    FontSize="18"
+                                    FontSize="20"
                                     FontWeight="SemiBold"
                                     materialDesign:HintAssist.Hint="Tìm kiếm"
                                     BorderBrush="{StaticResource PrimaryLight}"
@@ -45,9 +45,34 @@
                                     TextChanged="txtSearch_TextChanged"/>
                         </Border>
                     </Grid>
-                    <!--<Grid  Width="180" HorizontalAlignment="Left" Margin="520,0,0,0">
-                        <ContentControl Content="{StaticResource cbTimer}"></ContentControl>
-                    </Grid>-->
+                    <Grid Width="350" HorizontalAlignment="Left" Margin="520,0,0,0">
+                        <TextBlock Text="Thể loại" FontSize="20" FontWeight="SemiBold" Foreground="{StaticResource PrimaryMid}" Margin="0,-5,0,0" HorizontalAlignment="Center"/>
+                        <TabControl
+                            Style="{StaticResource MaterialDesignFilledTabControl}"
+                            HorizontalAlignment="Left"
+                              Width="350"
+                              materialDesign:ColorZoneAssist.Mode="Custom"
+                              materialDesign:ColorZoneAssist.Foreground="{StaticResource PrimaryLight}"
+                              Margin="0,22,0,0"
+                            SelectionChanged="TabControl_SelectionChanged">
+                            <TabItem>
+                                <TabItem.Header>
+                                    <TextBlock Text="Việt Nam" FontSize="18" FontWeight="SemiBold" Foreground="{StaticResource PrimaryLight}"/>
+                                </TabItem.Header>
+                            </TabItem>
+                            <TabItem>
+                                <TabItem.Header>
+                                    <TextBlock Text="Âu Mỹ" FontSize="18" FontWeight="SemiBold" Foreground="{StaticResource PrimaryLight}"/>
+                                </TabItem.Header>
+                            </TabItem>
+                            <TabItem>
+                                <TabItem.Header>
+                                    <TextBlock Text="Hàn Quốc" FontSize="18" FontWeight="SemiBold" Foreground="{StaticResource PrimaryLight}"/>
+                                </TabItem.Header>
+                                </TabItem>
+                        </TabControl>
+                    </Grid>
+                    
                 </Grid>
 
                 <Grid  Margin="0,130,0,0">
@@ -70,6 +95,26 @@
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
                                         <Grid>
+                                            <Button x:Name="btnAdd"
+                                                    Background="Transparent"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Width="25" 
+                                                    Height="25" 
+                                                    Margin="88,25,0,0"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Top"
+                                                    Click="btnAdd_Click">
+                                                <Button.ContextMenu>
+                                                    <ContextMenu Background="{StaticResource SecondaryMid}" Foreground="{StaticResource SecondaryLight}" Width="200" Placement="Mouse">
+                                                        <ContextMenu.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <MenuItem Header="{Binding PLAYLISTNAME}" Click="MenuItem_Click"/>
+                                                            </DataTemplate>
+                                                        </ContextMenu.ItemTemplate>
+                                                    </ContextMenu>
+                                                </Button.ContextMenu>
+                                                <materialDesign:PackIcon Kind="PlaylistPlus" Width="25" Height="25" Foreground="{StaticResource SecondaryLight}"/>
+                                            </Button>
                                             <ToggleButton x:Name="btnLike"
                                                       Foreground="White"
                                                       Background="#ff5252"

@@ -70,7 +70,7 @@
                     VerticalAlignment="Bottom">
                             </TextBlock>
                         </Grid>
-                        <StackPanel Margin="0,200,0,0">
+                        <StackPanel Margin="0,180,0,0">
                             <RadioButton Style="{StaticResource BtnStyle}"
                                  Command="{Binding HomeCommand}"
                                  Height="55" 
@@ -124,19 +124,20 @@
                                     </TextBlock>
                                 </Grid>
                             </RadioButton>
-                            <!--<RadioButton Style="{StaticResource BtnStyle}"
+                            <RadioButton Style="{StaticResource BtnStyle}"
+                                         Command="{Binding VideoCommand}"
                                  Height="55">
                                 <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <materialDesign:PackIcon Kind="Poll" Width="30" Height="30" Margin="15,0,0,0" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Bảng xếp hạng" 
+                                    <materialDesign:PackIcon Kind="Video" Width="30" Height="30" Margin="15,0,0,0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Video" 
                                        VerticalAlignment="Center"
                                        FontSize="18"
                                        FontWeight="Medium"
                                        Margin="55,0,0,0">
                                     </TextBlock>
                                 </Grid>
-                            </RadioButton>-->
-                            <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,15,0,0" >
+                            </RadioButton>
+                            <Grid Height="55" Width="210" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-5,0,0" >
                                 <materialDesign:PackIcon Kind="ClockTimeFourOutline" 
                                                          Width="30" Height="30" 
                                                          Margin="15,0,0,0" 
@@ -175,9 +176,11 @@
                                 Content="{Binding CurrentView}" />
             </Grid>
         </Grid>
-        <uc:UCPlayMusic Height="68" 
+        <Grid Visibility="{Binding IsVisible}">
+            <uc:UCPlayMusic Height="68" 
                         Width="920" 
                         HorizontalAlignment="Right" 
                         VerticalAlignment="Bottom"/>
+        </Grid>
     </Grid>
 </Window>

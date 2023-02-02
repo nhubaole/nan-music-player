@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1fd0f2e116634eb28282f8172246a322" Name="Diagram1" ZoomLevel="77">
+      <Diagram DiagramId="1fd0f2e116634eb28282f8172246a322" Name="Diagram1" ZoomLevel="101">
         <EntityTypeShape EntityType="NANDBModel.FEATUREDSONG" Width="1.5" PointX="3" PointY="10.375" />
         <EntityTypeShape EntityType="NANDBModel.LASTEST" Width="1.5" PointX="5.25" PointY="5" />
         <EntityTypeShape EntityType="NANDBModel.NEWSONG" Width="1.5" PointX="3" PointY="8.5" />
@@ -18,6 +18,12 @@
         <AssociationConnector Association="NANDBModel.FK_NEW_SONG" />
         <AssociationConnector Association="NANDBModel.LIKES" />
         <AssociationConnector Association="NANDBModel.UPLOAD" />
+        <EntityTypeShape EntityType="NANDBModel.PLAYLIST" Width="1.5" PointX="5.25" PointY="1.5" />
+        <AssociationConnector Association="NANDBModel.FK_PLAYLIST_USER" />
+        <AssociationConnector Association="NANDBModel.PLAYLIST_SONG" />
+        <EntityTypeShape EntityType="NANDBModel.VIDEO" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NANDBModel.UPLOADVIDEO" Width="1.5" PointX="7.375" PointY="5" />
+        <AssociationConnector Association="NANDBModel.UPLOAD2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

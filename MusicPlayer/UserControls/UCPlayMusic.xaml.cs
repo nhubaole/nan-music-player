@@ -240,6 +240,7 @@ namespace MusicPlayer.UserControls
             infor.txtLike.Text = selectedSong.USERS.Count().ToString();
             infor.tblName2.Text = selectedSong.SONGNAME;
             infor.tblName4.Text = selectedSong.SINGERNAME;
+            infor.tblGenre2.Text = selectedSong.GENRE;
             infor.tblTime2.Text = new TimeSpan(0, (int)(selectedSong.DURATION / 60), (int)(selectedSong.DURATION % 60)).ToString(@"mm\:ss");
             var bitmapImage = new BitmapImage();
             bitmapImage.BeginInit();

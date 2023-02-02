@@ -14,5 +14,8 @@
     <DataTemplate DataType="{x:Type viewmodel:ProfileVM}">
         <uc:UCProfile/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewmodel:VideoVM}">
+        <uc:UCVideo/>
+    </DataTemplate>
 
 </ResourceDictionary>

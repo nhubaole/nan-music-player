@@ -34,6 +34,22 @@
           </Key>
           <Property Name="SONGID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="PLAYLIST">
+          <Key>
+            <PropertyRef Name="PLAYLISTID" />
+          </Key>
+          <Property Name="PLAYLISTID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PLAYLISTNAME" Type="nvarchar(max)" />
+          <Property Name="USERID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PLAYLIST_SONG">
+          <Key>
+            <PropertyRef Name="SONGID" />
+            <PropertyRef Name="PLAYLISTID" />
+          </Key>
+          <Property Name="SONGID" Type="int" Nullable="false" />
+          <Property Name="PLAYLISTID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="SONG">
           <Key>
             <PropertyRef Name="SONGID" />
@@ -48,6 +64,7 @@
           <Property Name="DURATION" Type="float" />
           <Property Name="POSITION" Type="float" />
           <Property Name="LIKED" Type="bit" />
+          <Property Name="GENRE" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -67,12 +84,32 @@
           <Property Name="SONGID" Type="int" Nullable="false" />
           <Property Name="USERID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="UPLOAD2">
+          <Key>
+            <PropertyRef Name="VIDEOID" />
+            <PropertyRef Name="USERID" />
+          </Key>
+          <Property Name="VIDEOID" Type="int" Nullable="false" />
+          <Property Name="USERID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="UPLOADSONG">
           <Key>
             <PropertyRef Name="SONGID" />
           </Key>
           <Property Name="SONGID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SONGNAME" Type="nvarchar(max)" />
+          <Property Name="SINGERNAME" Type="nvarchar(max)" />
+          <Property Name="IMAGEPATH" Type="varchar(max)" />
+          <Property Name="SAVEPATH" Type="nvarchar(max)" />
+          <Property Name="DURATION" Type="float" />
+          <Property Name="POSITION" Type="float" />
+        </EntityType>
+        <EntityType Name="UPLOADVIDEO">
+          <Key>
+            <PropertyRef Name="VIDEOID" />
+          </Key>
+          <Property Name="VIDEOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VIDEONAME" Type="nvarchar(max)" />
           <Property Name="SINGERNAME" Type="nvarchar(max)" />
           <Property Name="IMAGEPATH" Type="varchar(max)" />
           <Property Name="SAVEPATH" Type="nvarchar(max)" />
@@ -91,6 +128,21 @@
           <Property Name="PHONE" Type="varchar" MaxLength="50" />
           <Property Name="DOB" Type="datetime" />
           <Property Name="SEX" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="VIDEO">
+          <Key>
+            <PropertyRef Name="VIDEOID" />
+          </Key>
+          <Property Name="VIDEOID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VIDEONAME" Type="nvarchar(max)" />
+          <Property Name="SINGERNAME" Type="nvarchar(max)" />
+          <Property Name="VIDEOURL" Type="varchar(max)" />
+          <Property Name="DOWNLOADURL" Type="varchar(max)" />
+          <Property Name="IMAGEURL" Type="varchar(max)" />
+          <Property Name="SAVEPATH" Type="nvarchar(max)" />
+          <Property Name="DURATION" Type="float" />
+          <Property Name="POSITION" Type="float" />
+          <Property Name="GENRE" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_FEATURED_SONG">
           <End Role="SONG" Type="Self.SONG" Multiplicity="1" />
@@ -164,6 +216,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PLAYLIST">
+          <End Role="PLAYLIST" Type="Self.PLAYLIST" Multiplicity="1" />
+          <End Role="PLAYLIST_SONG" Type="Self.PLAYLIST_SONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PLAYLIST">
+              <PropertyRef Name="PLAYLISTID" />
+            </Principal>
+            <Dependent Role="PLAYLIST_SONG">
+              <PropertyRef Name="PLAYLISTID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PLAYLIST_USER">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="PLAYLIST" Type="Self.PLAYLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="PLAYLIST">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SONG">
+          <End Role="SONG" Type="Self.SONG" Multiplicity="1" />
+          <End Role="PLAYLIST_SONG" Type="Self.PLAYLIST_SONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SONG">
+              <PropertyRef Name="SONGID" />
+            </Principal>
+            <Dependent Role="PLAYLIST_SONG">
+              <PropertyRef Name="SONGID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UPLOAD_SONG">
           <End Role="UPLOADSONG" Type="Self.UPLOADSONG" Multiplicity="1" />
           <End Role="UPLOAD" Type="Self.UPLOAD" Multiplicity="*" />
@@ -188,16 +276,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UPLOAD_VIDEO">
+          <End Role="UPLOADVIDEO" Type="Self.UPLOADVIDEO" Multiplicity="1" />
+          <End Role="UPLOAD2" Type="Self.UPLOAD2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UPLOADVIDEO">
+              <PropertyRef Name="VIDEOID" />
+            </Principal>
+            <Dependent Role="UPLOAD2">
+              <PropertyRef Name="VIDEOID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UPLOAD2_USER">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="UPLOAD2" Type="Self.UPLOAD2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="UPLOAD2">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="NANDBModelStoreContainer">
           <EntitySet Name="FEATUREDSONG" EntityType="Self.FEATUREDSONG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LASTEST" EntityType="Self.LASTEST" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LIKES" EntityType="Self.LIKES" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NEWSONG" EntityType="Self.NEWSONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PLAYLIST" EntityType="Self.PLAYLIST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PLAYLIST_SONG" EntityType="Self.PLAYLIST_SONG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SONG" EntityType="Self.SONG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UPLOAD" EntityType="Self.UPLOAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UPLOAD2" EntityType="Self.UPLOAD2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UPLOADSONG" EntityType="Self.UPLOADSONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UPLOADVIDEO" EntityType="Self.UPLOADVIDEO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VIDEO" EntityType="Self.VIDEO" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_FEATURED_SONG" Association="Self.FK_FEATURED_SONG">
             <End Role="SONG" EntitySet="SONG" />
             <End Role="FEATUREDSONG" EntitySet="FEATUREDSONG" />
@@ -222,6 +339,18 @@
             <End Role="SONG" EntitySet="SONG" />
             <End Role="NEWSONG" EntitySet="NEWSONG" />
           </AssociationSet>
+          <AssociationSet Name="FK_PLAYLIST" Association="Self.FK_PLAYLIST">
+            <End Role="PLAYLIST" EntitySet="PLAYLIST" />
+            <End Role="PLAYLIST_SONG" EntitySet="PLAYLIST_SONG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PLAYLIST_USER" Association="Self.FK_PLAYLIST_USER">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="PLAYLIST" EntitySet="PLAYLIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SONG" Association="Self.FK_SONG">
+            <End Role="SONG" EntitySet="SONG" />
+            <End Role="PLAYLIST_SONG" EntitySet="PLAYLIST_SONG" />
+          </AssociationSet>
           <AssociationSet Name="FK_UPLOAD_SONG" Association="Self.FK_UPLOAD_SONG">
             <End Role="UPLOADSONG" EntitySet="UPLOADSONG" />
             <End Role="UPLOAD" EntitySet="UPLOAD" />
@@ -229,6 +358,14 @@
           <AssociationSet Name="FK_UPLOAD_USER" Association="Self.FK_UPLOAD_USER">
             <End Role="USERS" EntitySet="USERS" />
             <End Role="UPLOAD" EntitySet="UPLOAD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UPLOAD_VIDEO" Association="Self.FK_UPLOAD_VIDEO">
+            <End Role="UPLOADVIDEO" EntitySet="UPLOADVIDEO" />
+            <End Role="UPLOAD2" EntitySet="UPLOAD2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UPLOAD2_USER" Association="Self.FK_UPLOAD2_USER">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="UPLOAD2" EntitySet="UPLOAD2" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -265,6 +402,21 @@
           </AssociationSet>
           <AssociationSet Name="UPLOAD" Association="NANDBModel.UPLOAD">
             <End Role="UPLOADSONG" EntitySet="UPLOADSONGs" />
+            <End Role="USER" EntitySet="USERS" />
+          </AssociationSet>
+          <EntitySet Name="PLAYLISTs" EntityType="NANDBModel.PLAYLIST" />
+          <AssociationSet Name="FK_PLAYLIST_USER" Association="NANDBModel.FK_PLAYLIST_USER">
+            <End Role="USER" EntitySet="USERS" />
+            <End Role="PLAYLIST" EntitySet="PLAYLISTs" />
+          </AssociationSet>
+          <AssociationSet Name="PLAYLIST_SONG" Association="NANDBModel.PLAYLIST_SONG">
+            <End Role="PLAYLIST" EntitySet="PLAYLISTs" />
+            <End Role="SONG" EntitySet="SONGs" />
+          </AssociationSet>
+          <EntitySet Name="VIDEOs" EntityType="NANDBModel.VIDEO" />
+          <EntitySet Name="UPLOADVIDEOs" EntityType="NANDBModel.UPLOADVIDEO" />
+          <AssociationSet Name="UPLOAD2" Association="NANDBModel.UPLOAD2">
+            <End Role="UPLOADVIDEO" EntitySet="UPLOADVIDEOs" />
             <End Role="USER" EntitySet="USERS" />
           </AssociationSet>
         </EntityContainer>
@@ -311,6 +463,8 @@
           <NavigationProperty Name="NEWSONG" Relationship="NANDBModel.FK_NEW_SONG" FromRole="SONG" ToRole="NEWSONG" />
           <NavigationProperty Name="USERS" Relationship="NANDBModel.LIKES" FromRole="SONG" ToRole="USER" />
           <Property Name="LIKED" Type="Boolean" />
+          <NavigationProperty Name="PLAYLISTs" Relationship="NANDBModel.PLAYLIST_SONG" FromRole="SONG" ToRole="PLAYLIST" />
+          <Property Name="GENRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -350,6 +504,8 @@
           <NavigationProperty Name="LASTESTs" Relationship="NANDBModel.FK_LASTEST_USER" FromRole="USER" ToRole="LASTEST" />
           <NavigationProperty Name="SONGs" Relationship="NANDBModel.LIKES" FromRole="USER" ToRole="SONG" />
           <NavigationProperty Name="UPLOADSONGs" Relationship="NANDBModel.UPLOAD" FromRole="USER" ToRole="UPLOADSONG" />
+          <NavigationProperty Name="PLAYLISTs" Relationship="NANDBModel.FK_PLAYLIST_USER" FromRole="USER" ToRole="PLAYLIST" />
+          <NavigationProperty Name="UPLOADVIDEOs" Relationship="NANDBModel.UPLOAD2" FromRole="USER" ToRole="UPLOADVIDEO" />
         </EntityType>
         <Association Name="FK_FEATURED_SONG">
           <End Type="NANDBModel.SONG" Role="SONG" Multiplicity="1" />
@@ -407,6 +563,64 @@
           <End Type="NANDBModel.UPLOADSONG" Role="UPLOADSONG" Multiplicity="*" />
           <End Type="NANDBModel.USER" Role="USER" Multiplicity="*" />
         </Association>
+        <EntityType Name="PLAYLIST">
+          <Key>
+            <PropertyRef Name="PLAYLISTID" />
+          </Key>
+          <Property Name="PLAYLISTID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PLAYLISTNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="USERID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="USER" Relationship="NANDBModel.FK_PLAYLIST_USER" FromRole="PLAYLIST" ToRole="USER" />
+          <NavigationProperty Name="SONGs" Relationship="NANDBModel.PLAYLIST_SONG" FromRole="PLAYLIST" ToRole="SONG" />
+        </EntityType>
+        <Association Name="FK_PLAYLIST_USER">
+          <End Type="NANDBModel.USER" Role="USER" Multiplicity="1" />
+          <End Type="NANDBModel.PLAYLIST" Role="PLAYLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="USERID" />
+            </Principal>
+            <Dependent Role="PLAYLIST">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PLAYLIST_SONG">
+          <End Type="NANDBModel.PLAYLIST" Role="PLAYLIST" Multiplicity="*" />
+          <End Type="NANDBModel.SONG" Role="SONG" Multiplicity="*" />
+        </Association>
+        <EntityType Name="VIDEO">
+          <Key>
+            <PropertyRef Name="VIDEOID" />
+          </Key>
+          <Property Name="VIDEOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VIDEONAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SINGERNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VIDEOURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DOWNLOADURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IMAGEURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SAVEPATH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DURATION" Type="Double" />
+          <Property Name="POSITION" Type="Double" />
+          <Property Name="GENRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UPLOADVIDEO">
+          <Key>
+            <PropertyRef Name="VIDEOID" />
+          </Key>
+          <Property Name="VIDEOID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VIDEONAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SINGERNAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGEPATH" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SAVEPATH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DURATION" Type="Double" />
+          <Property Name="POSITION" Type="Double" />
+          <NavigationProperty Name="USERS" Relationship="NANDBModel.UPLOAD2" FromRole="UPLOADVIDEO" ToRole="USER" />
+        </EntityType>
+        <Association Name="UPLOAD2">
+          <End Type="NANDBModel.UPLOADVIDEO" Role="UPLOADVIDEO" Multiplicity="*" />
+          <End Type="NANDBModel.USER" Role="USER" Multiplicity="*" />
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -439,6 +653,7 @@
           <EntitySetMapping Name="SONGs">
             <EntityTypeMapping TypeName="NANDBModel.SONG">
               <MappingFragment StoreEntitySet="SONG">
+                <ScalarProperty Name="GENRE" ColumnName="GENRE" />
                 <ScalarProperty Name="LIKED" ColumnName="LIKED" />
                 <ScalarProperty Name="POSITION" ColumnName="POSITION" />
                 <ScalarProperty Name="DURATION" ColumnName="DURATION" />
@@ -504,6 +719,60 @@
             </EndProperty>
             <EndProperty Name="UPLOADSONG">
               <ScalarProperty Name="SONGID" ColumnName="SONGID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="PLAYLISTs">
+            <EntityTypeMapping TypeName="NANDBModel.PLAYLIST">
+              <MappingFragment StoreEntitySet="PLAYLIST">
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="PLAYLISTNAME" ColumnName="PLAYLISTNAME" />
+                <ScalarProperty Name="PLAYLISTID" ColumnName="PLAYLISTID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="PLAYLIST_SONG" TypeName="NANDBModel.PLAYLIST_SONG" StoreEntitySet="PLAYLIST_SONG">
+            <EndProperty Name="SONG">
+              <ScalarProperty Name="SONGID" ColumnName="SONGID" />
+            </EndProperty>
+            <EndProperty Name="PLAYLIST">
+              <ScalarProperty Name="PLAYLISTID" ColumnName="PLAYLISTID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="VIDEOs">
+            <EntityTypeMapping TypeName="NANDBModel.VIDEO">
+              <MappingFragment StoreEntitySet="VIDEO">
+                <ScalarProperty Name="GENRE" ColumnName="GENRE" />
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+                <ScalarProperty Name="SAVEPATH" ColumnName="SAVEPATH" />
+                <ScalarProperty Name="IMAGEURL" ColumnName="IMAGEURL" />
+                <ScalarProperty Name="DOWNLOADURL" ColumnName="DOWNLOADURL" />
+                <ScalarProperty Name="VIDEOURL" ColumnName="VIDEOURL" />
+                <ScalarProperty Name="SINGERNAME" ColumnName="SINGERNAME" />
+                <ScalarProperty Name="VIDEONAME" ColumnName="VIDEONAME" />
+                <ScalarProperty Name="VIDEOID" ColumnName="VIDEOID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UPLOADVIDEOs">
+            <EntityTypeMapping TypeName="NANDBModel.UPLOADVIDEO">
+              <MappingFragment StoreEntitySet="UPLOADVIDEO">
+                <ScalarProperty Name="POSITION" ColumnName="POSITION" />
+                <ScalarProperty Name="DURATION" ColumnName="DURATION" />
+                <ScalarProperty Name="SAVEPATH" ColumnName="SAVEPATH" />
+                <ScalarProperty Name="IMAGEPATH" ColumnName="IMAGEPATH" />
+                <ScalarProperty Name="SINGERNAME" ColumnName="SINGERNAME" />
+                <ScalarProperty Name="VIDEONAME" ColumnName="VIDEONAME" />
+                <ScalarProperty Name="VIDEOID" ColumnName="VIDEOID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UPLOAD2" TypeName="NANDBModel.UPLOAD2" StoreEntitySet="UPLOAD2">
+            <EndProperty Name="USER">
+              <ScalarProperty Name="USERID" ColumnName="USERID" />
+            </EndProperty>
+            <EndProperty Name="UPLOADVIDEO">
+              <ScalarProperty Name="VIDEOID" ColumnName="VIDEOID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

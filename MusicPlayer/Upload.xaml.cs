@@ -25,6 +25,7 @@ namespace MusicPlayer
     public partial class Upload : Window
     {
         public static int update = 0;
+        public static int uploadVideo = 0;
         public static UPLOADSONG updateSong;
         public Upload()
         {
@@ -50,6 +51,10 @@ namespace MusicPlayer
                 }
                 bitmapImage.EndInit();
                 img.ImageSource = bitmapImage;
+            }
+            if (uploadVideo == 1)
+            {
+                txtTitle.Text = "TẢI VIDEO LÊN";
             }
         }
 
@@ -107,27 +112,45 @@ namespace MusicPlayer
             }
             else
             {
-                var song = new UPLOADSONG()
+                if(uploadVideo == 0)
                 {
-                    SONGNAME = songName,
-                    SINGERNAME = singerName,
-                    IMAGEPATH = imagePath,
-                    SAVEPATH = savePath
-                };
-                if (update == 1)
-                {
-                    LoginViewModel.currUser.UPLOADSONGs.Remove(updateSong);
-                    LoginViewModel.currUser.UPLOADSONGs.Add(song);
-                    DataProvider.Ins.DB.SaveChanges();
-                    MessageBox.Show("Cập nhật bài hát thành công!", "Thông báo", MessageBoxButton.OK);
-                    this.Close();
+                    var song = new UPLOADSONG()
+                    {
+                        SONGNAME = songName,
+                        SINGERNAME = singerName,
+                        IMAGEPATH = imagePath,
+                        SAVEPATH = savePath
+                    };
+                    if (update == 1)
+                    {
+                        LoginViewModel.currUser.UPLOADSONGs.Remove(updateSong);
+                        LoginViewModel.currUser.UPLOADSONGs.Add(song);
+                        DataProvider.Ins.DB.SaveChanges();
+                        MessageBox.Show("Cập nhật bài hát thành công!", "Thông báo", MessageBoxButton.OK);
+                        this.Close();
+                    }
+                    else
+                    {
+                        song.USERS.Add(LoginViewModel.currUser);
+                        DataProvider.Ins.DB.UPLOADSONGs.Add(song);
+                        DataProvider.Ins.DB.SaveChanges();
+                        MessageBox.Show("Tải bài hát lên thành công!", "Thông báo", MessageBoxButton.OK);
+                        this.Close();
+                    }
                 }
                 else
                 {
-                    song.USERS.Add(LoginViewModel.currUser);
-                    DataProvider.Ins.DB.UPLOADSONGs.Add(song);
+                    var video = new UPLOADVIDEO()
+                    {
+                        VIDEONAME = songName,
+                        SINGERNAME = singerName,
+                        IMAGEPATH = imagePath,
+                        SAVEPATH = savePath
+                    };
+                    video.USERS.Add(LoginViewModel.currUser);
+                    DataProvider.Ins.DB.UPLOADVIDEOs.Add(video);
                     DataProvider.Ins.DB.SaveChanges();
-                    MessageBox.Show("Tải bài hát lên thành công!", "Thông báo", MessageBoxButton.OK);
+                    MessageBox.Show("Tải video lên thành công!", "Thông báo", MessageBoxButton.OK);
                     this.Close();
                 }
             }
