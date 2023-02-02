@@ -167,11 +167,14 @@ namespace MusicPlayer.UserControls
                 var imgURL = Application.Current.TryFindResource("imgURL") as Image;
                 var bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
-                bitmapImage.UriSource = new Uri(selectedSong.IMAGEURL); 
+                bitmapImage.UriSource = new Uri(selectedSong.IMAGEURL, UriKind.RelativeOrAbsolute);
                 bitmapImage.EndInit();
                 imgURL.Source = bitmapImage;
 
-                DownloadFileToPlay(selectedSong);
+                if(selectedSong.SAVEPATH == null)
+                {
+                    DownloadFileToPlay(selectedSong);
+                }
                 selectedSong.POSITION = audio.Position.TotalSeconds;
                 sliderPlay.Value = (double)selectedSong.POSITION;
                 position.Text = new TimeSpan(0, (int)(selectedSong.POSITION / 60), (int)(selectedSong.POSITION % 60)).ToString(@"mm\:ss");
@@ -206,7 +209,6 @@ namespace MusicPlayer.UserControls
             selectedSong.DURATION = audio.NaturalDuration.TimeSpan.TotalSeconds;
             duration.Text = new TimeSpan(0, (int)(selectedSong.DURATION / 60), (int)(selectedSong.DURATION % 60)).ToString(@"mm\:ss");
             sliderPlay.Maximum = (double)selectedSong.DURATION;
-
             bw.RunWorkerAsync();
         }
 
@@ -214,22 +216,43 @@ namespace MusicPlayer.UserControls
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "Song\\" + selectedSong.SONGNAME + ".mp3";
             selectedSong.SAVEPATH = path;
+            if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "Song"))
+                Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "Song");
             if (!File.Exists(path))
             {
                 WebClient wb = new WebClient();
-                wb.DownloadFile(selectedSong.DOWNLOADURL, path);
+                try
+                {
+                    wb.DownloadFile(selectedSong.DOWNLOADURL, path);
+                }
+                catch
+                {
+                    MessageBox.Show("Bài hát không còn tồn tại");
+                    return;
+                }
+                
             }
         }
 
         private void btThreePoint_Click(object sender, RoutedEventArgs e)
         {
             Infor infor = new Infor();
+            infor.txtLike.Text = selectedSong.USERS.Count().ToString();
             infor.tblName2.Text = selectedSong.SONGNAME;
             infor.tblName4.Text = selectedSong.SINGERNAME;
+            infor.tblGenre2.Text = selectedSong.GENRE;
             infor.tblTime2.Text = new TimeSpan(0, (int)(selectedSong.DURATION / 60), (int)(selectedSong.DURATION % 60)).ToString(@"mm\:ss");
             var bitmapImage = new BitmapImage();
             bitmapImage.BeginInit();
-            bitmapImage.UriSource = new Uri(selectedSong.IMAGEURL);
+            try
+            {
+                bitmapImage.UriSource = new Uri(selectedSong.IMAGEURL);
+            }
+            catch
+            {
+                bitmapImage.UriSource = new Uri("../" + selectedSong.IMAGEURL, UriKind.RelativeOrAbsolute);
+            }
+
             bitmapImage.EndInit();
             infor.img.ImageSource = bitmapImage;
             infor.ShowDialog();

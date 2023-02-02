@@ -41,7 +41,7 @@
                     Margin="50,82,50,198"
                     CornerRadius="30">
                     <Border.Background>
-                        <ImageBrush x:Name="img"></ImageBrush>
+                        <ImageBrush x:Name="img" Stretch="UniformToFill"></ImageBrush>
                     </Border.Background>
                 </Border>
                 <Grid Margin="290,30,10,0" Grid.ColumnSpan="2">
@@ -124,7 +124,24 @@
                             Text="3:00"
                             FontWeight="Bold"
                             Foreground="{StaticResource PrimaryMid}"
-                            FontSize="17"
+                            FontSize="20"
+                            Margin="0,33,0,0"/>
+                        <TextBlock
+                            x:Name="tblGenre1"
+                            Grid.Column="1"
+                            Text="Thể loại"
+                            Foreground="{StaticResource SecondaryLight}"
+                            FontSize="18"
+                            Height="33"
+                            Margin="0,0,0,40">
+                        </TextBlock>
+                        <TextBlock
+                            x:Name="tblGenre2"
+                            Grid.Column="1"
+                            Text="Việt Nam"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource PrimaryMid}"
+                            FontSize="20"
                             Margin="0,33,0,0"/>
                         <!--<TextBlock
                             x:Name="tblDay1"
@@ -146,25 +163,23 @@
                             Margin="0,33,0,0">
                         </TextBlock>-->
                     </Grid>
-                    <!--<ToggleButton
-                        Grid.Row="4"
+                    <Border Grid.Row="4"
                         Height="35"
                         Width="35"
                         Background="#ff5252"
-                        Foreground="White"
-                        Content="{materialDesign:PackIcon Kind=Heart, Size=23}"
-                        Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
-                        ToolTip="MaterialDesignFlatPrimaryToggleButton"
-                        IsChecked="True" Margin="0,5,455,5" RenderTransformOrigin="0.4,-0.2"
-                        />
+                        Margin="0,5,455,5" 
+                        CornerRadius="35">
+                        <materialDesign:PackIcon Kind="Heart" Width="23" Height="23" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"></materialDesign:PackIcon>
+                    </Border>
                     <TextBlock
                         Grid.Row="4" 
-                        Text="1000" 
+                        x:Name="txtLike"
+                        Text="0" 
                         Height="30"
-                        FontSize="18"
+                        FontSize="20"
                         FontWeight="Bold"
                         Foreground="#ff5252" 
-                        Margin="50,4,0,-4" />-->
+                        Margin="50,4,0,-4" />
                     <Grid
                         Grid.Row="5">
                         <Button

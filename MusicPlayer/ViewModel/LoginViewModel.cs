@@ -1,6 +1,7 @@
 ﻿using MusicPlayer.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -12,12 +13,14 @@ namespace MusicPlayer.ViewModel
 {
     public class LoginViewModel:BaseViewModel
     {
+        public static ObservableCollection<USER> listUser;//= new ObservableCollection<USER>(DataProvider.Ins.DB.USERS);
+        public static USER currUser = null;
         public bool IsLogin { get; set; } //dang nhap hay chua
         private string _username;
         public string Username { get { return _username; } set { _username = value; OnPropertyChanged(); } }
         private string _password;
         public string Password { get { return _password; } set { _password = value; OnPropertyChanged(); } }
-        public ICommand LoginCommand { get; set; } //coi nhu ca dang nhap tha nh cong
+        public ICommand LoginCommand { get; set; } 
         public ICommand ToSignUpCommand { get; set; }//dang ki thi vao form dang ki 
         public ICommand PasswordChangedCommand { get; set; }  
 
@@ -43,8 +46,7 @@ namespace MusicPlayer.ViewModel
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return  true; }, (p) =>
             {
                 Password  = p.Password;
-                
-
+               
             });
             void Login( Window p)
             {
@@ -59,11 +61,21 @@ namespace MusicPlayer.ViewModel
                         if (count > 0)
                         {
                             IsLogin = true;
+                            listUser = new ObservableCollection<USER>(DataProvider.Ins.DB.USERS);
+                            foreach (USER n in listUser)
+                            {
+                                if (n.USERNAME == Username)
+                                {
+                                    currUser = n;
+                                    break;
+                                }
+                            }
                             p.Close();//
                         }
                         else
                         {
                             IsLogin = false;
+                            currUser = null;
                             MessageBox.Show("Tên đăng nhập hoặc mật khẩu bị sai!", "Đã xảy ra lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }    

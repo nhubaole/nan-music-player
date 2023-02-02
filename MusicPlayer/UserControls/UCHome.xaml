@@ -48,7 +48,28 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
-                                        <ToggleButton Foreground="White"
+                                        <Button x:Name="btnAdd"
+                                                    Background="Transparent"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Width="25" 
+                                                    Height="25" 
+                                                    Margin="88,25,0,0"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Top"
+                                                    Click="btnAdd_Click">
+                                            <Button.ContextMenu>
+                                                <ContextMenu Background="{StaticResource SecondaryMid}" Foreground="{StaticResource SecondaryLight}" Width="200" Placement="Mouse">
+                                                    <ContextMenu.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <MenuItem Header="{Binding PLAYLISTNAME}" Click="MenuItem_Click"/>
+                                                        </DataTemplate>
+                                                    </ContextMenu.ItemTemplate>
+                                                </ContextMenu>
+                                            </Button.ContextMenu>
+                                            <materialDesign:PackIcon Kind="PlaylistPlus" Width="25" Height="25" Foreground="{StaticResource SecondaryLight}"/>
+                                        </Button>
+                                        <ToggleButton x:Name="btnLike"
+                                                      Foreground="White"
                                                       Background="#ff5252"
                                                       Width="25" 
                                                       Height="25" 
@@ -57,7 +78,8 @@
                                                       VerticalAlignment="Top"
                                                       Content="{materialDesign:PackIcon Kind=Heart, Size=18}"
                                                       Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
-                                                      IsChecked="True" />
+                                                      IsChecked="{Binding LIKED}" 
+                                                      Click="btnLike_Click"/>
                                         <StackPanel>
                                             <Border CornerRadius="20,20,20,20"
                                                     Width="80"
@@ -104,7 +126,28 @@
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Grid>
-                                        <ToggleButton Foreground="White"
+                                        <Button 
+                                                    Background="Transparent"
+                                                    Style="{StaticResource MaterialDesignIconButton}"
+                                                    Width="25" 
+                                                    Height="25" 
+                                                    Margin="88,25,0,0"
+                                                    HorizontalAlignment="Left"
+                                                    VerticalAlignment="Top"
+                                                    Click="btnAdd_Click">
+                                            <Button.ContextMenu>
+                                                <ContextMenu Background="{StaticResource SecondaryMid}" Foreground="{StaticResource SecondaryLight}" Width="200" Placement="Mouse">
+                                                    <ContextMenu.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <MenuItem Header="{Binding PLAYLISTNAME}" Click="MenuItem_Click"/>
+                                                        </DataTemplate>
+                                                    </ContextMenu.ItemTemplate>
+                                                </ContextMenu>
+                                            </Button.ContextMenu>
+                                            <materialDesign:PackIcon Kind="PlaylistPlus" Width="25" Height="25" Foreground="{StaticResource SecondaryLight}"/>
+                                        </Button>
+                                        <ToggleButton x:Name="btnLikeNew"
+                                                      Foreground="White"
                                                       Background="#ff5252"
                                                       Width="25" 
                                                       Height="25" 
@@ -113,7 +156,8 @@
                                                       VerticalAlignment="Top"
                                                       Content="{materialDesign:PackIcon Kind=Heart, Size=18}"
                                                       Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
-                                                      IsChecked="True" />
+                                                      IsChecked="{Binding LIKED}"
+                                                      Click="btnLikeNew_Click"/>
                                         <StackPanel>
                                             <Border CornerRadius="20,20,20,20"
                                                     Width="80"

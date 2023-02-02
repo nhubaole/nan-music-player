@@ -14,26 +14,26 @@ namespace MusicPlayer.ViewModel
 {
     internal class SignUpVM: BaseViewModel
     {
-        private string _uFullNameSU;
-        public string uFullNameSU { get => _uFullNameSU; set { _uFullNameSU = value; OnPropertyChanged(); } }
+        private string _uFullName;
+        public string uFullName { get => _uFullName; set { _uFullName = value; OnPropertyChanged(); } }
 
-        private string _uNameSU;
-        public string uNameSU { get => _uNameSU; set { _uNameSU = value; OnPropertyChanged(); } }
+        private string _uName;
+        public string uName { get => _uName; set { _uName = value; OnPropertyChanged(); } }
 
-        private string _uPasswordSU;
-        public string uPasswordSU { get => _uPasswordSU; set { _uPasswordSU = value; OnPropertyChanged(); } }
+        private string _uPassword;
+        public string uPassword { get => _uPassword; set { _uPassword = value; OnPropertyChanged(); } }
 
-        private string _uRePasswordSU;
-        public string uRePasswordSU { get => _uRePasswordSU; set { _uRePasswordSU = value; OnPropertyChanged(); } }
+        private string _uRePassword;
+        public string uRePassword { get => _uRePassword; set { _uRePassword = value; OnPropertyChanged(); } }
         
-        private string _uEmailSU;
-        public string uEmailSU { get => _uEmailSU; set { _uEmailSU = value; OnPropertyChanged(); } }
+        private string _uEmail;
+        public string uEmail { get => _uEmail; set { _uEmail = value; OnPropertyChanged(); } }
 
-        private string _uPhoneSU;
-        public string uPhoneSU { get => _uPhoneSU; set { _uPhoneSU = value; OnPropertyChanged(); } }
+        private string _uPhone;
+        public string uPhone { get => _uPhone; set { _uPhone = value; OnPropertyChanged(); } }
 
-        private string _uDoBSU;
-        public string uDoBSU { get => _uDoBSU; set { _uDoBSU = value; OnPropertyChanged(); } }
+        private string _uDoB;
+        public string uDoB { get => _uDoB; set { _uDoB = value; OnPropertyChanged(); } }
 
         private string _sex;
         public string Sex { get => _sex; set { _sex = value; OnPropertyChanged();} }
@@ -62,7 +62,7 @@ namespace MusicPlayer.ViewModel
                 {
                     tempPass = p.Password;
                     string pass = MD5Hash(Base64Encode(p.Password));
-                    uPasswordSU = pass;
+                    uPassword = pass;
 
                 }
                 catch (Exception ex)
@@ -77,7 +77,7 @@ namespace MusicPlayer.ViewModel
                     if (p.Password.Length >=6)
                     {
                         string repass = MD5Hash(Base64Encode(p.Password));
-                        uRePasswordSU = repass;
+                        uRePassword = repass;
                     }    
 
                 }
@@ -86,17 +86,16 @@ namespace MusicPlayer.ViewModel
                     MessageBox.Show(ex.Message);
                 }
             });
-            bool flag = true;
+   
             SelectedDateChangedCommand = new RelayCommand<DatePicker>((p) => { return true; }, (p) =>
             {
-                
                try
                 {
                     DateTime? selectedDate = p.SelectedDate;
-                    if (selectedDate.HasValue && flag )
+                    if (selectedDate.HasValue )
                     {
-                        flag = false;
-                        uDoBSU = selectedDate.Value.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+                        uDoB = selectedDate.Value.ToString("dd.MM.yyyy", System.Globalization.CultureInfo.InvariantCulture);
                     }
                 }
                 catch (Exception ex)
@@ -130,12 +129,12 @@ namespace MusicPlayer.ViewModel
                     {
                         var user = new USER()
                         {
-                            USERNAME = uNameSU,
-                            FULLNAME = uFullNameSU,
-                            PASS = uPasswordSU,
-                            DOB = DateTime.Parse(uDoBSU),
-                            PHONE = uPhoneSU,
-                            EMAIL = uEmailSU,
+                            USERNAME = uName,
+                            FULLNAME = uFullName,
+                            PASS = uPassword,
+                            DOB = DateTime.Parse(uDoB),
+                            PHONE = uPhone,
+                            EMAIL = uEmail,
                             SEX = Sex
                         };
                         DataProvider.Ins.DB.USERS.Add(user);
@@ -144,8 +143,7 @@ namespace MusicPlayer.ViewModel
                         MainWindow main = new MainWindow();
                         w.Close();
                         main.Show();
-                        //Login login = new Login();
-                        //login.Show();
+
                     }
                     else
                     {
@@ -169,9 +167,6 @@ namespace MusicPlayer.ViewModel
                             MainWindow main = new MainWindow();
                             w.Close();
                             main.Show();
-                            //Login login = new Login();
-                            //login.Show();
-                            //w.Close();
                         }
                     }
 
@@ -184,21 +179,21 @@ namespace MusicPlayer.ViewModel
         }
         public bool CheckAllInfor ()
         {
-            if (CheckNewUser(uNameSU) && AllIsChar(uFullNameSU) && CheckLengthOPass(tempPass) && CheckPass(uPasswordSU, uRePasswordSU) && CheckDateOfBirth(DateTime.Parse(uDoBSU)) && Sex != null)
+            if (CheckNewUser(uName) && AllIsChar(uFullName) && CheckLengthOPass(tempPass) && CheckPass(uPassword, uRePassword) && CheckDateOfBirth(DateTime.Parse(uDoB)) && Sex != null)
             {
                  int erro = 0;
-                if (uEmailSU != null && uEmailSU !="")
+                if (uEmail != null && uEmail !="")
                 {
-                    if (!CheckMail(uEmailSU))
+                    if (!CheckMail(uEmail))
                     {
                         erro++;
                         ErroMessage += "Hãy kiểm tra lại Email cả bạn.\n";
                     }
 
                 }
-                if (uPhoneSU != null && uEmailSU !="")
+                if (uPhone != null && uPhone !="")
                 {
-                    if (!CheckPhoneNum(uPhoneSU))
+                    if (!CheckPhoneNum(uPhone))
                     {
                         ErroMessage += "Số điện thoại của bạn k hợp lệ.\n";
                         erro++;
@@ -216,11 +211,11 @@ namespace MusicPlayer.ViewModel
             }
             else
             {
-                if (!CheckNewUser(uNameSU))
+                if (!CheckNewUser(uName))
                 {
                     ErroMessage += "Hãy kiểm tra lại tên đăng nhập. Có thể nó bị trùng.\n";
                 }
-                if (!AllIsChar(uFullNameSU))
+                if (!AllIsChar(uFullName))
                 {
                     ErroMessage += "Hãy kiểm tra lại họ tên của bạn.\n";
 
@@ -231,13 +226,13 @@ namespace MusicPlayer.ViewModel
                 }
                 else
                 {
-                    if (!CheckPass(uPasswordSU, uRePasswordSU))
+                    if (!CheckPass(uPassword, uRePassword))
                     {
                         ErroMessage += "Hãy xác nhận lại mật khẩu\n";
 
                     }
                 } 
-                if ( uDoBSU == null ||  (!CheckDateOfBirth(DateTime.Parse(uDoBSU))))
+                if ( uDoB == null ||  (!CheckDateOfBirth(DateTime.Parse(uDoB))))
                 {
                     ErroMessage += "Hãy kiểm tra lại ngày sinh của bạn.\n";
 
@@ -320,7 +315,6 @@ namespace MusicPlayer.ViewModel
             {
                 for (int i = 0; i < s.Length; i++)
                 {
-                    char c = s[i];
                     //khong la so thi false
                     if (!char.IsDigit(s[i]) )
                     {
@@ -383,7 +377,7 @@ namespace MusicPlayer.ViewModel
                 return false ;
             }    
             DateTime now = DateTime.Now;
-            if (DateTime.Compare(date, now) >= 0)
+            if (DateTime.Compare(now, date) < 0)
             {
         
                 return false;

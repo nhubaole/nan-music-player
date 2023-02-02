@@ -4,18 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1fd0f2e116634eb28282f8172246a322" Name="Diagram1" ZoomLevel="69">
-        <EntityTypeShape EntityType="NANDBModel.FEATUREDSONG" Width="1.5" PointX="3" PointY="3.125" />
-        <EntityTypeShape EntityType="NANDBModel.NEWSONG" Width="1.5" PointX="3" PointY="9.125" />
-        <EntityTypeShape EntityType="NANDBModel.SONG" Width="1.5" PointX="0.75" PointY="3.125" />
-        <EntityTypeShape EntityType="NANDBModel.sysdiagram" Width="1.5" PointX="5.75" PointY="7.75" />
-        <EntityTypeShape EntityType="NANDBModel.UPLOADSONG" Width="1.5" PointX="3.75" PointY="5.625" />
-        <EntityTypeShape EntityType="NANDBModel.USER" Width="1.5" PointX="6" PointY="3.375" />
+      <Diagram DiagramId="1fd0f2e116634eb28282f8172246a322" Name="Diagram1" ZoomLevel="101">
+        <EntityTypeShape EntityType="NANDBModel.FEATUREDSONG" Width="1.5" PointX="3" PointY="10.375" />
+        <EntityTypeShape EntityType="NANDBModel.LASTEST" Width="1.5" PointX="5.25" PointY="5" />
+        <EntityTypeShape EntityType="NANDBModel.NEWSONG" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="NANDBModel.SONG" Width="1.5" PointX="0.75" PointY="4.625" />
+        <EntityTypeShape EntityType="NANDBModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="NANDBModel.UPLOADSONG" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="NANDBModel.USER" Width="1.5" PointX="3" PointY="3.875" />
         <AssociationConnector Association="NANDBModel.FK_FEATURED_SONG" />
+        <AssociationConnector Association="NANDBModel.FK_LASTEST_SONG" />
+        <AssociationConnector Association="NANDBModel.FK_LASTEST_USER" />
         <AssociationConnector Association="NANDBModel.FK_NEW_SONG" />
-        <AssociationConnector Association="NANDBModel.LASTEST" />
         <AssociationConnector Association="NANDBModel.LIKES" />
         <AssociationConnector Association="NANDBModel.UPLOAD" />
+        <EntityTypeShape EntityType="NANDBModel.PLAYLIST" Width="1.5" PointX="5.25" PointY="1.5" />
+        <AssociationConnector Association="NANDBModel.FK_PLAYLIST_USER" />
+        <AssociationConnector Association="NANDBModel.PLAYLIST_SONG" />
+        <EntityTypeShape EntityType="NANDBModel.VIDEO" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="NANDBModel.UPLOADVIDEO" Width="1.5" PointX="7.375" PointY="5" />
+        <AssociationConnector Association="NANDBModel.UPLOAD2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
