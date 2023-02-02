@@ -37,7 +37,7 @@ namespace MusicPlayer.UserControls
         public static ObservableCollection<PLAYLIST> listPlaylists;
         public static ObservableCollection<UPLOADSONG> listUploadSong;
         public static ObservableCollection<UPLOADSONG> listOwnUpload;
-        public static ObservableCollection<string> listTimer = new ObservableCollection<string>() { "15 phút" , "30 phút", "1 giờ", "2 giờ", "Tắt hẹn giờ" };
+        public static ObservableCollection<string> listTimer = new ObservableCollection<string>() { "10 giây (demo)", "15 phút" , "30 phút", "1 giờ", "2 giờ", "Tắt hẹn giờ" };
         public static ComboBox cbTimer = Application.Current.TryFindResource("cbTimer") as ComboBox;
         public static TextBlock txtTimer = Application.Current.TryFindResource("txtTimer") as TextBlock;
         public static PLAYLIST playlistDeleted;
@@ -56,7 +56,7 @@ namespace MusicPlayer.UserControls
                 bw2.ProgressChanged += Bw2_ProgressChanged;
                 bw2.DoWork += Bw2_DoWork;
                 bw2.RunWorkerAsync();
-                cbTimer.SelectedItem = cbTimer.Items[4];
+                cbTimer.SelectedItem = cbTimer.Items[5];
                 init++;
             }
             UpdatePlaylist();
@@ -105,26 +105,29 @@ namespace MusicPlayer.UserControls
             {
                 if(cbTimer.SelectedItem == cbTimer.Items[0])
                 {
-                    timer = new TimeSpan(0, 15, 0);
+                    timer = new TimeSpan(0, 0, 10);
                 }
                 else if (cbTimer.SelectedItem == cbTimer.Items[1])
                 {
-                    timer = new TimeSpan(0, 30, 0);
+                    timer = new TimeSpan(0, 15, 0);
                 }
                 else if (cbTimer.SelectedItem == cbTimer.Items[2])
                 {
-                    timer = new TimeSpan(1, 0, 0);
+                    timer = new TimeSpan(0, 30, 0);
                 }
                 else if (cbTimer.SelectedItem == cbTimer.Items[3])
                 {
-                    timer = new TimeSpan(2, 0, 0);
+                    timer = new TimeSpan(1, 0, 0);
                 }
                 else if (cbTimer.SelectedItem == cbTimer.Items[4])
+                {
+                    timer = new TimeSpan(2, 0, 0);
+                }
+                else if (cbTimer.SelectedItem == cbTimer.Items[5])
                 {
                     init = 0;
                     txtTimer.Text = cbTimer.SelectedItem.ToString();
                 }
-
             }
         }
 
