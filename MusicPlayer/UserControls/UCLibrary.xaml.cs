@@ -345,5 +345,12 @@ namespace MusicPlayer.UserControls
             UpdatePlaylist();
             AddPlaylist.edit = 0;
         }
+
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer sc = (ScrollViewer)sender;
+            sc.ScrollToVerticalOffset(sc.VerticalOffset - e.Delta);
+            e.Handled = true;
+        }
     }
 }

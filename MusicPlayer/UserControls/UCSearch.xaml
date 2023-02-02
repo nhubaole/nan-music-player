@@ -83,19 +83,16 @@
                     </TextBlock>
                 </Grid>
                 <Grid Margin="0,170,0,0">
-                    <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                      HorizontalScrollBarVisibility="Disabled">
-                        <Grid>
-                            <ListBox x:Name="lbSongs" HorizontalContentAlignment="Stretch" Margin="0,35,0,0" SelectionChanged="lbSongs_SelectionChanged">
-                                <ListBox.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <WrapPanel IsItemsHost="True" />
-                                    </ItemsPanelTemplate>
-                                </ListBox.ItemsPanel>
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <Button x:Name="btnAdd"
+                    <ListBox x:Name="lbSongs" HorizontalContentAlignment="Stretch" SelectionChanged="lbSongs_SelectionChanged">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel IsItemsHost="True" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Button x:Name="btnAdd"
                                                     Background="Transparent"
                                                     Style="{StaticResource MaterialDesignIconButton}"
                                                     Width="25" 
@@ -104,18 +101,18 @@
                                                     HorizontalAlignment="Left"
                                                     VerticalAlignment="Top"
                                                     Click="btnAdd_Click">
-                                                <Button.ContextMenu>
-                                                    <ContextMenu Background="{StaticResource SecondaryMid}" Foreground="{StaticResource SecondaryLight}" Width="200" Placement="Mouse">
-                                                        <ContextMenu.ItemTemplate>
-                                                            <DataTemplate>
-                                                                <MenuItem Header="{Binding PLAYLISTNAME}" Click="MenuItem_Click"/>
-                                                            </DataTemplate>
-                                                        </ContextMenu.ItemTemplate>
-                                                    </ContextMenu>
-                                                </Button.ContextMenu>
-                                                <materialDesign:PackIcon Kind="PlaylistPlus" Width="25" Height="25" Foreground="{StaticResource SecondaryLight}"/>
-                                            </Button>
-                                            <ToggleButton x:Name="btnLike"
+                                        <Button.ContextMenu>
+                                            <ContextMenu Background="{StaticResource SecondaryMid}" Foreground="{StaticResource SecondaryLight}" Width="200" Placement="Mouse">
+                                                <ContextMenu.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <MenuItem Header="{Binding PLAYLISTNAME}" Click="MenuItem_Click"/>
+                                                    </DataTemplate>
+                                                </ContextMenu.ItemTemplate>
+                                            </ContextMenu>
+                                        </Button.ContextMenu>
+                                        <materialDesign:PackIcon Kind="PlaylistPlus" Width="25" Height="25" Foreground="{StaticResource SecondaryLight}"/>
+                                    </Button>
+                                    <ToggleButton x:Name="btnLike"
                                                       Foreground="White"
                                                       Background="#ff5252"
                                                       Width="25" 
@@ -127,37 +124,35 @@
                                                       Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
                                                       IsChecked="{Binding LIKED}"
                                                       Click="btnLike_Click"/>
-                                            <StackPanel>
-                                                <Border CornerRadius="20,20,20,20"
+                                    <StackPanel>
+                                        <Border CornerRadius="20,20,20,20"
                                                     Width="80"
                                                     Height="80"
                                                     HorizontalAlignment="Left">
-                                                    <Border.Background>
-                                                        <ImageBrush ImageSource="{Binding IMAGEURL}"></ImageBrush>
-                                                    </Border.Background>
-                                                </Border>
-                                                <TextBlock Text="{Binding SONGNAME}" 
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="{Binding IMAGEURL}"></ImageBrush>
+                                            </Border.Background>
+                                        </Border>
+                                        <TextBlock Text="{Binding SONGNAME}" 
                                                         FontSize="15" 
                                                         Foreground="{StaticResource PrimaryLight}"
                                                         FontWeight="Medium"
                                                         Width="145"
                                                         HorizontalAlignment="Left"
                                                         Margin="0,5,0,0">
-                                                </TextBlock>
-                                                <TextBlock Text="{Binding SINGERNAME}" 
+                                        </TextBlock>
+                                        <TextBlock Text="{Binding SINGERNAME}" 
                                                         FontSize="12" 
                                                         Foreground="{StaticResource PrimaryMid}"
                                                         FontWeight="Medium"
                                                         Width="145"
                                                         Margin="0,0,0,0">
-                                                </TextBlock>
-                                            </StackPanel>
-                                        </Grid>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </Grid>
-                    </ScrollViewer>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </Grid>
             </Grid>
         </Border>
