@@ -26,7 +26,9 @@ namespace MusicPlayer
     {
         public static int update = 0;
         public static int uploadVideo = 0;
+        public static int updateVid = 0;
         public static UPLOADSONG updateSong;
+        public static UPLOADVIDEO updateVideo;
         public Upload()
         {
             InitializeComponent();
@@ -55,6 +57,28 @@ namespace MusicPlayer
             if (uploadVideo == 1)
             {
                 txtTitle.Text = "TẢI VIDEO LÊN";
+            }
+            if (updateVid == 1)
+            {
+                txtTitle.Text = "CHỈNH SỬA VIDEO";
+                txtBtnUp.Text = "CẬP NHẬT";
+                tbSongName.Text = updateVideo.VIDEONAME;
+                tbSingerName.Text = updateVideo.SINGERNAME;
+                txtPath.Text = updateVideo.SAVEPATH;
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                try
+                {
+                    bitmapImage.UriSource = new Uri(updateVideo.IMAGEPATH);
+                    btnImage.ToolTip = updateVideo.IMAGEPATH;
+                }
+                catch
+                {
+                    bitmapImage.UriSource = new Uri("../" + updateVideo.IMAGEPATH, UriKind.RelativeOrAbsolute);
+                    btnImage.ToolTip = "";
+                }
+                bitmapImage.EndInit();
+                img.ImageSource = bitmapImage;
             }
         }
 
@@ -112,7 +136,7 @@ namespace MusicPlayer
             }
             else
             {
-                if(uploadVideo == 0)
+                if(uploadVideo == 0 && updateVid == 0)
                 {
                     var song = new UPLOADSONG()
                     {
@@ -147,11 +171,24 @@ namespace MusicPlayer
                         IMAGEPATH = imagePath,
                         SAVEPATH = savePath
                     };
-                    video.USERS.Add(LoginViewModel.currUser);
-                    DataProvider.Ins.DB.UPLOADVIDEOs.Add(video);
-                    DataProvider.Ins.DB.SaveChanges();
-                    MessageBox.Show("Tải video lên thành công!", "Thông báo", MessageBoxButton.OK);
-                    this.Close();
+
+                    if (updateVid == 1)
+                    {
+                        LoginViewModel.currUser.UPLOADVIDEOs.Remove(updateVideo);
+                        LoginViewModel.currUser.UPLOADVIDEOs.Add(video);
+                        DataProvider.Ins.DB.SaveChanges();
+                        MessageBox.Show("Cập nhật video thành công!", "Thông báo", MessageBoxButton.OK);
+                        this.Close();
+                    }
+                    else
+                    {
+                        video.USERS.Add(LoginViewModel.currUser);
+                        DataProvider.Ins.DB.UPLOADVIDEOs.Add(video);
+                        DataProvider.Ins.DB.SaveChanges();
+                        MessageBox.Show("Tải video lên thành công!", "Thông báo", MessageBoxButton.OK);
+                        this.Close();
+                    }
+                    
                 }
             }
         }

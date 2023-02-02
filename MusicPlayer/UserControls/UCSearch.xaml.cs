@@ -34,6 +34,7 @@ namespace MusicPlayer.UserControls
         {
             InitializeComponent();
             cbSearchType.ItemsSource = listChoices;
+            cbSearchType.SelectedItem = cbSearchType.Items[0];
             if (LoginViewModel.currUser != null)
             {
                 UCLibrary.UpdateLikedSong();
@@ -63,34 +64,31 @@ namespace MusicPlayer.UserControls
 
         void searchSongs()
         {
-            searchResult.Clear();
-            if (cbSearchType.SelectedItem == cbSearchType.Items[0])
+            if(listSong != null)
             {
-                foreach (SONG n in listSong)
+                searchResult.Clear();
+                if (cbSearchType.SelectedItem == cbSearchType.Items[0])
                 {
-                    if (n.SONGNAME.ToUpper().Contains(txtSearch.Text.ToUpper()))
+                    foreach (SONG n in listSong)
                     {
-                        searchResult.Add(n);
+                        if (n.SONGNAME.ToUpper().Contains(txtSearch.Text.ToUpper()))
+                        {
+                            searchResult.Add(n);
+                        }
                     }
                 }
-            }
-            else if (cbSearchType.SelectedItem == cbSearchType.Items[1])
-            {
-                foreach (SONG n in listSong)
+                else if (cbSearchType.SelectedItem == cbSearchType.Items[1])
                 {
-                    if (n.SINGERNAME.ToUpper().Contains(txtSearch.Text.ToUpper()))
+                    foreach (SONG n in listSong)
                     {
-                        searchResult.Add(n);
+                        if (n.SINGERNAME.ToUpper().Contains(txtSearch.Text.ToUpper()))
+                        {
+                            searchResult.Add(n);
+                        }
                     }
                 }
+                lbSongs.ItemsSource = searchResult;
             }
-            else
-            {
-                MessageBox.Show("Bạn muốn tìm kiếm theo Tên Bài Hát hay Tên Ca Sĩ? Vui lòng lựa chọn");
-                txtSearch.Clear();
-                return;
-            }
-            lbSongs.ItemsSource = searchResult;
         }
 
         private void btnLike_Click(object sender, RoutedEventArgs e)
