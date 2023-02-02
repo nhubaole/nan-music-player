@@ -352,5 +352,35 @@ namespace MusicPlayer.UserControls
             sc.ScrollToVerticalOffset(sc.VerticalOffset - e.Delta);
             e.Handled = true;
         }
+
+        private void lbLastestSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox ls = sender as ListBox;
+            if(ls.SelectedItem != null)
+            {
+                UCHome.addListLastestSong(sender);
+                UCPlayMusic.CurrentList = ls;
+            }
+        }
+
+        private void lbLikedSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox ls = sender as ListBox;
+            if (ls.SelectedItem != null)
+            {
+                UCHome.addListLastestSong(sender);
+                UCPlayMusic.CurrentList = ls;
+            }
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox ls = sender as ListBox;
+            if (ls.SelectedItem != null)
+            {
+                UCHome.addListLastestSong(sender);
+                UCPlayMusic.CurrentList = ls;
+            }
+        }
     }
 }
