@@ -77,7 +77,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="xNet">
-      <HintPath>C:\Users\ADMIN\Desktop\xNet\xNet.dll</HintPath>
+      <HintPath>C:\Users\admin\Desktop\xNet-master\xNet-master\bin\Debug\xNet.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

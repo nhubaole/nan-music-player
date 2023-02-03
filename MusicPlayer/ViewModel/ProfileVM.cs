@@ -58,35 +58,8 @@ namespace MusicPlayer.ViewModel
                 {
 
 
-                    //var w = p as Window;
-
-                    //if (uFullName == null)
-                    //{
-                    //    uFullName = user.FULLNAME;
-
-                    //}
-                    //if (uDoB == null)
-                    //{
-                    //    uDoB = user.DOB.ToString();
-
-                    //}
-                    //if (uPhone == null)
-                    //{
-                    //    uPhone = user.PHONE;
-
-
-                    //}
-                    //if (uEmail == null)
-                    //{
-                    //    uEmail = user.EMAIL;
-
-
-                    //}
-                    //if (Sex == null)
-                    //{
-                    //    Sex = user.SEX;
-                    //}
-                    if (uFullName == user.FULLNAME && DateTime.Parse(uDoB) == user.DOB && uEmail == user.EMAIL && Sex == user.SEX)
+                    
+                    if (uFullName == user.FULLNAME && DateTime.Parse(uDoB) == user.DOB && uPhone == user.PHONE && uEmail == user.EMAIL && Sex == user.SEX)
                     {
                         MessageBox.Show("Hãy nhập các thông tin bạn cần thay đổi!", "Thông báo", MessageBoxButton.OK);
 
@@ -176,7 +149,7 @@ namespace MusicPlayer.ViewModel
                     if (!CheckMail(uEmail))
                     {
                         erro++;
-                        ErroMessage += "Hãy kiểm tra lại Email cả bạn.\n";
+                        ErroMessage += "Hãy kiểm tra lại Email của bạn.\n";
                     }
 
                 }
