@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicPlayer.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,6 +49,8 @@ namespace MusicPlayer.ViewModel
                     if (loginVM.IsLogin == true)
                     {
                         CurrentView = new HomeVM();
+                        UCHome.reset = 1;
+                        UCPlayMusic.init = 0;
                         p.Show();
                     }
                     else

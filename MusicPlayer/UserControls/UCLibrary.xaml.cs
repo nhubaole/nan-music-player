@@ -75,6 +75,11 @@ namespace MusicPlayer.UserControls
             cbTimer.SelectionChanged += CbTimer_SelectionChanged;
         }
 
+        public static void Reset()
+        {
+            cbTimer.ItemsSource = listTimer;
+            cbTimer.SelectedItem = cbTimer.Items[5];
+        }
         public void UpdateUploadSong()
         {
             listUploadSong = new ObservableCollection<UPLOADSONG>(DataProvider.Ins.DB.UPLOADSONGs);
