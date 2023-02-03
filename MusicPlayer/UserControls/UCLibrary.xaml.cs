@@ -175,15 +175,21 @@ namespace MusicPlayer.UserControls
             }
             else
             {
-                SONG temp = new SONG() { SONGNAME = select.SONGNAME, SINGERNAME = select.SINGERNAME, IMAGEURL = select.IMAGEPATH, SAVEPATH = select.SAVEPATH };
+                SONG temp = new SONG() { SONGNAME = select.SONGNAME, SINGERNAME = select.SINGERNAME, IMAGEURL = select.IMAGEPATH, SAVEPATH = select.SAVEPATH, SONGURL = select.SONGID.ToString() };
                 UCPlayMusic.SelectedSong = temp;
                 if (ls.SelectedIndex + 1 < ls.Items.Count)
-                    UCPlayMusic.NextSong = ls.Items[ls.SelectedIndex + 1] as SONG;
+                {
+                    UPLOADSONG tmp = ls.Items[ls.SelectedIndex + 1] as UPLOADSONG;
+                    UCPlayMusic.NextSong = new SONG() { SONGNAME = tmp.SONGNAME, SINGERNAME = tmp.SINGERNAME, IMAGEURL = tmp.IMAGEPATH, SAVEPATH = tmp.SAVEPATH, SONGURL = tmp.SONGID.ToString() };
+                }
                 else
                     UCPlayMusic.NextSong = null;
 
                 if (ls.SelectedIndex - 1 >= 0)
-                    UCPlayMusic.PrevSong = ls.Items[ls.SelectedIndex - 1] as SONG;
+                {
+                    UPLOADSONG tmp = ls.Items[ls.SelectedIndex - 1] as UPLOADSONG;
+                    UCPlayMusic.PrevSong = new SONG() { SONGNAME = tmp.SONGNAME, SINGERNAME = tmp.SINGERNAME, IMAGEURL = tmp.IMAGEPATH, SAVEPATH = tmp.SAVEPATH, SONGURL = tmp.SONGID.ToString() };
+                }
                 else
                     UCPlayMusic.PrevSong = null;
 

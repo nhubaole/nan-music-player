@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Threading;
 using System.Windows.Controls.Primitives;
+using MusicPlayer.ViewModel;
 
 namespace MusicPlayer.UserControls
 {
@@ -79,7 +80,7 @@ namespace MusicPlayer.UserControls
         {
             if (nextSong != null)
             {
-                currentList.SelectedItem = nextSong;
+                changeSong(nextSong);
             }
         }
 
@@ -87,7 +88,7 @@ namespace MusicPlayer.UserControls
         {
             if(prevSong != null)
             {
-                currentList.SelectedItem = prevSong;
+                changeSong(prevSong);
             }
         }
 
@@ -133,10 +134,10 @@ namespace MusicPlayer.UserControls
                 }
                 if(btnRandom.IsChecked == true)
                 {
-                    currentList.SelectedItem = currentList.Items[RandomSong(currentList.Items.Count)];
+                    changeSong(currentList.Items[RandomSong(currentList.Items.Count)] as SONG);
                     return;
                 }
-                currentList.SelectedItem = nextSong;
+                changeSong(nextSong);
             }
         }
 
@@ -256,6 +257,19 @@ namespace MusicPlayer.UserControls
             bitmapImage.EndInit();
             infor.img.ImageSource = bitmapImage;
             infor.ShowDialog();
+        }
+
+        public static void changeSong(SONG selected)
+        {
+            if(currentList.Name == "lbUploadSongs")
+            {
+                UPLOADSONG temp = LoginViewModel.currUser.UPLOADSONGs.Where(s => s.SONGID.ToString() == selected.SONGURL).FirstOrDefault();
+                currentList.SelectedItem = temp;
+            }
+            else
+            {
+                currentList.SelectedItem = selected;
+            }
         }
     }
 }

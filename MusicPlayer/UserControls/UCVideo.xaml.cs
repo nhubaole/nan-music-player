@@ -196,7 +196,16 @@ namespace MusicPlayer.UserControls
         {
             if (nextVideo != null)
             {
-                currentList.SelectedItem = nextVideo;
+                if(currentList.Name == "lbUploadVideos")
+                {
+                    UPLOADVIDEO temp = LoginViewModel.currUser.UPLOADVIDEOs.Where(s => s.VIDEOID.ToString() == nextVideo.VIDEOURL).FirstOrDefault();
+                    currentList.SelectedItem = temp;
+                }
+                else
+                {
+                    currentList.SelectedItem = nextVideo;
+                }
+                
             }
         }
 
@@ -204,7 +213,15 @@ namespace MusicPlayer.UserControls
         {
             if (prevVideo != null)
             {
-                currentList.SelectedItem = prevVideo;
+                if (currentList.Name == "lbUploadVideos")
+                {
+                    UPLOADVIDEO temp = LoginViewModel.currUser.UPLOADVIDEOs.Where(s => s.VIDEOID.ToString() == prevVideo.VIDEOURL).FirstOrDefault();
+                    currentList.SelectedItem = temp;
+                }
+                else
+                {
+                    currentList.SelectedItem = prevVideo;
+                }
             }
         }
 
@@ -255,20 +272,20 @@ namespace MusicPlayer.UserControls
             }
             else
             {
-                VIDEO temp = new VIDEO() { VIDEONAME = select.VIDEONAME, SINGERNAME = select.SINGERNAME, IMAGEURL = select.IMAGEPATH, SAVEPATH = select.SAVEPATH };
+                VIDEO temp = new VIDEO() { VIDEONAME = select.VIDEONAME, SINGERNAME = select.SINGERNAME, IMAGEURL = select.IMAGEPATH, SAVEPATH = select.SAVEPATH, VIDEOURL = select.VIDEOID.ToString() };
                 SelectedVideo = temp;
                 if (listBox.SelectedIndex + 1 < listBox.Items.Count)
                 {
-                    UPLOADVIDEO next = listBox.Items[listBox.SelectedIndex + 1] as UPLOADVIDEO;
-                    NextVideo = new VIDEO() { VIDEONAME = next.VIDEONAME, SINGERNAME = next.SINGERNAME, IMAGEURL = next.IMAGEPATH, SAVEPATH = next.SAVEPATH };
+                    UPLOADVIDEO tmp = listBox.Items[listBox.SelectedIndex + 1] as UPLOADVIDEO;
+                    NextVideo = new VIDEO() { VIDEONAME = tmp.VIDEONAME, SINGERNAME = tmp.SINGERNAME, IMAGEURL = tmp.IMAGEPATH, SAVEPATH = tmp.SAVEPATH, VIDEOURL = tmp.VIDEOID.ToString() };
                 }
                 else
                     NextVideo = null;
 
                 if (listBox.SelectedIndex - 1 >= 0)
                 {
-                    UPLOADVIDEO prev = listBox.Items[listBox.SelectedIndex - 1] as UPLOADVIDEO;
-                    PrevVideo = new VIDEO() { VIDEONAME = prev.VIDEONAME, SINGERNAME = prev.SINGERNAME, IMAGEURL = prev.IMAGEPATH, SAVEPATH = prev.SAVEPATH };
+                    UPLOADVIDEO tmp = listBox.Items[listBox.SelectedIndex - 1] as UPLOADVIDEO;
+                    PrevVideo = new VIDEO() { VIDEONAME = tmp.VIDEONAME, SINGERNAME = tmp.SINGERNAME, IMAGEURL = tmp.IMAGEPATH, SAVEPATH = tmp.SAVEPATH, VIDEOURL = tmp.VIDEOID.ToString() };
                 }
                 else
                     PrevVideo = null;
