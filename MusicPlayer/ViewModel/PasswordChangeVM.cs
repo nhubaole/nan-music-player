@@ -36,8 +36,6 @@ namespace MusicPlayer.ViewModel
                 {
                     string pass = MD5Hash(Base64Encode(p.Password));
                     uCurPassword = pass;
-                    
-
                 }
                 catch (Exception ex)
                 {
@@ -49,18 +47,9 @@ namespace MusicPlayer.ViewModel
                 
                 try
                 {
-                    //string repass = MD5Hash(Base64Encode(p.Password));
+                    
                     uNePassword = p.Password;
-                    //if (p.Password.Length >= 6)
-                    //{
-                    //    string repass = MD5Hash(Base64Encode(p.Password));
-                    //    uNePassword = repass;
-                    //}
-                    //else
-                    //{
-                    //    MessageBox.Show("Mật khẩu cần ít nhất 6 kí tự!", "Đã xảy ra lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                    //}
+                 
 
                 }
                 catch (Exception ex)
@@ -102,7 +91,7 @@ namespace MusicPlayer.ViewModel
                                 };
 
                                 DataProvider.Ins.DB.SaveChanges();
-                                MessageBox.Show("Đổi mật khẩu thành công!");
+                                MessageBox.Show("Đổi mật khẩu thành công!","Thông báo");
                                 w.Close();
                             }
                             else
