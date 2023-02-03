@@ -48,6 +48,7 @@ namespace MusicPlayer.UserControls
             {
                 UCPlayMusic.SelectedSong = listFeaturedSong.First();
                 UCLibrary.Reset();
+                UCVideo.reset = 1;
                 reset = 0;
             }
             if(LoginViewModel.currUser != null)
