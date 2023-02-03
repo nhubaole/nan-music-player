@@ -48,13 +48,6 @@ namespace MusicPlayer.UserControls
             {
                 UCLibrary.UpdateLikedSong();
             }
-            else
-            {
-                foreach (SONG s in listSong)
-                {
-                    s.LIKED = false;
-                }
-            }
             
             seq = 0;
             lbNewSongs.ItemsSource = listNewSong;

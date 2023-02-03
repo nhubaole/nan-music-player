@@ -34,7 +34,7 @@ namespace MusicPlayer.UserControls
         public static TimeSpan timer;
         public static ObservableCollection<SONG> listLastestSong;
         public static ObservableCollection<SONG> listLikedSong = new ObservableCollection<SONG>();
-        public static ObservableCollection<PLAYLIST> listPlaylists;
+        public static ObservableCollection<PLAYLIST> listPlaylists = new ObservableCollection<PLAYLIST>(LoginViewModel.currUser.PLAYLISTs);
         public static ObservableCollection<UPLOADSONG> listUploadSong;
         public static ObservableCollection<UPLOADSONG> listOwnUpload;
         public static ObservableCollection<string> listTimer = new ObservableCollection<string>() { "10 giây (demo)", "15 phút" , "30 phút", "1 giờ", "2 giờ", "Tắt hẹn giờ" };

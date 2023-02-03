@@ -31,7 +31,7 @@ namespace MusicPlayer.ViewModel
             ProfileCommand = new RelayCommand<object>((p) => { return true; }, Profile);
             SearchCommand = new RelayCommand<object>((p) => { return true; }, Search);
             VideoCommand = new RelayCommand<object>((p) => { return true; }, Video);
-            CurrentView = new HomeVM();
+            
 
             LoadedWindowCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) => {
                 try
@@ -47,6 +47,7 @@ namespace MusicPlayer.ViewModel
                     var loginVM = login.DataContext as LoginViewModel;
                     if (loginVM.IsLogin == true)
                     {
+                        CurrentView = new HomeVM();
                         p.Show();
                     }
                     else
