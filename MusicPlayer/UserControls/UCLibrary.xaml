@@ -77,7 +77,7 @@
                                            Foreground="{StaticResource SecondaryLight}"
                                            FontWeight="SemiBold">
                             </TextBlock>
-                            <ListBox x:Name="lbLastestSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0">
+                            <ListBox x:Name="lbLastestSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0" SelectionChanged="lbLastestSongs_SelectionChanged">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel IsItemsHost="True" />
@@ -221,7 +221,7 @@
                                            Foreground="{StaticResource SecondaryLight}"
                                            FontWeight="SemiBold">
                             </TextBlock>
-                            <ListBox x:Name="lbLikedSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0">
+                            <ListBox x:Name="lbLikedSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0" SelectionChanged="lbLikedSongs_SelectionChanged">
                                 <ListBox.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel IsItemsHost="True" />
@@ -360,7 +360,7 @@
                                                        FontWeight="Bold" Margin="70,0,0,0" VerticalAlignment="Center"></TextBlock>
                                                     </Grid>
                                                 </Expander.Header>
-                                                <ListBox ItemsSource="{Binding SONGs}" HorizontalContentAlignment="Stretch" PreviewMouseUp="ListBox_PreviewMouseUp">
+                                                <ListBox ItemsSource="{Binding SONGs}" HorizontalContentAlignment="Stretch" PreviewMouseUp="ListBox_PreviewMouseUp" SelectionChanged="ListBox_SelectionChanged">
                                                     <ListBox.ItemsPanel>
                                                         <ItemsPanelTemplate>
                                                             <WrapPanel IsItemsHost="True" />

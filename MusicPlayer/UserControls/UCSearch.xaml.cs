@@ -127,6 +127,7 @@ namespace MusicPlayer.UserControls
             else if (tab.SelectedIndex == 2)
                 listSong = new ObservableCollection<SONG>(DataProvider.Ins.DB.SONGs.Where(s => s.GENRE == "Hàn Quốc"));
             lbSongs.ItemsSource = listSong;
+            searchSongs();
         }
     }
 }

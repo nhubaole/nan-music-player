@@ -34,7 +34,7 @@ namespace MusicPlayer.UserControls
         public static TimeSpan timer;
         public static ObservableCollection<SONG> listLastestSong;
         public static ObservableCollection<SONG> listLikedSong = new ObservableCollection<SONG>();
-        public static ObservableCollection<PLAYLIST> listPlaylists;
+        public static ObservableCollection<PLAYLIST> listPlaylists = new ObservableCollection<PLAYLIST>(LoginViewModel.currUser.PLAYLISTs);
         public static ObservableCollection<UPLOADSONG> listUploadSong;
         public static ObservableCollection<UPLOADSONG> listOwnUpload;
         public static ObservableCollection<string> listTimer = new ObservableCollection<string>() { "10 giây (demo)", "15 phút" , "30 phút", "1 giờ", "2 giờ", "Tắt hẹn giờ" };
@@ -75,6 +75,11 @@ namespace MusicPlayer.UserControls
             cbTimer.SelectionChanged += CbTimer_SelectionChanged;
         }
 
+        public static void Reset()
+        {
+            cbTimer.ItemsSource = listTimer;
+            cbTimer.SelectedItem = cbTimer.Items[5];
+        }
         public void UpdateUploadSong()
         {
             listUploadSong = new ObservableCollection<UPLOADSONG>(DataProvider.Ins.DB.UPLOADSONGs);
@@ -170,15 +175,21 @@ namespace MusicPlayer.UserControls
             }
             else
             {
-                SONG temp = new SONG() { SONGNAME = select.SONGNAME, SINGERNAME = select.SINGERNAME, IMAGEURL = select.IMAGEPATH, SAVEPATH = select.SAVEPATH };
+                SONG temp = new SONG() { SONGNAME = select.SONGNAME, SINGERNAME = select.SINGERNAME, IMAGEURL = select.IMAGEPATH, SAVEPATH = select.SAVEPATH, SONGURL = select.SONGID.ToString() };
                 UCPlayMusic.SelectedSong = temp;
                 if (ls.SelectedIndex + 1 < ls.Items.Count)
-                    UCPlayMusic.NextSong = ls.Items[ls.SelectedIndex + 1] as SONG;
+                {
+                    UPLOADSONG tmp = ls.Items[ls.SelectedIndex + 1] as UPLOADSONG;
+                    UCPlayMusic.NextSong = new SONG() { SONGNAME = tmp.SONGNAME, SINGERNAME = tmp.SINGERNAME, IMAGEURL = tmp.IMAGEPATH, SAVEPATH = tmp.SAVEPATH, SONGURL = tmp.SONGID.ToString() };
+                }
                 else
                     UCPlayMusic.NextSong = null;
 
                 if (ls.SelectedIndex - 1 >= 0)
-                    UCPlayMusic.PrevSong = ls.Items[ls.SelectedIndex - 1] as SONG;
+                {
+                    UPLOADSONG tmp = ls.Items[ls.SelectedIndex - 1] as UPLOADSONG;
+                    UCPlayMusic.PrevSong = new SONG() { SONGNAME = tmp.SONGNAME, SINGERNAME = tmp.SINGERNAME, IMAGEURL = tmp.IMAGEPATH, SAVEPATH = tmp.SAVEPATH, SONGURL = tmp.SONGID.ToString() };
+                }
                 else
                     UCPlayMusic.PrevSong = null;
 
@@ -351,6 +362,36 @@ namespace MusicPlayer.UserControls
             ScrollViewer sc = (ScrollViewer)sender;
             sc.ScrollToVerticalOffset(sc.VerticalOffset - e.Delta);
             e.Handled = true;
+        }
+
+        private void lbLastestSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox ls = sender as ListBox;
+            if(ls.SelectedItem != null)
+            {
+                UCHome.addListLastestSong(sender);
+                UCPlayMusic.CurrentList = ls;
+            }
+        }
+
+        private void lbLikedSongs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox ls = sender as ListBox;
+            if (ls.SelectedItem != null)
+            {
+                UCHome.addListLastestSong(sender);
+                UCPlayMusic.CurrentList = ls;
+            }
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBox ls = sender as ListBox;
+            if (ls.SelectedItem != null)
+            {
+                UCHome.addListLastestSong(sender);
+                UCPlayMusic.CurrentList = ls;
+            }
         }
     }
 }
