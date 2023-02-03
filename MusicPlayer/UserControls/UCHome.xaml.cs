@@ -31,6 +31,7 @@ namespace MusicPlayer.UserControls
         public static ObservableCollection<SONG> listNewSong = new ObservableCollection<SONG>();
         public static ObservableCollection<SONG> listSong = new ObservableCollection<SONG>(DataProvider.Ins.DB.SONGs);
         public static int init = 0;
+        public static int reset = 1;
         public static int? seq;
         public static Button btnNow;
 
@@ -41,19 +42,18 @@ namespace MusicPlayer.UserControls
             {
                 loadFeaturedSong();
                 loadNewSong();
-                UCPlayMusic.SelectedSong = listFeaturedSong.First();
                 init++;
+            }
+            if(reset == 1)
+            {
+                UCPlayMusic.SelectedSong = listFeaturedSong.First();
+                UCLibrary.Reset();
+                UCVideo.reset = 1;
+                reset = 0;
             }
             if(LoginViewModel.currUser != null)
             {
                 UCLibrary.UpdateLikedSong();
-            }
-            else
-            {
-                foreach (SONG s in listSong)
-                {
-                    s.LIKED = false;
-                }
             }
             
             seq = 0;
