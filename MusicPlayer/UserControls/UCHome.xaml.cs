@@ -38,6 +38,7 @@ namespace MusicPlayer.UserControls
         public UCHome()
         {
             InitializeComponent();
+            txtName.Text = LoginViewModel.currUser.FULLNAME + "! ";
             if (init == 0)
             {
                 loadFeaturedSong();

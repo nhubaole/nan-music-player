@@ -15,23 +15,31 @@
     <Grid>
         <Border CornerRadius="0,0,40,0" Background="{StaticResource SecondaryDark}">
             <Grid>
-                <Grid Width="824" Height="520" VerticalAlignment="Top">
+                <Grid Width="824" Height="525" VerticalAlignment="Top">
                     <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="185"></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0">
                         <Border CornerRadius="20,20,20,20" 
-                            Height="130" 
-                            VerticalAlignment="Top" 
-                            Margin="0,20,0,0"
+                            Height="120" 
+                            VerticalAlignment="Bottom" 
+                            Margin="0,0,0,12"
                             BorderBrush="{StaticResource SecondaryLight}"
                                 BorderThickness="2">
                             <Border.Background>
-                                <ImageBrush ImageSource="../Resource/Images/banner.png"></ImageBrush>
+                                <ImageBrush ImageSource="../Resource/Images/banner.png" Stretch="UniformToFill"></ImageBrush>
                             </Border.Background>
                         </Border>
+                        <TextBlock FontWeight="Medium" FontSize="18" VerticalAlignment="Top" Margin="0,15,0,0"> 
+                            <Run Foreground="{StaticResource SecondaryLight}">Xin chào </Run>
+                            <Run x:Name="txtName" Foreground="{StaticResource PrimaryLight}" />
+                            <Run Foreground="{StaticResource SecondaryLight}">Cùng </Run>
+                            <Run Foreground="{StaticResource PrimaryLight}">N.A.N </Run>
+                            <Run Foreground="{StaticResource SecondaryLight}">tận hưởng thế giới âm nhạc của riêng mình, bạn nhé</Run>
+                            <materialDesign:PackIcon Width="20" Height="20" Kind="MusicNote" Foreground="{StaticResource SecondaryLight}"/>
+                        </TextBlock>
                     </Grid>
                     <Grid Grid.Row="1">
                         <TextBlock Text="Bài hát nổi bật" 
@@ -39,7 +47,7 @@
                            Foreground="{StaticResource SecondaryLight}"
                            FontWeight="SemiBold">
                         </TextBlock>
-                        <ListBox x:Name="lbFeaturedSongs" HorizontalContentAlignment="Stretch" SelectionChanged="lbFeaturedSongs_SelectionChanged" Margin="0,35,0,0">
+                        <ListBox x:Name="lbFeaturedSongs" HorizontalContentAlignment="Stretch" SelectionChanged="lbFeaturedSongs_SelectionChanged" Margin="0,30,0,0">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel IsItemsHost="True" />
@@ -117,7 +125,7 @@
                            Foreground="{StaticResource SecondaryLight}"
                            FontWeight="SemiBold">
                         </TextBlock>
-                        <ListBox x:Name="lbNewSongs" HorizontalContentAlignment="Stretch"  Margin="0,35,0,0" SelectionChanged="lbNewSongs_SelectionChanged">
+                        <ListBox x:Name="lbNewSongs" HorizontalContentAlignment="Stretch"  Margin="0,30,0,0" SelectionChanged="lbNewSongs_SelectionChanged">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel IsItemsHost="True" />
