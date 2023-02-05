@@ -17,7 +17,6 @@
 
 ## Tính năng.
 *	Đăng nhập.
-* Tạo tài khoản mới.
 * Quản lý người dùng: 
   * Tạo tài khoản mới.
   * Hiển thị thông tin cơ bản của người dùng.
@@ -26,12 +25,14 @@
   * Nghe nhạc.
   * Xem video ca nhạc.
   * Tải lên, tải về các bài hát. 
+  * Bày tỏ cám xúc với các bài hát.
   * Tạo danh sách phát nhạc riêng.
   * Sáng tạo thư viện cá nhân.
   * Hẹn giờ sử dụng.
 * Quản lý bài hát:
   * Thay đổi thông tin bài hát.
   * Thêm, xóa các bài hát.
+  * Tìm kiếm bài hát theo tên, ca sĩ, thể loại.
   * Hiển thị lượt thích của bài hát.
   * Hiển thị thông tin bài hát.
   * Tải lên, tải xuống các bài hát. 
