@@ -61,12 +61,12 @@ namespace MusicPlayer.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CustomMessageBox.Show(ex.Message, MessageBoxImage.Error);
                 }
             });
 
              handleLogOutCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) => {
-                if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (CustomMessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
                 {
                      var w = p as Window;
                      if (w != null)

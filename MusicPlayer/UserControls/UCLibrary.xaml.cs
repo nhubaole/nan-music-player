@@ -248,7 +248,7 @@ namespace MusicPlayer.UserControls
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Bạn có chắc chắn muốn xóa bài hát này?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if(CustomMessageBox.Show("Bạn có chắc chắn muốn xóa bài hát này?", MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
             {
                 Button btn = (Button)sender;
                 UPLOADSONG s = btn.DataContext as UPLOADSONG;
@@ -285,7 +285,7 @@ namespace MusicPlayer.UserControls
 
         private void btnDelPlaylist_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn xóa playlist này?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (CustomMessageBox.Show("Bạn có chắc chắn muốn xóa playlist này?", MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
             {
                 Button btn = (Button)sender;
                 PLAYLIST pl = btn.DataContext as PLAYLIST;
@@ -302,7 +302,7 @@ namespace MusicPlayer.UserControls
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Bạn có chắc chắn muốn xóa bài hát khỏi playlist?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if(CustomMessageBox.Show("Bạn có chắc chắn muốn xóa bài hát khỏi playlist?", MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
             {
                 Button btn = sender as Button;
                 SONG s = btn.DataContext as SONG;
@@ -310,7 +310,7 @@ namespace MusicPlayer.UserControls
                 playlistDeleted.SONGs.Remove(s);
                 DataProvider.Ins.DB.SaveChanges();
                 UpdatePlaylist();
-                MessageBox.Show("Đã xóa bài hát thành công");
+                CustomMessageBox.Show("Đã xóa bài hát thành công", MessageBoxImage.None);
             }
         }
 
@@ -339,7 +339,7 @@ namespace MusicPlayer.UserControls
             SONG s = btnNow.DataContext as SONG;
             pl.SONGs.Add(s);
             DataProvider.Ins.DB.SaveChanges();
-            MessageBox.Show("Thêm bài hát vào playlist thành công");
+            CustomMessageBox.Show("Thêm bài hát vào playlist thành công", MessageBoxImage.None);
             UpdatePlaylist();
         }
 

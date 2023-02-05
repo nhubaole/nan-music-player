@@ -160,7 +160,7 @@ namespace MusicPlayer.UserControls
                 }
                 catch
                 {
-                    MessageBox.Show("Video không còn tồn tại");
+                    CustomMessageBox.Show("Video không còn tồn tại", MessageBoxImage.Error);
                     return;
                 }
 
@@ -329,7 +329,7 @@ namespace MusicPlayer.UserControls
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn xóa video này?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (CustomMessageBox.Show("Bạn có chắc chắn muốn xóa video này?", MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
             {
                 Button btn = (Button)sender;
                 UPLOADVIDEO s = btn.DataContext as UPLOADVIDEO;

@@ -228,7 +228,7 @@ namespace MusicPlayer.UserControls
                 }
                 catch
                 {
-                    MessageBox.Show("Bài hát không còn tồn tại");
+                    CustomMessageBox.Show("Bài hát không còn tồn tại", MessageBoxImage.Error);
                     return;
                 }
                 
