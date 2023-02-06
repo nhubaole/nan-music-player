@@ -80,6 +80,16 @@ namespace MusicPlayer.UserControls
         {
             if (nextSong != null)
             {
+                if (btnRepeat.IsChecked == true)
+                {
+                    SelectedSong = selectedSong;
+                    return;
+                }
+                if (btnRandom.IsChecked == true)
+                {
+                    changeSong(currentList.Items[RandomSong(currentList.Items.Count)] as SONG);
+                    return;
+                }
                 changeSong(nextSong);
             }
         }
@@ -88,6 +98,16 @@ namespace MusicPlayer.UserControls
         {
             if(prevSong != null)
             {
+                if (btnRepeat.IsChecked == true)
+                {
+                    SelectedSong = selectedSong;
+                    return;
+                }
+                if (btnRandom.IsChecked == true)
+                {
+                    changeSong(currentList.Items[RandomSong(currentList.Items.Count)] as SONG);
+                    return;
+                }
                 changeSong(prevSong);
             }
         }
