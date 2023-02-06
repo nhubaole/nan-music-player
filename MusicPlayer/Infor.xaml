@@ -15,7 +15,8 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
-        Name="inforWindow">
+        Name="inforWindow"
+        Icon="\Resource\Images\icon.ico">
     <Window.DataContext>
         <vm:InforVM/>
     </Window.DataContext>

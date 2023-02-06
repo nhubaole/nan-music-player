@@ -61,7 +61,7 @@ namespace MusicPlayer.ViewModel
                     
                     if (uFullName == user.FULLNAME && DateTime.Parse(uDoB) == user.DOB && uPhone == user.PHONE && uEmail == user.EMAIL && Sex == user.SEX)
                     {
-                        MessageBox.Show("Hãy nhập các thông tin bạn cần thay đổi!", "Thông báo", MessageBoxButton.OK);
+                        CustomMessageBox.Show("Hãy nhập các thông tin bạn cần thay đổi!", MessageBoxImage.Information);
 
                     }
                     else
@@ -75,19 +75,19 @@ namespace MusicPlayer.ViewModel
                             user.SEX = Sex;
                         };
                         DataProvider.Ins.DB.SaveChanges();
-                        MessageBox.Show("Thay đổi thông tin thành công!", "Thông báo", MessageBoxButton.OK);
+                        CustomMessageBox.Show("Thay đổi thông tin thành công!", MessageBoxImage.None);
 
                     }
                     else
                     {
-                        MessageBox.Show(ErroMessage, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);//
+                        CustomMessageBox.Show(ErroMessage, MessageBoxImage.Error);//
                         ErroMessage = null;
                     }
                 }
             
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CustomMessageBox.Show(ex.Message, MessageBoxImage.Error);
                 }
 
             });
@@ -108,7 +108,7 @@ namespace MusicPlayer.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CustomMessageBox.Show(ex.Message, MessageBoxImage.Error);
                 }
             });
             SSelectionChangedCommand = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
@@ -127,7 +127,7 @@ namespace MusicPlayer.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CustomMessageBox.Show(ex.Message, MessageBoxImage.Error);
                 }
             });
         }

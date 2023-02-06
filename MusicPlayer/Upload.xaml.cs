@@ -96,7 +96,7 @@ namespace MusicPlayer
             }
             catch
             {
-                MessageBox.Show("Đã xảy ra lỗi");
+                CustomMessageBox.Show("Đã xảy ra lỗi", MessageBoxImage.Error);
             }
         }
 
@@ -119,7 +119,7 @@ namespace MusicPlayer
             }
             catch
             {
-                MessageBox.Show("Đã xảy ra lỗi");
+                CustomMessageBox.Show("Đã xảy ra lỗi", MessageBoxImage.Error);
             }
         }
 
@@ -131,7 +131,7 @@ namespace MusicPlayer
             string imagePath = btnImage.ToolTip.ToString() == "" ? "../Resource/Images/ImgUp.png" : btnImage.ToolTip.ToString();
             if (string.IsNullOrEmpty(songName) || string.IsNullOrEmpty(savePath))
             {
-                MessageBox.Show("Vui lòng nhập tên bài hát và chọn file bài hát đầy đủ");
+                CustomMessageBox.Show("Vui lòng nhập tên bài hát và chọn file bài hát đầy đủ", MessageBoxImage.Information);
                 return;
             }
             else
@@ -150,7 +150,7 @@ namespace MusicPlayer
                         LoginViewModel.currUser.UPLOADSONGs.Remove(updateSong);
                         LoginViewModel.currUser.UPLOADSONGs.Add(song);
                         DataProvider.Ins.DB.SaveChanges();
-                        MessageBox.Show("Cập nhật bài hát thành công!", "Thông báo", MessageBoxButton.OK);
+                        CustomMessageBox.Show("Cập nhật bài hát thành công!", MessageBoxImage.None);
                         this.Close();
                     }
                     else
@@ -158,7 +158,7 @@ namespace MusicPlayer
                         song.USERS.Add(LoginViewModel.currUser);
                         DataProvider.Ins.DB.UPLOADSONGs.Add(song);
                         DataProvider.Ins.DB.SaveChanges();
-                        MessageBox.Show("Tải bài hát lên thành công!", "Thông báo", MessageBoxButton.OK);
+                        CustomMessageBox.Show("Tải bài hát lên thành công!", MessageBoxImage.None);
                         this.Close();
                     }
                 }
@@ -177,7 +177,7 @@ namespace MusicPlayer
                         LoginViewModel.currUser.UPLOADVIDEOs.Remove(updateVideo);
                         LoginViewModel.currUser.UPLOADVIDEOs.Add(video);
                         DataProvider.Ins.DB.SaveChanges();
-                        MessageBox.Show("Cập nhật video thành công!", "Thông báo", MessageBoxButton.OK);
+                        CustomMessageBox.Show("Cập nhật video thành công!", MessageBoxImage.None);
                         this.Close();
                     }
                     else
@@ -185,7 +185,7 @@ namespace MusicPlayer
                         video.USERS.Add(LoginViewModel.currUser);
                         DataProvider.Ins.DB.UPLOADVIDEOs.Add(video);
                         DataProvider.Ins.DB.SaveChanges();
-                        MessageBox.Show("Tải video lên thành công!", "Thông báo", MessageBoxButton.OK);
+                        CustomMessageBox.Show("Tải video lên thành công!", MessageBoxImage.None);
                         this.Close();
                     }
                     

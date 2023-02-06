@@ -38,7 +38,7 @@ namespace MusicPlayer
         {
             if(tbPlaylistName.Text == "")
             {
-                MessageBox.Show("Vui lòng nhập tên Playlist nha");
+                CustomMessageBox.Show("Vui lòng nhập tên Playlist nha", MessageBoxImage.Information);
                 return;
             }
             else
@@ -48,7 +48,7 @@ namespace MusicPlayer
                 {
                     playlistEditing.PLAYLISTNAME = tbPlaylistName.Text;
                     DataProvider.Ins.DB.SaveChanges();
-                    MessageBox.Show("Chỉnh sửa Playlist thành công!", "Thông báo", MessageBoxButton.OK);
+                    CustomMessageBox.Show("Chỉnh sửa Playlist thành công!", MessageBoxImage.None);
                     this.Close();
                 }
                 else
@@ -59,7 +59,7 @@ namespace MusicPlayer
                     };
                     LoginViewModel.currUser.PLAYLISTs.Add(pl);
                     DataProvider.Ins.DB.SaveChanges();
-                    MessageBox.Show("Tạo Playlist thành công!", "Thông báo", MessageBoxButton.OK);
+                    CustomMessageBox.Show("Tạo Playlist thành công!", MessageBoxImage.None);
                     this.Close();
                 }
             }

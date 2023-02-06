@@ -160,7 +160,7 @@ namespace MusicPlayer.UserControls
                 }
                 catch
                 {
-                    MessageBox.Show("Video không còn tồn tại");
+                    CustomMessageBox.Show("Video không còn tồn tại", MessageBoxImage.Error);
                     return;
                 }
 
@@ -247,15 +247,6 @@ namespace MusicPlayer.UserControls
             txtPosition.Text = new TimeSpan(0, (int)(selectedVideo.POSITION / 60), (int)(selectedVideo.POSITION % 60)).ToString(@"mm\:ss");
         }
 
-        private void slVolume_PreviewMouseUp(object sender, MouseButtonEventArgs e)
-        {
-            if (slVolume.Value == 0)
-                btnMute.IsChecked = true;
-            else
-                btnMute.IsChecked = false;
-            video.Volume = slVolume.Value;
-        }
-
         private void btnMute_Click(object sender, RoutedEventArgs e)
         {
             if (btnMute.IsChecked == true)
@@ -329,7 +320,7 @@ namespace MusicPlayer.UserControls
 
         private void btnDel_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn xóa video này?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (CustomMessageBox.Show("Bạn có chắc chắn muốn xóa video này?", MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
             {
                 Button btn = (Button)sender;
                 UPLOADVIDEO s = btn.DataContext as UPLOADVIDEO;
@@ -341,6 +332,15 @@ namespace MusicPlayer.UserControls
             {
                 return;
             }
+        }
+
+        private void slVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (slVolume.Value == 0)
+                btnMute.IsChecked = true;
+            else
+                btnMute.IsChecked = false;
+            video.Volume = slVolume.Value;
         }
     }
 }

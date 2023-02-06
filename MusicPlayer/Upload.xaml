@@ -16,7 +16,8 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Name="uploadWindow"
-        Background="Transparent">
+        Background="Transparent"
+        Icon="\Resource\Images\icon.ico">
     <Window.DataContext>
         <vm:UploadVM/>
     </Window.DataContext>

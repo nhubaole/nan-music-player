@@ -15,7 +15,7 @@ namespace MusicPlayer.ViewModel
         {
             CloseUploadSongCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) =>
             {
-                if (MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (CustomMessageBox.Show("Bạn có chắc chắn muốn thoát?", MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
                 {
                     var w = p as Window;
                     if (w != null)

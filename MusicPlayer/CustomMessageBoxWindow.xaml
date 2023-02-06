@@ -1,0 +1,190 @@
+﻿<Window x:Class="MusicPlayer.CustomMessageBoxWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MusicPlayer"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        xmlns:uc="clr-namespace:MusicPlayer.UserControls"
+        Title="CustomMessageBoxWindow" MinHeight="280" MinWidth="280"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="CanMinimize"
+        WindowStyle="None"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True" 
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <uc:ControlBar/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Border Background="{StaticResource SecondaryMid}" CornerRadius="0,0,40,40">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"></RowDefinition>
+                        <RowDefinition Height="40"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="80"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <materialDesign:PackIcon 
+                            x:Name="SuccessIcon"
+                            Kind="CheckCircle"
+                            Height="70"
+                            Width="70"
+                            Visibility="Collapsed"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Foreground="MediumSpringGreen"></materialDesign:PackIcon>
+                        <materialDesign:PackIcon 
+                            x:Name="ErrorIcon"
+                            Kind="CloseCircle"
+                            Height="70"
+                            Width="70"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Foreground="#ff5252"
+                            Visibility="Collapsed"></materialDesign:PackIcon>
+                        <materialDesign:PackIcon 
+                            x:Name="ConfirmIcon"
+                            Kind="AlertCircle"
+                            Height="70"
+                            Width="70"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Foreground="Gold"
+                            Visibility="Collapsed"></materialDesign:PackIcon>
+                        <materialDesign:PackIcon 
+                            x:Name="InfoIcon"
+                            Kind="InformationCircle"
+                            Height="70"
+                            Width="70"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Foreground="DodgerBlue"></materialDesign:PackIcon>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <TextBlock Text="Thành công!" 
+                                   x:Name="SuccessText"
+                                   Foreground="MediumSpringGreen" 
+                                   FontWeight="Bold" 
+                                   FontFamily="Roboto" 
+                                   FontSize="20" 
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Visibility="Collapsed"></TextBlock>
+                        <TextBlock Text="Oops!" 
+                                   x:Name="ErrorText"
+                                   Foreground="#ff5252" 
+                                   FontWeight="Bold" 
+                                   FontFamily="Roboto" 
+                                   FontSize="20" 
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Visibility="Collapsed"></TextBlock>
+                        <TextBlock Text="Xác nhận" 
+                                   x:Name="ConfirmText"
+                                   Foreground="Gold" 
+                                   FontWeight="Bold" 
+                                   FontFamily="Roboto" 
+                                   FontSize="20" 
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Visibility="Collapsed"></TextBlock>
+                        <TextBlock Text="Thông báo" 
+                                   x:Name="InfoText"
+                                   Foreground="DodgerBlue" 
+                                   FontWeight="Bold" 
+                                   FontFamily="Roboto" 
+                                   FontSize="20" 
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="2" Height="Auto" MinHeight="60">
+                        <TextBlock Width="180"
+                                   x:Name="DescriptionText"
+                                   Text="Thêm bài hát vào Playlist thành công" 
+                                   TextWrapping="Wrap"
+                                   Foreground="{StaticResource SecondaryLight}" 
+                                   TextAlignment="Center"
+                                   FontSize="15" 
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <Button Width="120"
+                                x:Name="ContinueBtn"
+                                BorderThickness="0"
+                                materialDesign:ButtonAssist.CornerRadius="8"
+                                Background="MediumSpringGreen" 
+                                Foreground="{StaticResource SecondaryMid}"
+                                FontSize="15" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Content="Tiếp tục"
+                                Visibility="Collapsed"
+                                Click="ContinueBtn_Click"></Button>
+                        <Button Width="120"
+                                x:Name="AgainBtn"
+                                BorderThickness="0"
+                                materialDesign:ButtonAssist.CornerRadius="8"
+                                Background="#ff5252" 
+                                Foreground="{StaticResource SecondaryMid}"
+                                FontSize="15" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Content="Thử lại"
+                                Visibility="Collapsed"
+                                Click="AgainBtn_Click"></Button>
+                        <Button Width="80"
+                                x:Name="YesBtn"
+                                BorderThickness="0"
+                                materialDesign:ButtonAssist.CornerRadius="8"
+                                Background="Gold" 
+                                Foreground="{StaticResource SecondaryMid}"
+                                FontSize="15" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Content="Có"
+                                Margin="0,0,100,0"
+                                Visibility="Collapsed"
+                                Click="YesBtn_Click"></Button>
+                        <Button Width="80"
+                                x:Name="NoBtn"
+                                BorderThickness="2"
+                                BorderBrush="Gold"
+                                materialDesign:ButtonAssist.CornerRadius="8"
+                                Style="{StaticResource MaterialDesignOutlinedSecondaryDarkButton}"
+                                Foreground="Gold"
+                                FontSize="15" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Content="Không"
+                                Margin="100,0,0,0"
+                                Visibility="Collapsed"
+                                Click="NoBtn_Click"></Button>
+                        <Button Width="120"
+                                x:Name="OKBtn"
+                                BorderThickness="0"
+                                materialDesign:ButtonAssist.CornerRadius="8"
+                                Background="DodgerBlue" 
+                                Foreground="{StaticResource SecondaryMid}"
+                                FontSize="15" 
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Content="OK"
+                                Click="OKBtn_Click"></Button>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

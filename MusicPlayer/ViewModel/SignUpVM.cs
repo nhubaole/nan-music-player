@@ -67,7 +67,7 @@ namespace MusicPlayer.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CustomMessageBox.Show(ex.Message, MessageBoxImage.Error);
                 }
             });
             RePasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
@@ -83,7 +83,7 @@ namespace MusicPlayer.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CustomMessageBox.Show(ex.Message, MessageBoxImage.Error);
                 }
             });
    
@@ -100,7 +100,7 @@ namespace MusicPlayer.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CustomMessageBox.Show(ex.Message, MessageBoxImage.Error);
                 }
             });
             SSelectionChangedCommand = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
@@ -117,7 +117,7 @@ namespace MusicPlayer.ViewModel
                     }
                 }catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CustomMessageBox.Show(ex.Message, MessageBoxImage.Error);
                 }
             });
             handleSignUpCommand = new RelayCommand<Window>((p) => {return p == null ? false : true;  }, (p) => {
@@ -139,7 +139,7 @@ namespace MusicPlayer.ViewModel
                         };
                         DataProvider.Ins.DB.USERS.Add(user);
                         DataProvider.Ins.DB.SaveChanges();
-                        MessageBox.Show("Đăng ký thành công!", "Thông báo", MessageBoxButton.OK);
+                        CustomMessageBox.Show("Đăng ký thành công!", MessageBoxImage.None);
                         MainWindow main = new MainWindow();
                         w.Close();
                         main.Show();
@@ -147,19 +147,19 @@ namespace MusicPlayer.ViewModel
                     }
                     else
                     {
-                        MessageBox.Show(ErroMessage + "Hãy chắc chắn bạn đã nhập đủ các thông tin có đánh dấu *. Kiểm tra lại các thông tin nhé.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);//
+                        CustomMessageBox.Show(ErroMessage + "Hãy chắc chắn bạn đã nhập đủ các thông tin có đánh dấu *. Kiểm tra lại các thông tin nhé.", MessageBoxImage.Error);//
                         ErroMessage = null;
                     }
                 }catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CustomMessageBox.Show(ex.Message, MessageBoxImage.Error);
                 }
 
             });
             closeSignUpCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) => {
                 try
                 {
-                    if (MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    if (CustomMessageBox.Show("Bạn có chắc chắn muốn thoát?", MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
                     {
                         var w = p as Window;
                         if (w != null)
@@ -173,7 +173,7 @@ namespace MusicPlayer.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CustomMessageBox.Show(ex.Message, MessageBoxImage.Error);
                 }
             });
         }

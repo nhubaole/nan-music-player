@@ -39,7 +39,7 @@ namespace MusicPlayer.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CustomMessageBox.Show(ex.Message, MessageBoxImage.Error);
                 }
             });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
@@ -54,7 +54,7 @@ namespace MusicPlayer.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CustomMessageBox.Show(ex.Message, MessageBoxImage.Error);
                 }
             });
             RePasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
@@ -68,7 +68,7 @@ namespace MusicPlayer.ViewModel
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    CustomMessageBox.Show(ex.Message, MessageBoxImage.Error);
                 }
             });
             savePasswordCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) =>
@@ -91,23 +91,23 @@ namespace MusicPlayer.ViewModel
                                 };
 
                                 DataProvider.Ins.DB.SaveChanges();
-                                MessageBox.Show("Đổi mật khẩu thành công!","Thông báo");
+                                CustomMessageBox.Show("Đổi mật khẩu thành công!", MessageBoxImage.None);
                                 w.Close();
                             }
                             else
                             {
-                                MessageBox.Show("Hãy kiểm tra lại mật khẩu mới và xác nhận lại mật khẩu!", "Đã xảy ra lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                                CustomMessageBox.Show("Hãy kiểm tra lại mật khẩu mới và xác nhận lại mật khẩu!", MessageBoxImage.Error);
 
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Mật khẩu hiện tại sai!", "Đã xảy ra lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                            CustomMessageBox.Show("Mật khẩu hiện tại sai!", MessageBoxImage.Error);
                         }
                     }   
                    else
                     {
-                        MessageBox.Show("Hãy nhập đủ các thông tin có dấu (*)!", "Đã xảy ra lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                        CustomMessageBox.Show("Hãy nhập đủ các thông tin có dấu (*)!", MessageBoxImage.Error);
 
                     }
                 }
@@ -115,7 +115,7 @@ namespace MusicPlayer.ViewModel
 
             closePasswordChangeCommand = new RelayCommand<Window>((p) => { return p == null ? false : true; }, (p) =>
             {
-                if (MessageBox.Show("Bạn có chắc chắn muốn thoát?", "Xác nhận", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (CustomMessageBox.Show("Bạn có chắc chắn muốn thoát?", MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
                 {
                     var w = p as Window;
                     if (w != null)
@@ -144,7 +144,7 @@ namespace MusicPlayer.ViewModel
             }
             else
             {
-                MessageBox.Show("Hãy nhập mật khẩu hiện tại của bạn để xác nhận!", "Đã xảy ra lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                CustomMessageBox.Show("Hãy nhập mật khẩu hiện tại của bạn để xác nhận!", MessageBoxImage.Error);
                 return false;
 
             }

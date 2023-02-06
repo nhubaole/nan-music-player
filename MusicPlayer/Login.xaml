@@ -16,7 +16,8 @@
         xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
         WindowStyle="None"
         Background="Transparent"
-        Name="loginWindow">
+        Name="loginWindow"
+        Icon="\Resource\Images\icon.ico">
     <Window.DataContext>
         <vm:LoginViewModel/>
     </Window.DataContext>

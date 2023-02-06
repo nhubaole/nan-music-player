@@ -126,7 +126,7 @@
                             Width="70" 
                             VerticalAlignment="Center"
                             Foreground="{StaticResource SecondaryLight}" Margin="468,0,62,0" 
-                            PreviewMouseUp="slVolume_PreviewMouseUp"/>
+                            ValueChanged="slVolume_ValueChanged"/>
                     </Grid>
                     <Grid Grid.Row="3">
                         <Border CornerRadius="10" 
