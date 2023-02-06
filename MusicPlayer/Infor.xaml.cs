@@ -42,12 +42,12 @@ namespace MusicPlayer
                     {
                         File.Copy(UCPlayMusic.SelectedSong.SAVEPATH, path, true);
                     }
-                    MessageBox.Show("Tải xuống thành công");
+                    CustomMessageBox.Show("Tải xuống thành công", MessageBoxImage.None);
                 }
             }
             catch
             {
-                MessageBox.Show("Đã xảy ra lỗi");
+                CustomMessageBox.Show("Đã xảy ra lỗi", MessageBoxImage.Error);
             }
         }
     }

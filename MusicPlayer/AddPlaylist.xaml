@@ -14,7 +14,8 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
-        x:Name="AddPlaylistWindow">
+        x:Name="AddPlaylistWindow"
+        Icon="\Resource\Images\icon.ico">
     <Window.DataContext>
         <vm:UploadVM/>
     </Window.DataContext>

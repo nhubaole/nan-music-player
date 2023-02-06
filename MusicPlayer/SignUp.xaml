@@ -18,7 +18,8 @@
         Background="Transparent"
         AllowsTransparency="True"   
         xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
-        x:Name="signUpWindow">
+        x:Name="signUpWindow"
+        Icon="\Resource\Images\icon.ico">
     <Window.DataContext>
         <vm:SignUpVM></vm:SignUpVM>
     </Window.DataContext>

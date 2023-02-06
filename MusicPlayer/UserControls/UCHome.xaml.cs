@@ -38,6 +38,7 @@ namespace MusicPlayer.UserControls
         public UCHome()
         {
             InitializeComponent();
+            txtName.Text = LoginViewModel.currUser.FULLNAME + "! ";
             if (init == 0)
             {
                 loadFeaturedSong();
@@ -176,7 +177,7 @@ namespace MusicPlayer.UserControls
             SONG s = btnNow.DataContext as SONG;
             pl.SONGs.Add(s);
             DataProvider.Ins.DB.SaveChanges();
-            MessageBox.Show("Thêm bài hát vào playlist thành công");
+            CustomMessageBox.Show("Thêm bài hát vào playlist thành công", MessageBoxImage.None);
         }
     }
 }

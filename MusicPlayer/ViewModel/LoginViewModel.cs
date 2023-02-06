@@ -76,12 +76,12 @@ namespace MusicPlayer.ViewModel
                         {
                             IsLogin = false;
                             currUser = null;
-                            MessageBox.Show("Tên đăng nhập hoặc mật khẩu bị sai!", "Đã xảy ra lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                            CustomMessageBox.Show("Tên đăng nhập hoặc mật khẩu bị sai!", MessageBoxImage.Error);
                         }
                     }    
                     else
                     {
-                        MessageBox.Show("Hãy điền đủ thông tin!", "Đã xảy ra lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                        CustomMessageBox.Show("Hãy điền đủ thông tin!", MessageBoxImage.Error);
 
                     }
 
