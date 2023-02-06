@@ -107,3 +107,47 @@
 
 ## Phản hồi
 * Mọi phản hồi của mọi người sau khi trải nghiệm hãy tạo ở mục Issues. Phản hồi của các bạn sẽ là động lực và lời khuyên quý giá giúp chúng tôi cải thiện ứng dụng tốt hơn. Cảm ơn mọi người đã dành thời gian trải nghiệm ứng dụng của chúng tôi.
+
+## Hướng dẫn sử dụng
+- **Màn hình đăng nhập**
+  - Nhập đầy đủ thông tin đăng nhập gồm **tên tài khoản** và **mật khẩu**
+  - Ấn nút **ĐĂNG NHẬP** để đăng nhập vào tài khoản của mình 
+  - Nếu chưa có tài khoản, ấn nút **ĐĂNG KÝ** để chuyển sang màn hình đăng ký
+  ![](https://i.imgur.com/OsASiUb.png)
+- **Màn hình đăng ký**
+  - Nhập đầy đủ các trường thông tin **bắt buộc**
+  - Ấn nút **ĐĂNG KÝ** để đăng ký
+  ![](https://i.imgur.com/F2u84yx.png)
+- **Màn hình trang chủ**
+  - Sau khi đăng nhập thành công sẽ được chuyển sang màn hình trang chủ
+  - Khám phá các bài hát đang thịnh hành và mới phát hành
+  ![](https://i.imgur.com/uYBQrLf.png)
+- **Thanh phát nhạc**
+  - Chọn bài hát để phát
+  - Tùy chọn các chức năng: phát/dừng, phát bài kế tiếp/trước đó, lặp bài hát, phát ngẫu nhiên bằng cách ấn vào các nút tương ứng
+  - Tùy chỉnh vị trí phát bằng cách kéo thả thanh trượt
+  - Tùy chỉnh âm lượng bài hát
+  - Ấn nút **ba chấm** để xem thông tin chi tiết bài hát
+  ![](https://i.imgur.com/9ewTApX.png)
+- **Màn hình thông tin bài hát**
+  - Xem được tên bài hát, tên ca sĩ, thời lượng, thể loại, số lượt thích
+  - Ấn nút **TẢI XUỐNG** sau đó chọn nơi muốn lưu trữ để tải bài hát về máy
+  ![](https://i.imgur.com/wfPwCfr.png)
+- **Màn hình hồ sơ cá nhân**
+  - Xem được các thông tin của bản thân
+  - Có thể chỉnh sửa các thông tin
+  - Ấn nút **CẬP NHẬT THÔNG TIN** để lưu các thông tin được thay đổi
+  - Ấn nút **ĐỔI MẬT KHẨU** để hiển thị màn hình đổi mật khẩu
+  ![](https://i.imgur.com/csGPLCI.png)
+- **Màn hình đổi mật khẩu**
+  - Nhập mật khẩu cũ, mật khẩu mới, xác nhận mật khẩu mới
+  - Ấn nút **LƯU** để đổi mật khẩu
+  
+  ![](https://i.imgur.com/7NGkytS.png)
+- **Màn hình tìm kiếm bài hát**
+  - Tùy chọn tìm kiếm theo tên ca sĩ/tên bài hát
+  - Nhập vào ô tìm kiếm để tìm bài hát thích hợp
+  - Thay đổi các tab thể loại để lọc bài hát theo thể loại
+  ![](https://i.imgur.com/Fb9i9SG.png)
+  
+  
