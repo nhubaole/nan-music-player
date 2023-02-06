@@ -47,7 +47,7 @@ namespace MusicPlayer.UserControls
             this.DataContext = this;
             sliderVolume.Maximum = 1;
             sliderVolume.Value = 0.5;
-            sliderVolume.PreviewMouseUp += SliderVolume_PreviewMouseUp;
+            sliderVolume.ValueChanged += SliderVolume_ValueChanged;
             sliderPlay.PreviewMouseUp += SliderPlay_PreviewMouseUp;
             btnPlay.Click += BtnPlay_Click;
             btnPrev.Click += BtnPrev_Click;
@@ -55,7 +55,7 @@ namespace MusicPlayer.UserControls
             btnMute.Click += BtnMute_Click;
         }
 
-        private void SliderVolume_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        private void SliderVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (sliderVolume.Value == 0)
                 btnMute.IsChecked = true;
