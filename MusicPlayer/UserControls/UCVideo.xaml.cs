@@ -43,7 +43,9 @@ namespace MusicPlayer.UserControls
         {
             InitializeComponent();
             init = 0;
-            if(reset == 1)
+            cbGenre.ItemsSource = listGenre;
+            cbGenre.SelectedItem = cbGenre.Items[0];
+            if (reset == 1)
             {
                 SelectedVideo = listVid.First();
                 reset = 0;
@@ -51,10 +53,16 @@ namespace MusicPlayer.UserControls
             else
             {
                 SelectedVideo = nowPlaying;
+                foreach(var item in cbGenre.Items)
+                {
+                    if(item.ToString() == SelectedVideo.GENRE)
+                    {
+                        cbGenre.SelectedItem = item;
+                    }
+                }
+                
             }
             UpdateUploadVideo();
-            cbGenre.ItemsSource = listGenre;
-            cbGenre.SelectedItem = cbGenre.Items[0];
             slVolume.Maximum = 1;
             slVolume.Value = 0.5;
             UCPlayMusic.audio.Pause();
