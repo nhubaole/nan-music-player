@@ -116,7 +116,7 @@
   - Nhập đầy đủ thông tin đăng nhập gồm **tên tài khoản** và **mật khẩu**
   - Ấn nút **ĐĂNG NHẬP** để đăng nhập vào tài khoản của mình 
   - Nếu chưa có tài khoản, ấn nút **ĐĂNG KÝ** để chuyển sang màn hình đăng ký
-  ![](https://i.imgur.com/OsASiUb.png)
+  ![](https://i.imgur.com/mpRDRQo.png)
     
   </details>
  <details>
@@ -124,7 +124,7 @@
   
   - Nhập đầy đủ các trường thông tin **bắt buộc**
   - Ấn nút **ĐĂNG KÝ** để đăng ký
-  ![](https://i.imgur.com/F2u84yx.png)
+  ![](https://i.imgur.com/xf8MUra.png)
     
   </details>
   <details>
@@ -132,7 +132,7 @@
   
   - Sau khi đăng nhập thành công sẽ được chuyển sang màn hình trang chủ
   - Khám phá các bài hát đang thịnh hành và mới phát hành
-  ![](https://i.imgur.com/uYBQrLf.png)
+  ![](https://i.imgur.com/4nI4zeX.png)
     
   </details>
  <details>
@@ -143,7 +143,7 @@
   - Tùy chỉnh vị trí phát bằng cách kéo thả thanh trượt
   - Tùy chỉnh âm lượng bài hát
   - Ấn nút **ba chấm** để xem thông tin chi tiết bài hát
-  ![](https://i.imgur.com/9ewTApX.png)
+  ![](https://i.imgur.com/1cCDvzQ.png)
     
   </details>
   <details>
@@ -151,7 +151,7 @@
   
   - Xem được tên bài hát, tên ca sĩ, thời lượng, thể loại, số lượt thích
   - Ấn nút **TẢI XUỐNG** sau đó chọn nơi muốn lưu trữ để tải bài hát về máy
-  ![](https://i.imgur.com/wfPwCfr.png)
+  ![](https://i.imgur.com/Vgvcels.png)
     
   </details>
   <details>
@@ -161,7 +161,7 @@
   - Có thể chỉnh sửa các thông tin
   - Ấn nút **CẬP NHẬT THÔNG TIN** để lưu các thông tin được thay đổi
   - Ấn nút **ĐỔI MẬT KHẨU** để hiển thị màn hình đổi mật khẩu
-  ![](https://i.imgur.com/csGPLCI.png)
+  ![](https://i.imgur.com/zT7W5GS.png)
     
   </details>
   <details>
@@ -170,7 +170,7 @@
   - Nhập mật khẩu cũ, mật khẩu mới, xác nhận mật khẩu mới
   - Ấn nút **LƯU** để đổi mật khẩu
   
-  ![](https://i.imgur.com/7NGkytS.png)
+  ![](https://i.imgur.com/PinFqQS.png)
     
   </details>
   <details>
@@ -179,7 +179,7 @@
   - Tùy chọn tìm kiếm theo tên ca sĩ/tên bài hát
   - Nhập vào ô tìm kiếm để tìm bài hát thích hợp
   - Thay đổi các tab thể loại để lọc bài hát theo thể loại
-  ![](https://i.imgur.com/Fb9i9SG.png)
+  ![](https://i.imgur.com/CFWZnf4.png)
     
   </details>
   <details>
@@ -189,12 +189,12 @@
   - Tùy chọn hẹn giờ để đặt thời gian sử dụng
   - Ấn nút **Tải lên** để hiển thị màn hình tải bài hát lên
   - Ấn nút **Tạo Playlist mới** để hiển thị màn hình tạo playlist
-  ![](https://i.imgur.com/aQ3HP8b.png)
+  ![](https://i.imgur.com/ysgA0Ij.png)
   - Quản lý playlist
     - Chỉnh sửa/xóa playlist đang có
     - Phát nhạc trong playlist
     - Xóa bài hát ra khỏi playlist
-    ![](https://i.imgur.com/6PWwxU5.png)
+    ![](https://i.imgur.com/dMjArVd.png)
     
   </details>
   <details>
@@ -203,7 +203,7 @@
   - Nhập tên bài hát cần tải lên và chọn file bài hát từ máy tính (bắt buộc)
   - Nhập các thông tin khác
   - Ấn nút **TẢI LÊN** để tải bài hát lên thư viện của bạn
-  ![](https://i.imgur.com/7eNwy0U.png)
+  ![](https://i.imgur.com/2oh5bT1.png)
     
   </details>
   <details>
@@ -212,7 +212,7 @@
   - Nhập tên playlist cần tạo
   - Ấn nút **TẠO** để tạo playlist mới
   
-  ![](https://i.imgur.com/2TFKitn.png)
+  ![](https://i.imgur.com/wOeNq5C.png)
     
   </details>
   <details>
@@ -224,7 +224,7 @@
   - Điều chỉnh âm lượng video
   - Ấn nút **Tải lên** để hiển thị màn hình tải video lên
   
-  ![](https://i.imgur.com/e6tTFKC.png)
+  ![](https://i.imgur.com/cJSneot.png)
     
   </details>
   <details>
@@ -234,7 +234,7 @@
   - Nhập các thông tin khác
   - Ấn nút **TẢI LÊN** để tải video lên thư viện của bạn
   
-  ![](https://i.imgur.com/VYOJCQJ.png)
+  ![](https://i.imgur.com/ZzP5KkL.png)
     
   </details>
   <details>
