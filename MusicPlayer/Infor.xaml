@@ -225,7 +225,6 @@
                         materialDesign:ButtonAssist.CornerRadius="10"
                         BorderThickness="2"
                         BorderBrush="{StaticResource PrimaryLight}"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         VerticalAlignment="Center" />
                 </Grid>
             </Grid>

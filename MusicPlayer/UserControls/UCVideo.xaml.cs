@@ -335,6 +335,7 @@ namespace MusicPlayer.UserControls
                 LoginViewModel.currUser.UPLOADVIDEOs.Remove(s);
                 DataProvider.Ins.DB.SaveChanges();
                 UpdateUploadVideo();
+                CustomMessageBox.Show("Đã xóa video thành công", MessageBoxImage.None);
             }
             else
             {

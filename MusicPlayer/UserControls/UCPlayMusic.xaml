@@ -39,7 +39,6 @@
               VerticalAlignment="Center"
               HorizontalAlignment="Left"
               Margin="890,0,0,0"
-              Command="{Binding ToInforCommand }"
             Click="btThreePoint_Click">
             <materialDesign:PackIcon
                     Kind="DotsVertical" 

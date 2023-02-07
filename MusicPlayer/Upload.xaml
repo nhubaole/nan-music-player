@@ -170,7 +170,6 @@
                         FontSize="18"
                         FontWeight="Medium"
                         materialDesign:ButtonAssist.CornerRadius="8"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Command="{Binding CloseUploadSongCommand}"
                         CommandParameter="{Binding ElementName=uploadWindow}"
                         Panel.ZIndex="-1" />
