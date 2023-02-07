@@ -9,8 +9,8 @@
         xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
         mc:Ignorable="d"
         Title="Infor" 
-        Height="520" 
-        Width="800"
+        Height="560" 
+        Width="830"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -20,7 +20,10 @@
     <Window.DataContext>
         <vm:InforVM/>
     </Window.DataContext>
-    <Grid>
+    <Grid Margin="20">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="20" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+        </Grid.Effect>
         <Border CornerRadius="40" Background="{StaticResource SecondaryDark}"/>
         <Grid>
             <Grid.RowDefinitions>
@@ -63,7 +66,6 @@
                         VerticalAlignment="Top"
                         FontWeight="Bold"
                         Foreground="{StaticResource SecondaryLight}" 
-                        FontFamily="Bahnschrift" 
                         Width="266" 
                         Height="40" 
                         Margin="117,10,117,0"/>
@@ -186,27 +188,27 @@
                         <Button
                             x:Name="btnDownload"
                             Style="{StaticResource MaterialDesignRaisedLightButton}"
-                            Height="40"
+                            Height="50"
+                            Width="150"
                             Background="{StaticResource PrimaryLight}"
                             BorderBrush="Transparent"
                             Click="btnDownload_Click"
-                            materialDesign:ButtonAssist.CornerRadius="5"
-                            Margin="138,15,195,10">
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            VerticalAlignment="Center">
                             <TextBlock
                                 Text="TẢI XUỐNG" 
                                 FontSize="18" 
                                 Height="20"
-                                Width="127" 
-                                FontWeight="Bold"
+                                FontWeight="Medium"
                                 Foreground="{StaticResource PrimaryDark}"
-                                Margin="25,-3,0,0"/>
+                                Margin="22,-3,0,0"/>
                         </Button>
                         <materialDesign:PackIcon 
                             Kind="Download" 
-                            Margin="140,25,0,0" 
-                            Height="22"
+                            Margin="173,0,0,0" 
+                            Height="25"
                             Width="35" 
-                            Foreground="{StaticResource PrimaryDark}"/>
+                            Foreground="{StaticResource PrimaryDark}" VerticalAlignment="Center" RenderTransformOrigin="0.409,0.505"/>
                     </Grid>
                     <Button
                         x:Name="btExit"
@@ -214,16 +216,16 @@
                         Style="{StaticResource MaterialDesignOutlinedSecondaryDarkButton}"
                         Content="THOÁT"
                         FontSize="18"
-                        FontWeight="Bold"
+                        FontWeight="Medium"
                         Command="{Binding ToMainCommand}"
                         CommandParameter="{Binding ElementName=inforWindow}"
                         Foreground="{StaticResource PrimaryLight}"
-                        Height="40"
-                        materialDesign:ButtonAssist.CornerRadius="5"
+                        Height="50"
+                        Width="150"
+                        materialDesign:ButtonAssist.CornerRadius="10"
                         BorderThickness="2"
                         BorderBrush="{StaticResource PrimaryLight}"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Margin="138,0,195,15" />
+                        VerticalAlignment="Center" />
                 </Grid>
             </Grid>
 

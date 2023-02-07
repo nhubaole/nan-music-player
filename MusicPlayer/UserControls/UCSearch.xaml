@@ -20,7 +20,7 @@
                         <ComboBox x:Name="cbSearchType"
                                 BorderBrush="{StaticResource PrimaryDark}"
                                 FontSize="18"
-                                FontWeight="SemiBold"
+                                FontWeight="SemiBold"                                  
                                 Style="{StaticResource MaterialDesignOutlinedComboBox}"
                                 materialDesign:HintAssist.Hint="Tìm kiếm theo"
                                 materialDesign:HintAssist.Foreground="{StaticResource PrimaryDark}"
@@ -36,7 +36,8 @@
                                     BorderThickness="2" 
                                     BorderBrush="{StaticResource PrimaryLight}">
                             <TextBox x:Name="txtSearch"
-                                    Margin="20,10,20,10" Width="280"
+                                    materialDesign:TextFieldAssist.HasClearButton="True"
+                                    Margin="0,10,0,10" Width="280"
                                     FontSize="20"
                                     FontWeight="SemiBold"
                                     materialDesign:HintAssist.Hint="Tìm kiếm"

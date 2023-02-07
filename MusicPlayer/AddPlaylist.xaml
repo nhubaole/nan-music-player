@@ -8,8 +8,8 @@
         xmlns:vm="clr-namespace:MusicPlayer.ViewModel"
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
         mc:Ignorable="d"
-        Height="320" 
-        Width="500"
+        Height="370" 
+        Width="530"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -19,7 +19,10 @@
     <Window.DataContext>
         <vm:UploadVM/>
     </Window.DataContext>
-    <Grid>
+    <Grid Margin="20">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="20" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+        </Grid.Effect>
         <Border CornerRadius="40" Background="{StaticResource SecondaryDark}"/>
         <Grid>
             <Grid.RowDefinitions>
@@ -74,18 +77,18 @@
                             x:Name="btnAdd"
                             Style="{StaticResource MaterialDesignRaisedLightButton}"
                             Height="40"
-                            Width="130"
+                            Width="120"
                             Background="{StaticResource PrimaryLight}"
-                            materialDesign:ButtonAssist.CornerRadius="5"
+                            materialDesign:ButtonAssist.CornerRadius="8"
                             BorderBrush="Transparent"
                             Margin="41,30,185,10"
                             Click="btnAdd_Click" Grid.Column="1">
                             <TextBlock 
                                 x:Name="txtBtn"
                                 Text="TẠO" 
-                                FontSize="17" 
+                                FontSize="18" 
                                 Height="23" 
-                                FontWeight="SemiBold" 
+                                FontWeight="Medium" 
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Center"
                                 Foreground="{StaticResource PrimaryDark}">
@@ -97,16 +100,17 @@
                         Grid.Row="2"
                         BorderThickness="2"
                         Height="40"
+                        Width="120"
                         BorderBrush="{StaticResource PrimaryLight}"
                         Style="{StaticResource MaterialDesignOutlinedSecondaryDarkButton}"
                         Content="THOÁT"
                         Foreground="{StaticResource PrimaryLight}"
-                        FontSize="17"
-                        FontWeight="SemiBold"
-                        materialDesign:ButtonAssist.CornerRadius="5"
+                        FontSize="18"
+                        FontWeight="Medium"
+                        materialDesign:ButtonAssist.CornerRadius="8"
                         Command="{Binding CloseUploadSongCommand}"
                         CommandParameter="{Binding ElementName=AddPlaylistWindow}"
-                        Margin="186,80,186,-40"/>
+                        Margin="185,80,185,-40"/>
                 </Grid>
             </Grid>
         </Grid>

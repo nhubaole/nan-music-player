@@ -367,31 +367,31 @@
                     <Grid Grid.Row="0">
                         <Border
                         Background="{StaticResource PrimaryLight}"
-                        CornerRadius="12"
-                        Height="45"/>
+                        CornerRadius="10"
+                        Height="50"/>
 
                         <Button
                         Background="Transparent"
-                        BorderBrush="Transparent"
-                        Height="45"
+                        BorderThickness="0"
+                        Height="50"
                         Content="CẬP NHẬT THÔNG TIN" 
                         FontSize="20"
                         Foreground="{StaticResource PrimaryDark}" 
-                        FontWeight="Bold" 
+                        FontWeight="Medium" 
                         Command="{ Binding handleProfileCommand}"/>
                     </Grid>
 
                     <Grid Grid.Row="1">
                         <Border
-                        CornerRadius="12"
-                        Height="45"
+                        CornerRadius="10"
+                        Height="50"
                         BorderBrush="{StaticResource PrimaryLight}"
-                        BorderThickness="1"/>
+                        BorderThickness="2"/>
 
                         <Button
                         Background="Transparent"
                         BorderBrush="Transparent"
-                        Height="45"
+                        Height="50"
                         Content="ĐỔI MẬT KHẨU" 
                         FontSize="20"
                         Foreground="{StaticResource PrimaryLight}" 

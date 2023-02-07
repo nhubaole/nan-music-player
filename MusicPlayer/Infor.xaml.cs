@@ -47,7 +47,7 @@ namespace MusicPlayer
             }
             catch
             {
-                CustomMessageBox.Show("Đã xảy ra lỗi", MessageBoxImage.Error);
+                CustomMessageBox.Show("Không thể tải được bài hát", MessageBoxImage.Error);
             }
         }
     }

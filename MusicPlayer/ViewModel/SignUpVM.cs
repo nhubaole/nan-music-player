@@ -280,6 +280,10 @@ namespace MusicPlayer.ViewModel
         }
         public bool CheckLengthOPass(string tempPass)
         {
+            if(tempPass == null)
+            {
+                return false;
+            }
             if (tempPass.Length <6)
             {
                 return false;
