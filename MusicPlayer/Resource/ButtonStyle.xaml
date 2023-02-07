@@ -13,7 +13,7 @@
                 <ControlTemplate TargetType="RadioButton">
                     <Grid>
                         <Border x:Name="Indicator"
-                                    Height="55"
+                                    Height="50"
                                     Width="5"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Center"

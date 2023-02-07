@@ -255,6 +255,7 @@ namespace MusicPlayer.UserControls
                 LoginViewModel.currUser.UPLOADSONGs.Remove(s);
                 DataProvider.Ins.DB.SaveChanges();
                 UpdateUploadSong();
+                CustomMessageBox.Show("Đã xóa bài hát thành công", MessageBoxImage.None);
             }
             else
             {
@@ -293,6 +294,7 @@ namespace MusicPlayer.UserControls
                 DataProvider.Ins.DB.PLAYLISTs.Remove(pl);
                 DataProvider.Ins.DB.SaveChanges();
                 UpdatePlaylist();
+                CustomMessageBox.Show("Đã xóa playlist thành công", MessageBoxImage.None);
             }
             else
             {
@@ -310,7 +312,7 @@ namespace MusicPlayer.UserControls
                 playlistDeleted.SONGs.Remove(s);
                 DataProvider.Ins.DB.SaveChanges();
                 UpdatePlaylist();
-                CustomMessageBox.Show("Đã xóa bài hát thành công", MessageBoxImage.None);
+                CustomMessageBox.Show("Đã xóa bài hát ra khỏi playlist thành công", MessageBoxImage.None);
             }
         }
 

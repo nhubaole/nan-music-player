@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
-        Title="CustomMessageBoxWindow" MinHeight="280" MinWidth="280"
+        Title="CustomMessageBoxWindow" MinHeight="300" MinWidth="300"
         SizeToContent="WidthAndHeight"
         ResizeMode="CanMinimize"
         WindowStyle="None"
@@ -17,7 +17,10 @@
         Background="Transparent"
         AllowsTransparency="True" 
         >
-    <Grid>
+    <Grid Margin="20">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="20" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+        </Grid.Effect>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -76,16 +79,14 @@
                                    x:Name="SuccessText"
                                    Foreground="MediumSpringGreen" 
                                    FontWeight="Bold" 
-                                   FontFamily="Roboto" 
                                    FontSize="20" 
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Visibility="Collapsed"></TextBlock>
-                        <TextBlock Text="Oops!" 
+                        <TextBlock Text="Oops! Đã xảy ra lỗi" 
                                    x:Name="ErrorText"
                                    Foreground="#ff5252" 
                                    FontWeight="Bold" 
-                                   FontFamily="Roboto" 
                                    FontSize="20" 
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
@@ -94,7 +95,6 @@
                                    x:Name="ConfirmText"
                                    Foreground="Gold" 
                                    FontWeight="Bold" 
-                                   FontFamily="Roboto" 
                                    FontSize="20" 
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
@@ -103,7 +103,6 @@
                                    x:Name="InfoText"
                                    Foreground="DodgerBlue" 
                                    FontWeight="Bold" 
-                                   FontFamily="Roboto" 
                                    FontSize="20" 
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"></TextBlock>
@@ -121,24 +120,28 @@
                     </Grid>
                     <Grid Grid.Row="3">
                         <Button Width="120"
+                                Height="40"
                                 x:Name="ContinueBtn"
                                 BorderThickness="0"
                                 materialDesign:ButtonAssist.CornerRadius="8"
                                 Background="MediumSpringGreen" 
                                 Foreground="{StaticResource SecondaryMid}"
-                                FontSize="15" 
+                                FontSize="18" 
+                                FontWeight="Medium"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 Content="Tiếp tục"
                                 Visibility="Collapsed"
                                 Click="ContinueBtn_Click"></Button>
                         <Button Width="120"
+                                Height="40"
                                 x:Name="AgainBtn"
                                 BorderThickness="0"
                                 materialDesign:ButtonAssist.CornerRadius="8"
                                 Background="#ff5252" 
                                 Foreground="{StaticResource SecondaryMid}"
-                                FontSize="15" 
+                                FontSize="18" 
+                                FontWeight="Medium" 
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 Content="Thử lại"
@@ -147,7 +150,7 @@
                         <Button Width="80"
                                 x:Name="YesBtn"
                                 BorderThickness="0"
-                                materialDesign:ButtonAssist.CornerRadius="8"
+                                materialDesign:ButtonAssist.CornerRadius="5"
                                 Background="Gold" 
                                 Foreground="{StaticResource SecondaryMid}"
                                 FontSize="15" 
@@ -161,7 +164,7 @@
                                 x:Name="NoBtn"
                                 BorderThickness="2"
                                 BorderBrush="Gold"
-                                materialDesign:ButtonAssist.CornerRadius="8"
+                                materialDesign:ButtonAssist.CornerRadius="5"
                                 Style="{StaticResource MaterialDesignOutlinedSecondaryDarkButton}"
                                 Foreground="Gold"
                                 FontSize="15" 
@@ -172,12 +175,14 @@
                                 Visibility="Collapsed"
                                 Click="NoBtn_Click"></Button>
                         <Button Width="120"
+                                Height="40"
                                 x:Name="OKBtn"
                                 BorderThickness="0"
                                 materialDesign:ButtonAssist.CornerRadius="8"
                                 Background="DodgerBlue" 
                                 Foreground="{StaticResource SecondaryMid}"
-                                FontSize="15" 
+                                FontSize="18" 
+                                FontWeight="Medium"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 Content="OK"

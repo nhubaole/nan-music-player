@@ -96,7 +96,7 @@ namespace MusicPlayer
             }
             catch
             {
-                CustomMessageBox.Show("Đã xảy ra lỗi", MessageBoxImage.Error);
+                CustomMessageBox.Show("Không thể chọn file bài hát", MessageBoxImage.Error);
             }
         }
 
@@ -119,7 +119,7 @@ namespace MusicPlayer
             }
             catch
             {
-                CustomMessageBox.Show("Đã xảy ra lỗi", MessageBoxImage.Error);
+                CustomMessageBox.Show("Không thể chọn file hình ảnh", MessageBoxImage.Error);
             }
         }
 
