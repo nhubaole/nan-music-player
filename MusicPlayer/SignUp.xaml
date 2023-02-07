@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
         xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
-        Height="650" 
+        Height="700" 
         Width="570"
         ResizeMode="CanMinimize"
         WindowStyle="None"
@@ -44,13 +44,13 @@
                 FontWeight="Bold" 
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Margin="15"/>
+                Margin="30"/>
 
             <Grid
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top" 
-                Margin="0,57,0,0"
-                Height="370"
+                Margin="0,90,0,0"
+                Height="400"
                 Width="500" >
 
                 <Border 
@@ -60,7 +60,7 @@
                 <Grid
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Height="330"
+                    Height="380"
                     Width="430">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
@@ -169,6 +169,7 @@
                                 </Grid.ColumnDefinitions>
                                 <PasswordBox
                                     x:Name="tbPassSignUp"
+                                    Style="{StaticResource MaterialDesignRevealPasswordBox}"
                                     materialDesign:HintAssist.Hint="Nhập mật khẩu "
                                     materialDesign:HintAssist.HelperText="Ít nhất 6 kí tự."
                                     materialDesign:TextFieldAssist.HasClearButton="True"
@@ -206,6 +207,7 @@
                             <Grid Grid.Row="1">
                                 <PasswordBox
                                     x:Name="tbRePass"
+                                    Style="{StaticResource MaterialDesignRevealPasswordBox}"
                                     materialDesign:HintAssist.Hint="Nhập lại mật khẩu"
                                     materialDesign:TextFieldAssist.HasClearButton="True"
                                     FontSize="16"
@@ -436,7 +438,7 @@
                 HorizontalAlignment="Center"
                 Height="120"
                 Width="150" 
-                Margin="0,430,0,0">
+                Margin="0,490,0,0">
 
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -446,40 +448,40 @@
                 <Grid Grid.Row="0">
                     <Border
                         Background="{StaticResource PrimaryLight}"
-                        CornerRadius="12"
-                        Height="45"
+                        CornerRadius="10"
+                        Height="50"
                         Width="150"/>
 
                     <Button
                         Background="Transparent"
                         BorderBrush="Transparent"
-                        Height="45"
+                        Height="50"
                         Width="150"
                         Content="ĐĂNG KÝ" 
-                        FontSize="25"
+                        FontSize="20"
                         Foreground="{StaticResource PrimaryDark}" 
-                        FontWeight="Bold"
+                        FontWeight="Medium"
                         Command="{Binding handleSignUpCommand}"
                         CommandParameter="{Binding ElementName=signUpWindow}"/>
                 </Grid>
 
                 <Grid Grid.Row="1">
                     <Border
-                        CornerRadius="12"
-                        Height="45"
+                        CornerRadius="10"
+                        Height="50"
                         Width="150" 
                         BorderBrush="{StaticResource PrimaryLight}"
-                        BorderThickness="1"/>
+                        BorderThickness="2"/>
 
                     <Button
                         Background="Transparent"
                         BorderBrush="Transparent"
-                        Height="45"
+                        Height="50"
                         Width="150"
                         Content="THOÁT" 
-                        FontSize="25"
+                        FontSize="20"
                         Foreground="{StaticResource PrimaryLight}" 
-                        FontWeight="Bold"
+                        FontWeight="Medium"
                         Command="{Binding closeSignUpCommand}"
                         CommandParameter="{Binding ElementName=signUpWindow}"/>
 

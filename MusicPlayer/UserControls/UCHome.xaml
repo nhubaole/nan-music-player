@@ -37,7 +37,7 @@
                             <Run x:Name="txtName" Foreground="{StaticResource PrimaryLight}" />
                             <Run Foreground="{StaticResource SecondaryLight}">Cùng </Run>
                             <Run Foreground="{StaticResource PrimaryLight}">N.A.N </Run>
-                            <Run Foreground="{StaticResource SecondaryLight}">tận hưởng thế giới âm nhạc của riêng mình, bạn nhé</Run>
+                            <Run Foreground="{StaticResource SecondaryLight}">tận hưởng thế giới âm nhạc của riêng mình nhé</Run>
                             <materialDesign:PackIcon Width="20" Height="20" Kind="MusicNote" Foreground="{StaticResource SecondaryLight}"/>
                         </TextBlock>
                     </Grid>

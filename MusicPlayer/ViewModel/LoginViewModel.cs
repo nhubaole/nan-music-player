@@ -81,7 +81,7 @@ namespace MusicPlayer.ViewModel
                     }    
                     else
                     {
-                        CustomMessageBox.Show("Hãy điền đủ thông tin!", MessageBoxImage.Error);
+                        CustomMessageBox.Show("Hãy điền đủ thông tin!", MessageBoxImage.Information);
 
                     }
 

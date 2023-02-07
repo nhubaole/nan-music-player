@@ -10,8 +10,8 @@
         xmlns:uc="clr-namespace:MusicPlayer.UserControls"
         mc:Ignorable="d"
         Title="Upload" 
-        Height="480" 
-        Width="800"
+        Height="550" 
+        Width="840"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -21,7 +21,10 @@
     <Window.DataContext>
         <vm:UploadVM/>
     </Window.DataContext>
-    <Grid>
+    <Grid Margin="20">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="20" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+        </Grid.Effect>
         <Border CornerRadius="40" Background="{StaticResource SecondaryDark}"/>
         <Grid>
             <Grid.RowDefinitions>
@@ -44,7 +47,7 @@
                         Height="200" 
                         BorderBrush="Transparent"
                         materialDesign:ButtonAssist.CornerRadius="20"
-                        Margin="50,70,50,140"
+                        Margin="50,70,50,170"
                         Click="btnImage_Click"
                         ToolTip="">
                     <Button.Background>
@@ -59,9 +62,9 @@
                         <RowDefinition Height="60"></RowDefinition>
                         <RowDefinition Height="80"></RowDefinition>
                         <RowDefinition Height="80"></RowDefinition>
-                        <RowDefinition Height="70"></RowDefinition>
-                        <RowDefinition Height="80" ></RowDefinition>
-                        <RowDefinition Height="40"   ></RowDefinition>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition Height="90" ></RowDefinition>
+                        <RowDefinition Height="50"   ></RowDefinition>
 
                     </Grid.RowDefinitions>
 
@@ -73,7 +76,7 @@
                         VerticalAlignment="Center"
                         FontWeight="Bold"
                         Foreground="{StaticResource SecondaryLight}" 
-                        FontFamily="Bahnschrift" Margin="130,0,0,0" Height="28" Width="220"/>
+                        Margin="130,0,0,0" Height="28" Width="250"/>
                     <TextBlock 
                         Grid.Row="1"
                         Text="Tên bài hát"
@@ -129,7 +132,7 @@
                                     FontSize="15"
                                     HorizontalAlignment="Left"
                                     VerticalAlignment="Bottom"
-                                    Margin="120,0,0,0"
+                                    Margin="120,0,40,10"
                                     TextWrapping="Wrap"/>
                     </Grid>
 
@@ -138,18 +141,16 @@
                         <Button
                             x:Name="btnUpload"
                             Style="{StaticResource MaterialDesignRaisedLightButton}"
-                            Height="40"
-                            Width="130"
+                            Height="50"
+                            Width="150"
                             Background="{StaticResource PrimaryLight}"
-                            materialDesign:ButtonAssist.CornerRadius="5"
-                            BorderBrush="Transparent"
-                            Margin="140,26,230,0"
+                            materialDesign:ButtonAssist.CornerRadius="8"
+                            BorderThickness="0"
                             Click="btnUpload_Click">
                             <TextBlock x:Name="txtBtnUp"
                                 Text="TẢI LÊN" 
-                                FontSize="17" 
-                                Height="20" 
-                                FontWeight="SemiBold" 
+                                FontSize="18"
+                                FontWeight="Medium" 
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Center"
                                 Foreground="{StaticResource PrimaryDark}">
@@ -160,18 +161,19 @@
                         x:Name="btExit"
                         Grid.Row="5"
                         BorderThickness="2"
-                        Height="40"
+                        Height="50"
+                        Width="150"
                         BorderBrush="{StaticResource PrimaryLight}"
                         Style="{StaticResource MaterialDesignOutlinedSecondaryDarkButton}"
                         Content="THOÁT"
                         Foreground="{StaticResource PrimaryLight}"
-                        FontSize="17"
-                        FontWeight="SemiBold"
-                        materialDesign:ButtonAssist.CornerRadius="5"
+                        FontSize="18"
+                        FontWeight="Medium"
+                        materialDesign:ButtonAssist.CornerRadius="8"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Command="{Binding CloseUploadSongCommand}"
                         CommandParameter="{Binding ElementName=uploadWindow}"
-                        Margin="140,5,232,-12" Panel.ZIndex="-1" />
+                        Panel.ZIndex="-1" />
                 </Grid>
             </Grid>
         </Grid>
