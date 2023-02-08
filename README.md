@@ -115,6 +115,9 @@
 - Tìm file **DB.sql** và mở trong **Microsoft SQL Server Management Studio**. 
 - Chọn tất cả nội dung file. Chọn **Execute** để khởi tạo database trên nhánh **master**.
 - Mở file **MusicPlayer.sln**. Nhấn **Ctrl+F5** để chạy.
+- Tài khoản mặc định:
+  - Tên đăng nhập: default
+  - Mật khẩu: 123456
 
 ## Hướng dẫn sử dụng
  <details>
